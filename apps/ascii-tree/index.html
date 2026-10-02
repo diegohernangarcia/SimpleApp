@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Árbol de Carpetas (ASCII Tree) • SimpleApps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .app-workspace-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-xl);
+            padding: 3rem 2.5rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            text-align: center;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--shadow-card);
+        }
+        .module-tag {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--accent-violet-light);
+            padding: 0.35rem 0.85rem;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+        .workspace-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow" aria-hidden="true">
+        <div class="ambient-orb ambient-orb-1"></div>
+        <div class="ambient-orb ambient-orb-2"></div>
+    </div>
+    <div class="bg-grid-pattern" aria-hidden="true"></div>
+
+    <div class="app-wrapper">
+        <header class="top-header">
+            <div class="header-inner">
+                <a href="../../index.html" class="brand-area" title="Volver al Inicio">
+                    <div class="brand-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </div>
+                    <div class="brand-text-box">
+                        <span class="brand-name">Simple<span class="brand-highlight">Apps</span></span>
+                        <span class="brand-tagline">Micro-Tools Suite</span>
+                    </div>
+                </a>
+                <div class="header-actions">
+                    <a href="../../index.html" class="btn-subnav-ghost">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                        <span>Volver al Catálogo</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-container">
+            <div class="breadcrumb-row">
+                <a href="../../index.html" class="footer-link">Inicio</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="../../index.html" class="footer-link">Micro-Apps</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-item active">Generador de Árbol de Carpetas (ASCII Tree)</span>
+            </div>
+
+            <div class="app-workspace-card">
+                <span class="module-tag">MÓDULO #06 EN PREPARACIÓN</span>
+                <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 1rem;">
+                    Generador de Árbol de Carpetas (ASCII Tree)
+                </h1>
+                <p class="hero-description" style="max-width: 600px; margin: 0 auto 1.5rem;">
+                    Generador de estructuras de directorios en texto plano ASCII/Unicode.
+                </p>
+                <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 1.5rem; max-width: 650px; margin: 0 auto; color: var(--text-secondary); font-size: 0.9rem;">
+                    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">Arquitectura Asignada:</strong>
+                    HTML5 + Vanilla JavaScript + Soporte Backend PHP 8.3 & MySQL 8.4.<br>
+                    Listo para codificar la interfaz operativa específica de esta micro-app.
+                </div>
+
+                <div class="workspace-btn-group">
+                    <a href="../../index.html" class="btn-launch-app" style="max-width: 250px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                        <span>Volver al Dashboard</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div class="footer-left">
+                    <span><strong>SimpleApps Suite</strong> • Módulo #06</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../../index.html" class="footer-link">Ver las 10 Apps</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

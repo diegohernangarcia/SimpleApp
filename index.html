@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleApps • Suite de Herramientas y Micro-Apps</title>
+    <meta name="description" content="Plataforma y catálogo de micro-herramientas locales de alto rendimiento: Excel, CSV, Diff Viewer, Permisos Linux, Markdown y SQL.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Estilos Principales -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Fondos de Iluminación Ambiental (Estética Aithm AI) -->
+    <div class="ambient-glow" aria-hidden="true">
+        <div class="ambient-orb ambient-orb-1"></div>
+        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-3"></div>
+    </div>
+    <div class="bg-grid-pattern" aria-hidden="true"></div>
+
+    <div class="app-wrapper">
+
+        <!-- =================================================================
+             1. HEADER HORIZONTAL (Layout Xacton)
+             ================================================================= -->
+        <header class="top-header">
+            <div class="header-inner">
+                <!-- Marca / Logo -->
+                <a href="index.html" class="brand-area" title="SimpleApps Home">
+                    <div class="brand-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </div>
+                    <div class="brand-text-box">
+                        <span class="brand-name">Simple<span class="brand-highlight">Apps</span></span>
+                        <span class="brand-tagline">Micro-Tools Suite</span>
+                    </div>
+                </a>
+
+                <!-- Buscador Rápido del Header -->
+                <div class="header-search">
+                    <div class="search-input-wrapper">
+                        <span class="search-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                        </span>
+                        <input type="text" 
+                               id="headerSearchInput" 
+                               class="search-input" 
+                               placeholder="Buscar herramienta (ej. CSV, Chmod, SQL, Diff)..." 
+                               autocomplete="off">
+                        <button id="headerSearchClear" class="search-clear-btn" title="Limpiar búsqueda">&times;</button>
+                        <span class="search-shortcut">Ctrl K</span>
+                    </div>
+                </div>
+
+                <!-- Acciones del Header -->
+                <div class="header-actions">
+                    <!-- Estado de Servidor Local -->
+                    <div class="server-status-pill" id="serverStatusPill" title="Servidor Local Activo">
+                        <span class="status-dot"></span>
+                        <span class="server-meta-tag">LAMPP Local</span>
+                        <span class="server-php-tag">PHP 8.3 & MySQL Ready</span>
+                    </div>
+
+                    <!-- Reloj Local -->
+                    <div class="header-clock" id="headerClock" title="Hora del sistema">
+                        <span>--:--:--</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- =================================================================
+             2. SUBNAV HORIZONTAL (Xacton Menu Bar)
+             ================================================================= -->
+        <nav class="horizontal-subnav" aria-label="Navegación por categorías">
+            <div class="subnav-inner">
+                <ul class="nav-links-list">
+                    <li class="nav-item">
+                        <button class="nav-link active" data-category="todas">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                            <span>Todas las Apps</span>
+                            <span class="nav-badge" id="navBadgeTotal">10</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-category="excel">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h2"/><path d="M8 17h2"/><path d="M14 13h2"/><path d="M14 17h2"/></svg>
+                            <span>Archivos & Excel</span>
+                            <span class="nav-badge">4</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-category="sysadmin">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                            <span>Dev & SysAdmin</span>
+                            <span class="nav-badge">2</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-category="texto">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            <span>Texto & Código</span>
+                            <span class="nav-badge">2</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-category="datos">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
+                            <span>Datos & Conciliación</span>
+                            <span class="nav-badge">2</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-category="favoritos">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <span>Favoritos</span>
+                            <span class="nav-badge">0</span>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="subnav-quick-actions">
+                    <button class="btn-subnav-ghost" onclick="window.scrollTo({top: 400, behavior: 'smooth'})">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                        <span>Ver Herramientas</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- =================================================================
+             3. CONTENIDO PRINCIPAL / DASHBOARD
+             ================================================================= -->
+        <main class="main-container">
+            
+            <!-- Hero / Banner de Bienvenida -->
+            <section class="dashboard-hero">
+                <div class="breadcrumb-row">
+                    <span class="breadcrumb-item">Inicio</span>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-item">Dashboard</span>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-item active">Catálogo de Micro-Apps</span>
+                </div>
+
+                <div class="hero-main-flex">
+                    <div class="hero-title-box">
+                        <div class="hero-tag">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                            Suite de Utilidades Locales • Sin React ni Dependencias Pesadas
+                        </div>
+                        <h1 class="hero-title">
+                            Centro de <span class="glow-text">Micro-Aplicaciones</span>
+                        </h1>
+                        <p class="hero-description">
+                            Suite de <strong class="text-glow-white">10 herramientas prácticas</strong>, directas y de alto rendimiento para manipulación y conversión de archivos 
+                            <span class="desc-pill desc-pill-emerald">Excel / CSV</span>, 
+                            análisis con <span class="desc-pill desc-pill-violet">Diff Viewer</span>, 
+                            cálculo de <span class="desc-pill desc-pill-pink">Permisos Linux</span> y generación de 
+                            <span class="desc-pill desc-pill-cyan">Sentencias SQL</span>. 
+                            Todo ejecutado en tu máquina de forma <strong class="text-glow-cyan">100% local, privada y sin telemetría</strong>.
+                        </p>
+                        <div class="hero-chips-row">
+                            <span class="hero-feature-chip">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                Cero subidas a la nube
+                            </span>
+                            <span class="hero-feature-chip">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                Procesamiento instantáneo
+                            </span>
+                            <span class="hero-feature-chip">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                PHP 8.3 & MySQL 8.4 Ready
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Lateral de Entorno Activo (Estilo Xacton Horizontal) -->
+                    <div class="hero-side-card">
+                        <div class="side-card-top">
+                            <span class="status-indicator-live">
+                                <span class="ping-dot"></span>
+                                Entorno Local Activo
+                            </span>
+                            <span class="side-card-badge">XAMPP / LAMPP</span>
+                        </div>
+                        <div class="side-card-body">
+                            <div class="side-stat-row">
+                                <span class="side-stat-name">Servidor Web</span>
+                                <span class="side-stat-val">Apache 2.4</span>
+                            </div>
+                            <div class="side-stat-row">
+                                <span class="side-stat-name">Motor Backend</span>
+                                <span class="side-stat-val text-cyan">PHP 8.3 Ready</span>
+                            </div>
+                            <div class="side-stat-row">
+                                <span class="side-stat-name">Base de Datos</span>
+                                <span class="side-stat-val text-violet">MySQL 8.4 Ready</span>
+                            </div>
+                            <div class="side-stat-row">
+                                <span class="side-stat-name">Administrador DB</span>
+                                <span class="side-stat-val">PhpMyAdmin</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 Widgets KPI (Estilo Xacton Horizontal con Estética Aithm) -->
+                <div class="kpi-grid">
+                    <!-- KPI 1 -->
+                    <div class="kpi-card" style="--kpi-gradient: linear-gradient(135deg, #10B981, #06B6D4); --kpi-color: #10B981;">
+                        <div class="kpi-top">
+                            <span class="kpi-label">Herramientas</span>
+                            <div class="kpi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                            </div>
+                        </div>
+                        <div class="kpi-value" id="totalKpiCount">10</div>
+                        <div class="kpi-subtitle">Micro-apps catalogadas y listas</div>
+                    </div>
+
+                    <!-- KPI 2 -->
+                    <div class="kpi-card" style="--kpi-gradient: linear-gradient(135deg, #7928CA, #00F0FF); --kpi-color: #00F0FF;">
+                        <div class="kpi-top">
+                            <span class="kpi-label">Rendimiento</span>
+                            <div class="kpi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
+                        </div>
+                        <div class="kpi-value">0 ms</div>
+                        <div class="kpi-subtitle">Latencia local (Cero esperas de subida)</div>
+                    </div>
+
+                    <!-- KPI 3 -->
+                    <div class="kpi-card" style="--kpi-gradient: linear-gradient(135deg, #A855F7, #EC4899); --kpi-color: #A855F7;">
+                        <div class="kpi-top">
+                            <span class="kpi-label">Privacidad</span>
+                            <div class="kpi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                        </div>
+                        <div class="kpi-value">100%</div>
+                        <div class="kpi-subtitle">Tus datos nunca salen de tu ordenador</div>
+                    </div>
+
+                    <!-- KPI 4 -->
+                    <div class="kpi-card" style="--kpi-gradient: linear-gradient(135deg, #3B82F6, #6366F1); --kpi-color: #3B82F6;">
+                        <div class="kpi-top">
+                            <span class="kpi-label">Tecnología</span>
+                            <div class="kpi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+                            </div>
+                        </div>
+                        <div class="kpi-value">PHP 8.3</div>
+                        <div class="kpi-subtitle">Vanilla JS • MySQL 8.4 Ready</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =================================================================
+                 4. BARRA DE HERRAMIENTAS, FILTROS Y CONTROL DE VISTA
+                 ================================================================= -->
+            <section class="toolbar-section">
+                <!-- Filtros por Categoría (Pills) -->
+                <div class="category-pills">
+                    <button class="cat-pill active" data-category="todas">
+                        <span>Todas</span>
+                        <span class="cat-pill-count">10</span>
+                    </button>
+                    <button class="cat-pill" data-category="excel">
+                        <span>Archivos & Excel</span>
+                        <span class="cat-pill-count">4</span>
+                    </button>
+                    <button class="cat-pill" data-category="sysadmin">
+                        <span>Dev & SysAdmin</span>
+                        <span class="cat-pill-count">2</span>
+                    </button>
+                    <button class="cat-pill" data-category="texto">
+                        <span>Texto & Código</span>
+                        <span class="cat-pill-count">2</span>
+                    </button>
+                    <button class="cat-pill" data-category="datos">
+                        <span>Datos & Conciliación</span>
+                        <span class="cat-pill-count">2</span>
+                    </button>
+                    <button class="cat-pill" data-category="favoritos">
+                        <span>★ Favoritos</span>
+                        <span class="cat-pill-count">0</span>
+                    </button>
+                </div>
+
+                <!-- Controles de la derecha (Orden y Vista) -->
+                <div class="toolbar-controls">
+                    <!-- Selector de Orden -->
+                    <div class="sort-select-wrapper">
+                        <select id="sortSelect" class="sort-select">
+                            <option value="default">Orden por defecto (#01 - #10)</option>
+                            <option value="name-asc">Nombre (A - Z)</option>
+                            <option value="category">Por Categoría</option>
+                            <option value="favorites-first">Favoritos primero</option>
+                        </select>
+                        <span class="sort-select-arrow">▼</span>
+                    </div>
+
+                    <!-- Selector Grid / Lista -->
+                    <div class="view-toggle-group">
+                        <button id="viewGridBtn" class="view-btn active" title="Vista en Cuadrícula">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        </button>
+                        <button id="viewListBtn" class="view-btn" title="Vista en Lista Compacta">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Banner Informativo de Búsqueda Activa -->
+            <div id="activeSearchAlert" class="active-search-alert">
+                <div>
+                    Filtro activo para <strong id="searchQueryText">""</strong>: se encontraron <span id="searchMatchCount">0</span> aplicaciones coincidentes.
+                </div>
+                <button id="btnResetSearch" class="btn-reset-filter">Limpiar búsqueda</button>
+            </div>
+
+            <!-- =================================================================
+                 5. CONTENEDOR DINÁMICO DE MICRO-APPS (Grid / List)
+                 ================================================================= -->
+            <div id="appsContainer" class="apps-container">
+                <!-- Se inyectan las 10 tarjetas mediante assets/js/main.js -->
+            </div>
+
+        </main>
+
+        <!-- =================================================================
+             6. FOOTER HORIZONTAL (Estilo Xacton)
+             ================================================================= -->
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div class="footer-left">
+                    <span><strong>SimpleApps Suite</strong> • Entorno Local XAMPP/LAMPP</span>
+                    <span class="footer-badge-tech">HTML5 • Vanilla CSS3 • Vanilla JS • PHP 8.3 Ready • MySQL 8.4</span>
+                </div>
+                <div class="footer-right">
+                    <span>10 / 10 Módulos Catalogados</span>
+                    <span>•</span>
+                    <a href="#" class="footer-link" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Volver arriba ↑</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- =================================================================
+         7. MODAL DE DETALLES Y ESPECIFICACIONES DE LA MICRO-APP
+         ================================================================= -->
+    <div id="appModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-title-flex">
+                    <div class="modal-icon-box" id="modalIconBox">
+                        <!-- Icono dinámico -->
+                    </div>
+                    <div>
+                        <h2 class="modal-title" id="modalTitle">Título de la App</h2>
+                        <span class="modal-subtitle" id="modalSubtitle">Subtítulo y tecnología</span>
+                    </div>
+                </div>
+                <button class="modal-close-btn" id="modalCloseBtn" aria-label="Cerrar modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <p class="modal-description" id="modalDescription">Descripción completa del módulo...</p>
+                
+                <h4 class="modal-section-title">Especificaciones Técnicas</h4>
+                <div class="modal-specs-grid">
+                    <div class="spec-item">
+                        <div class="spec-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </div>
+                        <div class="spec-item-content">
+                            <strong>Entrada admitida:</strong>
+                            <span id="modalSpecsInput">Archivos o texto de entrada</span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        </div>
+                        <div class="spec-item-content">
+                            <strong>Salida generada:</strong>
+                            <span id="modalSpecsOutput">Archivo o resultado generado</span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                        </div>
+                        <div class="spec-item-content">
+                            <strong>Modo de Procesamiento:</strong>
+                            <span id="modalSpecsExecution">Local cliente / PHP 8.3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="modal-section-title">Capacidades Destacadas</h4>
+                <div class="modal-features-wrap" id="modalFeatures">
+                    <!-- Features dinámicas -->
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="document.getElementById('appModal').classList.remove('open')">Cerrar</button>
+                <button class="btn-launch-app" id="modalLaunchBtn" style="padding: 0.65rem 1.4rem;">
+                    <span>Abrir Herramienta</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor para Notificaciones Toast -->
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/apps-data.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
