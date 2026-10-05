@@ -3,69 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De CSV a Excel • SimpleApps</title>
+    <title>De CSV a Excel (.xlsx) • SimpleApps</title>
+    <meta name="description" content="Convierte uno o múltiples archivos CSV a Excel (.xlsx). Opción para generar un solo libro consolidado con múltiples hojas o archivos Excel separados. 100% local y seguro.">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        .app-workspace-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-medium);
-            border-radius: var(--radius-xl);
-            padding: 3rem 2.5rem;
-            max-width: 900px;
-            margin: 2rem auto;
-            text-align: center;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--shadow-card);
-        }
-        .module-tag {
-            display: inline-block;
-            background: rgba(168, 85, 247, 0.15);
-            color: var(--accent-violet-light);
-            padding: 0.35rem 0.85rem;
-            border-radius: 100px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-        .workspace-btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-    </style>
+
+    <!-- Hojas de Estilo -->
+    <link rel="stylesheet" href="../../assets/css/style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=1.0">
 </head>
 <body>
+
+    <!-- Fondos de Iluminación Ambiental Aithm -->
     <div class="ambient-glow" aria-hidden="true">
-        <div class="ambient-orb ambient-orb-1"></div>
-        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-1" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, transparent 70%);"></div>
+        <div class="ambient-orb ambient-orb-2" style="background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, transparent 70%);"></div>
     </div>
     <div class="bg-grid-pattern" aria-hidden="true"></div>
 
     <div class="app-wrapper">
+
+        <!-- =================================================================
+             1. HEADER HORIZONTAL
+             ================================================================= -->
         <header class="top-header">
             <div class="header-inner">
-                <a href="../../index.html" class="brand-area" title="Volver al Inicio">
-                    <div class="brand-icon-box">
+                <!-- Marca / Logo -->
+                <a href="../../index.html" class="brand-area" title="Volver al Catálogo">
+                    <div class="brand-icon-box" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald-light);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <path d="M8 13h2"/>
+                            <path d="M8 17h2"/>
+                            <path d="M14 13h2"/>
+                            <path d="M14 17h2"/>
                         </svg>
                     </div>
                     <div class="brand-text-box">
-                        <span class="brand-name">Simple<span class="brand-highlight">Apps</span></span>
-                        <span class="brand-tagline">Micro-Tools Suite</span>
+                        <span class="brand-name">CSV to <span class="brand-highlight" style="color: var(--accent-emerald);">Excel</span></span>
+                        <span class="brand-tagline">Conversor & Consolidador Local</span>
                     </div>
                 </a>
+
+                <!-- Acciones del Header -->
                 <div class="header-actions">
-                    <a href="../../index.html" class="btn-subnav-ghost">
+                    <div class="server-status-pill" title="Procesamiento en tu navegador">
+                        <span class="status-dot" style="background: #10B981; box-shadow: 0 0 8px #10B981;"></span>
+                        <span class="server-meta-tag">100% Local</span>
+                        <span class="server-php-tag" style="background: rgba(16, 185, 129, 0.15); color: #34D399;">Zero Upload</span>
+                    </div>
+
+                    <a href="../../index.html" class="btn-subnav-ghost" title="Volver al Catálogo">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
                         <span>Volver al Catálogo</span>
                     </a>
@@ -73,48 +68,266 @@
             </div>
         </header>
 
+        <!-- =================================================================
+             2. CONTENIDO PRINCIPAL
+             ================================================================= -->
         <main class="main-container">
+
+            <!-- Breadcrumbs -->
             <div class="breadcrumb-row">
                 <a href="../../index.html" class="footer-link">Inicio</a>
                 <span class="breadcrumb-separator">/</span>
                 <a href="../../index.html" class="footer-link">Micro-Apps</a>
                 <span class="breadcrumb-separator">/</span>
-                <span class="breadcrumb-item active">De CSV a Excel</span>
+                <span class="breadcrumb-item active" style="color: var(--accent-emerald-light);">De CSV a Excel</span>
             </div>
 
-            <div class="app-workspace-card">
-                <span class="module-tag">MÓDULO #01 EN PREPARACIÓN</span>
-                <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 1rem;">
-                    De CSV a Excel
+            <!-- Hero Banner -->
+            <section class="csv-converter-hero">
+                <div class="converter-tag-emerald">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                    MÓDULO #01 • CONVERSIÓN INDIVIDUAL O MULTI-HOJA
+                </div>
+                <h1 class="hero-title-emerald">
+                    Conversor de CSV a <span class="glow-text-emerald">Excel (.xlsx)</span>
                 </h1>
-                <p class="hero-description" style="max-width: 600px; margin: 0 auto 1.5rem;">
-                    Conversor de CSV a Excel .xlsx con detección automática de delimitadores.
+                <p class="hero-description" style="max-width: 880px; margin-bottom: 0;">
+                    Convierte uno o múltiples archivos CSV con autodetección de separador (<strong class="text-glow-white">, ; \t |</strong>) 
+                    y codificación. Elige entre generar <strong class="text-glow-cyan">archivos Excel separados</strong> o 
+                    <strong style="color: var(--accent-emerald-light);">consolidar todos tus CSV en un único libro Excel donde cada archivo es una hoja distinta</strong>.
                 </p>
-                <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 1.5rem; max-width: 650px; margin: 0 auto; color: var(--text-secondary); font-size: 0.9rem;">
-                    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">Arquitectura Asignada:</strong>
-                    HTML5 + Vanilla JavaScript + Soporte Backend PHP 8.3 & MySQL 8.4.<br>
-                    Listo para codificar la interfaz operativa específica de esta micro-app.
+            </section>
+
+            <!-- =================================================================
+                 SELECTOR DE MODO DE CONVERSIÓN (CORE)
+                 ================================================================= -->
+            <section class="conversion-modes-section">
+                <div class="modes-section-title">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    <span>Selecciona el Modo de Conversión</span>
                 </div>
 
-                <div class="workspace-btn-group">
-                    <a href="../../index.html" class="btn-launch-app" style="max-width: 250px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <span>Volver al Dashboard</span>
-                    </a>
+                <div class="modes-grid">
+                    <!-- MODO A: CONSOLIDADO EN 1 LIBRO CON MÚLTIPLES HOJAS -->
+                    <div class="mode-selection-card active" data-mode="consolidated">
+                        <div class="mode-card-header">
+                            <div class="mode-icon-box">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                                    <line x1="9" y1="7" x2="15" y2="7"/>
+                                    <line x1="9" y1="11" x2="15" y2="11"/>
+                                </svg>
+                            </div>
+                            <div class="mode-radio-dot"></div>
+                        </div>
+                        <h3 class="mode-card-title">1 Libro Consolidado (Múltiples Hojas)</h3>
+                        <p class="mode-card-desc">
+                            Reúne todos los CSV en <strong>un único archivo Excel (.xlsx)</strong>, donde <strong>cada CSV se convierte en una hoja independiente</strong> del libro.
+                        </p>
+                    </div>
+
+                    <!-- MODO B: ARCHIVOS EXCEL INDEPENDIENTES -->
+                    <div class="mode-selection-card" data-mode="individual">
+                        <div class="mode-card-header">
+                            <div class="mode-icon-box" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.3); color: var(--accent-cyan-light);">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="16" height="15" rx="2"/>
+                                    <polyline points="18 4 22 4 22 17"/>
+                                    <line x1="6" y1="12" x2="14" y2="12"/>
+                                    <line x1="6" y1="16" x2="11" y2="16"/>
+                                </svg>
+                            </div>
+                            <div class="mode-radio-dot"></div>
+                        </div>
+                        <h3 class="mode-card-title">Archivos Excel Separados (.xlsx)</h3>
+                        <p class="mode-card-desc">
+                            Convierte <strong>cada CSV en su propio archivo Excel individual</strong>. Puedes descargarlos uno por uno o todos juntos en un paquete <strong>.ZIP</strong>.
+                        </p>
+                    </div>
                 </div>
-            </div>
+
+                <!-- Opciones Específicas para Modo Consolidado -->
+                <div class="consolidated-options-box" id="consolidatedOptionsBox">
+                    <label class="consolidated-filename-label">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-emerald-light);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span>Nombre del archivo Excel consolidado:</span>
+                        <input type="text" id="consolidatedFilenameInput" class="consolidated-filename-input" value="Libro_Consolidado" placeholder="Ej. Ventas_Consolidadas">
+                        <span style="font-family: var(--font-mono); color: var(--text-muted); font-size: 0.85rem;">.xlsx</span>
+                    </label>
+                    <span style="font-size: 0.82rem; color: var(--text-muted);">
+                        💡 Podrás personalizar el nombre de cada hoja antes de exportar.
+                    </span>
+                </div>
+            </section>
+
+            <!-- =================================================================
+                 ZONA DE CARGA DE ARCHIVOS CSV (Drag & Drop)
+                 ================================================================= -->
+            <section class="upload-card-wrapper">
+                <input type="file" id="fileInput" accept=".csv,.tsv,.txt" multiple style="display: none;">
+
+                <div class="csv-dropzone" id="dropzone">
+                    <div class="dropzone-icon-emerald">
+                        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.4rem;">
+                        Arrastra uno o varios archivos CSV aquí
+                    </h3>
+                    <p style="color: var(--text-secondary); font-size: 0.92rem; max-width: 520px; margin-bottom: 1.25rem;">
+                        Puedes soltar varios archivos simultáneamente. Soporta formatos delimitados por coma, punto y coma, tabulaciones y pipes.
+                    </p>
+
+                    <div class="dropzone-buttons-row">
+                        <button type="button" class="btn-emerald-primary" id="btnSelectFiles">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                            <span>Explorar Archivos CSV</span>
+                        </button>
+                        <button type="button" class="btn-ghost-secondary" id="btnLoadSamples" title="Cargar 3 CSVs de prueba para ver el funcionamiento">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                            <span>Cargar 3 CSVs de Ejemplo</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Barra de Opciones Avanzadas de Lectura -->
+                <div class="parsing-options-bar">
+                    <div class="opt-group-flex">
+                        <div class="parsing-opt-item">
+                            <span>Separador:</span>
+                            <select id="optDelimiter" class="parsing-select">
+                                <option value="auto">Autodetectar (, ; \t |)</option>
+                                <option value=",">Coma (,)</option>
+                                <option value=";">Punto y coma (;)</option>
+                                <option value="\t">Tabulación (\t)</option>
+                                <option value="|">Pipe (|)</option>
+                            </select>
+                        </div>
+                        <div class="parsing-opt-item">
+                            <span>Codificación:</span>
+                            <select id="optEncoding" class="parsing-select">
+                                <option value="auto">UTF-8 (Estándar)</option>
+                                <option value="ISO-8859-1">Latin1 / ISO-8859-1 (Excel Antiguo)</option>
+                                <option value="windows-1252">Windows-1252 (ANSI)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="opt-group-flex">
+                        <label class="parsing-checkbox-label" title="Preservar ceros a la izquierda en códigos como 00123">
+                            <input type="checkbox" id="optPreserveZeros" checked>
+                            <span>Preservar ceros a la izquierda (00123)</span>
+                        </label>
+                        <label class="parsing-checkbox-label" title="Convertir valores numéricos a tipo número en Excel">
+                            <input type="checkbox" id="optInferTypes" checked>
+                            <span>Tipado automático de números</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =================================================================
+                 SECCIÓN DE ARCHIVOS CSV CARGADOS Y GESTIÓN DE HOJAS
+                 ================================================================= -->
+            <section class="files-section-card" id="filesSection" style="display: none;">
+                <div class="files-section-header">
+                    <div class="files-header-title">
+                        <span>Archivos Preparados para Conversión</span>
+                        <span class="files-count-badge" id="totalFilesCountBadge">0 CSVs</span>
+                    </div>
+
+                    <div style="display: flex; gap: 0.75rem;">
+                        <button type="button" class="btn-ghost-secondary" id="btnAddMoreFiles">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <span>Agregar más CSV</span>
+                        </button>
+                        <button type="button" class="btn-ghost-secondary" id="btnClearAllFiles">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                            <span>Vaciar lista</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lista de Tarjetas de Archivos -->
+                <div class="files-list-container" id="filesListContainer">
+                    <!-- Se inyectan dinámicamente con app.js -->
+                </div>
+
+                <!-- Barra de Acciones Globales de Descarga -->
+                <div class="global-action-bar" id="actionButtonsWrap" style="display: none;">
+                    <!-- Botón para modo consolidado -->
+                    <button type="button" class="btn-emerald-primary" id="btnExecuteConsolidated">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Descargar Libro Consolidado (.xlsx)</span>
+                    </button>
+
+                    <!-- Botón para modo individual -->
+                    <button type="button" class="btn-emerald-primary" id="btnDownloadZip" style="display: none;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Descargar Todos los Excel (.ZIP)</span>
+                    </button>
+                </div>
+            </section>
+
         </main>
 
+        <!-- =================================================================
+             3. FOOTER
+             ================================================================= -->
         <footer class="site-footer">
             <div class="footer-inner">
                 <div class="footer-left">
-                    <span><strong>SimpleApps Suite</strong> • Módulo #01</span>
+                    <span><strong>SimpleApps Suite</strong> • De CSV a Excel (.xlsx)</span>
+                    <span class="footer-badge-tech" style="border-color: rgba(16, 185, 129, 0.35); color: #34D399;">SheetJS (xlsx) • JSZip • RFC 4180 • 100% Offline</span>
                 </div>
                 <div class="footer-right">
-                    <a href="../../index.html" class="footer-link">Ver las 10 Apps</a>
+                    <a href="../../index.html" class="footer-link">← Volver al Catálogo de Apps</a>
                 </div>
             </div>
         </footer>
+
     </div>
+
+    <!-- =================================================================
+         4. MODAL DE VISTA PREVIA DE DATOS (Spreadsheet Viewer)
+         ================================================================= -->
+    <div id="previewModal" class="preview-modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="preview-modal-box">
+            <div class="preview-modal-header">
+                <div class="preview-modal-title-wrap">
+                    <h3 id="modalSheetTitle">Vista Previa del Archivo CSV</h3>
+                    <div class="preview-modal-stats" id="modalTableStats">0 filas • 0 columnas</div>
+                </div>
+                <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Cerrar vista previa">&times;</button>
+            </div>
+
+            <div class="preview-table-wrapper">
+                <table class="preview-spreadsheet-table">
+                    <thead id="modalTableHead"></thead>
+                    <tbody id="modalTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="preview-modal-footer">
+                <span>Mostrando las primeras 25 filas para inspección rápida.</span>
+                <button type="button" class="btn-ghost-secondary" onclick="document.getElementById('previewModal').classList.remove('open'); document.body.style.overflow='';">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor para Notificaciones Toast -->
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+    <!-- Librerías 100% Locales -->
+    <script src="libs/xlsx.full.min.js"></script>
+    <script src="libs/jszip.min.js"></script>
+
+    <!-- Scripts de la Aplicación -->
+    <script src="converter.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,792 @@
+/**
+ * SimpleApps Suite - De CSV a Excel (.xlsx)
+ * style.css - Estilos dedicados con estética Aithm AI + Acentos Esmeralda & Cyan
+ */
+
+:root {
+    --accent-emerald: #10B981;
+    --accent-emerald-light: #34D399;
+    --accent-cyan: #06B6D4;
+    --accent-cyan-light: #38BDF8;
+    --accent-blue: #3B82F6;
+
+    --gradient-emerald: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
+    --gradient-card-glow: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+
+    --bg-surface: #0E131F;
+    --bg-card: rgba(17, 24, 39, 0.85);
+    --bg-card-hover: rgba(24, 34, 53, 0.95);
+    --bg-input: rgba(11, 15, 25, 0.7);
+
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-medium: rgba(255, 255, 255, 0.14);
+    --border-emerald: rgba(16, 185, 129, 0.35);
+
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 22px;
+
+    --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    --shadow-emerald: 0 0 25px rgba(16, 185, 129, 0.2);
+}
+
+/* Hero Banner */
+.csv-converter-hero {
+    margin-bottom: 2rem;
+}
+
+.converter-tag-emerald {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid var(--border-emerald);
+    color: var(--accent-emerald-light);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 0.9rem;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+.hero-title-emerald {
+    font-size: 2.3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+}
+
+.glow-text-emerald {
+    background: var(--gradient-emerald);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================================
+   SELECTOR DE MODOS DE CONVERSIÓN (Core Feature)
+   ========================================================================= */
+.conversion-modes-section {
+    margin-bottom: 2rem;
+}
+
+.modes-section-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.modes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.mode-selection-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem 1.6rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(16px);
+}
+
+.mode-selection-card:hover {
+    border-color: var(--border-medium);
+    transform: translateY(-2px);
+    background: var(--bg-card-hover);
+}
+
+.mode-selection-card.active {
+    border-color: var(--accent-emerald);
+    background: rgba(16, 185, 129, 0.08);
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.18);
+}
+
+.mode-selection-card.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-emerald);
+}
+
+.mode-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.85rem;
+}
+
+.mode-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: var(--accent-emerald-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mode-radio-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--border-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.mode-selection-card.active .mode-radio-dot {
+    border-color: var(--accent-emerald);
+    background: var(--accent-emerald);
+}
+
+.mode-selection-card.active .mode-radio-dot::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #000;
+}
+
+.mode-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--text-primary);
+}
+
+.mode-card-desc {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+/* Opciones de salida para modo consolidado */
+.consolidated-options-box {
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid var(--border-emerald);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.consolidated-filename-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.consolidated-filename-input {
+    background: var(--bg-input);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-sm);
+    color: #FFF;
+    padding: 0.55rem 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    width: 260px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.consolidated-filename-input:focus {
+    border-color: var(--accent-emerald);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+/* =========================================================================
+   ZONA DE CARGA MULTI-ARCHIVO
+   ========================================================================= */
+.upload-card-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(16px);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.csv-dropzone {
+    border: 2px dashed rgba(16, 185, 129, 0.35);
+    background: rgba(16, 185, 129, 0.03);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.csv-dropzone:hover,
+.csv-dropzone.drag-over {
+    border-color: var(--accent-emerald);
+    background: rgba(16, 185, 129, 0.08);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.18);
+    transform: translateY(-2px);
+}
+
+.csv-dropzone.has-files {
+    padding: 2rem;
+    background: rgba(16, 185, 129, 0.02);
+}
+
+.dropzone-icon-emerald {
+    width: 68px;
+    height: 68px;
+    border-radius: 20px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-emerald-light);
+    margin-bottom: 1.25rem;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.dropzone-buttons-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Barra de Opciones Avanzadas */
+.parsing-options-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+}
+
+.opt-group-flex {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.parsing-opt-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.parsing-select {
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-sm);
+    outline: none;
+    cursor: pointer;
+}
+
+.parsing-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+}
+
+/* =========================================================================
+   LISTA DE ARCHIVOS CSV CARGADOS
+   ========================================================================= */
+.files-section-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: 1.8rem;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(16px);
+    margin-bottom: 2rem;
+}
+
+.files-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.files-header-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.files-count-badge {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid var(--border-emerald);
+    color: var(--accent-emerald-light);
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 100px;
+}
+
+.files-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+/* Tarjeta individual de archivo CSV */
+.csv-file-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.15rem 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    transition: all 0.2s ease;
+    flex-wrap: wrap;
+}
+
+.csv-file-card:hover {
+    background: rgba(255, 255, 255, 0.045);
+    border-color: var(--border-medium);
+}
+
+.csv-card-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 280px;
+}
+
+.csv-order-badge {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.csv-icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: var(--accent-emerald-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.csv-main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.csv-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.csv-filename {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 240px;
+}
+
+.csv-size-tag {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+.csv-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.csv-meta-pill {
+    font-size: 0.72rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+}
+
+.csv-meta-pill strong {
+    color: var(--accent-emerald-light);
+}
+
+.csv-card-center {
+    flex: 1;
+    min-width: 220px;
+}
+
+.sheet-name-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+.sheet-name-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sheet-name-input {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: #FFF;
+    padding: 0.45rem 0.75rem;
+    padding-right: 50px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sheet-name-input:focus {
+    border-color: var(--accent-emerald);
+}
+
+.char-count {
+    position: absolute;
+    right: 0.5rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.csv-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    padding: 0.45rem 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-card-action:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    border-color: var(--border-medium);
+}
+
+.btn-card-action.btn-single-download:hover {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: var(--accent-emerald);
+    color: var(--accent-emerald-light);
+}
+
+.btn-card-action.btn-remove-item:hover {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #F87171;
+}
+
+/* Barra de Acciones Globales de Descarga */
+.global-action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+}
+
+.btn-emerald-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--gradient-emerald);
+    color: #042F2E;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.6rem;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+    transition: all 0.2s ease;
+}
+
+.btn-emerald-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.45);
+}
+
+.btn-emerald-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* =========================================================================
+   MODAL DE VISTA PREVIA DE TABLA (Spreadsheet Viewer)
+   ========================================================================= */
+.preview-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    padding: 1.5rem;
+}
+
+.preview-modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.preview-modal-box {
+    background: #0E1526;
+    border: 1px solid var(--border-emerald);
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 1100px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+
+.preview-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.preview-modal-title-wrap h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FFF;
+    margin-bottom: 0.2rem;
+}
+
+.preview-modal-stats {
+    font-size: 0.8rem;
+    color: var(--accent-emerald-light);
+    font-family: var(--font-mono);
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.75rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.modal-close-btn:hover {
+    color: #FFF;
+}
+
+.preview-table-wrapper {
+    flex: 1;
+    overflow: auto;
+    padding: 0;
+}
+
+.preview-spreadsheet-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    font-family: var(--font-sans);
+}
+
+.preview-spreadsheet-table th {
+    position: sticky;
+    top: 0;
+    background: #151F33;
+    color: var(--accent-emerald-light);
+    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--border-emerald);
+    border-right: 1px solid var(--border-subtle);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.preview-spreadsheet-table td {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+    border-right: 1px solid var(--border-subtle);
+    color: #CBD5E1;
+    white-space: nowrap;
+}
+
+.preview-spreadsheet-table tr:hover td {
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.preview-modal-footer {
+    padding: 1rem 1.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* Spinner */
+.spinner-small {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #FFF;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .modes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .consolidated-options-box {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .consolidated-filename-input {
+        width: 100%;
+    }
+
+    .csv-file-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .csv-card-actions {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title-emerald {
+        font-size: 1.85rem;
+    }
+
+    .upload-card-wrapper {
+        padding: 1.25rem;
+    }
+
+    .parsing-options-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diff Viewer • Comparador de Texto y Código • SimpleApps</title>
-    <meta name="description" content="Comparador de texto y archivos con detección precisa de diferencias por línea y posición de caracteres. Vista Side-by-Side y Unificada.">
-    
+    <meta name="description"
+        content="Comparador de texto y archivos con detección precisa de diferencias por línea y posición de caracteres. Vista Side-by-Side y Unificada.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Estilos Base y Específicos -->
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Luces Ambientales Aithm AI -->
     <div class="ambient-glow" aria-hidden="true">
-        <div class="ambient-orb ambient-orb-1" style="background: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 70%);"></div>
-        <div class="ambient-orb ambient-orb-2" style="background: radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, transparent 70%);"></div>
+        <div class="ambient-orb ambient-orb-1"
+            style="background: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 70%);"></div>
+        <div class="ambient-orb ambient-orb-2"
+            style="background: radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, transparent 70%);"></div>
     </div>
     <div class="bg-grid-pattern" aria-hidden="true"></div>
 
@@ -34,9 +41,9 @@
                 <a href="../../index.html" class="brand-area" title="Volver al Catálogo">
                     <div class="brand-icon-box" style="background: linear-gradient(135deg, #8B5CF6 0%, #00F0FF 100%);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                            <polyline points="2 17 12 22 22 17" />
+                            <polyline points="2 12 12 17 22 12" />
                         </svg>
                     </div>
                     <div class="brand-text-box">
@@ -53,7 +60,10 @@
                     </div>
 
                     <a href="../../index.html" class="btn-subnav-ghost">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
                         <span>Volver al Dashboard</span>
                     </a>
                 </div>
@@ -76,15 +86,23 @@
 
             <!-- Título y Encabezado de la Herramienta -->
             <div style="margin-bottom: 2rem;">
-                <div class="hero-tag" style="background: rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.35); color: #C084FC;">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M6 9v12"/></svg>
+                <div class="hero-tag"
+                    style="background: rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.35); color: #C084FC;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="18" cy="18" r="3" />
+                        <circle cx="6" cy="6" r="3" />
+                        <path d="M13 6h3a2 2 0 0 1 2 2v7" />
+                        <path d="M6 9v12" />
+                    </svg>
                     Módulo #03 • Comparador de Texto y Código
                 </div>
                 <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 0.5rem;">
                     Diff <span class="glow-text">Viewer</span>
                 </h1>
                 <p class="hero-description" style="max-width: 900px; margin-bottom: 0;">
-                    Compara dos bloques de texto o archivos adjuntos en paralelo. Detecta con exactitud el <strong>número de línea</strong> y el <strong>rango de columnas/posiciones</strong> donde se encuentra cada cambio.
+                    Compara dos bloques de texto o archivos adjuntos en paralelo. Detecta con exactitud el
+                    <strong>número de línea</strong> y el <strong>rango de columnas/posiciones</strong> donde se
+                    encuentra cada cambio.
                 </p>
             </div>
 
@@ -112,23 +130,41 @@
             <div class="diff-toolbar">
                 <div class="diff-toolbar-group">
                     <button id="btnCompare" class="btn-diff-action btn-diff-primary">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
                         <span>Comparar Textos</span>
                     </button>
                     <button id="btnSwap" class="btn-diff-action" title="Intercambiar Texto A con Texto B">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 3 21 3 21 8" />
+                            <line x1="4" y1="20" x2="21" y2="3" />
+                            <polyline points="21 16 21 21 16 21" />
+                            <line x1="15" y1="15" x2="21" y2="21" />
+                            <line x1="4" y1="4" x2="9" y2="9" />
+                        </svg>
                         <span>Intercambiar A ⇄ B</span>
                     </button>
                     <button id="btnSample" class="btn-diff-action" title="Cargar texto de prueba">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg>
                         <span>Cargar Ejemplo</span>
                     </button>
-                    <button id="btnCopyPatch" class="btn-diff-action" title="Copiar reporte detallado con líneas y posiciones">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <button id="btnCopyPatch" class="btn-diff-action"
+                        title="Copiar reporte detallado con líneas y posiciones">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                        </svg>
                         <span>Copiar Reporte</span>
                     </button>
                     <button id="btnClear" class="btn-diff-action" style="color: #F87171;" title="Limpiar ambas cajas">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6" />
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                        </svg>
                         <span>Limpiar</span>
                     </button>
                 </div>
@@ -153,7 +189,7 @@
                  3. LAS 2 CAJAS DE TEXTO Y ADJUNTO DE ARCHIVOS
                  ============================================================= -->
             <div class="diff-inputs-grid">
-                
+
                 <!-- Caja A: Texto Original -->
                 <div class="diff-box-card">
                     <div class="diff-box-header">
@@ -163,22 +199,40 @@
                         </div>
                         <div class="diff-box-actions">
                             <label class="btn-file-upload" title="Subir archivo de texto o código">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="17 8 12 3 7 8" />
+                                    <line x1="12" y1="3" x2="12" y2="15" />
+                                </svg>
                                 <span>Adjuntar Archivo A</span>
-                                <input type="file" id="fileInputA" accept=".txt,.js,.ts,.py,.php,.json,.csv,.sql,.html,.css,.xml,.md,.yml,.yaml,.c,.cpp">
+                                <input type="file" id="fileInputA"
+                                    accept=".txt,.js,.ts,.py,.php,.json,.csv,.sql,.html,.css,.xml,.md,.yml,.yaml,.c,.cpp">
                             </label>
-                            <button class="btn-mini-action btn-paste-clipboard" data-target="A" title="Pegar del portapapeles">
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                            <button class="btn-mini-action btn-paste-clipboard" data-target="A"
+                                title="Pegar del portapapeles">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                                </svg>
                                 <span>Pegar</span>
                             </button>
-                            <button class="btn-mini-action btn-clear-box" data-target="A" title="Limpiar caja A">&times;</button>
+                            <button class="btn-mini-action btn-clear-box" data-target="A"
+                                title="Limpiar caja A">&times;</button>
                         </div>
                     </div>
 
                     <div class="diff-textarea-wrap">
-                        <textarea id="textareaA" class="diff-textarea" placeholder="Pega el texto original aquí o arrastra un archivo..."></textarea>
+                        <textarea id="textareaA" class="diff-textarea"
+                            placeholder="Pega el texto original aquí o arrastra un archivo..."></textarea>
                         <div id="dropzoneA" class="dropzone-overlay">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
                             <span class="dropzone-text">Suelta el Archivo A aquí</span>
                         </div>
                     </div>
@@ -202,22 +256,40 @@
                         </div>
                         <div class="diff-box-actions">
                             <label class="btn-file-upload" title="Subir archivo de texto o código">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="17 8 12 3 7 8" />
+                                    <line x1="12" y1="3" x2="12" y2="15" />
+                                </svg>
                                 <span>Adjuntar Archivo B</span>
-                                <input type="file" id="fileInputB" accept=".txt,.js,.ts,.py,.php,.json,.csv,.sql,.html,.css,.xml,.md,.yml,.yaml,.c,.cpp">
+                                <input type="file" id="fileInputB"
+                                    accept=".txt,.js,.ts,.py,.php,.json,.csv,.sql,.html,.css,.xml,.md,.yml,.yaml,.c,.cpp">
                             </label>
-                            <button class="btn-mini-action btn-paste-clipboard" data-target="B" title="Pegar del portapapeles">
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                            <button class="btn-mini-action btn-paste-clipboard" data-target="B"
+                                title="Pegar del portapapeles">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                                </svg>
                                 <span>Pegar</span>
                             </button>
-                            <button class="btn-mini-action btn-clear-box" data-target="B" title="Limpiar caja B">&times;</button>
+                            <button class="btn-mini-action btn-clear-box" data-target="B"
+                                title="Limpiar caja B">&times;</button>
                         </div>
                     </div>
 
                     <div class="diff-textarea-wrap">
-                        <textarea id="textareaB" class="diff-textarea" placeholder="Pega el texto modificado aquí o arrastra un archivo..."></textarea>
+                        <textarea id="textareaB" class="diff-textarea"
+                            placeholder="Pega el texto modificado aquí o arrastra un archivo..."></textarea>
                         <div id="dropzoneB" class="dropzone-overlay">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
                             <span class="dropzone-text">Suelta el Archivo B aquí</span>
                         </div>
                     </div>
@@ -240,93 +312,112 @@
             <section class="diff-inspector-panel" id="diffInspectorPanel">
                 <div class="inspector-header">
                     <div class="inspector-title-wrap">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-cyan);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="m11 8 3 3-3 3"/></svg>
-                        <strong style="color: #fff; font-size: 0.95rem;">Inspector Detallado de Diferencias (Línea & Posición)</strong>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" style="color: var(--accent-cyan);">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            <path d="m11 8 3 3-3 3" />
+                        </svg>
+                        <strong style="color: #fff; font-size: 0.95rem;">Inspector Detallado de Diferencias (Línea &
+                            Posición)</strong>
                         <span class="inspector-badge-count" id="inspectorBadgeCount">0 detectadas</span>
                     </div>
 
                     <div class="inspector-nav-controls">
                         <button id="btnPrevDiff" class="btn-nav-diff" title="Diferencia anterior">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
                             <span>Anterior</span>
                         </button>
                         <span id="inspectorCurrentIndicator" class="inspector-current-indicator">0 / 0</span>
                         <button id="btnNextDiff" class="btn-nav-diff" title="Siguiente diferencia">
                             <span>Siguiente</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
                         </button>
                     </div>
-                <!-- Tarjeta Spotlight de Comparación Detallada Carácter a Carácter -->
-                <div class="char-spotlight-card" id="charSpotlightCard" style="display: none;">
-                    <div class="spotlight-header">
-                        <div class="spotlight-title-flex">
-                            <span class="spotlight-pill-icon">🔍</span>
-                            <div>
-                                <h4 class="spotlight-title" id="spotlightTitle">Diferencia #1 • Modificación Carácter a Carácter</h4>
-                                <span class="spotlight-location" id="spotlightLocation">Línea 1 [Col 15 a 18] ➔ Línea 1 [Col 15 a 18]</span>
+                    <!-- Tarjeta Spotlight de Comparación Detallada Carácter a Carácter -->
+                    <div class="char-spotlight-card" id="charSpotlightCard" style="display: none;">
+                        <div class="spotlight-header">
+                            <div class="spotlight-title-flex">
+                                <span class="spotlight-pill-icon">🔍</span>
+                                <div>
+                                    <h4 class="spotlight-title" id="spotlightTitle">Diferencia #1 • Modificación
+                                        Carácter a Carácter</h4>
+                                    <span class="spotlight-location" id="spotlightLocation">Línea 1 [Col 15 a 18] ➔
+                                        Línea 1 [Col 15 a 18]</span>
+                                </div>
+                            </div>
+                            <div class="spotlight-actions">
+                                <button class="btn-spotlight-jump" id="btnSpotlightJump"
+                                    title="Ir a la posición en el visor de código">
+                                    <span>Localizar en código</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6" />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
-                        <div class="spotlight-actions">
-                            <button class="btn-spotlight-jump" id="btnSpotlightJump" title="Ir a la posición en el visor de código">
-                                <span>Localizar en código</span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                            </button>
+
+                        <div class="spotlight-body">
+                            <!-- Fila Original -->
+                            <div class="spotlight-line-row row-orig">
+                                <div class="spotlight-line-badge">
+                                    <span class="badge-orig-tag">ORIGINAL</span>
+                                    <span class="badge-line-num" id="spotlightLineNumA">Línea 1</span>
+                                </div>
+                                <div class="spotlight-code-view" id="spotlightCodeA">
+                                    <!-- Texto de la línea con caracteres eliminados en rojo brillante -->
+                                </div>
+                            </div>
+
+                            <!-- Fila Modificada -->
+                            <div class="spotlight-line-row row-mod">
+                                <div class="spotlight-line-badge">
+                                    <span class="badge-mod-tag">MODIFICADO</span>
+                                    <span class="badge-line-num" id="spotlightLineNumB">Línea 1</span>
+                                </div>
+                                <div class="spotlight-code-view" id="spotlightCodeB">
+                                    <!-- Texto de la línea con caracteres añadidos en verde brillante -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spotlight-footer">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                                <strong style="color: #fff;">Cambio exacto:</strong>
+                                <span class="char-del-badge" id="spotlightDelSnippet">-</span>
+                                <span style="color: var(--accent-violet-light);">➔</span>
+                                <span class="char-add-badge" id="spotlightAddSnippet">+</span>
+                            </div>
+                            <span id="spotlightCharCount"
+                                style="color: var(--text-muted); font-family: var(--font-mono); font-size: 0.75rem;">
+                                Posición exacta de caracteres
+                            </span>
                         </div>
                     </div>
 
-                    <div class="spotlight-body">
-                        <!-- Fila Original -->
-                        <div class="spotlight-line-row row-orig">
-                            <div class="spotlight-line-badge">
-                                <span class="badge-orig-tag">ORIGINAL</span>
-                                <span class="badge-line-num" id="spotlightLineNumA">Línea 1</span>
-                            </div>
-                            <div class="spotlight-code-view" id="spotlightCodeA">
-                                <!-- Texto de la línea con caracteres eliminados en rojo brillante -->
-                            </div>
-                        </div>
-
-                        <!-- Fila Modificada -->
-                        <div class="spotlight-line-row row-mod">
-                            <div class="spotlight-line-badge">
-                                <span class="badge-mod-tag">MODIFICADO</span>
-                                <span class="badge-line-num" id="spotlightLineNumB">Línea 1</span>
-                            </div>
-                            <div class="spotlight-code-view" id="spotlightCodeB">
-                                <!-- Texto de la línea con caracteres añadidos en verde brillante -->
-                            </div>
-                        </div>
+                    <div class="inspector-table-wrap">
+                        <table class="diff-list-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 60px;">#</th>
+                                    <th style="width: 120px;">Tipo</th>
+                                    <th style="width: 320px;">Línea y Rango de Columnas</th>
+                                    <th>Fragmento Cambiado</th>
+                                    <th style="width: 140px; text-align: right;">Navegar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inspectorTableBody">
+                                <!-- Filas dinámicas generadas por app.js -->
+                            </tbody>
+                        </table>
                     </div>
-
-                    <div class="spotlight-footer">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                            <strong style="color: #fff;">Cambio exacto:</strong>
-                            <span class="char-del-badge" id="spotlightDelSnippet">-</span>
-                            <span style="color: var(--accent-violet-light);">➔</span>
-                            <span class="char-add-badge" id="spotlightAddSnippet">+</span>
-                        </div>
-                        <span id="spotlightCharCount" style="color: var(--text-muted); font-family: var(--font-mono); font-size: 0.75rem;">
-                            Posición exacta de caracteres
-                        </span>
-                    </div>
-                </div>
-
-                <div class="inspector-table-wrap">
-                    <table class="diff-list-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 60px;">#</th>
-                                <th style="width: 120px;">Tipo</th>
-                                <th style="width: 320px;">Línea y Rango de Columnas</th>
-                                <th>Fragmento Cambiado</th>
-                                <th style="width: 140px; text-align: right;">Navegar</th>
-                            </tr>
-                        </thead>
-                        <tbody id="inspectorTableBody">
-                            <!-- Filas dinámicas generadas por app.js -->
-                        </tbody>
-                    </table>
-                </div>
             </section>
 
             <!-- =============================================================
@@ -335,15 +426,21 @@
             <section class="diff-viewer-container">
                 <div class="viewer-header-bar">
                     <div class="viewer-header-title">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-violet-light);"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" style="color: var(--accent-violet-light);">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="12" y1="3" x2="12" y2="21" />
+                        </svg>
                         <span>Vista Comparativa en Paralelo (Scroll Sincronizado)</span>
                     </div>
 
                     <div class="diff-toolbar-group">
-                        <button id="btnSideBySide" class="btn-diff-action btn-diff-primary" style="padding: 0.35rem 0.8rem; font-size: 0.78rem;">
+                        <button id="btnSideBySide" class="btn-diff-action btn-diff-primary"
+                            style="padding: 0.35rem 0.8rem; font-size: 0.78rem;">
                             <span>Lado a Lado</span>
                         </button>
-                        <button id="btnUnified" class="btn-diff-action" style="padding: 0.35rem 0.8rem; font-size: 0.78rem;">
+                        <button id="btnUnified" class="btn-diff-action"
+                            style="padding: 0.35rem 0.8rem; font-size: 0.78rem;">
                             <span>Unificado</span>
                         </button>
                     </div>
@@ -395,4 +492,5 @@
     <script src="diff-engine.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>

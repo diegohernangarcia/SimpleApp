@@ -14,15 +14,15 @@ const APPS_DATA = [
         color: "#10B981", // Emerald
         gradient: "linear-gradient(135deg, #10B981 0%, #06B6D4 100%)",
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h2"/><path d="M8 17h2"/><path d="M14 13h2"/><path d="M14 17h2"/></svg>`,
-        description: "Convierte archivos CSV a libros Excel (.xlsx) con detección automática de delimitadores (, ; \\t |), codificación (UTF-8, Latin1) y tipado inteligente de datos numéricos y fechas.",
-        features: ["Detección de Delimitador", "Exportación .xlsx", "Codificación UTF-8/ANSI", "Sin límite de filas cliente"],
+        description: "Convierte uno o múltiples archivos CSV a Excel (.xlsx). Permite generar un solo libro consolidado con múltiples hojas o archivos Excel independientes.",
+        features: ["Conversión Multi-CSV", "1 Libro con Múltiples Hojas", "Excels Separados / ZIP", "Autodetección Delimitador"],
         status: "listo", // listo, en-desarrollo, planeado
         targetUrl: "apps/csv-to-excel/",
-        tech: "Vanilla JS / SheetJS / PHP 8.3 Ready",
+        tech: "Vanilla JS / SheetJS",
         specs: {
-            input: "Archivos .csv o texto separado por comas / punto y coma",
-            output: "Libro de trabajo Excel .xlsx formateado",
-            execution: "Procesamiento 100% local en tu navegador con opción de backend PHP"
+            input: "Uno o múltiples archivos .csv, .tsv o .txt",
+            output: "Libro consolidado con múltiples hojas o archivos .xlsx separados",
+            execution: "Procesamiento 100% local en tu navegador"
         }
     },
     {
@@ -34,16 +34,16 @@ const APPS_DATA = [
         categoryName: "Archivos & Excel",
         color: "#06B6D4", // Cyan
         gradient: "linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%)",
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>`,
-        description: "Extrae y exporta hojas de cálculo Excel (.xlsx, .xls) a formato CSV limpio y ligero. Permite elegir separador (; , |), codificación y seleccionar la hoja activa a exportar.",
-        features: ["Selector de Hoja", "Separador Personalizado", "Cumple RFC 4180", "Limpieza de Espacios"],
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="m9 14 3 3 3-3"/><path d="M12 9v8"/></svg>`,
+        description: "Convierte libros de Excel (.xlsx, .xls, .xlsm, .ods) con múltiples hojas a archivos CSV independientes. Exporta cada hoja a su propio archivo CSV o descarga todos juntos en un paquete .ZIP.",
+        features: ["1 CSV por cada Hoja", "Descarga Individual o en .ZIP", "Previsualización de Hojas", "Delimitadores (, ; TAB |)"],
         status: "listo",
         targetUrl: "apps/excel-to-csv/",
-        tech: "Vanilla JS / Parser Ligero",
+        tech: "Vanilla JS / SheetJS / JSZip",
         specs: {
-            input: "Libros Excel (.xlsx, .xls, .xlsm)",
-            output: "Archivo plano .csv con delimitador a elección",
-            execution: "Conversión ultrarrápida sin subir el archivo a servidores externos"
+            input: "Archivos Excel (.xlsx, .xls, .xlsm, .ods)",
+            output: "Archivos .csv independientes por hoja o comprimidos en .zip",
+            execution: "Procesamiento 100% local en tu navegador"
         }
     },
     {
@@ -91,22 +91,22 @@ const APPS_DATA = [
     {
         id: "doc-to-markdown",
         number: "05",
-        title: "Conversor PDF / Doc / Docx a MarkDown",
+        title: "Conversor PDF / Doc / Docx / ODT a MarkDown",
         shortTitle: "Docs a Markdown",
         category: "texto",
         categoryName: "Texto & Código",
         color: "#F59E0B", // Amber
         gradient: "linear-gradient(135deg, #F59E0B 0%, #F97316 100%)",
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
-        description: "Extrae y transforma documentos PDF y archivos Microsoft Word (.docx) a formato Markdown limpio y estandarizado, preservando títulos, listas, tablas y estilos tipográficos.",
-        features: ["Preserva Encabezados", "Convierte Tablas a MD", "Limpieza de Caracteres", "Copia con un clic"],
+        description: "Transforma documentos PDF, Word (.docx, .doc), OpenDocument (.odt) o texto enriquecido pegado desde el portapapeles a formato Markdown (.md) preservando títulos, listas y tablas.",
+        features: ["PDF, DOCX, ODT y DOC", "Pegado Enriquecido", "Tablas y Títulos a MD", "Vista Dividida en Vivo"],
         status: "listo",
         targetUrl: "apps/doc-to-markdown/",
-        tech: "Mammoth.js / PDF.js / PHP 8.3 Ready",
+        tech: "Mammoth.js / PDF.js / JSZip / Turndown",
         specs: {
-            input: "Archivos .docx, .doc o .pdf",
+            input: "Archivos .pdf, .docx, .doc, .odt o texto enriquecido del portapapeles",
             output: "Texto Markdown estructurado (.md) con vista previa en vivo",
-            execution: "Procesamiento híbrido cliente o servidor PHP 8.3"
+            execution: "Procesamiento 100% local en el navegador"
         }
     },
     {
@@ -144,7 +144,7 @@ const APPS_DATA = [
         features: ["Inner, Left, Right, Outer", "Multi-Columna Clave", "Reporte de Discrepancias", "Exportación Directa"],
         status: "listo",
         targetUrl: "apps/table-cross-join/",
-        tech: "Motor Relacional JS / PHP 8.3",
+        tech: "Motor Relacional JS / Vanilla JS",
         specs: {
             input: "Dos archivos Excel o CSV (Tabla A y Tabla B)",
             output: "Tabla conciliada con columnas combinadas e indicadores de coincidencia",
@@ -182,14 +182,14 @@ const APPS_DATA = [
         color: "#6366F1", // Indigo
         gradient: "linear-gradient(135deg, #6366F1 0%, #A855F7 100%)",
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>`,
-        description: "Transforma tablas de Excel o datos copiados en sentencias SQL listas para MySQL 8.4 (INSERT INTO, ON DUPLICATE KEY UPDATE, REPLACE o UPDATE por lotes) con escape seguro y tipado automático.",
-        features: ["Soporte MySQL 8.4", "ON DUPLICATE KEY UPDATE", "Escape Seguro de Strings", "Lotes de 500/1000 filas"],
+        description: "Transforma tablas de Excel o datos copiados en sentencias SQL estándar (INSERT INTO, ON DUPLICATE KEY UPDATE, REPLACE o UPDATE por lotes) con escape seguro y tipado automático.",
+        features: ["Sintaxis SQL Estándar", "ON DUPLICATE KEY UPDATE", "Escape Seguro de Strings", "Lotes de 500/1000 filas"],
         status: "listo",
         targetUrl: "apps/sql-generator/",
-        tech: "SQL Builder / Compatible MySQL 8.4",
+        tech: "SQL Builder / Vanilla JS",
         specs: {
             input: "Filas de Excel, CSV o tabla copiada al portapapeles",
-            output: "Script SQL (.sql) optimizado para importar en PhpMyAdmin o consola",
+            output: "Script SQL (.sql) optimizado para importar o ejecutar",
             execution: "Generación de sentencias en bloques de inserción masiva"
         }
     },

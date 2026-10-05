@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Estilos Principales -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=2.0">
 </head>
 <body>
 
@@ -67,13 +67,6 @@
 
                 <!-- Acciones del Header -->
                 <div class="header-actions">
-                    <!-- Estado de Servidor Local -->
-                    <div class="server-status-pill" id="serverStatusPill" title="Servidor Local Activo">
-                        <span class="status-dot"></span>
-                        <span class="server-meta-tag">LAMPP Local</span>
-                        <span class="server-php-tag">PHP 8.3 & MySQL Ready</span>
-                    </div>
-
                     <!-- Reloj Local -->
                     <div class="header-clock" id="headerClock" title="Hora del sistema">
                         <span>--:--:--</span>
@@ -160,7 +153,7 @@
                     <div class="hero-title-box">
                         <div class="hero-tag">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-                            Suite de Utilidades Locales • Sin React ni Dependencias Pesadas
+                            Suite de Utilidades Locales •
                         </div>
                         <h1 class="hero-title">
                             Centro de <span class="glow-text">Micro-Aplicaciones</span>
@@ -184,42 +177,13 @@
                             </span>
                             <span class="hero-feature-chip">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                                PHP 8.3 & MySQL 8.4 Ready
+                                100% Offline y Seguro
                             </span>
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta Lateral de Entorno Activo (Estilo Xacton Horizontal) -->
-                    <div class="hero-side-card">
-                        <div class="side-card-top">
-                            <span class="status-indicator-live">
-                                <span class="ping-dot"></span>
-                                Entorno Local Activo
-                            </span>
-                            <span class="side-card-badge">XAMPP / LAMPP</span>
-                        </div>
-                        <div class="side-card-body">
-                            <div class="side-stat-row">
-                                <span class="side-stat-name">Servidor Web</span>
-                                <span class="side-stat-val">Apache 2.4</span>
-                            </div>
-                            <div class="side-stat-row">
-                                <span class="side-stat-name">Motor Backend</span>
-                                <span class="side-stat-val text-cyan">PHP 8.3 Ready</span>
-                            </div>
-                            <div class="side-stat-row">
-                                <span class="side-stat-name">Base de Datos</span>
-                                <span class="side-stat-val text-violet">MySQL 8.4 Ready</span>
-                            </div>
-                            <div class="side-stat-row">
-                                <span class="side-stat-name">Administrador DB</span>
-                                <span class="side-stat-val">PhpMyAdmin</span>
-                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 4 Widgets KPI (Estilo Xacton Horizontal con Estética Aithm) -->
+                <!-- 3 Widgets KPI (Distribución al 100% del Ancho Total) -->
                 <div class="kpi-grid">
                     <!-- KPI 1 -->
                     <div class="kpi-card" style="--kpi-gradient: linear-gradient(135deg, #10B981, #06B6D4); --kpi-color: #10B981;">
@@ -257,17 +221,6 @@
                         <div class="kpi-subtitle">Tus datos nunca salen de tu ordenador</div>
                     </div>
 
-                    <!-- KPI 4 -->
-                    <div class="kpi-card" style="--kpi-gradient: linear-gradient(135deg, #3B82F6, #6366F1); --kpi-color: #3B82F6;">
-                        <div class="kpi-top">
-                            <span class="kpi-label">Tecnología</span>
-                            <div class="kpi-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
-                            </div>
-                        </div>
-                        <div class="kpi-value">PHP 8.3</div>
-                        <div class="kpi-subtitle">Vanilla JS • MySQL 8.4 Ready</div>
-                    </div>
                 </div>
             </section>
 
@@ -351,8 +304,8 @@
         <footer class="site-footer">
             <div class="footer-inner">
                 <div class="footer-left">
-                    <span><strong>SimpleApps Suite</strong> • Entorno Local XAMPP/LAMPP</span>
-                    <span class="footer-badge-tech">HTML5 • Vanilla CSS3 • Vanilla JS • PHP 8.3 Ready • MySQL 8.4</span>
+                    <span><strong>SimpleApps Suite</strong> • Suite de Utilidades Locales</span>
+                    <span class="footer-badge-tech">HTML5 • Vanilla CSS3 • Vanilla JS</span>
                 </div>
                 <div class="footer-right">
                     <span>10 / 10 Módulos Catalogados</span>
@@ -411,7 +364,7 @@
                         </div>
                         <div class="spec-item-content">
                             <strong>Modo de Procesamiento:</strong>
-                            <span id="modalSpecsExecution">Local cliente / PHP 8.3</span>
+                            <span id="modalSpecsExecution">Local en navegador (Cliente)</span>
                         </div>
                     </div>
                 </div>

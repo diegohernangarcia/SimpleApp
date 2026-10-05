@@ -3,69 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor PDF / Doc / Docx a MarkDown • SimpleApps</title>
+    <title>Conversor PDF / Doc / Docx / ODT a MarkDown • SimpleApps</title>
+    <meta name="description" content="Convierte documentos PDF, Word DOCX, DOC y LibreOffice ODT a formato Markdown (.md) de forma 100% local, privada y sin subir archivos a la nube.">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        .app-workspace-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-medium);
-            border-radius: var(--radius-xl);
-            padding: 3rem 2.5rem;
-            max-width: 900px;
-            margin: 2rem auto;
-            text-align: center;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--shadow-card);
-        }
-        .module-tag {
-            display: inline-block;
-            background: rgba(168, 85, 247, 0.15);
-            color: var(--accent-violet-light);
-            padding: 0.35rem 0.85rem;
-            border-radius: 100px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-        .workspace-btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-    </style>
+
+    <!-- Hojas de Estilo -->
+    <link rel="stylesheet" href="../../assets/css/style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=1.0">
 </head>
 <body>
+
+    <!-- Fondos de Iluminación Ambiental Aithm -->
     <div class="ambient-glow" aria-hidden="true">
-        <div class="ambient-orb ambient-orb-1"></div>
-        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-1" style="background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, transparent 70%);"></div>
+        <div class="ambient-orb ambient-orb-2" style="background: radial-gradient(circle, rgba(249, 115, 22, 0.18) 0%, transparent 70%);"></div>
     </div>
     <div class="bg-grid-pattern" aria-hidden="true"></div>
 
     <div class="app-wrapper">
+
+        <!-- =================================================================
+             1. HEADER HORIZONTAL
+             ================================================================= -->
         <header class="top-header">
             <div class="header-inner">
-                <a href="../../index.html" class="brand-area" title="Volver al Inicio">
-                    <div class="brand-icon-box">
+                <!-- Marca / Logo -->
+                <a href="../../index.html" class="brand-area" title="Volver al Catálogo">
+                    <div class="brand-icon-box" style="border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.12); color: var(--accent-amber-light);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
                         </svg>
                     </div>
                     <div class="brand-text-box">
-                        <span class="brand-name">Simple<span class="brand-highlight">Apps</span></span>
-                        <span class="brand-tagline">Micro-Tools Suite</span>
+                        <span class="brand-name">Doc to <span class="brand-highlight" style="color: var(--accent-amber);">Markdown</span></span>
+                        <span class="brand-tagline">Conversor Multi-Formato Local</span>
                     </div>
                 </a>
+
+                <!-- Acciones del Header -->
                 <div class="header-actions">
-                    <a href="../../index.html" class="btn-subnav-ghost">
+                    <div class="server-status-pill" title="Procesamiento en tu navegador">
+                        <span class="status-dot" style="background: #F59E0B; box-shadow: 0 0 8px #F59E0B;"></span>
+                        <span class="server-meta-tag">100% Local</span>
+                        <span class="server-php-tag" style="background: rgba(245, 158, 11, 0.15); color: #FCD34D;">Zero Upload</span>
+                    </div>
+
+                    <a href="../../index.html" class="btn-subnav-ghost" title="Volver al Catálogo">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
                         <span>Volver al Catálogo</span>
                     </a>
@@ -73,48 +67,320 @@
             </div>
         </header>
 
+        <!-- =================================================================
+             2. CONTENIDO PRINCIPAL
+             ================================================================= -->
         <main class="main-container">
+
+            <!-- Breadcrumbs -->
             <div class="breadcrumb-row">
                 <a href="../../index.html" class="footer-link">Inicio</a>
                 <span class="breadcrumb-separator">/</span>
                 <a href="../../index.html" class="footer-link">Micro-Apps</a>
                 <span class="breadcrumb-separator">/</span>
-                <span class="breadcrumb-item active">Conversor PDF / Doc / Docx a MarkDown</span>
+                <span class="breadcrumb-item active" style="color: var(--accent-amber-light);">Conversor de Documentos a Markdown</span>
             </div>
 
-            <div class="app-workspace-card">
-                <span class="module-tag">MÓDULO #05 EN PREPARACIÓN</span>
-                <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 1rem;">
-                    Conversor PDF / Doc / Docx a MarkDown
+            <!-- Hero Banner -->
+            <section class="doc-converter-hero">
+                <div class="converter-tag">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                    MÓDULO #05 • PDF, DOCX, DOC, ODT & PEGADO
+                </div>
+                <h1 class="hero-title-amber">
+                    Conversor de Documentos a <span class="glow-text-amber">Markdown (.md)</span>
                 </h1>
-                <p class="hero-description" style="max-width: 600px; margin: 0 auto 1.5rem;">
-                    Transformador de documentos a Markdown estructurado.
+                <p class="hero-description" style="max-width: 850px; margin-bottom: 0;">
+                    Convierte tus archivos <strong class="text-glow-white">PDF, Word (.docx, .doc), OpenDocument (.odt)</strong> o 
+                    <strong class="text-glow-cyan">pega texto con formato enriquecido</strong> directamente desde el portapapeles. 
+                    Preserva encabezados, tablas, listas y estilos con procesamiento <strong style="color: var(--accent-amber-light);">100% privado en tu equipo</strong>.
                 </p>
-                <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 1.5rem; max-width: 650px; margin: 0 auto; color: var(--text-secondary); font-size: 0.9rem;">
-                    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">Arquitectura Asignada:</strong>
-                    HTML5 + Vanilla JavaScript + Soporte Backend PHP 8.3 & MySQL 8.4.<br>
-                    Listo para codificar la interfaz operativa específica de esta micro-app.
+            </section>
+
+            <!-- Barra de Pestañas de Modo de Entrada + Opciones Rápidas -->
+            <div class="input-tabs-bar">
+                <div class="tabs-group">
+                    <button class="tab-btn active" id="tabFileBtn" title="Adjuntar archivo local">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        <span>Adjuntar Archivo</span>
+                    </button>
+                    <button class="tab-btn" id="tabPasteBtn" title="Pegar contenido o escribir texto">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                        <span>Pegar Contenido / Texto</span>
+                    </button>
                 </div>
 
-                <div class="workspace-btn-group">
-                    <a href="../../index.html" class="btn-launch-app" style="max-width: 250px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <span>Volver al Dashboard</span>
-                    </a>
+                <!-- Opciones de Formato -->
+                <div class="quick-options-strip">
+                    <div class="quick-opt-item">
+                        <span>Viñetas:</span>
+                        <select id="optBulletMarker" class="quick-select">
+                            <option value="-">- (Guión)</option>
+                            <option value="*">* (Asterisco)</option>
+                            <option value="+">+ (Más)</option>
+                        </select>
+                    </div>
+                    <div class="quick-opt-item">
+                        <span>Títulos:</span>
+                        <select id="optHeadingStyle" class="quick-select">
+                            <option value="atx"># ATX (# H1, ## H2)</option>
+                            <option value="setext">Setext (===, ---)</option>
+                        </select>
+                    </div>
+                    <label class="quick-checkbox-label" title="Unificar múltiples saltos de línea repetidos">
+                        <input type="checkbox" id="optCleanBreaks" checked>
+                        <span>Limpiar saltos vacíos</span>
+                    </label>
+                    <label class="quick-checkbox-label" title="Insertar divisor al final de cada página de un PDF">
+                        <input type="checkbox" id="optPageBreaks" checked>
+                        <span>Divisores de página (PDF)</span>
+                    </label>
                 </div>
             </div>
+
+            <!-- Card Principal de Entrada -->
+            <section class="input-main-card">
+
+                <!-- CONTENIDO PESTAÑA 1: ADJUNTAR ARCHIVO -->
+                <div id="tabFileContent">
+                    <input type="file" id="fileInput" accept=".pdf,.docx,.doc,.odt,.html,.htm,.txt,.md,.rtf" style="display: none;">
+                    
+                    <!-- Zona Drag & Drop -->
+                    <div class="dropzone-container" id="dropzone">
+                        <div class="dropzone-icon-box">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="12" y1="18" x2="12" y2="12"/>
+                                <line x1="9" y1="15" x2="15" y2="15"/>
+                            </svg>
+                        </div>
+                        <h3 class="dropzone-title">Arrastra tu archivo aquí o haz clic para explorar</h3>
+                        <p class="dropzone-subtitle">
+                            Soporta documentos de oficina y texto estructurado. Conversión instantánea ejecutada en memoria.
+                        </p>
+                        <button type="button" class="btn-amber-primary" id="btnSelectFile">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <span>Seleccionar Archivo</span>
+                        </button>
+                        <div class="dropzone-formats-row">
+                            <span class="format-pill">.PDF</span>
+                            <span class="format-pill">.DOCX</span>
+                            <span class="format-pill">.DOC</span>
+                            <span class="format-pill">.ODT</span>
+                            <span class="format-pill">.HTML</span>
+                            <span class="format-pill">.TXT</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta de Archivo Seleccionado -->
+                    <div class="file-info-card" id="fileInfoCard" style="display: none;">
+                        <div class="file-info-left">
+                            <span class="file-type-badge" id="fileInfoType">PDF</span>
+                            <div>
+                                <div class="file-details-title" id="fileInfoName">nombre_archivo.pdf</div>
+                                <div class="file-details-size" id="fileInfoSize">0 KB</div>
+                            </div>
+                        </div>
+                        <div class="file-actions-row">
+                            <button type="button" class="btn-ghost-secondary" id="btnRemoveFile">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                <span>Cambiar archivo</span>
+                            </button>
+                            <button type="button" class="btn-amber-primary" id="btnConvertFile" disabled>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Convertir a Markdown</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENIDO PESTAÑA 2: PEGAR CONTENIDO / TEXTO -->
+                <div id="tabPasteContent" style="display: none;">
+                    <div class="paste-container">
+                        <div class="paste-toolbar-top">
+                            <span class="format-badge" id="pasteFormatBadge">Sin contenido</span>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button type="button" class="btn-ghost-secondary" id="btnPasteClipboard" title="Pegar desde el portapapeles">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                                    <span>Pegar</span>
+                                </button>
+                                <button type="button" class="btn-ghost-secondary" id="btnLoadSample" title="Cargar un documento con títulos, tablas y listas">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    <span>Cargar Ejemplo</span>
+                                </button>
+                                <button type="button" class="btn-ghost-secondary" id="btnClearPaste">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                    <span>Limpiar</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="paste-textarea-wrapper">
+                            <textarea id="pasteTextarea" class="paste-textarea" placeholder="Pega aquí el contenido copiado desde Word, Google Docs, una página web o texto plano (Ctrl + V)..."></textarea>
+                        </div>
+
+                        <div class="paste-actions-bottom">
+                            <span style="font-size: 0.82rem; color: var(--text-muted);">
+                                💡 Tip: Si copias tablas o texto con negrita de Word o páginas web, se conservarán las columnas y estilos en Markdown.
+                            </span>
+                            <button type="button" class="btn-amber-primary" id="btnConvertPaste">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                <span>Convertir Contenido a Markdown</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Banner de Progreso / Estado -->
+            <div class="status-banner" id="statusBanner">
+                <div class="spinner-amber"></div>
+                <span class="status-text">Procesando documento...</span>
+            </div>
+
+            <!-- Empty State inicial -->
+            <div class="empty-state-card" id="emptyStateCard">
+                <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+                <div class="empty-state-text">
+                    Adjunta un archivo o pega contenido arriba para ver la conversión a Markdown con resaltado de sintaxis y vista previa en vivo.
+                </div>
+            </div>
+
+            <!-- =================================================================
+                 3. PANEL DE RESULTADOS Y VISUALIZADOR DUAL
+                 ================================================================= -->
+            <section class="results-card" id="resultsSection" style="display: none;">
+
+                <!-- Ribbon de Métricas -->
+                <div class="metrics-ribbon">
+                    <div class="metric-pill">
+                        <div class="metric-value" id="statWords">0</div>
+                        <div class="metric-label">Palabras</div>
+                    </div>
+                    <div class="metric-pill">
+                        <div class="metric-value" id="statChars">0</div>
+                        <div class="metric-label">Caracteres</div>
+                    </div>
+                    <div class="metric-pill">
+                        <div class="metric-value" id="statLines">0</div>
+                        <div class="metric-label">Líneas</div>
+                    </div>
+                    <div class="metric-pill">
+                        <div class="metric-value" id="statHeadings">0</div>
+                        <div class="metric-label">Encabezados (#)</div>
+                    </div>
+                    <div class="metric-pill">
+                        <div class="metric-value" id="statTables">0</div>
+                        <div class="metric-label">Tablas</div>
+                    </div>
+                </div>
+
+                <!-- Toolbar de Resultados -->
+                <div class="results-toolbar">
+                    <!-- Selector de Modos de Vista -->
+                    <div class="view-modes-group">
+                        <button type="button" class="view-mode-btn active" id="viewSplitBtn" title="Ver código Markdown y vista previa lado a lado">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+                            <span>Vista Dividida</span>
+                        </button>
+                        <button type="button" class="view-mode-btn" id="viewRawBtn" title="Ver únicamente el código Markdown (.md)">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            <span>Solo Markdown</span>
+                        </button>
+                        <button type="button" class="view-mode-btn" id="viewPreviewBtn" title="Ver documento renderizado con estilos">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <span>Vista Previa</span>
+                        </button>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="results-actions-right">
+                        <button type="button" class="btn-ghost-secondary" id="btnCopyHtml" title="Copiar HTML renderizado">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            <span>Copiar HTML</span>
+                        </button>
+                        <button type="button" class="btn-ghost-secondary" id="btnCopyMd">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            <span>Copiar Markdown</span>
+                        </button>
+                        <button type="button" class="btn-amber-primary" id="btnDownloadMd" style="padding: 0.55rem 1.15rem; font-size: 0.88rem;">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span>Descargar .md</span>
+                        </button>
+                        <button type="button" class="btn-ghost-secondary" id="btnClearAll" title="Reiniciar espacio de trabajo">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contenedor del Visualizador (Dual / Split) -->
+                <div class="viewer-container mode-split" id="viewerContainer">
+                    
+                    <!-- Panel Izquierdo: Editor / Código Markdown -->
+                    <div class="editor-pane" id="editorPane">
+                        <div class="pane-header">
+                            <span>DOCUMENTO MARKDOWN (.md)</span>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Editable en tiempo real</span>
+                        </div>
+                        <div class="editor-box">
+                            <div class="line-numbers" id="lineNumbers">1</div>
+                            <textarea id="markdownEditor" class="markdown-textarea" placeholder="El código Markdown aparecerá aquí..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Panel Derecho: Vista Previa Renderizada -->
+                    <div class="preview-pane" id="previewPane">
+                        <div class="pane-header">
+                            <span>VISTA PREVIA COMPILADA</span>
+                            <span style="font-size: 0.75rem; color: var(--accent-amber-light);">Estilo GitHub Markdown</span>
+                        </div>
+                        <div class="rendered-preview-content" id="renderedPreview">
+                            <!-- HTML compilado en vivo con Marked.js -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
         </main>
 
+        <!-- =================================================================
+             4. FOOTER
+             ================================================================= -->
         <footer class="site-footer">
             <div class="footer-inner">
                 <div class="footer-left">
-                    <span><strong>SimpleApps Suite</strong> • Módulo #05</span>
+                    <span><strong>SimpleApps Suite</strong> • Conversor PDF / Doc / Docx / ODT a MarkDown</span>
+                    <span class="footer-badge-tech" style="border-color: rgba(245, 158, 11, 0.3); color: #FCD34D;">Mammoth.js • PDF.js • JSZip • Turndown • 100% Offline</span>
                 </div>
                 <div class="footer-right">
-                    <a href="../../index.html" class="footer-link">Ver las 10 Apps</a>
+                    <a href="../../index.html" class="footer-link">← Volver al Catálogo de Apps</a>
                 </div>
             </div>
         </footer>
+
     </div>
+
+    <!-- Contenedor para Notificaciones Toast -->
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+    <!-- Librerías de Extracción y Parsing 100% Locales -->
+    <script src="libs/jszip.min.js"></script>
+    <script src="libs/mammoth.browser.min.js"></script>
+    <script src="libs/pdf.min.js"></script>
+    <script src="libs/turndown.min.js"></script>
+    <script src="libs/marked.min.js"></script>
+
+    <!-- Scripts del Motor y Controlador -->
+    <script src="converter.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

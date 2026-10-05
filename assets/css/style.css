@@ -581,7 +581,7 @@ body {
 
 .hero-title-box {
     flex: 1;
-    max-width: 900px;
+    max-width: 960px;
     width: 100%;
 }
 
@@ -813,10 +813,11 @@ body {
     font-family: var(--font-mono);
 }
 
-/* 4 Widgets KPI (Estilo Xacton + Glow Aithm) */
+/* 3 Widgets KPI (Distribución al 100% del Ancho Total) */
 .kpi-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
     gap: 1.25rem;
     margin-top: 2rem;
 }
@@ -1678,7 +1679,7 @@ body {
 /* ==========================================================================
    Responsive Breakpoints
    ========================================================================== */
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
     .kpi-grid {
         grid-template-columns: repeat(2, 1fr);
     }

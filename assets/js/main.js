@@ -277,8 +277,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         dom.appsContainer.querySelectorAll('.btn-launch-app').forEach(btn => {
             btn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const id = btn.getAttribute('data-id');
-                openAppModal(id);
+                const app = state.apps.find(a => a.id === id);
+                if (app && app.targetUrl) {
+                    window.location.href = app.targetUrl;
+                } else {
+                    openAppModal(id);
+                }
             });
         });
 
@@ -444,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Indicador de Servidor Info Modal
     if (dom.serverStatusPill) {
         dom.serverStatusPill.addEventListener('click', () => {
-            showToast("Entorno LAMPP: Apache Activo • PHP 8.3 Ready • MySQL 8.4 Ready", "info");
+            showToast("Suite de Utilidades Locales • Procesamiento 100% en el cliente", "info");
         });
     }
 
