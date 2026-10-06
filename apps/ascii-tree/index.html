@@ -1,120 +1,453 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
     <title>Generador de Árbol de Carpetas (ASCII Tree) • SimpleApps</title>
+    <meta name="description"
+        content="Genera diagramas de directorios en texto plano ASCII/Unicode para READMEs y documentación. Modo inverso: convierte árboles de texto en comandos mkdir y touch ejecutables.">
+
+    <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos Base y Específicos -->
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        .app-workspace-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-medium);
-            border-radius: var(--radius-xl);
-            padding: 3rem 2.5rem;
-            max-width: 900px;
-            margin: 2rem auto;
-            text-align: center;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--shadow-card);
-        }
-        .module-tag {
-            display: inline-block;
-            background: rgba(168, 85, 247, 0.15);
-            color: var(--accent-violet-light);
-            padding: 0.35rem 0.85rem;
-            border-radius: 100px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-        .workspace-btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+    <!-- Luces Ambientales de Fondo -->
     <div class="ambient-glow" aria-hidden="true">
-        <div class="ambient-orb ambient-orb-1"></div>
-        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-1"
+            style="background: radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, transparent 70%);"></div>
+        <div class="ambient-orb ambient-orb-2"
+            style="background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);"></div>
     </div>
     <div class="bg-grid-pattern" aria-hidden="true"></div>
 
     <div class="app-wrapper">
+
+        <!-- =================================================================
+             1. HEADER HORIZONTAL
+             ================================================================= -->
         <header class="top-header">
             <div class="header-inner">
-                <a href="../../index.html" class="brand-area" title="Volver al Inicio">
-                    <div class="brand-icon-box">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
+                <a href="../../index.html" class="brand-area" title="Volver al Catálogo">
+                    <div class="brand-icon-box" style="background: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7" />
+                            <rect x="14" y="3" width="7" height="7" />
+                            <rect x="14" y="14" width="7" height="7" />
+                            <rect x="3" y="14" width="7" height="7" />
                         </svg>
                     </div>
                     <div class="brand-text-box">
-                        <span class="brand-name">Simple<span class="brand-highlight">Apps</span></span>
-                        <span class="brand-tagline">Micro-Tools Suite</span>
+                        <span class="brand-name">Simple<span class="brand-highlight" style="background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Apps</span></span>
+                        <span class="brand-tagline">ASCII Tree #06</span>
                     </div>
                 </a>
+
                 <div class="header-actions">
+                    <div class="server-status-pill">
+                        <span class="status-dot" style="background: #3B82F6; box-shadow: 0 0 8px #3B82F6;"></span>
+                        <span class="server-meta-tag">100% Local</span>
+                        <span class="server-php-tag" style="background: rgba(59, 130, 246, 0.15); color: #60A5FA; border-color: rgba(59, 130, 246, 0.3);">Bi-Direccional</span>
+                    </div>
+
                     <a href="../../index.html" class="btn-subnav-ghost">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <span>Volver al Catálogo</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                        <span>Volver al Dashboard</span>
                     </a>
                 </div>
             </div>
         </header>
 
+        <!-- =================================================================
+             2. CONTENIDO PRINCIPAL
+             ================================================================= -->
         <main class="main-container">
+
+            <!-- Migas de Pan -->
             <div class="breadcrumb-row">
                 <a href="../../index.html" class="footer-link">Inicio</a>
                 <span class="breadcrumb-separator">/</span>
                 <a href="../../index.html" class="footer-link">Micro-Apps</a>
                 <span class="breadcrumb-separator">/</span>
-                <span class="breadcrumb-item active">Generador de Árbol de Carpetas (ASCII Tree)</span>
+                <span class="breadcrumb-item active">Generador ASCII Tree</span>
             </div>
 
-            <div class="app-workspace-card">
-                <span class="module-tag">MÓDULO #06 EN PREPARACIÓN</span>
-                <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 1rem;">
-                    Generador de Árbol de Carpetas (ASCII Tree)
+            <!-- Título y Encabezado de la Herramienta -->
+            <div style="margin-bottom: 2rem;">
+                <div class="hero-tag"
+                    style="background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.35); color: #60A5FA;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                    Módulo #06 • Diagramador de Directorios & Scripts CLI
+                </div>
+                <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 0.5rem;">
+                    Generador de Árbol de Carpetas <span class="glow-text" style="color: #60A5FA; text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);">ASCII & Unicode</span>
                 </h1>
-                <p class="hero-description" style="max-width: 600px; margin: 0 auto 1.5rem;">
-                    Generador de estructuras de directorios en texto plano ASCII/Unicode.
+                <p class="hero-description" style="max-width: 820px;">
+                    Crea diagramas visuales de directorios listos para READMEs, especificaciones técnicas o arquitectura de proyectos. Funciona también en <strong>Modo Inverso</strong>: pega un árbol de texto y obtén el script de comandos (<code style="color:#60A5FA;">mkdir</code> y <code style="color:#60A5FA;">touch</code>) para materializar la estructura en tu computadora.
                 </p>
-                <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 1.5rem; max-width: 650px; margin: 0 auto; color: var(--text-secondary); font-size: 0.9rem;">
-                    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">Arquitectura Asignada:</strong>
-                    HTML5 + Vanilla JavaScript (100% Local y Offline).<br>
-                    Listo para codificar la interfaz operativa específica de esta micro-app.
-                </div>
+            </div>
 
-                <div class="workspace-btn-group">
-                    <a href="../../index.html" class="btn-launch-app" style="max-width: 250px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <span>Volver al Dashboard</span>
-                    </a>
+            <!-- CONMUTADOR DE MODOS (Tabs Principales) -->
+            <div class="mode-switcher-container">
+                <div class="mode-switcher-pill">
+                    <button type="button" class="mode-tab-btn active" id="tabGenerator">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        <span>1. Rutas a Árbol Gráfico</span>
+                    </button>
+                    <button type="button" class="mode-tab-btn" id="tabReverse">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                        <span>2. Árbol a Comandos Terminal (Inverso)</span>
+                    </button>
                 </div>
             </div>
+
+            <!-- =========================================================
+                 VISTA 1: MODO GENERADOR (Rutas / Indentación -> Árbol)
+                 ========================================================= -->
+            <div class="tree-workspace-grid" id="viewGenerator">
+
+                <!-- Panel Izquierdo: Entrada y Opciones -->
+                <div class="tree-card">
+                    <div class="card-header-clean">
+                        <div class="card-title-group">
+                            <div class="card-title-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="card-title-text">Entrada de Rutas / Indentación</h2>
+                                <span class="card-subtitle-text">Pega una lista de rutas relativas o arrastra una carpeta local.</span>
+                            </div>
+                        </div>
+
+                        <div style="display:flex; gap:0.4rem;">
+                            <button type="button" class="btn-subnav-ghost" id="btnLoadSample" style="padding:0.3rem 0.6rem; font-size:0.75rem;">
+                                Ejemplo
+                            </button>
+                            <button type="button" class="btn-subnav-ghost" id="btnClearInput" style="padding:0.3rem 0.6rem; font-size:0.75rem;">
+                                Limpiar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Generador desde Ruta del Sistema Local -->
+                    <div class="system-path-scanner-box">
+                        <div class="system-path-header">
+                            <span class="system-path-title">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+                                Escanear Ruta del Sistema Local
+                            </span>
+                            <span style="font-size:0.7rem; color:var(--text-muted); font-weight:500;">🔒 100% Local • Sin escaneo de red</span>
+                        </div>
+                        <div class="system-path-input-row" style="flex-wrap: wrap;">
+                            <input type="text" id="inputSystemPath" class="system-path-input" placeholder="Pega una ruta: Ej. /home/dgarcia/Descargas/Distribuciones Linux - Windows - Office/Linux" spellcheck="false" autocomplete="off" style="min-width: 280px;">
+                            <button type="button" class="btn-scan-action" id="btnScanSystemPath" title="Generar el árbol directamente siguiendo la ruta indicada">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                                <span>Generar Árbol de la Ruta</span>
+                            </button>
+                            <button type="button" class="btn-disk-action" id="btnScanDiskContents" title="Escanear opcionalmente los archivos y carpetas reales existentes en el disco local">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                                <span>Leer Archivos en Disco</span>
+                            </button>
+                        </div>
+                        <div class="system-path-presets-row">
+                            <span style="font-size:0.7rem; color:var(--text-muted);">Acceso rápido:</span>
+                            <button type="button" class="btn-quick-path" id="btnUserLinuxSample" title="Cargar y generar árbol directo de la ruta">
+                                🐧 /home/dgarcia/Descargas/Distribuciones Linux - Windows - Office/Linux
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dropzone para arrastrar carpetas enteras -->
+                    <div class="folder-dropzone" id="folderDropzone">
+                        <svg class="dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+                            <polyline points="12 11 12 17"/>
+                            <polyline points="9 14 12 11 15 14"/>
+                        </svg>
+                        <div class="dropzone-title">O arrastra una carpeta local aquí</div>
+                        <div class="dropzone-sub">Lectura automática en memoria con WebKit Directory Picker.</div>
+                        <input type="file" id="folderInput" webkitdirectory directory multiple style="display:none;">
+                    </div>
+
+                    <!-- Controles y Configuración -->
+                    <div class="tree-controls-bar">
+                        <!-- Filtro de Contenido: Directorios y Archivos vs Solo Directorios -->
+                        <div class="control-item">
+                            <label for="selectContentFilter" style="font-weight:700; color:var(--tree-blue-light);">Contenido:</label>
+                            <select id="selectContentFilter" class="control-select" style="border-color:rgba(59, 130, 246, 0.4); font-weight:600;">
+                                <option value="all">📁 Directorios y Archivos</option>
+                                <option value="dirs">📂 Solo Directorios (Carpetas)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-item">
+                            <label for="selectStyle">Estilo:</label>
+                            <select id="selectStyle" class="control-select">
+                                <option value="unicode">Unicode Clásico (├──, └──)</option>
+                                <option value="unicodeDouble">Unicode Doble Línea (╠══, ╚══)</option>
+                                <option value="ascii">ASCII Puro (+--, \--, |)</option>
+                                <option value="minimal">Minimal (|--, `--)</option>
+                                <option value="markdown">Listas Markdown (- item)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-item">
+                            <label for="inputRootName">Raíz:</label>
+                            <input type="text" id="inputRootName" class="control-select" value="mi-proyecto" style="width:110px;" placeholder="proyecto">
+                        </div>
+
+                        <div class="control-item">
+                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;" for="chkFromRoot" title="Muestra las rutas de archivos y el árbol desde la raíz absoluta (/ en Linux, C:\ en Windows)">
+                                <input type="checkbox" id="chkFromRoot" class="control-checkbox" checked>
+                                <span style="font-weight:600; color:var(--tree-blue-light);">Desde la raíz (/ o C:)</span>
+                            </label>
+                        </div>
+
+                        <div class="control-item">
+                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;" for="chkFoldersFirst">
+                                <input type="checkbox" id="chkFoldersFirst" class="control-checkbox" checked>
+                                <span>Carpetas primero</span>
+                            </label>
+                        </div>
+
+                        <div class="control-item">
+                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;" for="chkShowIcons">
+                                <input type="checkbox" id="chkShowIcons" class="control-checkbox">
+                                <span>Iconos / Emojis</span>
+                            </label>
+                        </div>
+
+                        <div class="control-item">
+                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;" for="chkTrailingSlash">
+                                <input type="checkbox" id="chkTrailingSlash" class="control-checkbox" checked>
+                                <span>Barra '/' en carpetas</span>
+                            </label>
+                        </div>
+
+                        <div class="control-item">
+                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;" for="chkIgnoreCommon">
+                                <input type="checkbox" id="chkIgnoreCommon" class="control-checkbox" checked>
+                                <span>Omitir node_modules, .git</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Textarea Editor -->
+                    <div class="tree-editor-wrapper">
+                        <textarea id="generatorInput" class="tree-textarea" spellcheck="false" placeholder="Pega rutas tipo path (ej: src/components/Button.jsx) o texto tabulado con sangría..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Panel Derecho: Previsualización y Exportación -->
+                <div class="tree-card">
+                    <div class="card-header-clean">
+                        <div class="card-title-group">
+                            <div class="card-title-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="4 17 10 11 4 5"/>
+                                    <line x1="12" y1="19" x2="20" y2="19"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="card-title-text">Árbol Gráfico Generado</h3>
+                                <span class="card-subtitle-text">Resultado listo para copiar a tu README.md o documentación.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cuadro de Salida Monospace -->
+                    <pre class="tree-output-box" id="generatorOutput"></pre>
+
+                    <!-- Barra de Acciones de Exportación -->
+                    <div class="tree-actions-toolbar">
+                        <button type="button" class="btn-tree-action primary" id="btnCopyMarkdown">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            <span>Copiar en Bloque Markdown (```text)</span>
+                        </button>
+                        <button type="button" class="btn-tree-action" id="btnCopyPlain">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            <span>Copiar Texto Plano</span>
+                        </button>
+                        <button type="button" class="btn-tree-action" id="btnDownloadMd">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span>Descargar .md</span>
+                        </button>
+                        <button type="button" class="btn-tree-action" id="btnDownloadTxt">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span>Descargar .txt</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- =========================================================
+                 VISTA 2: MODO INVERSO (Árbol -> Comandos Terminal)
+                 ========================================================= -->
+            <div class="tree-workspace-grid" id="viewReverse" style="display: none;">
+
+                <!-- Panel Izquierdo: Pega tu Árbol -->
+                <div class="tree-card">
+                    <div class="card-header-clean">
+                        <div class="card-title-group">
+                            <div class="card-title-icon" style="background: rgba(16, 185, 129, 0.12); color: #34D399; border-color: rgba(16, 185, 129, 0.3);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 16 12 12 8 16"/>
+                                    <line x1="12" y1="12" x2="12" y2="21"/>
+                                    <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="card-title-text">Pega un Árbol ASCII / Unicode</h2>
+                                <span class="card-subtitle-text">Copiado de un README, documentación técnica o respuesta de IA.</span>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-subnav-ghost" id="btnLoadReverseSample" style="padding:0.3rem 0.6rem; font-size:0.75rem;">
+                            Cargar Árbol de Prueba
+                        </button>
+                    </div>
+
+                    <div class="tree-editor-wrapper">
+                        <textarea id="reverseInput" class="tree-textarea" spellcheck="false" placeholder="Pega aquí un árbol como:
+mi-proyecto/
+├── src/
+│   ├── index.js
+│   └── utils.js
+└── package.json"></textarea>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.8rem; font-size:0.75rem; color:var(--text-muted);">
+                        <span>Estructura detectada:</span>
+                        <div style="display:flex; gap:0.75rem;">
+                            <span style="color:#60A5FA;">📁 <strong id="statsReverseDirs">0</strong> carpetas</span>
+                            <span style="color:#34D399;">📄 <strong id="statsReverseFiles">0</strong> archivos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel Derecho: Script Generado -->
+                <div class="tree-card">
+                    <div class="card-header-clean">
+                        <div class="card-title-group">
+                            <div class="card-title-icon" style="background: rgba(99, 102, 241, 0.12); color: #A5B4FC; border-color: rgba(99, 102, 241, 0.3);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="4 17 10 11 4 5"/>
+                                    <line x1="12" y1="19" x2="20" y2="19"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="card-title-text">Script de Creación de Archivos</h3>
+                                <span class="card-subtitle-text">Comandos listos para ejecutar en tu sistema operativo.</span>
+                            </div>
+                        </div>
+
+                        <div class="control-item">
+                            <label for="selectReverseShell">Shell:</label>
+                            <select id="selectReverseShell" class="control-select">
+                                <option value="bash">Bash / Zsh (Linux & macOS)</option>
+                                <option value="powershell">PowerShell (Windows)</option>
+                                <option value="cmd">CMD / Batch (.bat Windows)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-item" style="margin-bottom:0.75rem;">
+                        <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;" for="chkSampleFiles">
+                            <input type="checkbox" id="chkSampleFiles" class="control-checkbox">
+                            <span style="font-size:0.78rem;">Crear archivos con comentario o encabezado básico</span>
+                        </label>
+                    </div>
+
+                    <pre class="tree-output-box reverse-terminal-code" id="reverseOutput"></pre>
+
+                    <div class="tree-actions-toolbar">
+                        <button type="button" class="btn-tree-action primary" id="btnCopyScript">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            <span>Copiar Script al Portapapeles</span>
+                        </button>
+                        <button type="button" class="btn-tree-action" id="btnDownloadScript">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span>Descargar Script Ejecutable</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- =========================================================
+                 SECCIÓN: PRESETS DE ESTRUCTURAS POPULARES
+                 ========================================================= -->
+            <section class="presets-section">
+                <div class="card-header-clean" style="border:none; margin-bottom:1rem;">
+                    <div class="card-title-group">
+                        <div class="card-title-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                                <path d="M6 6h10"/>
+                                <path d="M6 10h10"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="card-title-text">Plantillas de Arquitectura (Presets en 1 Clic)</h3>
+                            <span class="card-subtitle-text">Haz clic en cualquier proyecto para cargar su estructura en el generador.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="presets-grid" id="presetsContainer"></div>
+            </section>
+
         </main>
 
+        <!-- =================================================================
+             3. FOOTER
+             ================================================================= -->
         <footer class="site-footer">
             <div class="footer-inner">
                 <div class="footer-left">
-                    <span><strong>SimpleApps Suite</strong> • Módulo #06</span>
+                    <span><strong>SimpleApps Suite</strong> • Generador ASCII Tree v1.0</span>
+                    <span class="footer-badge-tech" style="background: rgba(59, 130, 246, 0.12); color: #60A5FA; border-color: rgba(59, 130, 246, 0.25);">
+                        Parser Bidireccional • Generador Bash/PowerShell • Drag & Drop Local • 100% Offline
+                    </span>
                 </div>
                 <div class="footer-right">
-                    <a href="../../index.html" class="footer-link">Ver las 10 Apps</a>
+                    <a href="../../index.html" class="footer-link">← Volver al Catálogo de Micro-Apps</a>
                 </div>
             </div>
         </footer>
+
     </div>
+
+    <!-- Contenedor para Notificaciones Toast -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts de la Aplicación -->
+    <script src="tree-engine.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>

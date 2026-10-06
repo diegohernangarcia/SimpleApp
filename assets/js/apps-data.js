@@ -16,7 +16,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h2"/><path d="M8 17h2"/><path d="M14 13h2"/><path d="M14 17h2"/></svg>`,
         description: "Convierte uno o múltiples archivos CSV a Excel (.xlsx). Permite generar un solo libro consolidado con múltiples hojas o archivos Excel independientes.",
         features: ["Conversión Multi-CSV", "1 Libro con Múltiples Hojas", "Excels Separados / ZIP", "Autodetección Delimitador"],
-        status: "listo", // listo, en-desarrollo, planeado
+        status: "desarrollada", // desarrollada | en-proceso
         targetUrl: "apps/csv-to-excel/",
         tech: "Vanilla JS / SheetJS",
         specs: {
@@ -37,7 +37,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="m9 14 3 3 3-3"/><path d="M12 9v8"/></svg>`,
         description: "Convierte libros de Excel (.xlsx, .xls, .xlsm, .ods) con múltiples hojas a archivos CSV independientes. Exporta cada hoja a su propio archivo CSV o descarga todos juntos en un paquete .ZIP.",
         features: ["1 CSV por cada Hoja", "Descarga Individual o en .ZIP", "Previsualización de Hojas", "Delimitadores (, ; TAB |)"],
-        status: "listo",
+        status: "desarrollada",
         targetUrl: "apps/excel-to-csv/",
         tech: "Vanilla JS / SheetJS / JSZip",
         specs: {
@@ -58,7 +58,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M6 9v12"/></svg>`,
         description: "Comparador visual de texto, código fuente y archivos estructurados. Visualización lado a lado (Side-by-Side) o unificada con resaltado de adiciones, borrados y cambios palabra por palabra.",
         features: ["Vista Side-by-Side", "Resaltado de Sintaxis", "Diferencias Inline", "Estadísticas de Cambios"],
-        status: "listo",
+        status: "desarrollada",
         targetUrl: "apps/diff-viewer/",
         tech: "Diff Match Patch / Vanilla JS",
         specs: {
@@ -79,7 +79,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>`,
         description: "Calculadora visual e interactiva de permisos Unix/Linux. Conversión bidireccional inmediata entre notación octal (755, 644, 777), simbólica (rwxr-xr-x), matriz de checkboxes y generador de comandos chmod.",
         features: ["Modo Octal / Simbólico", "Generador Chmod -R", "Cálculo de Umask", "Plantillas habituales"],
-        status: "listo",
+        status: "desarrollada",
         targetUrl: "apps/linux-permissions/",
         tech: "Matemática Binaria / Vanilla JS",
         specs: {
@@ -100,7 +100,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
         description: "Transforma documentos PDF, Word (.docx, .doc), OpenDocument (.odt) o texto enriquecido pegado desde el portapapeles a formato Markdown (.md) preservando títulos, listas y tablas.",
         features: ["PDF, DOCX, ODT y DOC", "Pegado Enriquecido", "Tablas y Títulos a MD", "Vista Dividida en Vivo"],
-        status: "listo",
+        status: "desarrollada",
         targetUrl: "apps/doc-to-markdown/",
         tech: "Mammoth.js / PDF.js / JSZip / Turndown",
         specs: {
@@ -121,7 +121,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`,
         description: "Genera estructuras de directorios en texto plano / ASCII / Unicode para READMEs, especificaciones y documentación técnica. También funciona a la inversa: crea comandos mkdir/touch a partir de un árbol.",
         features: ["Estilos Unicode / ASCII", "Modo Inverso (mkdir/touch)", "Iconos de carpetas", "Exportar a Markdown"],
-        status: "listo",
+        status: "desarrollada",
         targetUrl: "apps/ascii-tree/",
         tech: "Algoritmos de Árboles / Vanilla JS",
         specs: {
@@ -142,7 +142,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>`,
         description: "Cruza dos conjuntos de datos mediante columnas clave (VLOOKUP / BUSCAV / SQL JOIN: Inner, Left, Right, Full Outer). Concilia saldos contables, cruza inventarios y detecta discrepancias al instante.",
         features: ["Inner, Left, Right, Outer", "Multi-Columna Clave", "Reporte de Discrepancias", "Exportación Directa"],
-        status: "listo",
+        status: "en-proceso",
         targetUrl: "apps/table-cross-join/",
         tech: "Motor Relacional JS / Vanilla JS",
         specs: {
@@ -163,7 +163,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="m9 14 2 2 4-4"/></svg>`,
         description: "Identifica filas repetidas en bases de datos o planillas según campos clave y aplica reglas jerárquicas de descarte: conservar la más reciente, la fila con mayor información completa o mayor valor numérico.",
         features: ["Reglas de Prioridad", "Conservar Más Completo", "Auditoría de Descartados", "Limpieza Segura"],
-        status: "listo",
+        status: "en-proceso",
         targetUrl: "apps/duplicate-detector/",
         tech: "Heurística de Datos / Vanilla JS",
         specs: {
@@ -184,7 +184,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>`,
         description: "Transforma tablas de Excel o datos copiados en sentencias SQL estándar (INSERT INTO, ON DUPLICATE KEY UPDATE, REPLACE o UPDATE por lotes) con escape seguro y tipado automático.",
         features: ["Sintaxis SQL Estándar", "ON DUPLICATE KEY UPDATE", "Escape Seguro de Strings", "Lotes de 500/1000 filas"],
-        status: "listo",
+        status: "en-proceso",
         targetUrl: "apps/sql-generator/",
         tech: "SQL Builder / Vanilla JS",
         specs: {
@@ -205,7 +205,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>`,
         description: "Une y concatena decenas de archivos Excel o CSV que comparten la misma estructura de columnas en un solo libro maestro consolidado, agregando columna con el nombre del archivo origen.",
         features: ["Múltiples Archivos", "Columna de Origen", "Omitir Cabeceras Repetidas", "Soporte Multi-Hoja"],
-        status: "listo",
+        status: "en-proceso",
         targetUrl: "apps/excel-consolidator/",
         tech: "Consolidador Multi-Buffer / SheetJS",
         specs: {

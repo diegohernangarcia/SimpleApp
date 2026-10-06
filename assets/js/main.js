@@ -212,10 +212,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         dom.appsContainer.innerHTML = state.filteredApps.map(app => {
             const isFav = state.favorites.includes(app.id);
+            const isDeveloped = (app.status === 'desarrollada' || app.status === 'listo');
             const featuresHtml = app.features.map(f => `<span class="feature-pill">${f}</span>`).join('');
 
             return `
-                <div class="app-card" 
+                <div class="app-card ${isDeveloped ? 'app-card-developed' : 'app-card-in-progress'}" 
                      data-id="${app.id}" 
                      style="--icon-color: ${app.color}; --icon-gradient: ${app.gradient}; --btn-gradient: ${app.gradient};">
                     
@@ -224,8 +225,24 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="card-icon-box">
                                 ${app.icon}
                             </div>
+                            <div class="card-tilde-badge ${isDeveloped ? 'tilde-badge-verde' : 'tilde-badge-rojo'}" 
+                                 title="${isDeveloped ? 'Tilde verde: Micro-app desarrollada y operativa' : 'Tilde rojo: Micro-app todavía en proceso de desarrollo'}"
+                                 aria-label="${isDeveloped ? 'Desarrollada' : 'En proceso'}">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="card-meta-top">
+                            <span class="card-status-pill ${isDeveloped ? 'status-pill-verde' : 'status-pill-rojo'}" 
+                                  title="${isDeveloped ? 'Tilde verde: Simple App desarrollada y 100% operativa' : 'Tilde rojo: Simple App todavía en proceso'}">
+                                <span class="status-tilde-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </span>
+                                <span class="status-pill-text">${isDeveloped ? 'Desarrollada' : 'En proceso'}</span>
+                            </span>
                             <span class="app-number-badge">#${app.number}</span>
                             <button class="favorite-btn ${isFav ? 'favorited' : ''}" 
                                     data-id="${app.id}" 
@@ -248,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <div class="card-footer">
                         <button class="btn-launch-app" data-id="${app.id}">
-                            <span>Abrir Herramienta</span>
+                            <span>${isDeveloped ? 'Abrir Herramienta' : 'Ver Módulo (En proceso)'}</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -301,8 +318,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const app = state.apps.find(a => a.id === appId);
         if (!app || !dom.appModal) return;
 
+        const isDeveloped = (app.status === 'desarrollada' || app.status === 'listo');
         dom.modalTitle.textContent = app.title;
-        dom.modalSubtitle.textContent = `Módulo #${app.number} • ${app.categoryName} • ${app.tech}`;
+        dom.modalSubtitle.innerHTML = `
+            <span>Módulo #${app.number} • ${app.categoryName} • ${app.tech}</span>
+            <span class="card-status-pill ${isDeveloped ? 'status-pill-verde' : 'status-pill-rojo'}" style="margin-left: 0.5rem; vertical-align: middle;">
+                <span class="status-tilde-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </span>
+                <span class="status-pill-text">${isDeveloped ? 'Desarrollada' : 'En proceso'}</span>
+            </span>
+        `;
         dom.modalIconBox.style.background = app.gradient;
         dom.modalIconBox.innerHTML = app.icon;
         dom.modalDescription.textContent = app.description;
@@ -316,6 +344,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 ✓ ${f}
             </span>
         `).join('');
+
+        if (dom.modalLaunchBtn) {
+            const btnSpan = dom.modalLaunchBtn.querySelector('span');
+            if (btnSpan) {
+                btnSpan.textContent = isDeveloped ? 'Abrir Herramienta' : 'Ver Módulo (En proceso)';
+            }
+        }
 
         dom.modalLaunchBtn.onclick = () => {
             showToast(`Iniciando entorno para "${app.shortTitle}"...`, 'info');

@@ -145,8 +145,14 @@
     color: var(--text-secondary);
 }
 
+:root,
+html {
+    color-scheme: dark;
+}
+
 .quick-select {
-    background: var(--bg-input);
+    color-scheme: dark;
+    background-color: #0F172A;
     border: 1px solid var(--border-subtle);
     color: var(--text-primary);
     font-size: 0.8rem;
@@ -154,6 +160,59 @@
     border-radius: var(--radius-sm);
     outline: none;
     cursor: pointer;
+}
+
+.quick-select option,
+select option {
+    background-color: #0F172A !important;
+    color: #F8FAFC !important;
+    padding: 0.5rem 0.75rem;
+}
+
+.quick-select option:hover,
+.quick-select option:focus,
+.quick-select option:checked,
+select option:hover,
+select option:focus,
+select option:checked {
+    background-color: #1E293B !important;
+    color: #F43F5E !important;
+}
+
+@supports (appearance: base-select) {
+    .quick-select,
+    select {
+        appearance: base-select;
+    }
+
+    ::picker(select) {
+        appearance: base-select;
+        background-color: #0F172A !important;
+        border: 1px solid rgba(244, 63, 94, 0.35) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(244, 63, 94, 0.15) !important;
+        padding: 5px !important;
+        color: #F8FAFC !important;
+        margin-top: 4px;
+        backdrop-filter: blur(16px);
+    }
+
+    ::picker(select) option {
+        background-color: transparent !important;
+        color: #F8FAFC !important;
+        padding: 8px 12px !important;
+        border-radius: 6px !important;
+        font-size: 0.82rem !important;
+        cursor: pointer;
+        transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    ::picker(select) option:hover,
+    ::picker(select) option:focus,
+    ::picker(select) option:checked {
+        background-color: #1E293B !important;
+        color: #F43F5E !important;
+    }
 }
 
 .quick-checkbox-label {

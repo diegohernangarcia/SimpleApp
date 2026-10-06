@@ -279,8 +279,14 @@
     color: var(--text-secondary);
 }
 
+:root,
+html {
+    color-scheme: dark;
+}
+
 .opt-select-custom {
-    background: var(--bg-input);
+    color-scheme: dark;
+    background-color: #0F172A;
     border: 1px solid var(--border-medium);
     color: var(--text-primary);
     padding: 0.45rem 0.85rem;
@@ -295,6 +301,59 @@
 .opt-select-custom:focus {
     border-color: var(--accent-cyan);
     box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2);
+}
+
+.opt-select-custom option,
+select option {
+    background-color: #0F172A !important;
+    color: #F8FAFC !important;
+    padding: 0.5rem 0.75rem;
+}
+
+.opt-select-custom option:hover,
+.opt-select-custom option:focus,
+.opt-select-custom option:checked,
+select option:hover,
+select option:focus,
+select option:checked {
+    background-color: #1E293B !important;
+    color: #38BDF8 !important;
+}
+
+@supports (appearance: base-select) {
+    .opt-select-custom,
+    select {
+        appearance: base-select;
+    }
+
+    ::picker(select) {
+        appearance: base-select;
+        background-color: #0F172A !important;
+        border: 1px solid rgba(6, 182, 212, 0.35) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(6, 182, 212, 0.15) !important;
+        padding: 5px !important;
+        color: #F8FAFC !important;
+        margin-top: 4px;
+        backdrop-filter: blur(16px);
+    }
+
+    ::picker(select) option {
+        background-color: transparent !important;
+        color: #F8FAFC !important;
+        padding: 8px 12px !important;
+        border-radius: 6px !important;
+        font-size: 0.82rem !important;
+        cursor: pointer;
+        transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    ::picker(select) option:hover,
+    ::picker(select) option:focus,
+    ::picker(select) option:checked {
+        background-color: #1E293B !important;
+        color: #38BDF8 !important;
+    }
 }
 
 .opt-checkbox-custom {

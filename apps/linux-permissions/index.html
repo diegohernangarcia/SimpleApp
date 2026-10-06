@@ -1,79 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Permisos Linux • SimpleApps</title>
+    <meta name="color-scheme" content="dark">
+    <title>Calculadora de Permisos Linux • Chmod, Octal y Simbólico • SimpleApps</title>
+    <meta name="description"
+        content="Calculadora interactiva visual de permisos Unix/Linux. Conversión bidireccional entre octal (755, 644, 777), simbólica (rwxr-xr-x), matriz de checkboxes, umask y generador de comandos chmod.">
+
+    <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Hojas de Estilo Base y Propias -->
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        .app-workspace-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-medium);
-            border-radius: var(--radius-xl);
-            padding: 3rem 2.5rem;
-            max-width: 900px;
-            margin: 2rem auto;
-            text-align: center;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--shadow-card);
-        }
-        .module-tag {
-            display: inline-block;
-            background: rgba(168, 85, 247, 0.15);
-            color: var(--accent-violet-light);
-            padding: 0.35rem 0.85rem;
-            border-radius: 100px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-        .workspace-btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+    <!-- Luces Ambientales de Fondo -->
     <div class="ambient-glow" aria-hidden="true">
-        <div class="ambient-orb ambient-orb-1"></div>
-        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-1"
+            style="background: radial-gradient(circle, rgba(245, 158, 11, 0.35) 0%, transparent 70%);"></div>
+        <div class="ambient-orb ambient-orb-2"
+            style="background: radial-gradient(circle, rgba(217, 119, 6, 0.25) 0%, transparent 70%);"></div>
     </div>
     <div class="bg-grid-pattern" aria-hidden="true"></div>
 
     <div class="app-wrapper">
+
+        <!-- =================================================================
+             1. HEADER HORIZONTAL
+             ================================================================= -->
         <header class="top-header">
             <div class="header-inner">
-                <a href="../../index.html" class="brand-area" title="Volver al Inicio">
-                    <div class="brand-icon-box">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
+                <a href="../../index.html" class="brand-area" title="Volver al Catálogo">
+                    <div class="brand-icon-box" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="4 17 10 11 4 5" />
+                            <line x1="12" y1="19" x2="20" y2="19" />
                         </svg>
                     </div>
                     <div class="brand-text-box">
-                        <span class="brand-name">Simple<span class="brand-highlight">Apps</span></span>
-                        <span class="brand-tagline">Micro-Tools Suite</span>
+                        <span class="brand-name">Simple<span class="brand-highlight" style="background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Apps</span></span>
+                        <span class="brand-tagline">Permisos Linux #04</span>
                     </div>
                 </a>
+
                 <div class="header-actions">
+                    <div class="server-status-pill">
+                        <span class="status-dot" style="background: #F59E0B; box-shadow: 0 0 8px #F59E0B;"></span>
+                        <span class="server-meta-tag">100% Local</span>
+                        <span class="server-php-tag" style="background: rgba(245, 158, 11, 0.15); color: #FBBF24; border-color: rgba(245, 158, 11, 0.3);">Matemática Binaria</span>
+                    </div>
+
                     <a href="../../index.html" class="btn-subnav-ghost">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <span>Volver al Catálogo</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                        <span>Volver al Dashboard</span>
                     </a>
                 </div>
             </div>
         </header>
 
+        <!-- =================================================================
+             2. CONTENIDO PRINCIPAL
+             ================================================================= -->
         <main class="main-container">
+
+            <!-- Migas de Pan -->
             <div class="breadcrumb-row">
                 <a href="../../index.html" class="footer-link">Inicio</a>
                 <span class="breadcrumb-separator">/</span>
@@ -82,39 +83,610 @@
                 <span class="breadcrumb-item active">Calculadora de Permisos Linux</span>
             </div>
 
-            <div class="app-workspace-card">
-                <span class="module-tag">MÓDULO #04 EN PREPARACIÓN</span>
-                <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 1rem;">
-                    Calculadora de Permisos Linux
+            <!-- Título y Encabezado de la Herramienta -->
+            <div style="margin-bottom: 2rem;">
+                <div class="hero-tag"
+                    style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.35); color: #FBBF24;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="4 17 10 11 4 5" />
+                        <line x1="12" y1="19" x2="20" y2="19" />
+                    </svg>
+                    Módulo #04 • Permisos UNIX/Linux & Generador Chmod
+                </div>
+                <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 0.5rem;">
+                    Calculadora de Permisos <span class="glow-text" style="text-shadow: 0 0 20px rgba(245, 158, 11, 0.5); color: #FBBF24;">Linux & Unix</span>
                 </h1>
-                <p class="hero-description" style="max-width: 600px; margin: 0 auto 1.5rem;">
-                    Calculadora interactiva visual de permisos Chmod / Octal.
+                <p class="hero-description" style="max-width: 820px;">
+                    Conversión bidireccional instantánea entre notación octal (3 y 4 dígitos), formato simbólico (<code style="color: #38BDF8;">rwxr-xr-x</code>) y matriz de bits. Incluye permisos especiales (SUID, SGID, Sticky), calculadora de umask y generador de comandos listos para terminal.
                 </p>
-                <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 1.5rem; max-width: 650px; margin: 0 auto; color: var(--text-secondary); font-size: 0.9rem;">
-                    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">Arquitectura Asignada:</strong>
-                    HTML5 + Vanilla JavaScript (100% Local y Offline).<br>
-                    Listo para codificar la interfaz operativa específica de esta micro-app.
+            </div>
+
+            <!-- GRID PRINCIPAL DE LA APLICACIÓN -->
+            <div class="permissions-layout">
+
+                <!-- =========================================================
+                     BLOQUE 1: SINCRONIZADOR DE NOTACIONES (Hero Card)
+                     ========================================================= -->
+                <div class="perm-card col-span-12">
+                    <div class="card-header-clean">
+                        <div class="card-title-group">
+                            <div class="card-title-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 10v12"/>
+                                    <path d="M15 10v12"/>
+                                    <path d="M11 14v8"/>
+                                    <path d="M4 10h16"/>
+                                    <path d="M2 10l10-8 10 8"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="card-title-text">Sincronizador Bidireccional de Formatos</h2>
+                                <span class="card-subtitle-text">Modifica el octal o el texto simbólico; todo se calcula en tiempo real.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notation-hero-grid">
+                        <!-- Octal -->
+                        <div class="notation-box">
+                            <div class="notation-label">
+                                <span>Notación Octal (3 o 4 dígitos)</span>
+                                <span style="font-size: 0.7rem; color: var(--perm-amber-light);">Editable</span>
+                            </div>
+                            <div class="notation-input-wrapper">
+                                <input type="text" id="inputOctal" class="notation-main-input octal-large-input" value="755" maxlength="4" autocomplete="off" spellcheck="false" title="Escribe un valor octal de 3 o 4 dígitos (0-7)">
+                                <button type="button" class="btn-notation-copy" id="btnCopyOctal" title="Copiar notación octal">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                </button>
+                            </div>
+                            <div class="octal-digits-row">
+                                <div class="octal-digit-chip" title="Bits Especiales (SUID=4, SGID=2, Sticky=1)">
+                                    <span class="digit-num" id="octalSpecialDigit">0</span>
+                                    <span class="digit-name">Special</span>
+                                </div>
+                                <div class="octal-digit-chip" title="Propietario (r=4, w=2, x=1)">
+                                    <span class="digit-num" id="octalUserDigit">7</span>
+                                    <span class="digit-name">Owner (u)</span>
+                                </div>
+                                <div class="octal-digit-chip" title="Grupo (r=4, w=2, x=1)">
+                                    <span class="digit-num" id="octalGroupDigit">5</span>
+                                    <span class="digit-name">Group (g)</span>
+                                </div>
+                                <div class="octal-digit-chip" title="Otros (r=4, w=2, x=1)">
+                                    <span class="digit-num" id="octalOthersDigit">5</span>
+                                    <span class="digit-name">Others (o)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Simbólico -->
+                        <div class="notation-box">
+                            <div class="notation-label">
+                                <span>Notación Simbólica (<code style="color:#38BDF8;">ls -l</code>)</span>
+                                <div style="display:flex; align-items:center; gap:0.4rem;">
+                                    <label for="fileTypeSelect" style="font-size:0.7rem; color:var(--text-muted); text-transform:none;">Tipo:</label>
+                                    <select id="fileTypeSelect" style="background:#0F172A; border:1px solid rgba(255,255,255,0.15); color:#FFF; font-family:var(--font-mono); font-size:0.75rem; border-radius:4px; padding:0.15rem 0.4rem; outline:none; cursor:pointer;">
+                                        <option value="d">Directorio (d)</option>
+                                        <option value="-">Archivo (-)</option>
+                                        <option value="l">Enlace (l)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="notation-input-wrapper">
+                                <input type="text" id="inputSymbolic" class="notation-main-input symbolic-large-input" value="drwxr-xr-x" maxlength="10" autocomplete="off" spellcheck="false" title="Escribe una cadena simbólica (ej: -rwxr-xr-x o rwxr-xr-x)">
+                                <button type="button" class="btn-notation-copy" id="btnCopySymbolic" title="Copiar notación simbólica">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                </button>
+                            </div>
+                            <div class="binary-strip">
+                                <span>Representación Binaria (Bits):</span>
+                                <span class="binary-badge" id="binaryDisplay">111 101 101</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="workspace-btn-group">
-                    <a href="../../index.html" class="btn-launch-app" style="max-width: 250px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <span>Volver al Dashboard</span>
-                    </a>
+                <!-- =========================================================
+                     BLOQUE 2: MATRIZ DE CHECKBOXES INTERACTIVA
+                     ========================================================= -->
+                <div class="perm-card col-span-7">
+                    <div class="card-header-clean">
+                        <div class="card-title-group">
+                            <div class="card-title-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="m9 12 2 2 4-4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="card-title-text">Matriz Interactiva de Permisos</h3>
+                                <span class="card-subtitle-text">Haz clic en cada casilla para alternar lectura, escritura y ejecución.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="matrix-table-wrapper">
+                        <table class="permissions-matrix-table">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: left; padding-left: 0.5rem; width: 140px;">Permiso</th>
+                                    <th class="th-category">
+                                        <span class="cat-name">Propietario</span>
+                                        <span class="cat-sub">User (u)</span>
+                                    </th>
+                                    <th class="th-category">
+                                        <span class="cat-name">Grupo</span>
+                                        <span class="cat-sub">Group (g)</span>
+                                    </th>
+                                    <th class="th-category">
+                                        <span class="cat-name">Otros</span>
+                                        <span class="cat-sub">Others (o)</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Fila Lectura (r = 4) -->
+                                <tr>
+                                    <td class="td-perm-label">
+                                        <div class="perm-label-title">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                            <span>Lectura (r)</span>
+                                        </div>
+                                        <span class="perm-label-value">Valor: 4</span>
+                                    </td>
+                                    <td class="td-perm-cell">
+                                        <label class="perm-check-label" for="chk_u_r">
+                                            <input type="checkbox" id="chk_u_r" class="perm-checkbox" checked>
+                                            <span class="perm-check-text">r (4)</span>
+                                        </label>
+                                    </td>
+                                    <td class="td-perm-cell">
+                                        <label class="perm-check-label" for="chk_g_r">
+                                            <input type="checkbox" id="chk_g_r" class="perm-checkbox" checked>
+                                            <span class="perm-check-text">r (4)</span>
+                                        </label>
+                                    </td>
+                                    <td class="td-perm-cell">
+                                        <label class="perm-check-label" for="chk_o_r">
+                                            <input type="checkbox" id="chk_o_r" class="perm-checkbox" checked>
+                                            <span class="perm-check-text">r (4)</span>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <!-- Fila Escritura (w = 2) -->
+                                <tr>
+                                    <td class="td-perm-label">
+                                        <div class="perm-label-title">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                            <span>Escritura (w)</span>
+                                        </div>
+                                        <span class="perm-label-value">Valor: 2</span>
+                                    </td>
+                                    <td class="td-perm-cell">
+                                        <label class="perm-check-label" for="chk_u_w">
+                                            <input type="checkbox" id="chk_u_w" class="perm-checkbox" checked>
+                                            <span class="perm-check-text">w (2)</span>
+                                        </label>
+                                    </td>
+                                    <td class="td-perm-cell">
+                                        <label class="perm-check-label" for="chk_g_w">
+                                            <input type="checkbox" id="chk_g_w" class="perm-checkbox">
+                                            <span class="perm-check-text">w (2)</span>
+                                        </label>
+                                    </td>
+                                    <td class="td-perm-cell">
+                                        <label class="perm-check-label" for="chk_o_w">
+                                            <input type="checkbox" id="chk_o_w" class="perm-checkbox">
+                                            <span class="perm-check-text">w (2)</span>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <!-- Fila Ejecución (x = 1) -->
+                                <tr>
+                                    <td class="td-perm-label">
+                                        <div class="perm-label-title">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                            <span>Ejecutar (x)</span>
+                                        </div>
+                                        <span class="perm-label-value">Valor: 1</span>
+                                    </td>
+                                    <td class="td-perm-cell">
+                                        <label class="perm-check-label" for="chk_u_x">
+                                            <input type="checkbox" id="chk_u_x" class="perm-checkbox" checked>
+                                            <span class="perm-check-text">x (1)</span>
+                                        </label>
+                                    </td>
+                                    <td class="td-perm-cell">
+                                        <label class="perm-check-label" for="chk_g_x">
+                                            <input type="checkbox" id="chk_g_x" class="perm-checkbox" checked>
+                                            <span class="perm-check-text">x (1)</span>
+                                        </label>
+                                    </td>
+                                    <td class="td-perm-cell">
+                                        <label class="perm-check-label" for="chk_o_x">
+                                            <input type="checkbox" id="chk_o_x" class="perm-checkbox" checked>
+                                            <span class="perm-check-text">x (1)</span>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <!-- Botones de acción rápida por columna -->
+                                <tr>
+                                    <td style="font-size: 0.72rem; color: var(--text-muted); text-align: left; padding: 0.5rem;">
+                                        Acción rápida:
+                                    </td>
+                                    <td>
+                                        <div class="matrix-quick-actions">
+                                            <button type="button" class="btn-col-action" data-target="user" data-val="7" title="rwx">7 Todo</button>
+                                            <button type="button" class="btn-col-action" data-target="user" data-val="6" title="rw-">6 RW</button>
+                                            <button type="button" class="btn-col-action" data-target="user" data-val="4" title="r--">4 R</button>
+                                            <button type="button" class="btn-col-action" data-target="user" data-val="0" title="---">0 Nada</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="matrix-quick-actions">
+                                            <button type="button" class="btn-col-action" data-target="group" data-val="7" title="rwx">7 Todo</button>
+                                            <button type="button" class="btn-col-action" data-target="group" data-val="5" title="r-x">5 RX</button>
+                                            <button type="button" class="btn-col-action" data-target="group" data-val="4" title="r--">4 R</button>
+                                            <button type="button" class="btn-col-action" data-target="group" data-val="0" title="---">0 Nada</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="matrix-quick-actions">
+                                            <button type="button" class="btn-col-action" data-target="others" data-val="7" title="rwx">7 Todo</button>
+                                            <button type="button" class="btn-col-action" data-target="others" data-val="5" title="r-x">5 RX</button>
+                                            <button type="button" class="btn-col-action" data-target="others" data-val="4" title="r--">4 R</button>
+                                            <button type="button" class="btn-col-action" data-target="others" data-val="0" title="---">0 Nada</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bits Especiales -->
+                    <div class="special-bits-panel">
+                        <div class="special-bits-header">
+                            <span class="special-bits-title">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                Permisos Especiales (Special Bits)
+                            </span>
+                            <span style="font-size: 0.72rem; color: var(--text-muted);">SUID (4000) • SGID (2000) • Sticky (1000)</span>
+                        </div>
+
+                        <div class="special-grid">
+                            <!-- SUID -->
+                            <div class="special-box">
+                                <div class="special-box-top">
+                                    <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;" for="chk_sp_suid">
+                                        <input type="checkbox" id="chk_sp_suid" class="cli-flag-checkbox">
+                                        <span class="special-bit-code">SUID (SetUID)</span>
+                                    </label>
+                                    <span class="special-bit-val">4000 / 's'</span>
+                                </div>
+                                <p class="special-desc">Se ejecuta con los privilegios del propietario del archivo (ej. root).</p>
+                            </div>
+
+                            <!-- SGID -->
+                            <div class="special-box">
+                                <div class="special-box-top">
+                                    <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;" for="chk_sp_sgid">
+                                        <input type="checkbox" id="chk_sp_sgid" class="cli-flag-checkbox">
+                                        <span class="special-bit-code">SGID (SetGID)</span>
+                                    </label>
+                                    <span class="special-bit-val">2000 / 's'</span>
+                                </div>
+                                <p class="special-desc">Hereda grupo del directorio o corre con permisos del grupo creador.</p>
+                            </div>
+
+                            <!-- Sticky Bit -->
+                            <div class="special-box">
+                                <div class="special-box-top">
+                                    <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;" for="chk_sp_sticky">
+                                        <input type="checkbox" id="chk_sp_sticky" class="cli-flag-checkbox">
+                                        <span class="special-bit-code">Sticky Bit</span>
+                                    </label>
+                                    <span class="special-bit-val">1000 / 't'</span>
+                                </div>
+                                <p class="special-desc">En directorios como <code style="color:#FFF;">/tmp</code>, solo el dueño puede borrar sus propios archivos.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- =========================================================
+                     BLOQUE 3: AUDITOR DE SEGURIDAD & TRADUCTOR HUMANO
+                     ========================================================= -->
+                <div class="perm-card col-span-5">
+                    <div class="card-header-clean">
+                        <div class="card-title-group">
+                            <div class="card-title-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="16" x2="12" y2="12"/>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="card-title-text">Auditor & Lenguaje Natural</h3>
+                                <span class="card-subtitle-text">Diagnóstico de seguridad y explicación en español.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Banner Dinámico de Auditoría de Seguridad -->
+                    <div class="audit-status-banner audit-safe" id="auditBanner">
+                        <div class="audit-icon-box" id="auditIcon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div class="audit-content-box">
+                            <h4 id="auditTitle">Seguridad Estándar Unix / Web</h4>
+                            <p id="auditReason">Cumple el principio de privilegios mínimos para servidores web y documentación pública.</p>
+                        </div>
+                    </div>
+
+                    <!-- Desglose Humano -->
+                    <div class="human-roles-grid">
+                        <div class="human-role-row" id="humanUser">
+                            <strong>Propietario (User):</strong> Puede leer, modificar y ejecutar este archivo.
+                        </div>
+                        <div class="human-role-row" id="humanGroup">
+                            <strong>Grupo (Group):</strong> Puede leer y ejecutar, pero NO modificar.
+                        </div>
+                        <div class="human-role-row" id="humanOthers">
+                            <strong>Otros (Others):</strong> Cualquier usuario del sistema puede únicamente leer y ejecutar.
+                        </div>
+                        <div class="human-role-row" id="humanSpecial" style="display: none; border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.05); color: var(--perm-amber-light);">
+                        </div>
+                    </div>
+
+                    <!-- Mini Guía de Valores -->
+                    <div style="margin-top: 1.25rem; padding: 0.85rem 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed rgba(255,255,255,0.06); font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">
+                        <strong style="color: #FFF;">Regla Nemotécnica Octal:</strong><br>
+                        Lectura = <strong style="color:var(--perm-amber-light);">4</strong> • 
+                        Escritura = <strong style="color:var(--perm-amber-light);">2</strong> • 
+                        Ejecutar = <strong style="color:var(--perm-amber-light);">1</strong>.<br>
+                        Suma los bits para obtener cada dígito (ej: 4+2+1 = <strong>7</strong>, 4+0+1 = <strong>5</strong>).
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     BLOQUE 4: GENERADOR DE COMANDOS CLI (Chmod & Chown)
+                     ========================================================= -->
+                <div class="perm-card col-span-12">
+                    <div class="card-header-clean">
+                        <div class="card-title-group">
+                            <div class="card-title-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="4 17 10 11 4 5"/>
+                                    <line x1="12" y1="19" x2="20" y2="19"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="card-title-text">Generador Inteligente de Comandos Terminal</h3>
+                                <span class="card-subtitle-text">Comandos listos para copiar y pegar directamente en bash, zsh o scripts SSH.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Barra de Parámetros CLI -->
+                    <div class="cli-options-bar">
+                        <div class="cli-input-group">
+                            <span class="cli-input-label">Ruta / Archivo:</span>
+                            <input type="text" id="targetPath" class="cli-text-input" value="/var/www/html" placeholder="/ruta/al/archivo_o_carpeta">
+                        </div>
+
+                        <div class="cli-flags-group">
+                            <label class="cli-flag-label" for="flagRecursive">
+                                <input type="checkbox" id="flagRecursive" class="cli-flag-checkbox">
+                                <span>-R (Recursivo)</span>
+                            </label>
+                            <label class="cli-flag-label" for="flagVerbose">
+                                <input type="checkbox" id="flagVerbose" class="cli-flag-checkbox">
+                                <span>-v (Verbose)</span>
+                            </label>
+                            <label class="cli-flag-label" for="flagChanges">
+                                <input type="checkbox" id="flagChanges" class="cli-flag-checkbox">
+                                <span>-c (Solo cambios)</span>
+                            </label>
+                        </div>
+
+                        <div class="cli-input-group" style="max-width: 280px;">
+                            <span class="cli-input-label">Usuario:Grupo:</span>
+                            <div style="display: flex; gap: 0.35rem; width: 100%;">
+                                <input type="text" id="userOwner" class="cli-text-input" value="www-data" style="width: 50%;" title="Usuario">
+                                <input type="text" id="groupOwner" class="cli-text-input" value="www-data" style="width: 50%;" title="Grupo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grid de Comandos Generados -->
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                        <!-- 1. Chmod Octal Canónico -->
+                        <div class="terminal-command-card">
+                            <div class="terminal-header-mini">
+                                <span class="terminal-title-tag">1. Comando Chmod Octal</span>
+                                <button type="button" class="btn-copy-command" data-copy-target="cmdChmodOctal">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                    <span>Copiar</span>
+                                </button>
+                            </div>
+                            <div class="terminal-code-row">
+                                <code class="terminal-code-text" id="cmdChmodOctal">chmod 755 /var/www/html</code>
+                            </div>
+                        </div>
+
+                        <!-- 2. Chmod Simbólico Absoluto -->
+                        <div class="terminal-command-card">
+                            <div class="terminal-header-mini">
+                                <span class="terminal-title-tag">2. Comando Chmod Simbólico Absoluto</span>
+                                <button type="button" class="btn-copy-command" data-copy-target="cmdChmodSymbolic">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                    <span>Copiar</span>
+                                </button>
+                            </div>
+                            <div class="terminal-code-row">
+                                <code class="terminal-code-text" id="cmdChmodSymbolic">chmod u=rwx,g=rx,o=rx /var/www/html</code>
+                            </div>
+                        </div>
+
+                        <!-- 3. Buenas Prácticas: Separar Carpetas de Archivos con Find -->
+                        <div class="terminal-command-card" style="background: rgba(14, 20, 32, 0.9); border-color: rgba(56, 189, 248, 0.2);">
+                            <div class="terminal-header-mini">
+                                <span class="terminal-title-tag" style="color: #38BDF8;">3. Buenas Prácticas SysAdmin / Web (Find & Chmod)</span>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button type="button" class="btn-copy-command" data-copy-target="cmdFindDirs" title="Copiar comando para carpetas (755)">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                        <span>Copiar Carpetas (755)</span>
+                                    </button>
+                                    <button type="button" class="btn-copy-command" data-copy-target="cmdFindFiles" title="Copiar comando para archivos (644)">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                        <span>Copiar Archivos (644)</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <div class="terminal-code-row">
+                                    <code class="terminal-code-text" id="cmdFindDirs" style="color: #38BDF8;">find /var/www/html -type d -exec chmod 755 {} +</code>
+                                </div>
+                                <div class="terminal-code-row">
+                                    <code class="terminal-code-text" id="cmdFindFiles" style="color: #A78BFA;">find /var/www/html -type f -exec chmod 644 {} +</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Asignación de Propietario (Chown) -->
+                        <div class="terminal-command-card">
+                            <div class="terminal-header-mini">
+                                <span class="terminal-title-tag">4. Comando Chown (Dueño y Grupo)</span>
+                                <button type="button" class="btn-copy-command" data-copy-target="cmdChown">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                    <span>Copiar</span>
+                                </button>
+                            </div>
+                            <div class="terminal-code-row">
+                                <code class="terminal-code-text" id="cmdChown" style="color: #FBBF24;">chown www-data:www-data /var/www/html</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     BLOQUE 5: CALCULADORA DE UMASK
+                     ========================================================= -->
+                <div class="perm-card col-span-12">
+                    <div class="card-header-clean">
+                        <div class="card-title-group">
+                            <div class="card-title-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="card-title-text">Calculadora Interactiva de Umask</h3>
+                                <span class="card-subtitle-text">Calcula los permisos por omisión asignados al crear archivos (base 666) y directorios (base 777).</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="umask-interactive-row">
+                        <div class="umask-input-box">
+                            <label for="inputUmask" style="font-size: 0.85rem; font-weight: 600; color: #FFF;">Valor Umask:</label>
+                            <input type="text" id="inputUmask" class="umask-field" value="022" maxlength="4" autocomplete="off" spellcheck="false" title="Introduce el valor umask (ej: 022, 027, 077)">
+                        </div>
+                        <button type="button" class="btn-subnav-ghost" id="btnApplyUmask" style="padding: 0.45rem 0.9rem; font-size: 0.8rem;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Cargar resultado en la Calculadora</span>
+                        </button>
+                    </div>
+
+                    <div class="umask-results-grid">
+                        <!-- Archivo Base 666 -->
+                        <div class="umask-result-card">
+                            <div class="umask-target-title">Nuevos Archivos Creados (Base 666)</div>
+                            <div class="umask-octal-show" id="umaskFileOctal">644</div>
+                            <div class="umask-sym-show" id="umaskFileSym">-rw-r--r--</div>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">
+                                Operación lógica: <code style="color: #FFF;">666 & ~umask</code>. Los bits del umask se restan de los permisos máximos.
+                            </p>
+                        </div>
+
+                        <!-- Directorio Base 777 -->
+                        <div class="umask-result-card">
+                            <div class="umask-target-title">Nuevos Directorios Creados (Base 777)</div>
+                            <div class="umask-octal-show" id="umaskDirOctal" style="color: var(--perm-amber-light);">755</div>
+                            <div class="umask-sym-show" id="umaskDirSym">drwxr-xr-x</div>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">
+                                Operación lógica: <code style="color: #FFF;">777 & ~umask</code>. Garantiza acceso de navegación (<code style="color:var(--perm-amber-light);">x</code>) para carpetas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     BLOQUE 6: BIBLIOTECA DE PRESETS Y PLANTILLAS
+                     ========================================================= -->
+                <div class="perm-card col-span-12">
+                    <div class="card-header-clean">
+                        <div class="card-title-group">
+                            <div class="card-title-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                                    <path d="M6 6h10"/>
+                                    <path d="M6 10h10"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="card-title-text">Plantillas Habituales (Presets en 1 Clic)</h3>
+                                <span class="card-subtitle-text">Selecciona configuraciones estándar de la industria listas para aplicar.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pestañas de categorías -->
+                    <div class="presets-category-tabs">
+                        <button type="button" class="btn-preset-tab active" data-category="all">Todos (12)</button>
+                        <button type="button" class="btn-preset-tab" data-category="web">Web & Servidores</button>
+                        <button type="button" class="btn-preset-tab" data-category="ssh">Seguridad SSH & Llaves</button>
+                        <button type="button" class="btn-preset-tab" data-category="scripts">Scripts & Binarios</button>
+                        <button type="button" class="btn-preset-tab" data-category="special">Especiales & SUID</button>
+                    </div>
+
+                    <!-- Contenedor dinámico de tarjetas de preset -->
+                    <div class="presets-cards-grid" id="presetsContainer"></div>
+                </div>
+
             </div>
+
         </main>
 
+        <!-- =================================================================
+             3. FOOTER
+             ================================================================= -->
         <footer class="site-footer">
             <div class="footer-inner">
                 <div class="footer-left">
-                    <span><strong>SimpleApps Suite</strong> • Módulo #04</span>
+                    <span><strong>SimpleApps Suite</strong> • Calculadora de Permisos Linux v1.0</span>
+                    <span class="footer-badge-tech" style="background: rgba(245, 158, 11, 0.12); color: #FBBF24; border-color: rgba(245, 158, 11, 0.25);">
+                        Matemática Binaria • SUID/SGID/Sticky • Umask Calculator • 100% Offline
+                    </span>
                 </div>
                 <div class="footer-right">
-                    <a href="../../index.html" class="footer-link">Ver las 10 Apps</a>
+                    <a href="../../index.html" class="footer-link">← Volver al Catálogo de Micro-Apps</a>
                 </div>
             </div>
         </footer>
+
     </div>
+
+    <!-- Contenedor para Notificaciones Toast -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts de la Aplicación -->
+    <script src="permissions-engine.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>

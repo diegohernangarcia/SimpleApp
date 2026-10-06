@@ -321,8 +321,14 @@
     color: var(--text-secondary);
 }
 
+:root,
+html {
+    color-scheme: dark;
+}
+
 .parsing-select {
-    background: var(--bg-input);
+    color-scheme: dark;
+    background-color: #0F172A;
     border: 1px solid var(--border-subtle);
     color: var(--text-primary);
     font-size: 0.82rem;
@@ -330,6 +336,59 @@
     border-radius: var(--radius-sm);
     outline: none;
     cursor: pointer;
+}
+
+.parsing-select option,
+select option {
+    background-color: #0F172A !important;
+    color: #F8FAFC !important;
+    padding: 0.5rem 0.75rem;
+}
+
+.parsing-select option:hover,
+.parsing-select option:focus,
+.parsing-select option:checked,
+select option:hover,
+select option:focus,
+select option:checked {
+    background-color: #1E293B !important;
+    color: #10B981 !important;
+}
+
+@supports (appearance: base-select) {
+    .parsing-select,
+    select {
+        appearance: base-select;
+    }
+
+    ::picker(select) {
+        appearance: base-select;
+        background-color: #0F172A !important;
+        border: 1px solid rgba(16, 185, 129, 0.35) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(16, 185, 129, 0.15) !important;
+        padding: 5px !important;
+        color: #F8FAFC !important;
+        margin-top: 4px;
+        backdrop-filter: blur(16px);
+    }
+
+    ::picker(select) option {
+        background-color: transparent !important;
+        color: #F8FAFC !important;
+        padding: 8px 12px !important;
+        border-radius: 6px !important;
+        font-size: 0.82rem !important;
+        cursor: pointer;
+        transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    ::picker(select) option:hover,
+    ::picker(select) option:focus,
+    ::picker(select) option:checked {
+        background-color: #1E293B !important;
+        color: #10B981 !important;
+    }
 }
 
 .parsing-checkbox-label {
