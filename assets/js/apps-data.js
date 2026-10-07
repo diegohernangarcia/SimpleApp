@@ -200,16 +200,16 @@ const APPS_DATA = [
         shortTitle: "Consolidador Excel",
         category: "excel",
         categoryName: "Archivos & Excel",
-        color: "#E11D48", // Rose
-        gradient: "linear-gradient(135deg, #E11D48 0%, #F43F5E 100%)",
+        color: "#10B981", // Emerald
+        gradient: "linear-gradient(135deg, #059669 0%, #10B981 100%)",
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>`,
         description: "Une y concatena decenas de archivos Excel o CSV que comparten la misma estructura de columnas en un solo libro maestro consolidado, agregando columna con el nombre del archivo origen.",
         features: ["Múltiples Archivos", "Columna de Origen", "Omitir Cabeceras Repetidas", "Soporte Multi-Hoja"],
-        status: "en-proceso",
+        status: "desarrollada",
         targetUrl: "apps/excel-consolidator/",
         tech: "Consolidador Multi-Buffer / SheetJS",
         specs: {
-            input: "2 o más archivos .xlsx, .xls o .csv con columnas similares",
+            input: "2 o más archivos .xlsx, .xls, ods o .csv con columnas similares",
             output: "Archivo maestro consolidado único en formato Excel .xlsx",
             execution: "Lectura secuencial y fusión inteligente de esquemas"
         }

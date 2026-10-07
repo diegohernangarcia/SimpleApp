@@ -30,6 +30,7 @@ A continuación se detalla la documentación técnica de los módulos completado
 | **#07** | **Cruzador y Conciliador de Tablas (JOIN Express)** | Motor relacional en memoria O(N+M) para VLOOKUP / SQL JOIN (Inner, Left, Right, Full Outer, Exclusivos), claves compuestas y conciliación de saldos con auditoría de descuadres. | [Manual Módulo #07](./07-table-cross-join.md) |
 | **#08** | **Detector de Duplicados con Jerarquía** | Motor heurístico determinista para deduplicación según campos clave, preservación por jerarquía (más completa, más reciente, mayor valor, reglas condicionales) y doble salida con auditoría de descartes justificados. | [Manual Módulo #08](./08-duplicate-detector.md) |
 | **#09** | **Generador SQL INSERT / UPDATE desde Excel** | Generador de sentencias SQL en bloques masivos (INSERT, UPSERT, REPLACE, UPDATE) con tipado heurístico, escape seguro y soporte multi-dialecto. | [Manual Módulo #09](./09-sql-generator.md) |
+| **#10** | **Unificador / Consolidador de Archivos Excel** | Motor de fusión multi-buffer para concatenar decenas de planillas (.xlsx, .xls, .ods, .csv) en un libro maestro con columna de origen y omisión de cabeceras. | [Manual Módulo #10](./10-excel-consolidator.md) |
 
 ---
 

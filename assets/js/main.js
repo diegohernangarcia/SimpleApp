@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         dom.appsContainer.innerHTML = state.filteredApps.map(app => {
             const isFav = state.favorites.includes(app.id);
-            const isDeveloped = (app.status === 'desarrollada' || app.status === 'listo');
+            const isDeveloped = ['desarrollada', 'listo', 'disponible', 'operativo'].includes(app.status);
             const featuresHtml = app.features.map(f => `<span class="feature-pill">${f}</span>`).join('');
 
             return `
@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const app = state.apps.find(a => a.id === appId);
         if (!app || !dom.appModal) return;
 
-        const isDeveloped = (app.status === 'desarrollada' || app.status === 'listo');
+        const isDeveloped = ['desarrollada', 'listo', 'disponible', 'operativo'].includes(app.status);
         dom.modalTitle.textContent = app.title;
         dom.modalSubtitle.innerHTML = `
             <span>Módulo #${app.number} • ${app.categoryName} • ${app.tech}</span>

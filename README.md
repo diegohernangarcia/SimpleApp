@@ -22,7 +22,7 @@ Colección de 10 herramientas ágiles, directas y de alto rendimiento diseñadas
 | **07** | **Cruzador y Conciliador de Tablas** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #07](docs/07-table-cross-join.md) | Cruza conjuntos de datos por claves compuestas (VLOOKUP / SQL JOIN), concilia saldos e identifica discrepancias. |
 | **08** | **Detector de Duplicados con Jerarquía** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #08](docs/08-duplicate-detector.md) | Identifica filas repetidas y aplica reglas de descarte prioritarias (más completa, más reciente, mayor valor, reglas condicionales) con doble salida y auditoría. |
 | **09** | **Generador SQL INSERT / UPDATE** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #09](docs/09-sql-generator.md) | Transforma tablas Excel o CSV en sentencias SQL masivas (INSERT, UPSERT, REPLACE, UPDATE) con tipado heurístico y escape seguro. |
-| **10** | **Consolidador de Múltiples Excel** | 🔴 **✓ En proceso** (Scaffold) | *En desarrollo* | Fusiona múltiples archivos Excel en una sola hoja maestra con trazabilidad. |
+| **10** | **Unificador / Consolidador de Archivos Excel** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #10](docs/10-excel-consolidator.md) | Une y concatena decenas de archivos Excel o CSV en un solo libro maestro consolidado con columna de origen y omisión de cabeceras. |
 
 ---
 

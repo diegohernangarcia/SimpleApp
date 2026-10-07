@@ -3,75 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unificador / Consolidador de Archivos Excel • SimpleApps</title>
+    <title>Unificador / Consolidador de Archivos Excel • SimpleApps Suite</title>
 
-    <!-- Favicon -->
+    <!-- Favicon Oficial -->
     <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon.png">
     <link rel="shortcut icon" href="../../favicon.ico">
 
+    <!-- Tipografía Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Hojas de Estilo -->
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        .app-workspace-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-medium);
-            border-radius: var(--radius-xl);
-            padding: 3rem 2.5rem;
-            max-width: 900px;
-            margin: 2rem auto;
-            text-align: center;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--shadow-card);
-        }
-        .module-tag {
-            display: inline-block;
-            background: rgba(168, 85, 247, 0.15);
-            color: var(--accent-violet-light);
-            padding: 0.35rem 0.85rem;
-            border-radius: 100px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-        .workspace-btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Efectos de Fondo y Luz Ambiental -->
     <div class="ambient-glow" aria-hidden="true">
-        <div class="ambient-orb ambient-orb-1"></div>
-        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-1" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);"></div>
+        <div class="ambient-orb ambient-orb-2" style="background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, transparent 70%);"></div>
     </div>
     <div class="bg-grid-pattern" aria-hidden="true"></div>
 
     <div class="app-wrapper">
+        <!-- =================================================================
+             1. HEADER PRINCIPAL
+             ================================================================= -->
         <header class="top-header">
             <div class="header-inner">
-                <a href="../../index.html" class="brand-area" title="Volver al Inicio">
-                    <div class="brand-icon-box">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
+                <a href="../../index.html" class="brand-area" title="Volver al Inicio de SimpleApps">
+                    <div class="brand-icon-box" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2)); border-color: rgba(16, 185, 129, 0.4);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.2">
+                            <path d="m7.5 4.27 9 5.15"/>
+                            <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                            <path d="m3.3 7 8.7 5 8.7-5"/>
+                            <path d="M12 22V12"/>
                         </svg>
                     </div>
                     <div class="brand-text-box">
-                        <span class="brand-name">Simple<span class="brand-highlight">Apps</span></span>
-                        <span class="brand-tagline">Micro-Tools Suite</span>
+                        <span class="brand-name">Excel <span class="brand-highlight" style="color: var(--emerald-light);">Consolidator</span></span>
+                        <span class="brand-tagline">Multi-Buffer Workbook Merger</span>
                     </div>
                 </a>
+
+                <!-- Acciones del Header -->
                 <div class="header-actions">
-                    <a href="../../index.html" class="btn-subnav-ghost">
+                    <!-- Botón Prominente de Ayuda y Guía -->
+                    <button type="button" class="btn-help-guide" id="btnOpenHelpModal" title="Manual Operativo y Guía de Uso del Módulo">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 Ayuda & Guía de Uso</span>
+                    </button>
+
+                    <div class="server-status-pill" title="Procesamiento 100% en tu navegador">
+                        <span class="status-dot" style="background: #10B981; box-shadow: 0 0 8px #10B981;"></span>
+                        <span class="server-meta-tag">100% Local</span>
+                        <span class="server-php-tag" style="background: rgba(16, 185, 129, 0.15); color: #6EE7B7;">Zero-Upload Safe</span>
+                    </div>
+
+                    <a href="../../index.html" class="btn-subnav-ghost" title="Volver al Catálogo de Apps">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
                         <span>Volver al Catálogo</span>
                     </a>
@@ -79,48 +70,582 @@
             </div>
         </header>
 
+        <!-- =================================================================
+             2. CONTENIDO PRINCIPAL
+             ================================================================= -->
         <main class="main-container">
+            <!-- Breadcrumbs -->
             <div class="breadcrumb-row">
                 <a href="../../index.html" class="footer-link">Inicio</a>
                 <span class="breadcrumb-separator">/</span>
                 <a href="../../index.html" class="footer-link">Micro-Apps</a>
                 <span class="breadcrumb-separator">/</span>
-                <span class="breadcrumb-item active">Unificador / Consolidador de Archivos Excel</span>
+                <span class="breadcrumb-item active" style="color: var(--emerald-light);">Unificador / Consolidador de Archivos Excel</span>
             </div>
 
-            <div class="app-workspace-card">
-                <span class="module-tag">MÓDULO #10 EN PREPARACIÓN</span>
-                <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 1rem;">
-                    Unificador / Consolidador de Archivos Excel
+            <!-- Hero Section -->
+            <section class="hero-consolidator">
+                <div class="consolidator-tag">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                    MÓDULO #10 • ARCHIVOS &amp; EXCEL • CONSOLIDADOR MULTI-BUFFER / SHEETJS
+                </div>
+                <h1 class="hero-title-emerald">
+                    Unificador / Consolidador de <span class="glow-text-emerald">Archivos Excel</span>
                 </h1>
-                <p class="hero-description" style="max-width: 600px; margin: 0 auto 1.5rem;">
-                    Une y consolida múltiples archivos Excel en un libro maestro.
+                <p class="hero-description">
+                    Une y concatena decenas de archivos <strong>Excel (.xlsx, .xls), OpenDocument (.ods) o CSV/TSV</strong> 
+                    que comparten estructura de columnas en un <strong>solo libro maestro consolidado</strong>, 
+                    agregando automáticamente columna con el nombre del archivo origen y omitiendo cabeceras repetidas.
                 </p>
-                <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 1.5rem; max-width: 650px; margin: 0 auto; color: var(--text-secondary); font-size: 0.9rem;">
-                    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">Arquitectura Asignada:</strong>
-                    HTML5 + Vanilla JavaScript (100% Local y Offline).<br>
-                    Listo para codificar la interfaz operativa específica de esta micro-app.
+
+                <!-- Barra de Presets Rápidos y Ayuda Hero -->
+                <div class="presets-strip">
+                    <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Casos de Prueba:</span>
+                    <button type="button" class="preset-btn" id="btnPresetSales" title="Cargar 3 archivos de ventas mensuales">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span>Ventas Mensuales (Ene, Feb, Mar)</span>
+                    </button>
+                    <button type="button" class="preset-btn" id="btnPresetStores" title="Cargar 3 sucursales regionales">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                        <span>Inventario Sucursales (3 Tiendas)</span>
+                    </button>
+                    <button type="button" class="preset-btn" id="btnPresetExpenses" title="Cargar archivos de gastos con columnas desordenadas">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span>Gastos Operativos (Outer Union)</span>
+                    </button>
+
+                    <button type="button" class="btn-help-hero" id="btnOpenHelpHero" title="Ver guía interactiva y explicaciones">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 ¿Cómo funciona? Guía & Ayuda</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 1: CARGA Y GESTIÓN DE ARCHIVOS
+                 ============================================================= -->
+            <section class="step-section" id="step1Section">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h2 class="step-title">Carga y Gestión de Archivos a Consolidar</h2>
+                            <p class="step-desc">Arrastra múltiples planillas (.xlsx, .xls, .ods, .csv) o selecciónalas simultáneamente</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep1" title="Ayuda sobre este paso">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Instrucciones Paso 1</span>
+                    </button>
                 </div>
 
-                <div class="workspace-btn-group">
-                    <a href="../../index.html" class="btn-launch-app" style="max-width: 250px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <span>Volver al Dashboard</span>
-                    </a>
+                <!-- Zona de Carga Drag & Drop -->
+                <div class="dropzone-container" id="dropzone" role="button" tabindex="0" aria-label="Zona para arrastrar y soltar archivos Excel">
+                    <input type="file" id="fileInput" multiple accept=".xlsx,.xls,.ods,.csv,.tsv" style="display: none;">
+                    <div class="dropzone-icon-box">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <div class="dropzone-title">Arrastra y suelta aquí tus archivos Excel o CSV</div>
+                    <div class="dropzone-subtitle">Admite selección múltiple simultánea (2 o más archivos de sucursales, meses, lotes)</div>
+                    <button type="button" class="dropzone-btn-select" id="btnSelectFiles">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        <span>Explorar Archivos en tu Equipo</span>
+                    </button>
+                    <div class="dropzone-formats-badge">
+                        <span>Formatos admitidos:</span>
+                        <span class="format-pill">.XLSX</span>
+                        <span class="format-pill">.XLS</span>
+                        <span class="format-pill">.ODS</span>
+                        <span class="format-pill">.CSV</span>
+                        <span class="format-pill">.TSV</span>
+                    </div>
                 </div>
+
+                <!-- Cola de Archivos Cargados -->
+                <div id="filesQueueContainer" style="display: none;">
+                    <div class="files-queue-header">
+                        <div class="files-queue-title">
+                            <span>Archivos en Cola de Fusión</span>
+                            <span class="files-count-badge" id="filesCountBadge">0 archivos</span>
+                        </div>
+                        <div class="files-queue-actions">
+                            <button type="button" class="btn-ghost-sm" id="btnClearFiles" title="Eliminar todos los archivos cargados">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                <span>Limpiar Cola</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="files-list" id="filesList">
+                        <!-- Renderizado dinámico de archivos -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 2: CONFIGURACIÓN DE FUSIÓN & REGLAS
+                 ============================================================= -->
+            <section class="step-section" id="step2Section">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h2 class="step-title">Configuración de Fusión &amp; Reglas de Esquema</h2>
+                            <p class="step-desc">Ajusta cómo se combinan las columnas, el manejo de hojas y la columna de origen</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep2" title="Ayuda sobre este paso">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Instrucciones Paso 2</span>
+                    </button>
+                </div>
+
+                <div class="options-grid">
+                    <!-- Grupo 1: Fusión de Esquema de Columnas -->
+                    <div class="option-group-card">
+                        <h3>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            <span>Modo de Unión de Columnas</span>
+                        </h3>
+
+                        <label class="radio-mode-tile">
+                            <input type="radio" name="schemaMode" value="union" checked>
+                            <div>
+                                <span class="tile-title">Unión Completa (Outer Union - Recomendado)</span>
+                                <p class="tile-desc">Conserva todas las columnas de todos los archivos. Si un archivo carece de una columna, se rellena con celda vacía.</p>
+                            </div>
+                        </label>
+
+                        <label class="radio-mode-tile">
+                            <input type="radio" name="schemaMode" value="intersection">
+                            <div>
+                                <span class="tile-title">Intersección Estricta (Inner Intersection)</span>
+                                <p class="tile-desc">Conserva únicamente las columnas que existen en absolutamente todos los archivos cargados.</p>
+                            </div>
+                        </label>
+
+                        <label class="radio-mode-tile">
+                            <input type="radio" name="schemaMode" value="template">
+                            <div>
+                                <span class="tile-title">Plantilla Maestra (Master Template)</span>
+                                <p class="tile-desc">Usa estrictamente las columnas del primer archivo de la cola como molde obligatorio.</p>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Grupo 2: Metadatos de Origen -->
+                    <div class="option-group-card">
+                        <h3>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            <span>Metadatos de Procedencia</span>
+                        </h3>
+
+                        <label class="checkbox-row">
+                            <input type="checkbox" id="chkAddSourceFile" checked>
+                            <span class="checkbox-label-text">
+                                <strong>Incluir columna con el nombre del archivo origen</strong><br>
+                                <span style="font-size: 0.76rem; color: var(--text-muted);">Identifica de qué planilla proviene cada fila en el libro consolidado.</span>
+                            </span>
+                        </label>
+
+                        <div class="input-sub-row">
+                            <span style="font-size: 0.78rem; color: var(--text-muted);">Nombre de la columna:</span>
+                            <input type="text" id="txtSourceFileColName" value="Archivo_Origen" class="input-text-dark">
+                        </div>
+
+                        <div class="input-sub-row">
+                            <span style="font-size: 0.78rem; color: var(--text-muted);">Posición de la columna:</span>
+                            <select id="selSourceColPos" class="select-dark">
+                                <option value="first" selected>Al inicio (Columna A)</option>
+                                <option value="last">Al final (Última columna)</option>
+                            </select>
+                        </div>
+
+                        <label class="checkbox-row" style="margin-top: 0.5rem;">
+                            <input type="checkbox" id="chkAddSourceSheet">
+                            <span class="checkbox-label-text">
+                                <strong>Incluir columna con el nombre de la hoja origen</strong><br>
+                                <span style="font-size: 0.76rem; color: var(--text-muted);">Útil si tus archivos tienen múltiples pestañas o nombres de mes/área.</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Grupo 3: Tratamiento Multi-Hoja & Limpieza -->
+                    <div class="option-group-card">
+                        <h3>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                            <span>Hojas y Limpieza de Datos</span>
+                        </h3>
+
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-secondary);">Tratamiento de Hojas de Cálculo:</span>
+                            <select id="selSheetMode" class="select-dark" style="width: 100%;">
+                                <option value="first" selected>Consolidar solo la Primera Hoja de cada archivo</option>
+                                <option value="all">Consolidar Todas las Hojas de cada archivo en una sola tabla</option>
+                            </select>
+                        </div>
+
+                        <label class="checkbox-row" style="margin-top: 0.5rem;">
+                            <input type="checkbox" id="chkCaseInsensitive" checked>
+                            <span class="checkbox-label-text">
+                                <strong>Normalizar nombres de columnas (Sin importar mayúsculas/minúsculas)</strong><br>
+                                <span style="font-size: 0.76rem; color: var(--text-muted);">Une "PRECIO", "Precio" y "precio" en la misma columna canónica.</span>
+                            </span>
+                        </label>
+
+                        <label class="checkbox-row">
+                            <input type="checkbox" id="chkTrimWhitespace" checked>
+                            <span class="checkbox-label-text">
+                                <strong>Eliminar espacios sobrantes (Trim en celdas y cabeceras)</strong>
+                            </span>
+                        </label>
+
+                        <label class="checkbox-row">
+                            <input type="checkbox" id="chkRemoveEmptyRows" checked>
+                            <span class="checkbox-label-text">
+                                <strong>Omitir filas completamente vacías o cabeceras repetidas</strong>
+                            </span>
+                        </label>
+
+                        <label class="checkbox-row">
+                            <input type="checkbox" id="chkRemoveDuplicates">
+                            <span class="checkbox-label-text">
+                                <strong>Eliminar filas idénticas duplicadas entre archivos</strong>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Botón Principal de Fusión -->
+            <div class="action-consolidate-strip">
+                <button type="button" class="btn-consolidate-main" id="btnRunConsolidation" disabled>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                        <polyline points="2 17 12 22 22 17"/>
+                        <polyline points="2 12 12 17 22 12"/>
+                    </svg>
+                    <span>Consolidar Archivos Ahora</span>
+                </button>
             </div>
+
+            <!-- =============================================================
+                 PASO 3: RESULTADOS, AUDITORÍA & DESCARGA
+                 ============================================================= -->
+            <section class="step-section" id="step3Section" style="display: none;">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h2 class="step-title">Libro Maestro Consolidado &amp; Auditoría</h2>
+                            <p class="step-desc">Inspecciona el resultado unificado, previsualiza los datos y descarga tu archivo maestro</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep3" title="Ayuda sobre este paso">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Instrucciones Paso 3</span>
+                    </button>
+                </div>
+
+                <!-- Cinta de Métricas en Vivo -->
+                <div class="metrics-ribbon">
+                    <div class="metric-card">
+                        <div class="metric-val" id="metricFiles" style="color: var(--emerald-bright);">0</div>
+                        <div class="metric-label">Archivos Unidos</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-val" id="metricRows" style="color: #FFFFFF;">0</div>
+                        <div class="metric-label">Filas Totales</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-val" id="metricCols" style="color: #38BDF8;">0</div>
+                        <div class="metric-label">Columnas Maestras</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-val" id="metricTime" style="color: #FCD34D;">0 ms</div>
+                        <div class="metric-label">Tiempo de Fusión</div>
+                    </div>
+                </div>
+
+                <!-- Barra de Acciones y Exportación -->
+                <div class="export-bar">
+                    <div style="display: flex; align-items: center; gap: 0.65rem;">
+                        <span style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF;">Nombre del archivo:</span>
+                        <input type="text" id="txtOutputFileName" value="consolidado_maestro.xlsx" class="input-text-dark" style="max-width: 280px;">
+                    </div>
+
+                    <div class="export-buttons-group">
+                        <button type="button" class="btn-export-excel" id="btnDownloadExcel" title="Descargar como archivo Excel nativo (.xlsx)">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span>Descargar Libro Excel (.xlsx)</span>
+                        </button>
+                        <button type="button" class="btn-export-csv" id="btnDownloadCsv" title="Descargar como archivo CSV (.csv)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            <span>Exportar CSV</span>
+                        </button>
+                        <button type="button" class="btn-copy-table" id="btnCopyTable" title="Copiar datos tabulados al portapapeles">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            <span>Copiar al Portapapeles</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vista Previa Interactiva de la Tabla Consolidada -->
+                <div class="table-preview-card">
+                    <div class="table-toolbar">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-secondary);">Vista Previa de Filas:</span>
+                            <span id="previewCountBadge" style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">Mostrando 0 de 0</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="text" id="tableFilterInput" placeholder="Buscar en la tabla..." class="table-search-input">
+                            <select id="previewPageSize" class="select-dark" style="font-size: 0.78rem; padding: 0.35rem 0.65rem;">
+                                <option value="25">25 filas</option>
+                                <option value="50" selected>50 filas</option>
+                                <option value="100">100 filas</option>
+                                <option value="all">Todas</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-scroll-container">
+                        <table class="consolidated-table" id="consolidatedTable">
+                            <thead id="tableHead"></thead>
+                            <tbody id="tableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Desglose Archivo por Archivo (Auditoría) -->
+                <div style="margin-top: 1.5rem;">
+                    <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        📋 Resumen de Contribución por Archivo
+                    </h3>
+                    <div id="fileContributionList" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem;">
+                        <!-- Renderizado dinámico -->
+                    </div>
+                </div>
+            </section>
         </main>
 
+        <!-- =================================================================
+             3. FOOTER
+             ================================================================= -->
         <footer class="site-footer">
             <div class="footer-inner">
                 <div class="footer-left">
-                    <span><strong>SimpleApps Suite</strong> • Módulo #10</span>
+                    <span><strong>SimpleApps Suite</strong> • Módulo #10 • Unificador / Consolidador de Archivos Excel</span>
+                    <span class="footer-badge-tech" style="border-color: rgba(16, 185, 129, 0.4); color: var(--emerald-bright);">SheetJS Multi-Buffer • 100% Offline • Zero-Upload Safe</span>
                 </div>
                 <div class="footer-right">
-                    <a href="../../index.html" class="footer-link">Ver las 10 Apps</a>
+                    <button type="button" class="footer-link" id="btnFooterHelp" style="background: none; border: none; cursor: pointer;">Guía &amp; Ayuda</button>
+                    <span style="color: var(--border-medium);">|</span>
+                    <a href="../../index.html" class="footer-link">← Catálogo de Apps</a>
                 </div>
             </div>
         </footer>
     </div>
+
+    <!-- =================================================================
+         MODAL DE AYUDA Y GUÍA DE USO (SINCRONIZADO Y FLUIDO)
+         ================================================================= -->
+    <div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+        <div class="modal-window">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-icon-badge">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="modal-title" id="helpModalTitle">Manual Operativo &amp; Guía de Uso del Módulo</h2>
+                        <p class="modal-subtitle">Consolidador Multi-Buffer de Archivos Excel • SimpleApps Suite</p>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnCloseHelpModal" aria-label="Cerrar ayuda">&times;</button>
+            </div>
+
+            <!-- Navegación de Pestañas de Ayuda -->
+            <div class="help-tabs-nav">
+                <button type="button" class="help-tab-btn active" data-tab="tabHelpOverview">
+                    <span>🌟 Visión General</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpPresets">
+                    <span>⚡ Presets de Prueba</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpStep1">
+                    <span>📂 Paso 1: Carga</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpStep2">
+                    <span>⚙️ Paso 2: Fusión &amp; Esquema</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpStep3">
+                    <span>📊 Paso 3: Exportación</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpPrivacy">
+                    <span>🛡️ Seguridad &amp; Privacidad</span>
+                </button>
+            </div>
+
+            <!-- Contenido de las Pestañas -->
+            <div class="modal-body help-modal-body">
+                <!-- Pestaña 1: Visión General -->
+                <div class="help-tab-content" id="tabHelpOverview">
+                    <div class="help-section-card">
+                        <h3>🎯 ¿Qué es el Unificador / Consolidador de Archivos Excel?</h3>
+                        <p>Es una herramienta de ingeniería de datos en memoria diseñada para combinar, apilar y conciliar decenas de archivos independientes de Excel (<code>.xlsx</code>, <code>.xls</code>), LibreOffice (<code>.ods</code>) o texto (<code>.csv</code>, <code>.tsv</code>) en un <strong>único libro maestro de Excel</strong> listo para análisis en tablas dinámicas, Power BI o bases de datos.</p>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>🔄 El Flujo de Trabajo en 3 Pasos</h3>
+                        <ul class="help-list">
+                            <li><strong>Paso 1 (Carga):</strong> Arrastra 2 o más archivos a la zona de carga o selecciona tus planillas. Puedes reordenar la secuencia de apilado con las flechas ▲ y ▼.</li>
+                            <li><strong>Paso 2 (Configuración):</strong> Elige el modo de unión de columnas (Unión completa, Intersección o Plantilla) y activa la inyección automática del nombre del archivo origen.</li>
+                            <li><strong>Paso 3 (Consolidación &amp; Descarga):</strong> Genera el libro maestro en milisegundos, audita el desglose de filas y descarga el archivo <code>.xlsx</code> o <code>.csv</code>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pestaña 2: Presets de Prueba -->
+                <div class="help-tab-content" id="tabHelpPresets" style="display: none;">
+                    <div class="help-section-card">
+                        <h3>⚡ Casos de Prueba Listos para Probar en 1 Clic</h3>
+                        <p>En la parte superior dispones de 3 botones de presets prediseñados con datos realistas para verificar inmediatamente el comportamiento del motor:</p>
+                        <div class="help-grid-2">
+                            <div class="help-item-box">
+                                <strong>1. Ventas Mensuales (Ene, Feb, Mar):</strong>
+                                <p>Simula 3 archivos contables de diferentes meses con clientes, productos y montos. Demuestra cómo se concatenan filas respetando las columnas idénticas.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>2. Inventario Sucursales (3 Tiendas):</strong>
+                                <p>3 planillas de inventario de tiendas físicas (Sucursal Norte, Centro y Sur). Ideal para observar cómo la columna <code>Archivo_Origen</code> identifica el stock de cada tienda.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>3. Gastos Operativos (Outer Union):</strong>
+                                <p>3 archivos que tienen columnas adicionales o nombres con ligeras variantes. Demuestra cómo el modo de unión inteligente preserva todas las columnas rellenando con vacío.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestaña 3: Paso 1 Carga -->
+                <div class="help-tab-content" id="tabHelpStep1" style="display: none;">
+                    <div class="help-section-card">
+                        <h3>📂 Cómo Cargar y Gestionar Archivos</h3>
+                        <ul class="help-list">
+                            <li><strong>Selección múltiple:</strong> Puedes seleccionar 2, 10 o 50 archivos simultáneamente manteniendo presionada la tecla <code>Ctrl</code> o <code>Shift</code> al explorar carpetas.</li>
+                            <li><strong>Reordenar la secuencia:</strong> El orden en que aparecen los archivos en la lista determina el orden en que se apilarán las filas en el libro consolidado. Usa los botones ▲ y ▼ para mover un archivo hacia arriba o hacia abajo.</li>
+                            <li><strong>Vista previa individual:</strong> Haz clic en el ícono de ojo (👁️) para inspeccionar las hojas y filas de cualquier archivo antes de consolidar.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pestaña 4: Paso 2 Fusión & Esquema -->
+                <div class="help-tab-content" id="tabHelpStep2" style="display: none;">
+                    <div class="help-section-card">
+                        <h3>⚙️ Modos de Fusión de Columnas y Metadatos</h3>
+                        <div class="help-grid-2">
+                            <div class="help-item-box">
+                                <strong>Unión Completa (Outer Union):</strong>
+                                <p>La opción más flexible. Si el archivo A tiene columnas <code>[ID, Nombre]</code> y el archivo B tiene <code>[ID, Nombre, Telefono]</code>, el consolidado tendrá las 3 columnas.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>Intersección Estricta (Inner):</strong>
+                                <p>Conserva únicamente las columnas comunes a todos los archivos. Descarta cualquier columna secundaria que no esté presente en todas las planillas.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>Columna Archivo Origen:</strong>
+                                <p>Inyecta una columna (ej. <code>Archivo_Origen</code>) indicando de qué planilla vino cada registro. Puedes ubicarla en la primera columna (Columna A) o al final.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>Normalización de Encabezados:</strong>
+                                <p>Elimina espacios invisibles antes o después de los títulos y unifica columnas con diferentes mayúsculas/minúsculas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestaña 5: Paso 3 Exportación -->
+                <div class="help-tab-content" id="tabHelpStep3" style="display: none;">
+                    <div class="help-section-card">
+                        <h3>📊 Formatos de Salida y Descarga</h3>
+                        <ul class="help-list">
+                            <li><strong>Descargar Libro Excel (.xlsx):</strong> Genera un archivo binario nativo de Excel compatible con Microsoft Excel 2007+, Google Sheets, LibreOffice Calc y Numbers.</li>
+                            <li><strong>Exportar CSV (.csv):</strong> Exporta un archivo de texto con delimitador de comas estándar RFC-4180 codificado en UTF-8 con marca BOM para apertura perfecta en Excel sin errores de tildes o caracteres especiales.</li>
+                            <li><strong>Copiar al Portapapeles:</strong> Copia todas las filas tabuladas con formato TSV para pegar directamente con <code>Ctrl+V</code> en cualquier planilla abierta.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pestaña 6: Seguridad & Privacidad -->
+                <div class="help-tab-content" id="tabHelpPrivacy" style="display: none;">
+                    <div class="help-section-card">
+                        <h3>🛡️ Procesamiento 100% Local en RAM (Zero-Upload Safe)</h3>
+                        <p>Tus planillas financieras, listados de clientes y datos confidenciales <strong>nunca salen de tu dispositivo</strong> ni viajan por Internet.</p>
+                        <ul class="help-list">
+                            <li><strong>Sin servidores intermedios:</strong> El procesamiento se realiza exclusivamente en la memoria RAM del navegador a través de JavaScript y SheetJS.</li>
+                            <li><strong>Aislamiento total:</strong> No se realizan peticiones HTTP para enviar ni almacenar tus archivos.</li>
+                            <li><strong>Funciona Offline:</strong> Puedes desconectar tu conexión a Internet y el módulo continuará fusionando archivos con la misma velocidad.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="padding: 1rem 1.5rem; display: flex; justify-content: flex-end; border-top: 1px solid rgba(255, 255, 255, 0.08); background: rgba(15, 23, 42, 0.9);">
+                <button type="button" class="btn-subnav-ghost" id="btnDismissHelp">Entendido, Cerrar Ayuda</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================================
+         MODAL DE VISTA PREVIA DE ARCHIVO INDIVIDUAL
+         ================================================================= -->
+    <div class="modal-overlay" id="filePreviewModal" role="dialog" aria-modal="true" aria-labelledby="filePreviewTitle">
+        <div class="modal-window" style="max-width: 780px;">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-icon-badge" style="background: rgba(6, 182, 212, 0.15); color: #38BDF8; border-color: rgba(6, 182, 212, 0.35);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="modal-title" id="filePreviewTitle">Vista Previa de Archivo</h2>
+                        <p class="modal-subtitle" id="filePreviewSubtitle">Detalles y primeras filas</p>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnClosePreviewModal">&times;</button>
+            </div>
+
+            <div class="modal-body help-modal-body" style="padding: 1.25rem 1.5rem;">
+                <div id="filePreviewMetadata" style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem;"></div>
+                <div class="table-scroll-container" style="max-height: 380px;">
+                    <table class="consolidated-table" id="singleFileTable">
+                        <thead id="singleFileHead"></thead>
+                        <tbody id="singleFileBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="padding: 1rem 1.5rem; display: flex; justify-content: flex-end; border-top: 1px solid rgba(255, 255, 255, 0.08); background: rgba(15, 23, 42, 0.9);">
+                <button type="button" class="btn-subnav-ghost" id="btnDismissPreview">Cerrar Vista Previa</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast de Notificaciones -->
+    <div id="consolidatorToast" class="toast-consolidator" aria-live="polite">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="toastMessage">Operación realizada con éxito.</span>
+    </div>
+
+    <!-- Librerías de Parsing y Manipulación Local -->
+    <script src="libs/xlsx.full.min.js"></script>
+    <script src="libs/jszip.min.js"></script>
+
+    <!-- Motor de Consolidación y Controlador de Interfaz -->
+    <script src="consolidator-engine.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
