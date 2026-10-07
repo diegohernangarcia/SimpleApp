@@ -64,7 +64,7 @@
                         <span>📘 Ayuda & Guía de Uso</span>
                     </button>
 
-                    <div class="server-status-pill" title="Procesamiento en tu navegador">
+                    <div class="server-status-pill" title="Modo Local: No se envía ningún dato. Modo Web: Archivos enviados cifrados únicamente para procesar la tarea (RGPD).">
                         <span class="status-dot" style="background: #F59E0B; box-shadow: 0 0 8px #F59E0B;"></span>
                         <span class="server-meta-tag">100% Local</span>
                         <span class="server-php-tag" style="background: rgba(245, 158, 11, 0.15); color: #FCD34D;">Zero Upload</span>
@@ -386,6 +386,9 @@
                 <div class="footer-right">
                     <a href="../../index.html" class="footer-link">← Volver al Catálogo de Apps</a>
                 </div>
+                <div class="site-footer-privacy-note">
+                    🔒 <strong>Aviso Legal de Privacidad y Tratamiento de Datos (RGPD/GDPR):</strong> En <span class="privacy-tag-local">Ejecución Local</span> (On-Premise / Localhost), el procesamiento es 100% en tu equipo y <strong>NO se envía ningún dato</strong> ni archivo al exterior. En la <span class="privacy-tag-web">Versión Web en Línea</span>, los documentos pueden ser transmitidos de forma segura y cifrada (HTTPS/TLS) únicamente con el fin exclusivo de finalizar la tarea técnica solicitada (Art. 5.1.b RGPD); se procesan de forma efímera en memoria volátil, sin almacenamiento persistente, sin copias de seguridad, sin compartirse con terceros ni utilizarse para entrenamiento de modelos, eliminándose inmediatamente al concluir el proceso.
+                </div>
             </div>
         </footer>
 
@@ -537,13 +540,19 @@
                 <!-- Pestaña 5: Privacidad -->
                 <div class="help-tab-content" id="tabHelpPrivacy" style="display:none;">
                     <div class="help-section-card">
-                        <h3>🛡️ Privacidad Absoluta (Zero-Upload Architecture)</h3>
-                        <p>A diferencia de la mayoría de convertidores online que envían tus documentos a servidores remotos para procesarlos:</p>
-                        <ul class="help-list">
-                            <li><strong>100% Ejecutado en el Navegador:</strong> Todo el procesamiento de parsing de PDF, Word y Excel se realiza en la memoria RAM de tu máquina usando Web Workers y JavaScript nativo.</li>
-                            <li><strong>Sin Envío de Datos:</strong> Ningún byte de tus documentos, contratos o planillas viaja por Internet.</li>
-                            <li><strong>Funciona Offline:</strong> Puedes usar esta herramienta sin conexión a Internet una vez cargada la página.</li>
-                        </ul>
+                        <h3>🛡️ Política de Privacidad, Tratamiento de Datos y Cumplimiento Legal (RGPD)</h3>
+                        <p>Para garantizar total transparencia y dar cumplimiento estricto al <strong>Reglamento General de Protección de Datos (RGPD / GDPR - Reglamento UE 2016/679)</strong> y normativas internacionales de privacidad, informamos sobre el tratamiento de documentos según el entorno de ejecución:</p>
+                        <div class="help-grid-2" style="margin-top: 1rem;">
+                            <div class="help-item-box" style="border-left: 3px solid #F59E0B;">
+                                <strong style="color: #FCD34D;">💻 Ejecución Local (On-Premise / Localhost)</strong>
+                                <p><strong>Cero Envío de Datos (100% Offline):</strong> Si ejecutas esta herramienta en tu entorno local (localhost, servidor interno o PC personal), <strong>NO se envía ningún documento, archivo ni telemetría</strong> a servidores externos. Todo el proceso de extracción de PDF, Word (.docx) y planillas (.xlsx, .ods) se ejecuta en la memoria RAM de tu navegador. Ningún byte o texto abandona tu dispositivo.</p>
+                            </div>
+                            <div class="help-item-box" style="border-left: 3px solid #38BDF8;">
+                                <strong style="color: #38BDF8;">🌐 Versión Web en Línea (Online / Cloud)</strong>
+                                <p><strong>Uso Exclusivo para la Tarea Solicitada (Art. 5.1.b RGPD):</strong> En la versión web alojada en línea, los documentos cargados se transmiten bajo conexión segura y cifrada (HTTPS/TLS). Dichos datos <strong>se procesan ÚNICAMENTE para ejecutar y finalizar la tarea técnica solicitada</strong>.</p>
+                                <p style="margin-top: 0.5rem;"><strong>Sin Persistencia ni Cesión:</strong> El contenido se procesa de manera efímera en memoria volátil. <strong>NO se almacenan de forma permanente, NO se realizan copias de seguridad de sus contenidos, NO se comparten con terceros ni se utilizan para minería de datos ni entrenamiento de modelos de IA</strong>, eliminándose automáticamente al completar la conversión o finalizar la sesión.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

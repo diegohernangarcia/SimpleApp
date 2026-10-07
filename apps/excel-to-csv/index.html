@@ -60,7 +60,12 @@
 
                 <!-- Acciones del Header -->
                 <div class="header-actions">
-                    <div class="server-status-pill" title="Procesamiento en tu navegador">
+                    <button type="button" class="btn-help-guide" id="btnOpenHelpModal" title="Manual Operativo y Guía de Uso del Módulo">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 Ayuda & Guía de Uso</span>
+                    </button>
+
+                    <div class="server-status-pill" title="Modo Local: No se envía ningún dato. Modo Web: Archivos enviados cifrados únicamente para procesar la tarea (RGPD).">
                         <span class="status-dot" style="background: #06B6D4; box-shadow: 0 0 8px #06B6D4;"></span>
                         <span class="server-meta-tag">100% Local</span>
                         <span class="server-php-tag" style="background: rgba(6, 182, 212, 0.15); color: #38BDF8;">Zero Upload</span>
@@ -102,6 +107,14 @@
                     <strong class="text-glow-cyan">archivos CSV independientes</strong>. Puedes descargar cada hoja por separado con un solo clic o 
                     empaquetar todas las hojas seleccionadas en un archivo comprimido <strong class="text-glow-white">.ZIP</strong>.
                 </p>
+
+                <!-- Botón de Ayuda en Hero -->
+                <div style="margin-top: 1.1rem; display: flex; align-items: center; justify-content: center;">
+                    <button type="button" class="btn-help-hero" id="btnOpenHelpHero" title="Ver guía interactiva y opciones">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 ¿Cómo funciona? Guía de Uso & Multi-Hoja</span>
+                    </button>
+                </div>
             </section>
 
             <!-- =================================================================
@@ -246,6 +259,9 @@
                 <div class="footer-right">
                     <a href="../../index.html" class="footer-link">← Volver al Catálogo de Apps</a>
                 </div>
+                <div class="site-footer-privacy-note">
+                    🔒 <strong>Aviso Legal de Privacidad y Tratamiento de Datos (RGPD/GDPR):</strong> En <span class="privacy-tag-local">Ejecución Local</span> (On-Premise / Localhost), el procesamiento es 100% en tu equipo y <strong>NO se envía ningún dato</strong> ni archivo al exterior. En la <span class="privacy-tag-web">Versión Web en Línea</span>, los archivos pueden ser transmitidos de forma segura y cifrada (HTTPS/TLS) únicamente con el fin exclusivo de finalizar la tarea técnica solicitada (Art. 5.1.b RGPD); se procesan de forma efímera en memoria volátil, sin almacenamiento persistente, sin copias de seguridad, sin compartirse con terceros ni utilizarse para entrenamiento de modelos, eliminándose inmediatamente al concluir el proceso.
+                </div>
             </div>
         </footer>
 
@@ -280,6 +296,175 @@
                     </button>
                     <button type="button" class="btn-ghost-secondary" onclick="document.getElementById('previewModal').classList.remove('open'); document.body.style.overflow='';" style="padding: 0.45rem 1rem; font-size: 0.85rem;">Cerrar</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================================
+         MODAL DE AYUDA Y GUÍA DE USO (EXCEL TO CSV)
+         ================================================================= -->
+    <div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+        <div class="modal-window help-modal-window">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-icon-badge" style="background: rgba(6, 182, 212, 0.15); color: #06B6D4; border: 1px solid rgba(6, 182, 212, 0.3);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="modal-title" id="helpModalTitle">Manual Operativo & Guía de Uso</h2>
+                        <p class="modal-subtitle">Conversor de Excel a CSV Multi-Hoja • SimpleApps Suite</p>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnCloseHelpModal" aria-label="Cerrar ayuda">&times;</button>
+            </div>
+
+            <!-- Navegación de Pestañas de Ayuda -->
+            <div class="help-tabs-nav">
+                <button type="button" class="help-tab-btn active" data-tab="tabExcelOverview">
+                    <span>🌟 Visión General</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabExcelSheets">
+                    <span>📑 Hojas & Archivo ZIP</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabExcelDelimiters">
+                    <span>🔀 Delimitadores & Comillas</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabExcelDates">
+                    <span>📅 Fechas & Formatos</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabExcelPrivacy">
+                    <span>🛡️ Privacidad & Seguridad</span>
+                </button>
+            </div>
+
+            <!-- Contenido de las Pestañas -->
+            <div class="modal-body help-modal-body">
+                <!-- Pestaña 1: Visión General -->
+                <div class="help-tab-content active" id="tabExcelOverview">
+                    <div class="help-section-card">
+                        <h3>🎯 ¿Qué hace este módulo?</h3>
+                        <p>Lee libros de cálculo de Microsoft Excel (<strong>.xlsx, .xls, .xlsm, .xlsb</strong>) y OpenDocument Spreadsheet (<strong>.ods</strong>), detecta automáticamente cada una de sus hojas de cálculo y permite exportarlas individualmente o en conjunto como archivos de texto plano <strong>CSV delimitados</strong> con máxima precisión de datos.</p>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>⚡ Flujo de Extracción Paso a Paso</h3>
+                        <div class="help-grid-3">
+                            <div class="help-item-box">
+                                <strong>1. Subir el Libro</strong>
+                                <p>Arrastra tu archivo Excel a la dropzone. El lector analiza instantáneamente la estructura interna y metadatos del libro.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>2. Elegir Hojas y Parámetros</strong>
+                                <p>Selecciona qué hojas deseas exportar. Configura el delimitador (, ; \t |) y si deseas incluir cabecera o BOM UTF-8.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>3. Descarga Directa o ZIP</strong>
+                                <p>Descarga cada hoja de forma individual o pulsa "Descargar Todas en ZIP" para obtener un archivo comprimido organizado.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestaña 2: Hojas & ZIP -->
+                <div class="help-tab-content" id="tabExcelSheets" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>📑 Soporte Multi-Hoja Completo</h3>
+                        <p>A diferencia de la función estándar "Guardar como CSV" de Microsoft Excel (que únicamente guarda la pestaña activa y descarta las demás), este módulo:</p>
+                        <ul class="help-list">
+                            <li>Escanea y lista <strong>todas las pestañas</strong> del libro con su conteo de filas y columnas.</li>
+                            <li>Permite marcar/desmarcar individualmente qué hojas quieres procesar con casillas de selección rápida.</li>
+                            <li>Permite previsualizar los primeros registros de cada hoja en una tabla interactiva antes de descargar.</li>
+                        </ul>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>📦 Empaquetado Automático en ZIP</h3>
+                        <p>Al pulsar <strong>Descargar en ZIP</strong>, el motor empaqueta todas las hojas seleccionadas dentro de un archivo comprimido <code>.zip</code> manteniendo nombres claros como <code>NombreArchivo_NombreHoja.csv</code> sin necesidad de descargar archivo por archivo manualmente.</p>
+                    </div>
+                </div>
+
+                <!-- Pestaña 3: Delimitadores & Comillas -->
+                <div class="help-tab-content" id="tabExcelDelimiters" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>🔀 Selección del Delimitador de Columnas</h3>
+                        <p>Configura el carácter separador según el software o base de datos que consumirá el archivo:</p>
+                        <table class="help-table">
+                            <thead>
+                                <tr>
+                                    <th>Delimitador</th>
+                                    <th>Carácter</th>
+                                    <th>Uso Recomendado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Coma</strong></td>
+                                    <td><code>,</code></td>
+                                    <td>Estándar internacional para Python, Pandas, R, PostgreSQL y MySQL.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Punto y coma</strong></td>
+                                    <td><code>;</code></td>
+                                    <td>Recomendado para Excel en español, evitando conflictos con decimales.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tabulación</strong></td>
+                                    <td><code>\t</code></td>
+                                    <td>Formato TSV ideal para copiar y pegar en procesadores de texto y scripts.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pipe</strong></td>
+                                    <td><code>|</code></td>
+                                    <td>Muy utilizado en sistemas bancarios, AS/400 y cargas masivas (ETL).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>📝 Reglas de Encomillado (RFC 4180)</h3>
+                        <p>Si una celda contiene el separador seleccionado, saltos de línea o comillas dobles, el generador encierra automáticamente el texto entre comillas dobles y escapa cualquier comilla interna (<code>""</code>) cumpliendo estrictamente con la especificación <strong>RFC 4180</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Pestaña 4: Fechas & Formatos -->
+                <div class="help-tab-content" id="tabExcelDates" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>📅 Formateo Preciso de Fechas y Números</h3>
+                        <p>Excel almacena fechas como números de serie flotantes (ej. 44927). Este conversor las interpreta con su formato de visualización real o en formato estandarizado ISO <code>YYYY-MM-DD</code> según tu necesidad.</p>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>🔤 Codificación UTF-8 con BOM</h3>
+                        <p>Incluye la opción de anteponer la marca de orden de bytes (<strong>BOM UTF-8</strong>). Esto soluciona el clásico fallo de Excel en Windows donde caracteres acentuados, eñes o caracteres cirílicos/asiáticos se muestran como símbolos extraños (<em>mojibake</em>).</p>
+                    </div>
+                </div>
+
+                <!-- Pestaña 5: Privacidad -->
+                <div class="help-tab-content" id="tabExcelPrivacy" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>🛡️ Política de Privacidad, Tratamiento de Datos y Cumplimiento Legal (RGPD)</h3>
+                        <p>Para garantizar total transparencia y dar cumplimiento estricto al <strong>Reglamento General de Protección de Datos (RGPD / GDPR - Reglamento UE 2016/679)</strong> y normativas internacionales de privacidad, informamos sobre el tratamiento de datos y archivos según el entorno de ejecución:</p>
+                        <div class="help-grid-2" style="margin-top: 1rem;">
+                            <div class="help-item-box" style="border-left: 3px solid #06B6D4;">
+                                <strong style="color: #38BDF8;">💻 Ejecución Local (On-Premise / Localhost)</strong>
+                                <p><strong>Cero Envío de Datos (100% Offline):</strong> Si ejecutas esta herramienta en tu entorno local (localhost, servidor interno o PC personal), <strong>NO se envía ningún dato, archivo ni telemetría</strong> a servidores externos. Toda la lectura binaria de libros Excel (.xlsx, .xls, .ods) y extracción de hojas CSV ocurre exclusivamente en la memoria RAM de tu navegador. Ningún byte sale de tu equipo.</p>
+                            </div>
+                            <div class="help-item-box" style="border-left: 3px solid #38BDF8;">
+                                <strong style="color: #38BDF8;">🌐 Versión Web en Línea (Online / Cloud)</strong>
+                                <p><strong>Uso Exclusivo para la Tarea Solicitada (Art. 5.1.b RGPD):</strong> En la versión web alojada en línea, las hojas y archivos remitidos son transferidos bajo túnel seguro y cifrado (HTTPS/TLS). Dichos datos <strong>se procesan ÚNICAMENTE para ejecutar y finalizar la tarea técnica solicitada</strong>.</p>
+                                <p style="margin-top: 0.5rem;"><strong>Sin Persistencia ni Cesión:</strong> El contenido se procesa de manera efímera en memoria volátil. <strong>NO se almacenan de forma permanente, NO se realizan copias de seguridad de sus contenidos, NO se comparten con terceros ni se utilizan para minería de datos ni entrenamiento de modelos de IA</strong>, destruyéndose de inmediato al finalizar la conversión o la sesión.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer del Modal -->
+            <div class="modal-footer" style="padding: 1rem 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: flex-end; background: rgba(11, 15, 25, 0.6);">
+                <button type="button" class="btn-primary-action" id="btnDismissHelp" style="padding: 0.5rem 1.25rem; font-size: 0.88rem; background: var(--accent-cyan); border-radius: var(--radius-md); color: #FFFFFF; font-weight: 600; border: none; cursor: pointer;">
+                    Entendido, Cerrar Ayuda
+                </button>
             </div>
         </div>
     </div>

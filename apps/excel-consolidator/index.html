@@ -56,7 +56,7 @@
                         <span>📘 Ayuda & Guía de Uso</span>
                     </button>
 
-                    <div class="server-status-pill" title="Procesamiento 100% en tu navegador">
+                    <div class="server-status-pill" title="Modo Local: No se envía ningún dato. Modo Web: Archivos enviados cifrados únicamente para procesar la tarea (RGPD).">
                         <span class="status-dot" style="background: #10B981; box-shadow: 0 0 8px #10B981;"></span>
                         <span class="server-meta-tag">100% Local</span>
                         <span class="server-php-tag" style="background: rgba(16, 185, 129, 0.15); color: #6EE7B7;">Zero-Upload Safe</span>
@@ -446,6 +446,9 @@
                     <span style="color: var(--border-medium);">|</span>
                     <a href="../../index.html" class="footer-link">← Catálogo de Apps</a>
                 </div>
+                <div class="site-footer-privacy-note">
+                    🔒 <strong>Aviso Legal de Privacidad y Tratamiento de Datos (RGPD/GDPR):</strong> En <span class="privacy-tag-local">Ejecución Local</span> (On-Premise / Localhost), el procesamiento es 100% en tu equipo y <strong>NO se envía ningún dato</strong> ni archivo al exterior. En la <span class="privacy-tag-web">Versión Web en Línea</span>, los archivos pueden ser transmitidos de forma segura y cifrada (HTTPS/TLS) únicamente con el fin exclusivo de finalizar la tarea técnica solicitada (Art. 5.1.b RGPD); se procesan de forma efímera en memoria volátil, sin almacenamiento persistente, sin copias de seguridad, sin compartirse con terceros ni utilizarse para entrenamiento de modelos, eliminándose inmediatamente al concluir el proceso.
+                </div>
             </div>
         </footer>
     </div>
@@ -583,13 +586,19 @@
                 <!-- Pestaña 6: Seguridad & Privacidad -->
                 <div class="help-tab-content" id="tabHelpPrivacy" style="display: none;">
                     <div class="help-section-card">
-                        <h3>🛡️ Procesamiento 100% Local en RAM (Zero-Upload Safe)</h3>
-                        <p>Tus planillas financieras, listados de clientes y datos confidenciales <strong>nunca salen de tu dispositivo</strong> ni viajan por Internet.</p>
-                        <ul class="help-list">
-                            <li><strong>Sin servidores intermedios:</strong> El procesamiento se realiza exclusivamente en la memoria RAM del navegador a través de JavaScript y SheetJS.</li>
-                            <li><strong>Aislamiento total:</strong> No se realizan peticiones HTTP para enviar ni almacenar tus archivos.</li>
-                            <li><strong>Funciona Offline:</strong> Puedes desconectar tu conexión a Internet y el módulo continuará fusionando archivos con la misma velocidad.</li>
-                        </ul>
+                        <h3>🛡️ Política de Privacidad, Tratamiento de Datos y Cumplimiento Legal (RGPD)</h3>
+                        <p>Para garantizar total transparencia y dar cumplimiento estricto al <strong>Reglamento General de Protección de Datos (RGPD / GDPR - Reglamento UE 2016/679)</strong> y normativas de confidencialidad de datos corporativos, informamos sobre el tratamiento según el entorno de ejecución:</p>
+                        <div class="help-grid-2" style="margin-top: 1rem;">
+                            <div class="help-item-box" style="border-left: 3px solid #10B981;">
+                                <strong style="color: #34D399;">💻 Ejecución Local (On-Premise / Localhost)</strong>
+                                <p><strong>Cero Envío de Datos (100% Offline):</strong> Si ejecutas esta herramienta en tu entorno local (localhost, intranet corporativa o PC personal), <strong>NO se envía ningún dato, archivo Excel ni telemetría</strong> a servidores externos. Todo el proceso de unificación y lectura multi-buffer se realiza de forma autónoma en la memoria RAM del navegador. Ningún byte abandona tu dispositivo.</p>
+                            </div>
+                            <div class="help-item-box" style="border-left: 3px solid #38BDF8;">
+                                <strong style="color: #38BDF8;">🌐 Versión Web en Línea (Online / Cloud)</strong>
+                                <p><strong>Uso Exclusivo para la Tarea Solicitada (Art. 5.1.b RGPD):</strong> En la versión web alojada en línea, los archivos que subes para fusionar se transfieren bajo conexión segura y cifrada (HTTPS/TLS). Dichos datos <strong>se procesan ÚNICAMENTE para ejecutar y finalizar la consolidación solicitada</strong>.</p>
+                                <p style="margin-top: 0.5rem;"><strong>Sin Persistencia ni Cesión:</strong> El contenido se trata de manera estrictamente efímera en memoria volátil. <strong>NO se almacenan de forma permanente, NO se crean copias de seguridad de sus contenidos, NO se comparten con terceros ni se utilizan para minería de datos ni entrenamiento de modelos de IA</strong>, destruyéndose de inmediato al descargar el libro consolidado o cerrar la sesión.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

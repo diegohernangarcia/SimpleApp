@@ -1932,3 +1932,35 @@ select option:checked {
         align-items: flex-start;
     }
 }
+
+/* =============================================================================
+   AVISO GLOBAL DE PRIVACIDAD & CUMPLIMIENTO LEGAL RGPD
+   ============================================================================= */
+.site-footer-privacy-note {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem 1.15rem;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md, 8px);
+    font-size: 0.78rem;
+    color: var(--text-secondary, #94A3B8);
+    line-height: 1.55;
+    text-align: left;
+    backdrop-filter: blur(8px);
+    box-sizing: border-box;
+}
+
+.site-footer-privacy-note strong {
+    color: #F8FAFC;
+}
+
+.site-footer-privacy-note .privacy-tag-local {
+    color: #34D399;
+    font-weight: 700;
+}
+
+.site-footer-privacy-note .privacy-tag-web {
+    color: #38BDF8;
+    font-weight: 700;
+}

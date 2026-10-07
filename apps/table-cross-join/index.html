@@ -63,7 +63,7 @@
                         <span>📘 Ayuda & Guía de Uso</span>
                     </button>
 
-                    <div class="server-status-pill" title="Procesamiento en memoria local de alta velocidad">
+                    <div class="server-status-pill" title="Modo Local: No se envía ningún dato. Modo Web: Archivos enviados cifrados únicamente para procesar la tarea (RGPD).">
                         <span class="status-dot" style="background: #A855F7; box-shadow: 0 0 8px #A855F7;"></span>
                         <span class="server-meta-tag">100% Local</span>
                         <span class="server-php-tag" style="background: rgba(168, 85, 247, 0.2); color: #C084FC;">Hash O(N+M)</span>
@@ -659,6 +659,9 @@
                     <span>•</span>
                     <a href="../../docs/07-table-cross-join.md" class="footer-link">Documentación Técnica</a>
                 </div>
+                <div class="site-footer-privacy-note">
+                    🔒 <strong>Aviso Legal de Privacidad y Tratamiento de Datos (RGPD/GDPR):</strong> En <span class="privacy-tag-local">Ejecución Local</span> (On-Premise / Localhost), el procesamiento es 100% en tu equipo y <strong>NO se envía ningún dato</strong> ni archivo al exterior. En la <span class="privacy-tag-web">Versión Web en Línea</span>, las tablas o archivos pueden ser transmitidos de forma segura y cifrada (HTTPS/TLS) únicamente con el fin exclusivo de finalizar la tarea técnica solicitada (Art. 5.1.b RGPD); se procesan de forma efímera en memoria volátil, sin almacenamiento persistente, sin copias de seguridad, sin compartirse con terceros ni utilizarse para entrenamiento de modelos, eliminándose inmediatamente al concluir el proceso.
+                </div>
             </div>
         </footer>
     </div>
@@ -694,6 +697,9 @@
                 </button>
                 <button type="button" class="help-tab-btn" data-tab="tabHelpStep3">
                     <span>📊 Paso 3: Auditoría & Exportar</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpPrivacy">
+                    <span>🛡️ Privacidad & RGPD</span>
                 </button>
             </div>
 
@@ -1026,6 +1032,32 @@
                             <span class="help-card-head" style="color:#F59E0B;">📑 Informe Auditoría (.md)</span>
                             <div class="help-card-body">
                                 Descarga un reporte ejecutivo estructurado en Markdown con estadísticas porcentuales, resumen de cuadratura y detalle técnico para actas de auditoría.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     TAB 6: POLÍTICA DE PRIVACIDAD & CUMPLIMIENTO LEGAL (RGPD)
+                     ========================================================= -->
+                <div class="help-tab-pane" id="tabHelpPrivacy">
+                    <p class="help-lead-text">
+                        Para garantizar total transparencia y dar cumplimiento estricto al <strong>Reglamento General de Protección de Datos (RGPD / GDPR - Reglamento UE 2016/679)</strong> y normativas de confidencialidad financiera, informamos sobre el tratamiento de planillas según el entorno de ejecución:
+                    </p>
+
+                    <div class="help-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                        <div class="help-card" style="border-left: 3px solid #10B981;">
+                            <div class="help-card-head" style="color: #34D399;">💻 Ejecución Local (On-Premise / Localhost)</div>
+                            <div class="help-card-body">
+                                <strong>Cero Envío de Datos (100% Offline):</strong> Si ejecutas esta herramienta en tu entorno local (localhost, servidor interno corporativo o PC de trabajo), <strong>NO se envía ningún dato, archivo contable, balance ni telemetría</strong> a servidores externos. Todo el cruce de tablas por hash O(N+M) corre exclusivamente en la memoria RAM del navegador. Ningún byte abandona tu infraestructura.
+                            </div>
+                        </div>
+
+                        <div class="help-card" style="border-left: 3px solid #38BDF8;">
+                            <div class="help-card-head" style="color: #38BDF8;">🌐 Versión Web en Línea (Online / Cloud)</div>
+                            <div class="help-card-body">
+                                <strong>Uso Exclusivo para la Tarea Solicitada (Art. 5.1.b RGPD):</strong> En la versión web alojada en línea, las tablas y archivos de cruce se transmiten bajo conexión segura y cifrada (HTTPS/TLS). Dichos datos <strong>se procesan ÚNICAMENTE para ejecutar y finalizar la tarea técnica solicitada</strong>.<br><br>
+                                <strong>Sin Persistencia ni Cesión:</strong> Los datos se tratan de forma estrictamente efímera en memoria volátil. <strong>NO se almacenan de forma permanente, NO se realizan copias de seguridad de sus contenidos, NO se comparten con terceros ni se utilizan para minería de datos ni entrenamiento de modelos de IA</strong>, eliminándose automáticamente una vez concluida la conciliación o finalizada la sesión.
                             </div>
                         </div>
                     </div>

@@ -1106,11 +1106,16 @@ select option:checked {
     padding: 1rem;
 }
 
-.help-item-box strong {
+.help-item-box > strong {
     display: block;
     font-size: 0.88rem;
     color: #FCD34D;
     margin-bottom: 0.4rem;
+}
+
+.help-item-box p strong {
+    display: inline;
+    color: #F8FAFC;
 }
 
 .help-item-box p {

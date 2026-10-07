@@ -61,7 +61,7 @@
                         <span>📘 Ayuda & Guía de Uso</span>
                     </button>
 
-                    <div class="server-status-pill" title="Procesamiento en memoria local sin subida a servidores">
+                    <div class="server-status-pill" title="Modo Local: No se envía ningún dato. Modo Web: Archivos enviados cifrados únicamente para procesar la tarea (RGPD).">
                         <span class="status-dot" style="background: #6366F1; box-shadow: 0 0 8px #6366F1;"></span>
                         <span class="server-meta-tag">100% Local</span>
                         <span class="server-php-tag" style="background: rgba(99, 102, 241, 0.2); color: #818CF8;">Zero-Upload Safe</span>
@@ -502,6 +502,9 @@
                     <span class="footer-sep">•</span>
                     <a href="https://github.com/diegohernangarcia/SimpleApp" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Repo</a>
                 </div>
+                <div class="site-footer-privacy-note">
+                    🔒 <strong>Aviso Legal de Privacidad y Tratamiento de Datos (RGPD/GDPR):</strong> En <span class="privacy-tag-local">Ejecución Local</span> (On-Premise / Localhost), el procesamiento es 100% en tu equipo y <strong>NO se envía ningún dato</strong> ni archivo al exterior. En la <span class="privacy-tag-web">Versión Web en Línea</span>, las tablas o archivos pueden ser transmitidos de forma segura y cifrada (HTTPS/TLS) únicamente con el fin exclusivo de finalizar la tarea técnica solicitada (Art. 5.1.b RGPD); se procesan de forma efímera en memoria volátil, sin almacenamiento persistente, sin copias de seguridad, sin compartirse con terceros ni utilizarse para entrenamiento de modelos, eliminándose inmediatamente al concluir el proceso.
+                </div>
             </div>
         </footer>
 
@@ -544,7 +547,10 @@
                         <span>📜 Paso 4: Exportación</span>
                     </button>
                     <button type="button" class="help-tab-btn" data-tab="tabHelpTips">
-                        <span>🛡️ Seguridad & Rendimiento</span>
+                        <span>⚙️ Rendimiento & Tips</span>
+                    </button>
+                    <button type="button" class="help-tab-btn" data-tab="tabHelpPrivacy">
+                        <span>🛡️ Privacidad & RGPD</span>
                     </button>
                 </div>
 
@@ -649,6 +655,33 @@
                         <p>
                             Todas las cadenas de texto son escapadas contra inyecciones SQL (comillas, barras invertidas, saltos de línea). La casilla <strong>Envolver en Transacción</strong> agrega <code>START TRANSACTION / COMMIT</code> para garantizar atomicidad y prevenir registros a medio cargar si se interrumpe la conexión.
                         </p>
+                    </div>
+                </div>
+
+                <!-- Pestaña 7: Privacidad & RGPD -->
+                <div class="help-tab-content" id="tabHelpPrivacy" style="display: none;">
+                    <div class="help-card-section">
+                        <h4>🛡️ Política de Privacidad, Tratamiento de Datos y Cumplimiento Legal (RGPD)</h4>
+                        <p>
+                            Para garantizar total transparencia y dar cumplimiento estricto al <strong>Reglamento General de Protección de Datos (RGPD / GDPR - Reglamento UE 2016/679)</strong> y normativas internacionales de privacidad, informamos sobre el tratamiento de datos y tablas según el entorno de ejecución:
+                        </p>
+                        <div class="help-grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-left: 3px solid #6366F1; border-radius: 8px; padding: 1rem;">
+                                <strong style="color: var(--sql-indigo-light); display: block; margin-bottom: 0.5rem;">💻 Ejecución Local (On-Premise / Localhost)</strong>
+                                <p style="font-size: 0.83rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                                    <strong>Cero Envío de Datos (100% Offline):</strong> Si ejecutas esta herramienta en tu entorno local (localhost, intranet corporativa o servidor de desarrollo interno), <strong>NO se envía ningún dato, archivo Excel, portapapeles ni script generado</strong> a servidores externos. Todo el ensamblado del script SQL se genera en la memoria RAM del navegador. Ningún dato abandona tu equipo.
+                                </p>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-left: 3px solid #38BDF8; border-radius: 8px; padding: 1rem;">
+                                <strong style="color: #38BDF8; display: block; margin-bottom: 0.5rem;">🌐 Versión Web en Línea (Online / Cloud)</strong>
+                                <p style="font-size: 0.83rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                                    <strong>Uso Exclusivo para la Tarea Solicitada (Art. 5.1.b RGPD):</strong> En la versión web alojada en línea, las tablas enviadas se transmiten mediante conexión cifrada (HTTPS/TLS). Dichos datos <strong>se procesan ÚNICAMENTE para ejecutar y finalizar la tarea técnica solicitada</strong>.
+                                </p>
+                                <p style="font-size: 0.83rem; line-height: 1.5; color: var(--text-secondary); margin-top: 0.5rem;">
+                                    <strong>Sin Persistencia ni Cesión:</strong> Los datos se procesan de manera estrictamente efímera en memoria volátil. <strong>NO se almacenan de forma permanente, NO se crean copias de seguridad de sus contenidos, NO se comparten con terceros ni se utilizan para minería de datos ni entrenamiento de modelos de IA</strong>, eliminándose automáticamente una vez descargado el script SQL.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

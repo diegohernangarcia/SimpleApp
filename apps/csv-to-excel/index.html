@@ -60,7 +60,12 @@
 
                 <!-- Acciones del Header -->
                 <div class="header-actions">
-                    <div class="server-status-pill" title="Procesamiento en tu navegador">
+                    <button type="button" class="btn-help-guide" id="btnOpenHelpModal" title="Manual Operativo y Guía de Uso del Módulo">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 Ayuda & Guía de Uso</span>
+                    </button>
+
+                    <div class="server-status-pill" title="Modo Local: No se envía ningún dato. Modo Web: Archivos enviados cifrados únicamente para procesar la tarea (RGPD).">
                         <span class="status-dot" style="background: #10B981; box-shadow: 0 0 8px #10B981;"></span>
                         <span class="server-meta-tag">100% Local</span>
                         <span class="server-php-tag" style="background: rgba(16, 185, 129, 0.15); color: #34D399;">Zero Upload</span>
@@ -102,6 +107,14 @@
                     y codificación. Elige entre generar <strong class="text-glow-cyan">archivos Excel separados</strong> o 
                     <strong style="color: var(--accent-emerald-light);">consolidar todos tus CSV en un único libro Excel donde cada archivo es una hoja distinta</strong>.
                 </p>
+
+                <!-- Botón de Ayuda en Hero -->
+                <div style="margin-top: 1.1rem; display: flex; align-items: center; justify-content: center;">
+                    <button type="button" class="btn-help-hero" id="btnOpenHelpHero" title="Ver guía interactiva y modos de conversión">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 ¿Cómo funciona? Guía de Uso & Modos</span>
+                    </button>
+                </div>
             </section>
 
             <!-- =================================================================
@@ -293,6 +306,9 @@
                 <div class="footer-right">
                     <a href="../../index.html" class="footer-link">← Volver al Catálogo de Apps</a>
                 </div>
+                <div class="site-footer-privacy-note">
+                    🔒 <strong>Aviso Legal de Privacidad y Tratamiento de Datos (RGPD/GDPR):</strong> En <span class="privacy-tag-local">Ejecución Local</span> (On-Premise / Localhost), el procesamiento es 100% en tu equipo y <strong>NO se envía ningún dato</strong> ni archivo al exterior. En la <span class="privacy-tag-web">Versión Web en Línea</span>, los archivos pueden ser transmitidos de forma segura y cifrada (HTTPS/TLS) únicamente con el fin exclusivo de finalizar la tarea técnica solicitada (Art. 5.1.b RGPD); se procesan de forma efímera en memoria volátil, sin almacenamiento persistente, sin copias de seguridad, sin compartirse con terceros ni utilizarse para entrenamiento de modelos, eliminándose inmediatamente al concluir el proceso.
+                </div>
             </div>
         </footer>
 
@@ -321,6 +337,177 @@
             <div class="preview-modal-footer">
                 <span>Mostrando las primeras 25 filas para inspección rápida.</span>
                 <button type="button" class="btn-ghost-secondary" onclick="document.getElementById('previewModal').classList.remove('open'); document.body.style.overflow='';">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================================
+         MODAL DE AYUDA Y GUÍA DE USO (CSV TO EXCEL)
+         ================================================================= -->
+    <div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+        <div class="modal-window help-modal-window">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-icon-badge" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="modal-title" id="helpModalTitle">Manual Operativo & Guía de Uso</h2>
+                        <p class="modal-subtitle">Conversor de CSV a Excel (.xlsx) • SimpleApps Suite</p>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnCloseHelpModal" aria-label="Cerrar ayuda">&times;</button>
+            </div>
+
+            <!-- Navegación de Pestañas de Ayuda -->
+            <div class="help-tabs-nav">
+                <button type="button" class="help-tab-btn active" data-tab="tabCsvOverview">
+                    <span>🌟 Visión General</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabCsvModes">
+                    <span>📑 Modos de Conversión</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabCsvDelimiters">
+                    <span>🔍 Separadores & Encodings</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabCsvFormatting">
+                    <span>⚙️ Tipado & Ceros</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabCsvPrivacy">
+                    <span>🛡️ Privacidad & Seguridad</span>
+                </button>
+            </div>
+
+            <!-- Contenido de las Pestañas -->
+            <div class="modal-body help-modal-body">
+                <!-- Pestaña 1: Visión General -->
+                <div class="help-tab-content active" id="tabCsvOverview">
+                    <div class="help-section-card">
+                        <h3>🎯 ¿Qué hace este módulo?</h3>
+                        <p>Convierte uno o múltiples archivos de texto delimitado (<strong>CSV, TSV, TXT, PSV</strong>) en libros de cálculo modernos en formato <strong>Excel nativo (.xlsx)</strong> de alta fidelidad, listos para abrir en Microsoft Excel, LibreOffice Calc o Google Sheets sin advertencias de corrupción ni desalineación de columnas.</p>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>⚡ Flujo de Trabajo en 3 Pasos</h3>
+                        <div class="help-grid-3">
+                            <div class="help-item-box">
+                                <strong>1. Cargar Archivos</strong>
+                                <p>Arrastra tus archivos CSV a la zona de dropzone o pulsa "Seleccionar Archivos". Soporta carga masiva simultánea.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>2. Elegir el Modo</strong>
+                                <p>Selecciona si deseas unificar todos los CSV en un <strong>único libro multi-hoja</strong> o exportar <strong>archivos independientes</strong>.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>3. Descargar</strong>
+                                <p>Genera y descarga el archivo <code>.xlsx</code> o el paquete comprimido <code>.zip</code> con un solo clic.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestaña 2: Modos de Conversión -->
+                <div class="help-tab-content" id="tabCsvModes" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>📑 1 Libro Consolidado (Múltiples Hojas)</h3>
+                        <p>Ideal cuando tienes reportes mensuales, sucursales o tablas fragmentadas con el mismo contexto:</p>
+                        <ul class="help-list">
+                            <li>Reúne todos los CSV subidos dentro de un único archivo <code>.xlsx</code>.</li>
+                            <li>Cada CSV se transforma en una pestaña u hoja de cálculo individual.</li>
+                            <li>El nombre de cada hoja se toma del archivo CSV original (limpiado de caracteres prohibidos por Excel como <code>: \ / ? * [ ]</code> y limitado a 31 caracteres).</li>
+                            <li>Puedes personalizar el nombre del libro resultante antes de generar.</li>
+                        </ul>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>📁 Archivos Excel Separados (Conversión 1 a 1)</h3>
+                        <p>Convierte cada CSV en su propio archivo <code>.xlsx</code> individual con la misma estructura y nombre base. Permite descargar cada archivo por separado o descargar todos juntos en un paquete <code>.zip</code> con un solo clic.</p>
+                    </div>
+                </div>
+
+                <!-- Pestaña 3: Separadores & Encodings -->
+                <div class="help-tab-content" id="tabCsvDelimiters" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>🔍 Detección Inteligente de Separadores</h3>
+                        <p>El motor analiza las primeras líneas de cada CSV y calcula la frecuencia y consistencia estadística de separadores habituales:</p>
+                        <table class="help-table">
+                            <thead>
+                                <tr>
+                                    <th>Delimitador</th>
+                                    <th>Símbolo</th>
+                                    <th>Casos de Uso Típicos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Coma</strong></td>
+                                    <td><code>,</code></td>
+                                    <td>Estándar internacional (EE.UU., UK, bases de datos SQL).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Punto y coma</strong></td>
+                                    <td><code>;</code></td>
+                                    <td>Estándar regional España/Latinoamérica (donde la coma es decimal).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tabulación</strong></td>
+                                    <td><code>\t</code></td>
+                                    <td>Archivos TSV, portapapeles de Excel y logs de sistemas.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pipe</strong></td>
+                                    <td><code>|</code></td>
+                                    <td>Data warehouses, SAP, volcados Unix y sistemas bancarios.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>🔤 Codificación de Caracteres</h3>
+                        <p>Soporta tanto <strong>UTF-8</strong> (con o sin BOM) para caracteres especiales (tildes, eñes, símbolos) como <strong>ISO-8859-1 (Latin-1 / Windows-1252)</strong> para exportaciones legadas de ERPs antiguos.</p>
+                    </div>
+                </div>
+
+                <!-- Pestaña 4: Tipado & Ceros -->
+                <div class="help-tab-content" id="tabCsvFormatting" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>🔢 Preservar Ceros a la Izquierda</h3>
+                        <p>Uno de los problemas más comunes al importar CSVs en Excel es que códigos postales, documentos de identidad (DNI/CUIT) o SKUs como <code>001245</code> pierden los ceros iniciales y se transforman en <code>1245</code>.</p>
+                        <p>Con la opción <strong>Preservar ceros a la izquierda</strong> activa, el motor detecta cadenas numéricas con ceros precedentes y las formatea como texto forzado en la celda de Excel para garantizar su integridad exacta.</p>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>📊 Detección de Números y Fechas</h3>
+                        <p>Detecta automáticamente números con punto o coma decimal, notación científica y formatos de fecha ISO (<code>YYYY-MM-DD</code>) para asignar los tipos de celda nativos correspondientes de Excel.</p>
+                    </div>
+                </div>
+
+                <!-- Pestaña 5: Privacidad -->
+                <div class="help-tab-content" id="tabCsvPrivacy" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>🛡️ Política de Privacidad, Tratamiento de Datos y Cumplimiento Legal (RGPD)</h3>
+                        <p>Para garantizar total transparencia y dar cumplimiento estricto al <strong>Reglamento General de Protección de Datos (RGPD / GDPR - Reglamento UE 2016/679)</strong> y normativas internacionales de privacidad, informamos sobre el tratamiento de datos y archivos según el entorno de ejecución:</p>
+                        <div class="help-grid-2" style="margin-top: 1rem;">
+                            <div class="help-item-box" style="border-left: 3px solid #10B981;">
+                                <strong style="color: #34D399;">💻 Ejecución Local (On-Premise / Localhost)</strong>
+                                <p><strong>Cero Envío de Datos (100% Offline):</strong> Si ejecutas esta herramienta en tu entorno local (localhost, red interna de empresa o equipo personal), <strong>NO se envía ningún dato, archivo ni telemetría</strong> a servidores externos. Todo el procesamiento de tus archivos CSV y hojas Excel se ejecuta íntegramente en la memoria RAM de tu navegador. Ningún byte abandona tu dispositivo.</p>
+                            </div>
+                            <div class="help-item-box" style="border-left: 3px solid #38BDF8;">
+                                <strong style="color: #38BDF8;">🌐 Versión Web en Línea (Online / Cloud)</strong>
+                                <p><strong>Uso Exclusivo para la Tarea Solicitada (Art. 5.1.b RGPD):</strong> En la versión web alojada en línea, los archivos necesarios para la conversión son transmitidos mediante túnel seguro y cifrado (HTTPS/TLS). Dichos datos <strong>se procesan ÚNICAMENTE para ejecutar y finalizar la tarea técnica solicitada</strong>.</p>
+                                <p style="margin-top: 0.5rem;"><strong>Sin Persistencia ni Cesión:</strong> Los archivos se tratan de forma estrictamente efímera en memoria volátil. <strong>NO se almacenan de forma permanente, NO se realizan copias de seguridad de sus contenidos, NO se comparten con terceros ni se utilizan para minería de datos ni entrenamiento de modelos de IA</strong>, eliminándose automáticamente una vez descargado el resultado o cerrada la sesión.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer del Modal -->
+            <div class="modal-footer" style="padding: 1rem 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: flex-end; background: rgba(11, 15, 25, 0.6);">
+                <button type="button" class="btn-primary-action" id="btnDismissHelp" style="padding: 0.5rem 1.25rem; font-size: 0.88rem; background: var(--accent-emerald); border-radius: var(--radius-md); color: #FFFFFF; font-weight: 600; border: none; cursor: pointer;">
+                    Entendido, Cerrar Ayuda
+                </button>
             </div>
         </div>
     </div>

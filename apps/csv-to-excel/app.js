@@ -542,6 +542,80 @@ ART-005;Crimpadora Profesional;Herramientas;25;5;Disponible`;
         }, 3600);
     }
 
+    /* =========================================================================
+       MANEJO DEL MODAL DE AYUDA Y GUÍA DE USO
+       ========================================================================= */
+    const helpModal = document.getElementById('helpModal');
+    const btnOpenHelpModal = document.getElementById('btnOpenHelpModal');
+    const btnOpenHelpHero = document.getElementById('btnOpenHelpHero');
+    const btnCloseHelpModal = document.getElementById('btnCloseHelpModal');
+    const btnDismissHelp = document.getElementById('btnDismissHelp');
+    const helpTabBtns = document.querySelectorAll('#helpModal .help-tab-btn');
+    const helpTabContents = document.querySelectorAll('#helpModal .help-tab-content');
+
+    function openHelpModal() {
+        if (!helpModal) return;
+        helpModal.classList.add('active', 'open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeHelpModal() {
+        if (!helpModal) return;
+        helpModal.classList.remove('active', 'open');
+        document.body.style.overflow = '';
+    }
+
+    if (btnOpenHelpModal) {
+        btnOpenHelpModal.addEventListener('click', (e) => {
+            e.preventDefault();
+            openHelpModal();
+        });
+    }
+
+    if (btnOpenHelpHero) {
+        btnOpenHelpHero.addEventListener('click', (e) => {
+            e.preventDefault();
+            openHelpModal();
+        });
+    }
+
+    if (btnCloseHelpModal) {
+        btnCloseHelpModal.addEventListener('click', closeHelpModal);
+    }
+
+    if (btnDismissHelp) {
+        btnDismissHelp.addEventListener('click', closeHelpModal);
+    }
+
+    if (helpModal) {
+        helpModal.addEventListener('click', (e) => {
+            if (e.target === helpModal) closeHelpModal();
+        });
+    }
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && helpModal && (helpModal.classList.contains('open') || helpModal.classList.contains('active'))) {
+            closeHelpModal();
+        }
+    });
+
+    helpTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-tab');
+            helpTabBtns.forEach(b => b.classList.remove('active'));
+            helpTabContents.forEach(c => {
+                c.classList.remove('active');
+                c.style.display = 'none';
+            });
+            btn.classList.add('active');
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+                targetContent.style.display = 'block';
+            }
+        });
+    });
+
     // Inicializar modo de conversión por defecto (Consolidado: cada CSV en una hoja)
     setConversionMode('consolidated');
 });

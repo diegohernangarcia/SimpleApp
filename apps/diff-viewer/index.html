@@ -59,7 +59,12 @@
                 </a>
 
                 <div class="header-actions">
-                    <div class="server-status-pill">
+                    <button type="button" class="btn-help-guide" id="btnOpenHelpModal" title="Manual Operativo y Guía de Uso del Módulo">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 Ayuda & Guía de Uso</span>
+                    </button>
+
+                    <div class="server-status-pill" title="Modo Local: No se envía ningún dato. Modo Web: Archivos enviados cifrados únicamente para procesar la tarea (RGPD).">
                         <span class="status-dot"></span>
                         <span class="server-meta-tag">100% Cliente</span>
                         <span class="server-php-tag">Zero Upload</span>
@@ -110,6 +115,14 @@
                     <strong>número de línea</strong> y el <strong>rango de columnas/posiciones</strong> donde se
                     encuentra cada cambio.
                 </p>
+
+                <!-- Botón de Ayuda en Hero -->
+                <div style="margin-top: 1.1rem; display: flex; align-items: center; justify-content: flex-start;">
+                    <button type="button" class="btn-help-hero" id="btnOpenHelpHero" title="Ver guía interactiva y modos de comparación">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 ¿Cómo funciona? Guía de Uso & Atajos</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Ribbon de Métricas Rápidas -->
@@ -489,9 +502,179 @@
                 <div class="footer-right">
                     <a href="../../index.html" class="footer-link">← Volver al Catálogo de Apps</a>
                 </div>
+                <div class="site-footer-privacy-note">
+                    🔒 <strong>Aviso Legal de Privacidad y Tratamiento de Datos (RGPD/GDPR):</strong> En <span class="privacy-tag-local">Ejecución Local</span> (On-Premise / Localhost), el procesamiento es 100% en tu equipo y <strong>NO se envía ningún dato</strong> ni archivo al exterior. En la <span class="privacy-tag-web">Versión Web en Línea</span>, los textos o archivos pueden ser transmitidos de forma segura y cifrada (HTTPS/TLS) únicamente con el fin exclusivo de finalizar la tarea técnica solicitada (Art. 5.1.b RGPD); se procesan de forma efímera en memoria volátil, sin almacenamiento persistente, sin copias de seguridad, sin compartirse con terceros ni utilizarse para entrenamiento de modelos, eliminándose inmediatamente al concluir el proceso.
+                </div>
             </div>
         </footer>
 
+    </div>
+
+    <!-- =================================================================
+         MODAL DE AYUDA Y GUÍA DE USO (DIFF VIEWER)
+         ================================================================= -->
+    <div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+        <div class="modal-window help-modal-window">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-icon-badge" style="background: rgba(139, 92, 246, 0.15); color: #C084FC; border: 1px solid rgba(139, 92, 246, 0.3);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="modal-title" id="helpModalTitle">Manual Operativo & Guía de Uso</h2>
+                        <p class="modal-subtitle">Comparador de Texto y Código • SimpleApps Suite</p>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnCloseHelpModal" aria-label="Cerrar ayuda">&times;</button>
+            </div>
+
+            <!-- Navegación de Pestañas de Ayuda -->
+            <div class="help-tabs-nav">
+                <button type="button" class="help-tab-btn active" data-tab="tabDiffOverview">
+                    <span>🌟 Visión General</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabDiffModes">
+                    <span>👁️ Vistas & Comparación</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabDiffAlgorithm">
+                    <span>🔍 Algoritmo & Resaltado</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabDiffShortcuts">
+                    <span>⌨️ Atajos & Utilidades</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabDiffPrivacy">
+                    <span>🛡️ Privacidad & Seguridad</span>
+                </button>
+            </div>
+
+            <!-- Contenido de las Pestañas -->
+            <div class="modal-body help-modal-body">
+                <!-- Pestaña 1: Visión General -->
+                <div class="help-tab-content active" id="tabDiffOverview">
+                    <div class="help-section-card">
+                        <h3>🎯 ¿Qué es Diff Viewer?</h3>
+                        <p>Es una estación de trabajo de inspección visual de diferencias entre dos versiones de un texto o código fuente (<strong>Original A vs Modificado B</strong>). Permite pegar texto plano, subir archivos fuente (JSON, SQL, Python, JavaScript, CSS, HTML, Markdown, config) o cargar ejemplos predefinidos en un clic.</p>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>⚡ Flujo de Comparación Rápida</h3>
+                        <div class="help-grid-3">
+                            <div class="help-item-box">
+                                <strong>1. Ingresar Datos</strong>
+                                <p>Pega texto en los paneles A y B, o arrastra archivos locales a cada editor.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>2. Ejecutar Comparación</strong>
+                                <p>Haz clic en "Comparar Textos" o pulsa <code>Ctrl+Enter</code> para computar las diferencias.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>3. Navegar & Exportar</strong>
+                                <p>Salta entre diferencias con los botones de navegación o copia el informe consolidado.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestaña 2: Vistas & Comparación -->
+                <div class="help-tab-content" id="tabDiffModes" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>👁️ Vista Dividida (Side-by-Side)</h3>
+                        <p>Muestra el texto Original en la columna izquierda y el texto Modificado en la columna derecha con <strong>scroll sincronizado</strong>. Ideal para revisar cambios estructurales, adiciones y sustituciones de código frente a frente.</p>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>📑 Vista Unificada (Inline)</h3>
+                        <p>Presenta un único flujo secuencial lineal con prefijos <code>+</code> (verde) y <code>-</code> (rojo), idéntico a las salidas de comandos de Git (<code>git diff</code>) o plataformas como GitHub y GitLab.</p>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>🎨 Código de Colores Semántico</h3>
+                        <ul class="help-list">
+                            <li><strong style="color: #EF4444;">Rojo (-)</strong>: Líneas o caracteres eliminados en el texto original.</li>
+                            <li><strong style="color: #10B981;">Verde (+)</strong>: Líneas o caracteres añadidos en el texto modificado.</li>
+                            <li><strong style="color: #F59E0B;">Ámbar (~)</strong>: Líneas modificadas (con micro-resaltado de caracteres internos cambiados).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pestaña 3: Algoritmo & Resaltado -->
+                <div class="help-tab-content" id="tabDiffAlgorithm" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>🔍 Algoritmo Myers Diff</h3>
+                        <p>Implementa la variante estándar de O(ND) del algoritmo de Myers, encontrando la secuencia de edición más corta (Shortest Edit Script) para garantizar comparaciones precisas y deterministas en documentos grandes.</p>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>✨ Resaltado Intra-Línea (Char-by-Char)</h3>
+                        <p>Cuando una línea solo sufre modificaciones menores (como una palabra cambiada, un typo o un valor de variable), el visor no solo marca la línea completa sino que <strong>resalta con mayor intensidad los caracteres específicos</strong> añadidos o eliminados.</p>
+                    </div>
+                </div>
+
+                <!-- Pestaña 4: Atajos & Utilidades -->
+                <div class="help-tab-content" id="tabDiffShortcuts" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>⌨️ Atajos de Teclado</h3>
+                        <table class="help-table">
+                            <thead>
+                                <tr>
+                                    <th>Atajo</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>Ctrl + Enter</code> / <code>Cmd + Enter</code></td>
+                                    <td>Ejecutar comparación de inmediato.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>Alt + N</code> / <code>Alt + P</code></td>
+                                    <td>Saltar a la siguiente / anterior diferencia.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>Esc</code></td>
+                                    <td>Cerrar ventanas modales o diálogos emergentes.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>⚙️ Filtros Inteligentes</h3>
+                        <p>En la barra de herramientas puedes activar o desactivar:</p>
+                        <ul class="help-list">
+                            <li><strong>Ignorar espacios en blanco:</strong> Omite diferencias de indentación o espacios adicionales al final de línea.</li>
+                            <li><strong>Ignorar mayúsculas/minúsculas:</strong> Compara texto en modo case-insensitive.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pestaña 5: Privacidad -->
+                <div class="help-tab-content" id="tabDiffPrivacy" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>🛡️ Política de Privacidad, Tratamiento de Datos y Cumplimiento Legal (RGPD)</h3>
+                        <p>Para garantizar total transparencia y dar cumplimiento estricto al <strong>Reglamento General de Protección de Datos (RGPD / GDPR - Reglamento UE 2016/679)</strong> y normativas internacionales de privacidad, informamos sobre el tratamiento de datos y textos según el entorno de ejecución:</p>
+                        <div class="help-grid-2" style="margin-top: 1rem;">
+                            <div class="help-item-box" style="border-left: 3px solid #8B5CF6;">
+                                <strong style="color: #C084FC;">💻 Ejecución Local (On-Premise / Localhost)</strong>
+                                <p><strong>Cero Envío de Datos (100% Offline):</strong> Si ejecutas esta herramienta en tu entorno local (localhost, servidor interno o PC personal), <strong>NO se envía ningún dato, archivo ni telemetría</strong> a servidores externos. Los cálculos del algoritmo Myers Diff y resaltado intra-línea se ejecutan de forma inmediata en la memoria RAM del navegador. Ningún byte o carácter sale de tu equipo.</p>
+                            </div>
+                            <div class="help-item-box" style="border-left: 3px solid #38BDF8;">
+                                <strong style="color: #38BDF8;">🌐 Versión Web en Línea (Online / Cloud)</strong>
+                                <p><strong>Uso Exclusivo para la Tarea Solicitada (Art. 5.1.b RGPD):</strong> En la versión web alojada en línea, los textos o archivos comparados se transmiten bajo conexión segura y cifrada (HTTPS/TLS). Dichos datos <strong>se procesan ÚNICAMENTE para ejecutar y finalizar la tarea técnica solicitada</strong>.</p>
+                                <p style="margin-top: 0.5rem;"><strong>Sin Persistencia ni Cesión:</strong> El código y texto se analizan de manera estrictamente efímera en memoria volátil. <strong>NO se almacenan de forma permanente, NO se realizan copias de seguridad de sus contenidos, NO se comparten con terceros ni se utilizan para minería de datos ni entrenamiento de modelos de IA</strong>, eliminándose automáticamente al cerrar la pestaña o concluir la sesión.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer del Modal -->
+            <div class="modal-footer" style="padding: 1rem 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: flex-end; background: rgba(11, 15, 25, 0.6);">
+                <button type="button" class="btn-primary-action" id="btnDismissHelp" style="padding: 0.5rem 1.25rem; font-size: 0.88rem; background: #8B5CF6; border-radius: var(--radius-md); color: #FFFFFF; font-weight: 600; border: none; cursor: pointer;">
+                    Entendido, Cerrar Ayuda
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts de la Aplicación -->

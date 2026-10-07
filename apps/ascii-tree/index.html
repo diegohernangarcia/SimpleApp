@@ -60,7 +60,12 @@
                 </a>
 
                 <div class="header-actions">
-                    <div class="server-status-pill">
+                    <button type="button" class="btn-help-guide" id="btnOpenHelpModal" title="Manual Operativo y Guía de Uso del Módulo">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 Ayuda & Guía de Uso</span>
+                    </button>
+
+                    <div class="server-status-pill" title="Modo Local: No se envía ningún dato. Modo Web: Archivos enviados cifrados únicamente para procesar la tarea (RGPD).">
                         <span class="status-dot" style="background: #3B82F6; box-shadow: 0 0 8px #3B82F6;"></span>
                         <span class="server-meta-tag">100% Local</span>
                         <span class="server-php-tag" style="background: rgba(59, 130, 246, 0.15); color: #60A5FA; border-color: rgba(59, 130, 246, 0.3);">Bi-Direccional</span>
@@ -105,9 +110,17 @@
                 <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 0.5rem;">
                     Generador de Árbol de Carpetas <span class="glow-text" style="color: #60A5FA; text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);">ASCII & Unicode</span>
                 </h1>
-                <p class="hero-description" style="max-width: 820px;">
+                <p class="hero-description" style="max-width: 820px; margin-bottom: 0;">
                     Crea diagramas visuales de directorios listos para READMEs, especificaciones técnicas o arquitectura de proyectos. Funciona también en <strong>Modo Inverso</strong>: pega un árbol de texto y obtén el script de comandos (<code style="color:#60A5FA;">mkdir</code> y <code style="color:#60A5FA;">touch</code>) para materializar la estructura en tu computadora.
                 </p>
+
+                <!-- Botón de Ayuda en Hero -->
+                <div style="margin-top: 1.1rem; display: flex; align-items: center; justify-content: flex-start;">
+                    <button type="button" class="btn-help-hero" id="btnOpenHelpHero" title="Ver guía interactiva del generador ASCII">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 ¿Cómo funciona? Guía de Uso & Modo Inverso</span>
+                    </button>
+                </div>
             </div>
 
             <!-- CONMUTADOR DE MODOS (Tabs Principales) -->
@@ -442,9 +455,170 @@ mi-proyecto/
                 <div class="footer-right">
                     <a href="../../index.html" class="footer-link">← Volver al Catálogo de Micro-Apps</a>
                 </div>
+                <div class="site-footer-privacy-note">
+                    🔒 <strong>Aviso Legal de Privacidad y Tratamiento de Datos (RGPD/GDPR):</strong> En <span class="privacy-tag-local">Ejecución Local</span> (On-Premise / Localhost), el procesamiento es 100% en tu equipo y <strong>NO se envía ningún dato</strong> ni archivo al exterior. En la <span class="privacy-tag-web">Versión Web en Línea</span>, las estructuras de rutas pueden ser transmitidas de forma segura y cifrada (HTTPS/TLS) únicamente con el fin exclusivo de finalizar la tarea técnica solicitada (Art. 5.1.b RGPD); se procesan de forma efímera en memoria volátil, sin almacenamiento persistente, sin copias de seguridad, sin compartirse con terceros ni utilizarse para entrenamiento de modelos, eliminándose inmediatamente al concluir el proceso.
+                </div>
             </div>
         </footer>
 
+    </div>
+
+    <!-- =================================================================
+         MODAL DE AYUDA Y GUÍA DE USO (ASCII TREE)
+         ================================================================= -->
+    <div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+        <div class="modal-window help-modal-window">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-icon-badge" style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.3);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="modal-title" id="helpModalTitle">Manual Operativo & Guía de Uso</h2>
+                        <p class="modal-subtitle">Generador de Árbol ASCII & Parser Inverso CLI • SimpleApps Suite</p>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnCloseHelpModal" aria-label="Cerrar ayuda">&times;</button>
+            </div>
+
+            <!-- Navegación de Pestañas de Ayuda -->
+            <div class="help-tabs-nav">
+                <button type="button" class="help-tab-btn active" data-tab="tabTreeOverview">
+                    <span>🌟 Visión General</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabTreeStyles">
+                    <span>🌲 Estilos Visuales</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabTreeReverse">
+                    <span>⚡ Modo Inverso CLI</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabTreeRules">
+                    <span>📐 Reglas & Formato</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabTreePrivacy">
+                    <span>🛡️ Privacidad & Seguridad</span>
+                </button>
+            </div>
+
+            <!-- Contenido de las Pestañas -->
+            <div class="modal-body help-modal-body">
+                <!-- Pestaña 1: Visión General -->
+                <div class="help-tab-content active" id="tabTreeOverview">
+                    <div class="help-section-card">
+                        <h3>🎯 ¿Qué es el Generador ASCII Tree?</h3>
+                        <p>Es una herramienta de diagramación técnica bi-direccional diseñada para desarrolladores, sysadmins y arquitectos de software:</p>
+                        <div class="help-grid-2">
+                            <div class="help-item-box">
+                                <strong>Modo 1: Rutas a Árbol Gráfico</strong>
+                                <p>Ingresa una lista de rutas de archivos (o arrastra una carpeta local) y genera al instante un árbol jerárquico impecable para documentar proyectos en archivos <code>README.md</code>, Wikis o especificaciones.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>Modo 2: Árbol a Script CLI (Inverso)</strong>
+                                <p>Pega un diagrama de árbol existente copiado de un tutorial o documentación y genera automáticamente scripts ejecutables para <strong>Bash (Linux/macOS)</strong>, <strong>PowerShell (Windows)</strong> o <strong>CMD</strong> que crean toda la estructura con <code>mkdir</code> y <code>touch</code>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestaña 2: Estilos Visuales -->
+                <div class="help-tab-content" id="tabTreeStyles" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>🌲 4 Estilos Gráficos Disponibles</h3>
+                        <p>Selecciona el formato que mejor se adapte a tu medio de publicación:</p>
+                        <table class="help-table">
+                            <thead>
+                                <tr>
+                                    <th>Estilo</th>
+                                    <th>Caracteres</th>
+                                    <th>Uso Recomendado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Unicode Moderno</strong></td>
+                                    <td><code>├── └── │</code></td>
+                                    <td>Estándar visual de la herramienta <code>tree</code> en Linux, perfecto para GitHub y Notion.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ASCII Clásico</strong></td>
+                                    <td><code>|-- \-- |</code></td>
+                                    <td>Máxima compatibilidad con terminales legadas o fuentes sin soporte UTF-8.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Markdown List</strong></td>
+                                    <td><code>- item</code> con indentación</td>
+                                    <td>Listas anidadas nativas de Markdown listas para renderizar como HTML.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bullet / Minimal</strong></td>
+                                    <td><code>• item</code></td>
+                                    <td>Documentación ejecutiva, presentaciones y diagramas simplificados.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Pestaña 3: Modo Inverso CLI -->
+                <div class="help-tab-content" id="tabTreeReverse" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>⚡ De Diagrama a Código Ejecutable</h3>
+                        <p>¿Encontraste una plantilla de arquitectura en un tutorial o documentación oficial? Con el <strong>Modo Inverso</strong>:</p>
+                        <ul class="help-list">
+                            <li>El parser inteligente detecta ramas de cualquier estilo (Unicode, barras, espacios o guiones).</li>
+                            <li>Identifica qué elementos son carpetas (terminan en <code>/</code> o tienen hijos) y cuáles son archivos (con extensión).</li>
+                            <li>Genera comandos agrupados <code>mkdir -p</code> y <code>touch</code> (o <code>New-Item</code> en PowerShell).</li>
+                            <li>Permite copiar el script al portapapeles o descargarlo como archivo <code>.sh</code> o <code>.ps1</code> listo para ejecutar con un doble clic.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pestaña 4: Reglas & Formato -->
+                <div class="help-tab-content" id="tabTreeRules" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>📐 Formato de Entrada de Rutas</h3>
+                        <p>En el editor del Modo 1 puedes escribir o pegar rutas con cualquier estilo:</p>
+                        <ul class="help-list">
+                            <li>Rutas relativas con barra: <code>src/components/Header.jsx</code></li>
+                            <li>Rutas con contrabarra de Windows: <code>app\models\user.py</code></li>
+                            <li>Rutas anidadas con sangría de espacios o tabulaciones.</li>
+                            <li>Carpetas vacías indicadas agregando una barra final: <code>logs/</code> o <code>temp/cache/</code>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>🎛️ Opciones Avanzadas</h3>
+                        <p>Puedes personalizar: inclusión de carpeta raíz (Root Name), inclusión de iconos/emojis según extensión de archivo, ordenamiento alfabético y orden primero-directorios.</p>
+                    </div>
+                </div>
+
+                <!-- Pestaña 5: Privacidad -->
+                <div class="help-tab-content" id="tabTreePrivacy" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>🛡️ Política de Privacidad, Tratamiento de Datos y Cumplimiento Legal (RGPD)</h3>
+                        <p>Para garantizar total transparencia y dar cumplimiento estricto al <strong>Reglamento General de Protección de Datos (RGPD / GDPR - Reglamento UE 2016/679)</strong> y normativas de privacidad, informamos sobre el tratamiento según el entorno de ejecución:</p>
+                        <div class="help-grid-2" style="margin-top: 1rem;">
+                            <div class="help-item-box" style="border-left: 3px solid #3B82F6;">
+                                <strong style="color: #60A5FA;">💻 Ejecución Local (On-Premise / Localhost)</strong>
+                                <p><strong>Cero Envío de Datos (100% Offline):</strong> Si ejecutas esta herramienta en tu entorno local (localhost o máquina de trabajo), <strong>NO se envía ningún dato, archivo, árbol ni telemetría</strong> a servidores externos. Al arrastrar una carpeta, el navegador únicamente lee los nombres de las rutas en memoria local a través de la API FileSystem de HTML5, sin leer ni transmitir el contenido interno de tus ficheros. Ningún dato sale de tu dispositivo.</p>
+                            </div>
+                            <div class="help-item-box" style="border-left: 3px solid #38BDF8;">
+                                <strong style="color: #38BDF8;">🌐 Versión Web en Línea (Online / Cloud)</strong>
+                                <p><strong>Uso Exclusivo para la Tarea Solicitada (Art. 5.1.b RGPD):</strong> En la versión web alojada en línea, las estructuras o árboles enviados se transmiten bajo conexión segura y cifrada (HTTPS/TLS). Dichos datos <strong>se procesan ÚNICAMENTE para ejecutar y finalizar la tarea técnica solicitada</strong>.</p>
+                                <p style="margin-top: 0.5rem;"><strong>Sin Persistencia ni Cesión:</strong> Los árboles generados se procesan de forma efímera en memoria volátil. <strong>NO se almacenan de forma permanente, NO se crean copias de seguridad de sus contenidos, NO se comparten con terceros ni se utilizan para minería de datos ni entrenamiento de modelos de IA</strong>, eliminándose automáticamente al abandonar la herramienta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer del Modal -->
+            <div class="modal-footer" style="padding: 1rem 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: flex-end; background: rgba(11, 15, 25, 0.6);">
+                <button type="button" class="btn-primary-action" id="btnDismissHelp" style="padding: 0.5rem 1.25rem; font-size: 0.88rem; background: var(--tree-blue); border-radius: var(--radius-md); color: #FFFFFF; font-weight: 600; border: none; cursor: pointer;">
+                    Entendido, Cerrar Ayuda
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Contenedor para Notificaciones Toast -->
