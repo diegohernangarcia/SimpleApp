@@ -27,6 +27,9 @@ A continuación se detalla la documentación técnica de los módulos completado
 | **#04** | **Calculadora de Permisos Linux** | Conversión bidireccional entre octal, simbólico y bits, matriz interactiva con Special Bits (SUID, SGID, Sticky), umask y generador CLI chmod/chown. | [Manual Módulo #04](./04-linux-permissions.md) |
 | **#05** | **Doc a Markdown** | Conversor local de PDF, DOCX, DOC, ODT, HTML y texto pegado a GitHub Flavored Markdown con formateo de tablas y código. | [Manual Módulo #05](./05-doc-to-markdown.md) |
 | **#06** | **Generador ASCII Tree** | Diagramador bidireccional de directorios en texto plano (Unicode, ASCII, Markdown) y generador inverso de scripts Bash/PowerShell/CMD. | [Manual Módulo #06](./06-ascii-tree.md) |
+| **#07** | **Cruzador y Conciliador de Tablas (JOIN Express)** | Motor relacional en memoria O(N+M) para VLOOKUP / SQL JOIN (Inner, Left, Right, Full Outer, Exclusivos), claves compuestas y conciliación de saldos con auditoría de descuadres. | [Manual Módulo #07](./07-table-cross-join.md) |
+| **#08** | **Detector de Duplicados con Jerarquía** | Motor heurístico determinista para deduplicación según campos clave, preservación por jerarquía (más completa, más reciente, mayor valor, reglas condicionales) y doble salida con auditoría de descartes justificados. | [Manual Módulo #08](./08-duplicate-detector.md) |
+| **#09** | **Generador SQL INSERT / UPDATE desde Excel** | Generador de sentencias SQL en bloques masivos (INSERT, UPSERT, REPLACE, UPDATE) con tipado heurístico, escape seguro y soporte multi-dialecto. | [Manual Módulo #09](./09-sql-generator.md) |
 
 ---
 

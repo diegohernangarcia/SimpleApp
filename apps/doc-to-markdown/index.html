@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark">
-    <title>Conversor PDF / Doc / Docx / ODT a MarkDown • SimpleApps</title>
-    <meta name="description" content="Convierte documentos PDF, Word DOCX, DOC y LibreOffice ODT a formato Markdown (.md) de forma 100% local, privada y sin subir archivos a la nube.">
+    <title>Conversor PDF / Word / Excel / ODT a MarkDown • SimpleApps</title>
+    <meta name="description" content="Convierte documentos PDF, Word (DOCX, DOC), Excel (XLSX, XLS), OpenDocument (ODT, ODS) a formato Markdown (.md) de forma 100% local, privada y sin subir archivos a la nube.">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,6 +59,11 @@
 
                 <!-- Acciones del Header -->
                 <div class="header-actions">
+                    <button type="button" class="btn-help-guide" id="btnOpenHelpModal" title="Manual Operativo y Guía de Uso del Módulo">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 Ayuda & Guía de Uso</span>
+                    </button>
+
                     <div class="server-status-pill" title="Procesamiento en tu navegador">
                         <span class="status-dot" style="background: #F59E0B; box-shadow: 0 0 8px #F59E0B;"></span>
                         <span class="server-meta-tag">100% Local</span>
@@ -86,16 +96,24 @@
             <section class="doc-converter-hero">
                 <div class="converter-tag">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-                    MÓDULO #05 • PDF, DOCX, DOC, ODT & PEGADO
+                    MÓDULO #05 • PDF, DOCX, DOC, ODT, XLSX, XLS, ODS &amp; PEGADO
                 </div>
                 <h1 class="hero-title-amber">
                     Conversor de Documentos a <span class="glow-text-amber">Markdown (.md)</span>
                 </h1>
                 <p class="hero-description" style="max-width: 850px; margin-bottom: 0;">
-                    Convierte tus archivos <strong class="text-glow-white">PDF, Word (.docx, .doc), OpenDocument (.odt)</strong> o 
+                    Convierte tus archivos <strong class="text-glow-white">PDF, Word (.docx, .doc), Excel (.xlsx, .xls), OpenDocument (.odt, .ods)</strong> o 
                     <strong class="text-glow-cyan">pega texto con formato enriquecido</strong> directamente desde el portapapeles. 
                     Preserva encabezados, tablas, listas y estilos con procesamiento <strong style="color: var(--accent-amber-light);">100% privado en tu equipo</strong>.
                 </p>
+
+                <!-- Botón de Ayuda en Hero -->
+                <div style="margin-top: 1.1rem; display: flex; align-items: center; justify-content: center;">
+                    <button type="button" class="btn-help-hero" id="btnOpenHelpHero" title="Ver guía interactiva y formatos">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 ¿Cómo funciona? Guía de Uso & Formatos</span>
+                    </button>
+                </div>
             </section>
 
             <!-- Barra de Pestañas de Modo de Entrada + Opciones Rápidas -->
@@ -144,7 +162,7 @@
 
                 <!-- CONTENIDO PESTAÑA 1: ADJUNTAR ARCHIVO -->
                 <div id="tabFileContent">
-                    <input type="file" id="fileInput" accept=".pdf,.docx,.doc,.odt,.html,.htm,.txt,.md,.rtf" style="display: none;">
+                    <input type="file" id="fileInput" accept=".pdf,.docx,.doc,.odt,.xlsx,.xls,.ods,.csv,.tsv,.html,.htm,.txt,.md,.rtf" style="display: none;">
                     
                     <!-- Zona Drag & Drop -->
                     <div class="dropzone-container" id="dropzone">
@@ -158,7 +176,7 @@
                         </div>
                         <h3 class="dropzone-title">Arrastra tu archivo aquí o haz clic para explorar</h3>
                         <p class="dropzone-subtitle">
-                            Soporta documentos de oficina y texto estructurado. Conversión instantánea ejecutada en memoria.
+                            Soporta documentos de oficina, planillas Excel/ODS y texto estructurado. Conversión instantánea ejecutada en memoria.
                         </p>
                         <button type="button" class="btn-amber-primary" id="btnSelectFile">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -168,6 +186,9 @@
                             <span class="format-pill">.PDF</span>
                             <span class="format-pill">.DOCX</span>
                             <span class="format-pill">.DOC</span>
+                            <span class="format-pill">.XLSX</span>
+                            <span class="format-pill">.XLS</span>
+                            <span class="format-pill">.ODS</span>
                             <span class="format-pill">.ODT</span>
                             <span class="format-pill">.HTML</span>
                             <span class="format-pill">.TXT</span>
@@ -370,10 +391,174 @@
 
     </div>
 
+    <!-- =================================================================
+         MODAL DE AYUDA Y GUÍA DE USO (DOC TO MARKDOWN)
+         ================================================================= -->
+    <div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+        <div class="modal-window help-modal-window">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-icon-badge" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="modal-title" id="helpModalTitle">Manual Operativo & Guía de Uso</h2>
+                        <p class="modal-subtitle">Conversor de Documentos a Markdown • SimpleApps Suite</p>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnCloseHelpModal" aria-label="Cerrar ayuda">&times;</button>
+            </div>
+
+            <!-- Navegación de Pestañas de Ayuda -->
+            <div class="help-tabs-nav">
+                <button type="button" class="help-tab-btn active" data-tab="tabHelpOverview">
+                    <span>🌟 Visión General</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpFormats">
+                    <span>📄 Formatos & Archivos</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpExcel">
+                    <span>📊 Tablas & Excel (.xlsx, .ods)</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpOptions">
+                    <span>⚙️ Opciones & Sintaxis</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpPrivacy">
+                    <span>🛡️ Privacidad & Seguridad</span>
+                </button>
+            </div>
+
+            <!-- Contenido de las Pestañas -->
+            <div class="modal-body help-modal-body">
+                <!-- Pestaña 1: Visión General -->
+                <div class="help-tab-content active" id="tabHelpOverview">
+                    <div class="help-section-card">
+                        <h3>🎯 ¿Qué es el Conversor a Markdown?</h3>
+                        <p>Es una utilidad de ingeniería documental que transforma archivos ofimáticos complejos (PDF, Word, Excel, OpenDocument) o texto enriquecido copiado al portapapeles en <strong>código Markdown estándar (CommonMark / GFM)</strong>, limpio, semántico y listo para Obsidian, GitHub, Notion o generadores estáticos.</p>
+                    </div>
+
+                    <div class="help-section-card">
+                        <h3>🔄 Dos Canales de Conversión</h3>
+                        <div class="help-grid-2">
+                            <div class="help-item-box">
+                                <strong>1. Adjuntar Archivo</strong>
+                                <p>Arrastra o sube tus archivos <code>.docx</code>, <code>.doc</code>, <code>.pdf</code>, <code>.odt</code>, <code>.xlsx</code>, <code>.xls</code> o <code>.ods</code>. El sistema detecta automáticamente el tipo MIME y activa el motor correspondiente.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>2. Pegar Contenido / Texto</strong>
+                                <p>Copia texto enriquecido desde Word, Google Docs, páginas web o tablas de Excel y pégalo directamente con <code>Ctrl+V</code>. El conversor extrae tanto el formato HTML interno como el texto plano.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestaña 2: Formatos & Archivos -->
+                <div class="help-tab-content" id="tabHelpFormats" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>📄 Compatibilidad de Formatos y Motores</h3>
+                        <table class="help-table">
+                            <thead>
+                                <tr>
+                                    <th>Extensión</th>
+                                    <th>Tipo de Documento</th>
+                                    <th>Motor Interno Local</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>.docx</code></td>
+                                    <td>Microsoft Word 2007+</td>
+                                    <td>Mammoth.js (Preserva títulos, negritas, cursivas, listas y tablas)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>.xlsx</code> / <code>.xls</code></td>
+                                    <td>Microsoft Excel</td>
+                                    <td>SheetJS + Transpilador GFM (Convierte cada hoja en tabla Markdown)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>.ods</code></td>
+                                    <td>LibreOffice / OpenOffice Calc</td>
+                                    <td>SheetJS + Transpilador GFM</td>
+                                </tr>
+                                <tr>
+                                    <td><code>.pdf</code></td>
+                                    <td>Adobe Portable Document Format</td>
+                                    <td>PDF.js (Extracción de texto estructurado por capas y páginas)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>.odt</code></td>
+                                    <td>LibreOffice Writer</td>
+                                    <td>JSZip + Parser XML nativo para extracción de contenido</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Pestaña 3: Tablas & Excel -->
+                <div class="help-tab-content" id="tabHelpExcel" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>📊 Conversión Especializada de Hojas de Cálculo</h3>
+                        <p>Al subir un archivo <strong>Excel (.xlsx, .xls)</strong> o <strong>OpenDocument (.ods)</strong>, el conversor realiza una serie de optimizaciones automáticas:</p>
+                        <ul class="help-list">
+                            <li><strong>Encabezados automáticos:</strong> Toma la primera fila de datos como encabezado de columna y genera la fila divisoria de sintaxis GFM (<code>|---|---|</code>).</li>
+                            <li><strong>Múltiples hojas:</strong> Si el libro tiene varias pestañas, genera un título de nivel 2 (<code>## Hoja 1</code>) seguido de la tabla correspondiente a cada hoja.</li>
+                            <li><strong>Limpieza de celdas:</strong> Escapa barras verticales (<code>|</code>) dentro de las celdas para evitar que rompan la estructura de la tabla.</li>
+                            <li><strong>Preservación de saltos de línea:</strong> Si una celda contiene saltos de línea internos, los sustituye por etiquetas <code>&lt;br&gt;</code> seguras.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pestaña 4: Opciones & Sintaxis -->
+                <div class="help-tab-content" id="tabHelpOptions" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>⚙️ Personalización del Markdown Saliente</h3>
+                        <div class="help-grid-2">
+                            <div class="help-item-box">
+                                <strong>Estilo de Títulos:</strong>
+                                <p>Elige entre encabezados prefijados <code># Título</code> (estilo ATX recomendado) o subrayados <code>=== / ---</code> (estilo Setext).</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>Marcador de Viñetas:</strong>
+                                <p>Configura si prefieres guiones (<code>-</code>), asteriscos (<code>*</code>) o símbolos más (<code>+</code>) en listas desordenadas.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>Eliminar saltos vacíos:</strong>
+                                <p>Normaliza el documento compactando saltos de línea triples o cuádruples en un único espacio interlineal limpio.</p>
+                            </div>
+                            <div class="help-item-box">
+                                <strong>Saltos de página:</strong>
+                                <p>Inserta separadores horizontales (<code>---</code>) en los saltos de página detectados en archivos PDF y Word.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestaña 5: Privacidad -->
+                <div class="help-tab-content" id="tabHelpPrivacy" style="display:none;">
+                    <div class="help-section-card">
+                        <h3>🛡️ Privacidad Absoluta (Zero-Upload Architecture)</h3>
+                        <p>A diferencia de la mayoría de convertidores online que envían tus documentos a servidores remotos para procesarlos:</p>
+                        <ul class="help-list">
+                            <li><strong>100% Ejecutado en el Navegador:</strong> Todo el procesamiento de parsing de PDF, Word y Excel se realiza en la memoria RAM de tu máquina usando Web Workers y JavaScript nativo.</li>
+                            <li><strong>Sin Envío de Datos:</strong> Ningún byte de tus documentos, contratos o planillas viaja por Internet.</li>
+                            <li><strong>Funciona Offline:</strong> Puedes usar esta herramienta sin conexión a Internet una vez cargada la página.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="padding: 1rem 1.5rem; display: flex; justify-content: flex-end; border-top: 1px solid var(--border-subtle); background: rgba(15, 23, 42, 0.9);">
+                <button type="button" class="btn-subnav-ghost" id="btnDismissHelp">Entendido, Cerrar Ayuda</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Contenedor para Notificaciones Toast -->
     <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
     <!-- Librerías de Extracción y Parsing 100% Locales -->
+    <script src="libs/xlsx.full.min.js"></script>
     <script src="libs/jszip.min.js"></script>
     <script src="libs/mammoth.browser.min.js"></script>
     <script src="libs/pdf.min.js"></script>

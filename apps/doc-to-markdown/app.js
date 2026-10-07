@@ -153,10 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleFileSelection(file) {
         const ext = file.name.split('.').pop().toLowerCase();
-        const validExtensions = ['pdf', 'docx', 'doc', 'odt', 'txt', 'rtf', 'html', 'htm', 'md'];
+        const validExtensions = ['pdf', 'docx', 'doc', 'odt', 'xlsx', 'xls', 'ods', 'csv', 'tsv', 'txt', 'rtf', 'html', 'htm', 'md'];
 
         if (!validExtensions.includes(ext)) {
-            showToast(`Formato no admitido (.${ext}). Por favor adjunta PDF, DOCX, DOC, ODT, HTML o TXT.`, 'error');
+            showToast(`Formato no admitido (.${ext}). Por favor adjunta PDF, DOCX, DOC, ODT, XLSX, XLS, ODS, HTML o TXT.`, 'error');
             return;
         }
 
@@ -597,6 +597,68 @@ document.addEventListener('DOMContentLoaded', () => {
         div.textContent = text;
         return div.innerHTML;
     }
+
+    // =========================================================================
+    // MODAL DE AYUDA Y GUÍA DE USO
+    // =========================================================================
+    const helpModal = document.getElementById('helpModal');
+    const btnOpenHelpModal = document.getElementById('btnOpenHelpModal');
+    const btnOpenHelpHero = document.getElementById('btnOpenHelpHero');
+    const btnCloseHelpModal = document.getElementById('btnCloseHelpModal');
+    const btnDismissHelp = document.getElementById('btnDismissHelp');
+    const helpTabBtns = document.querySelectorAll('#helpModal .help-tab-btn');
+    const helpTabContents = document.querySelectorAll('#helpModal .help-tab-content');
+
+    function openHelpModal(targetTabId = 'tabHelpOverview') {
+        if (!helpModal) return;
+        switchHelpTab(targetTabId);
+        helpModal.classList.add('active', 'open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeHelpModal() {
+        if (!helpModal) return;
+        helpModal.classList.remove('active', 'open');
+        document.body.style.overflow = '';
+    }
+
+    function switchHelpTab(tabKey) {
+        const candidate = tabKey || 'tabHelpOverview';
+        let found = false;
+        helpTabContents.forEach(c => {
+            if (c.id === candidate) found = true;
+        });
+        const activeTab = found ? candidate : 'tabHelpOverview';
+
+        helpTabBtns.forEach(b => {
+            b.classList.toggle('active', b.dataset.tab === activeTab);
+        });
+        helpTabContents.forEach(c => {
+            c.style.display = c.id === activeTab ? 'block' : 'none';
+        });
+    }
+
+    if (btnOpenHelpModal) btnOpenHelpModal.addEventListener('click', () => openHelpModal('tabHelpOverview'));
+    if (btnOpenHelpHero) btnOpenHelpHero.addEventListener('click', () => openHelpModal('tabHelpOverview'));
+    if (btnCloseHelpModal) btnCloseHelpModal.addEventListener('click', closeHelpModal);
+    if (btnDismissHelp) btnDismissHelp.addEventListener('click', closeHelpModal);
+    if (helpModal) {
+        helpModal.addEventListener('click', (e) => {
+            if (e.target === helpModal) closeHelpModal();
+        });
+    }
+
+    helpTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            switchHelpTab(btn.dataset.tab);
+        });
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeHelpModal();
+        }
+    });
 
     // Inicializar vista por defecto
     switchResultView('split');

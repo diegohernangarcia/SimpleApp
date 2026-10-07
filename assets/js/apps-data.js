@@ -91,20 +91,20 @@ const APPS_DATA = [
     {
         id: "doc-to-markdown",
         number: "05",
-        title: "Conversor PDF / Doc / Docx / ODT a MarkDown",
-        shortTitle: "Docs a Markdown",
+        title: "Conversor Documentos & Planillas (Word, Excel, PDF, ODS) a MarkDown",
+        shortTitle: "Docs & Excel a Markdown",
         category: "texto",
         categoryName: "Texto & Código",
         color: "#F59E0B", // Amber
         gradient: "linear-gradient(135deg, #F59E0B 0%, #F97316 100%)",
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
-        description: "Transforma documentos PDF, Word (.docx, .doc), OpenDocument (.odt) o texto enriquecido pegado desde el portapapeles a formato Markdown (.md) preservando títulos, listas y tablas.",
-        features: ["PDF, DOCX, ODT y DOC", "Pegado Enriquecido", "Tablas y Títulos a MD", "Vista Dividida en Vivo"],
+        description: "Transforma documentos Word (.docx, .doc), planillas Excel (.xlsx, .xls), OpenDocument (.odt, .ods), PDF (.pdf) o texto enriquecido a formato Markdown (.md) estructurado con tablas GFM.",
+        features: ["Excel (XLSX, XLS, ODS)", "Word (DOCX, DOC) y PDF", "Tablas GFM Multi-Hoja", "Vista Dividida en Vivo"],
         status: "desarrollada",
         targetUrl: "apps/doc-to-markdown/",
-        tech: "Mammoth.js / PDF.js / JSZip / Turndown",
+        tech: "SheetJS / Mammoth.js / PDF.js / JSZip / Turndown",
         specs: {
-            input: "Archivos .pdf, .docx, .doc, .odt o texto enriquecido del portapapeles",
+            input: "Archivos .xlsx, .xls, .ods, .docx, .doc, .odt, .pdf, .csv o portapapeles",
             output: "Texto Markdown estructurado (.md) con vista previa en vivo",
             execution: "Procesamiento 100% local en el navegador"
         }
@@ -142,7 +142,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>`,
         description: "Cruza dos conjuntos de datos mediante columnas clave (VLOOKUP / BUSCAV / SQL JOIN: Inner, Left, Right, Full Outer). Concilia saldos contables, cruza inventarios y detecta discrepancias al instante.",
         features: ["Inner, Left, Right, Outer", "Multi-Columna Clave", "Reporte de Discrepancias", "Exportación Directa"],
-        status: "en-proceso",
+        status: "desarrollada",
         targetUrl: "apps/table-cross-join/",
         tech: "Motor Relacional JS / Vanilla JS",
         specs: {
@@ -163,7 +163,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="m9 14 2 2 4-4"/></svg>`,
         description: "Identifica filas repetidas en bases de datos o planillas según campos clave y aplica reglas jerárquicas de descarte: conservar la más reciente, la fila con mayor información completa o mayor valor numérico.",
         features: ["Reglas de Prioridad", "Conservar Más Completo", "Auditoría de Descartados", "Limpieza Segura"],
-        status: "en-proceso",
+        status: "desarrollada",
         targetUrl: "apps/duplicate-detector/",
         tech: "Heurística de Datos / Vanilla JS",
         specs: {
@@ -184,7 +184,7 @@ const APPS_DATA = [
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>`,
         description: "Transforma tablas de Excel o datos copiados en sentencias SQL estándar (INSERT INTO, ON DUPLICATE KEY UPDATE, REPLACE o UPDATE por lotes) con escape seguro y tipado automático.",
         features: ["Sintaxis SQL Estándar", "ON DUPLICATE KEY UPDATE", "Escape Seguro de Strings", "Lotes de 500/1000 filas"],
-        status: "en-proceso",
+        status: "desarrollada",
         targetUrl: "apps/sql-generator/",
         tech: "SQL Builder / Vanilla JS",
         specs: {

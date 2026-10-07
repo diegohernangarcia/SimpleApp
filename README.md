@@ -17,11 +17,11 @@ Colección de 10 herramientas ágiles, directas y de alto rendimiento diseñadas
 | **02** | **De Excel a CSV** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #02](docs/02-excel-to-csv.md) | Exporta hojas de Excel a CSV limpio configurable según RFC 4180. |
 | **03** | **Diff Viewer** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #03](docs/03-diff-viewer.md) | Comparador de texto y código caracter a caracter con visualizador Side-by-Side, sincronización de scroll e inspector de líneas y columnas exactas. |
 | **04** | **Calculadora de Permisos Linux** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #04](docs/04-linux-permissions.md) | Calculadora interactiva visual de permisos Chmod / Octal (755, 644, rwxr-xr-x). |
-| **05** | **Conversor PDF/Doc/Docx a Markdown** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #05](docs/05-doc-to-markdown.md) | Transforma documentos de oficina a Markdown estructurado con tablas. |
+| **05** | **Conversor Docs & Excel a Markdown** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #05](docs/05-doc-to-markdown.md) | Transforma Word (.docx), Excel (.xlsx, .xls, .ods, .csv) y PDF a Markdown con tablas GFM. |
 | **06** | **Generador ASCII Tree** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #06](docs/06-ascii-tree.md) | Genera árboles de directorios en texto plano y viceversa (comandos mkdir/touch). |
-| **07** | **Cruzador y Conciliador de Tablas** | 🔴 **✓ En proceso** (Scaffold) | *En desarrollo* | JOIN Express / VLOOKUP entre dos archivos para conciliación de discrepancias. |
-| **08** | **Detector de Duplicados con Jerarquía** | 🔴 **✓ En proceso** (Scaffold) | *En desarrollo* | Identifica filas repetidas y aplica reglas de descarte prioritarias. |
-| **09** | **Generador SQL INSERT / UPDATE** | 🔴 **✓ En proceso** (Scaffold) | *En desarrollo* | Genera sentencias SQL estándar (INSERT / UPDATE) desde tablas Excel. |
+| **07** | **Cruzador y Conciliador de Tablas** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #07](docs/07-table-cross-join.md) | Cruza conjuntos de datos por claves compuestas (VLOOKUP / SQL JOIN), concilia saldos e identifica discrepancias. |
+| **08** | **Detector de Duplicados con Jerarquía** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #08](docs/08-duplicate-detector.md) | Identifica filas repetidas y aplica reglas de descarte prioritarias (más completa, más reciente, mayor valor, reglas condicionales) con doble salida y auditoría. |
+| **09** | **Generador SQL INSERT / UPDATE** | 🟢 **✓ Desarrollada** (Operativo) | [Manual #09](docs/09-sql-generator.md) | Transforma tablas Excel o CSV en sentencias SQL masivas (INSERT, UPSERT, REPLACE, UPDATE) con tipado heurístico y escape seguro. |
 | **10** | **Consolidador de Múltiples Excel** | 🔴 **✓ En proceso** (Scaffold) | *En desarrollo* | Fusiona múltiples archivos Excel en una sola hoja maestra con trazabilidad. |
 
 ---

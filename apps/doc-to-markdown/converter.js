@@ -120,6 +120,12 @@ class DocToMarkdownConverter {
                 return await this.convertPdf(arrayBuffer, options);
             case 'doc':
                 return await this.convertDoc(arrayBuffer, file.name, options);
+            case 'xlsx':
+            case 'xls':
+            case 'ods':
+            case 'csv':
+            case 'tsv':
+                return await this.convertSpreadsheet(arrayBuffer, file.name, ext, options);
             case 'html':
             case 'htm': {
                 const text = new TextDecoder('utf-8').decode(arrayBuffer);
@@ -137,7 +143,7 @@ class DocToMarkdownConverter {
                 };
             }
             default:
-                throw new Error(`Extensión no soportada: .${ext}. Formatos permitidos: PDF, DOCX, DOC, ODT, HTML, TXT.`);
+                throw new Error(`Extensión no soportada: .${ext}. Formatos permitidos: PDF, DOCX, DOC, ODT, XLSX, XLS, ODS, HTML, TXT.`);
         }
     }
 
@@ -201,6 +207,127 @@ class DocToMarkdownConverter {
             markdown: markdown,
             meta: {
                 type: 'OpenDocument Text (ODT)'
+            }
+        };
+    }
+
+    /**
+     * Convierte planillas de cálculo (XLSX, XLS, ODS, CSV) a tablas GFM en Markdown
+     * @param {ArrayBuffer} arrayBuffer Contenido binario del archivo
+     * @param {string} fileName Nombre original del archivo
+     * @param {string} ext Extensión del archivo
+     * @param {Object} options Opciones de formato
+     * @returns {Promise<{markdown: string, meta: Object}>}
+     */
+    async convertSpreadsheet(arrayBuffer, fileName, ext, options = {}) {
+        if (typeof XLSX === 'undefined') {
+            throw new Error("La librería SheetJS (XLSX) no está cargada para procesar planillas.");
+        }
+
+        const data = new Uint8Array(arrayBuffer);
+        const workbook = XLSX.read(data, { type: 'array' });
+
+        if (!workbook.SheetNames || workbook.SheetNames.length === 0) {
+            throw new Error("El libro de cálculo no contiene hojas válidas.");
+        }
+
+        const markdownSections = [];
+        const baseName = fileName.replace(/\.[^/.]+$/, "");
+        markdownSections.push(`# ${baseName}\n`);
+
+        const isMultiSheet = workbook.SheetNames.length > 1;
+        let totalRowsCount = 0;
+
+        workbook.SheetNames.forEach((sheetName) => {
+            const worksheet = workbook.Sheets[sheetName];
+            if (!worksheet) return;
+
+            // Extraer datos como matriz 2D
+            const rawRows = XLSX.utils.sheet_to_json(worksheet, {
+                header: 1,
+                defval: '',
+                raw: false,
+                blankrows: false
+            });
+
+            if (isMultiSheet) {
+                markdownSections.push(`## 📊 Hoja: ${sheetName}\n`);
+            }
+
+            if (!rawRows || rawRows.length === 0) {
+                markdownSections.push(`*Esta hoja no contiene datos.*\n`);
+                return;
+            }
+
+            // Encontrar el número máximo de columnas informadas
+            let maxCols = 0;
+            rawRows.forEach(row => {
+                if (Array.isArray(row)) {
+                    let lastFilled = -1;
+                    for (let c = row.length - 1; c >= 0; c--) {
+                        if (row[c] !== undefined && row[c] !== null && String(row[c]).trim() !== '') {
+                            lastFilled = c;
+                            break;
+                        }
+                    }
+                    if (lastFilled + 1 > maxCols) {
+                        maxCols = lastFilled + 1;
+                    }
+                }
+            });
+
+            if (maxCols === 0) {
+                markdownSections.push(`*Esta hoja no contiene datos.*\n`);
+                return;
+            }
+
+            // Función de sanitización de celda para GFM
+            const sanitizeCell = (val) => {
+                if (val === undefined || val === null) return '';
+                const str = String(val).trim();
+                return str
+                    .replace(/\|/g, '\\|')
+                    .replace(/\r?\n|\r/g, '<br>');
+            };
+
+            // Fila 0: Encabezados
+            const headerRow = rawRows[0] || [];
+            const headers = [];
+            for (let c = 0; c < maxCols; c++) {
+                const hVal = sanitizeCell(headerRow[c]);
+                headers.push(hVal || `Columna ${c + 1}`);
+            }
+
+            let tableMd = '| ' + headers.join(' | ') + ' |\n';
+            tableMd += '| ' + headers.map(() => '---').join(' | ') + ' |\n';
+
+            // Filas de datos (a partir de la fila 1)
+            let sheetDataRows = 0;
+            for (let r = 1; r < rawRows.length; r++) {
+                const row = rawRows[r] || [];
+                const isBlank = row.every(c => c === undefined || c === null || String(c).trim() === '');
+                if (isBlank) continue;
+
+                const cells = [];
+                for (let c = 0; c < maxCols; c++) {
+                    cells.push(sanitizeCell(row[c]));
+                }
+                tableMd += '| ' + cells.join(' | ') + ' |\n';
+                sheetDataRows++;
+            }
+
+            totalRowsCount += (sheetDataRows + 1);
+            markdownSections.push(tableMd.trim() + '\n');
+        });
+
+        const fullMarkdown = markdownSections.join('\n');
+
+        return {
+            markdown: this.cleanMarkdownText(fullMarkdown, options),
+            meta: {
+                type: `Planilla de Cálculo (${ext.toUpperCase()})`,
+                sheets: workbook.SheetNames.length,
+                totalRows: totalRowsCount
             }
         };
     }
@@ -658,5 +785,12 @@ class DocToMarkdownConverter {
     }
 }
 
-// Instancia global
-window.docToMarkdownConverter = new DocToMarkdownConverter();
+// Instancia global y soporte modular
+if (typeof window !== 'undefined') {
+    window.docToMarkdownConverter = new DocToMarkdownConverter();
+}
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = DocToMarkdownConverter;
+    module.exports.DocToMarkdownConverter = DocToMarkdownConverter;
+}
+

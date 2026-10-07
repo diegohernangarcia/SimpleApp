@@ -3,69 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
     <title>Detector de Duplicados con Jerarquía • SimpleApps</title>
+    <meta name="description" content="Identifica filas duplicadas en bases de datos o planillas Excel/CSV y aplica reglas jerárquicas de descarte: más completa, más reciente, mayor valor numérico o condiciones de negocio. 100% en memoria local.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        .app-workspace-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-medium);
-            border-radius: var(--radius-xl);
-            padding: 3rem 2.5rem;
-            max-width: 900px;
-            margin: 2rem auto;
-            text-align: center;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--shadow-card);
-        }
-        .module-tag {
-            display: inline-block;
-            background: rgba(168, 85, 247, 0.15);
-            color: var(--accent-violet-light);
-            padding: 0.35rem 0.85rem;
-            border-radius: 100px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-        .workspace-btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-    </style>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=1.0">
 </head>
 <body>
+
+    <!-- Fondos de Iluminación Ambiental -->
     <div class="ambient-glow" aria-hidden="true">
-        <div class="ambient-orb ambient-orb-1"></div>
-        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-1" style="background: radial-gradient(circle, rgba(20, 184, 166, 0.22) 0%, transparent 70%);"></div>
+        <div class="ambient-orb ambient-orb-2" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, transparent 70%);"></div>
     </div>
     <div class="bg-grid-pattern" aria-hidden="true"></div>
 
     <div class="app-wrapper">
+
+        <!-- =================================================================
+             1. HEADER HORIZONTAL
+             ================================================================= -->
         <header class="top-header">
             <div class="header-inner">
-                <a href="../../index.html" class="brand-area" title="Volver al Inicio">
-                    <div class="brand-icon-box">
+                <a href="../../index.html" class="brand-area" title="Volver al Catálogo">
+                    <div class="brand-icon-box" style="border-color: rgba(20, 184, 166, 0.4); background: rgba(20, 184, 166, 0.15); color: var(--dupe-teal-light);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
+                            <rect width="18" height="18" x="3" y="3" rx="2"/>
+                            <path d="M7 7h10"/>
+                            <path d="M7 12h10"/>
+                            <path d="M7 17h10"/>
+                            <circle cx="17" cy="12" r="1.5" fill="currentColor"/>
                         </svg>
                     </div>
                     <div class="brand-text-box">
-                        <span class="brand-name">Simple<span class="brand-highlight">Apps</span></span>
-                        <span class="brand-tagline">Micro-Tools Suite</span>
+                        <span class="brand-name">Dedupe <span class="brand-highlight" style="color: var(--dupe-teal-light);">Hierarchy</span></span>
+                        <span class="brand-tagline">Detector de Duplicados & Jerarquía</span>
                     </div>
                 </a>
+
                 <div class="header-actions">
-                    <a href="../../index.html" class="btn-subnav-ghost">
+                    <button type="button" class="btn-help-guide" id="btnOpenHelpModal" title="Manual Operativo y Guía de Uso del Módulo">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <span>📘 Ayuda & Guía de Uso</span>
+                    </button>
+
+                    <div class="server-status-pill" title="Procesamiento en memoria local de alta velocidad sin subida a servidores">
+                        <span class="status-dot" style="background: #10B981; box-shadow: 0 0 8px #10B981;"></span>
+                        <span class="server-meta-tag">100% Local</span>
+                        <span class="server-php-tag" style="background: rgba(20, 184, 166, 0.2); color: #2DD4BF;">Hash O(N) Heurístico</span>
+                    </div>
+
+                    <a href="../../index.html" class="btn-subnav-ghost" title="Volver al Catálogo">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
                         <span>Volver al Catálogo</span>
                     </a>
@@ -73,48 +77,844 @@
             </div>
         </header>
 
+        <!-- =================================================================
+             2. CONTENIDO PRINCIPAL
+             ================================================================= -->
         <main class="main-container">
+
+            <!-- Breadcrumbs -->
             <div class="breadcrumb-row">
                 <a href="../../index.html" class="footer-link">Inicio</a>
                 <span class="breadcrumb-separator">/</span>
                 <a href="../../index.html" class="footer-link">Micro-Apps</a>
                 <span class="breadcrumb-separator">/</span>
-                <span class="breadcrumb-item active">Detector de Duplicados con Jerarquía</span>
+                <span class="breadcrumb-item active" style="color: var(--dupe-teal-light);">Detector de Duplicados con Jerarquía</span>
             </div>
 
-            <div class="app-workspace-card">
-                <span class="module-tag">MÓDULO #08 EN PREPARACIÓN</span>
-                <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 1rem;">
-                    Detector de Duplicados con Jerarquía
+            <!-- Hero Banner -->
+            <section class="dupe-hero">
+                <div class="dupe-tag">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                    MÓDULO #08 • DATOS & CONCILIACIÓN • HEURÍSTICA DE DATOS
+                </div>
+                <h1 class="hero-title" style="margin-bottom: 0.75rem;">
+                    Detector de Duplicados con <span class="glow-text-teal">Jerarquía</span>
                 </h1>
-                <p class="hero-description" style="max-width: 600px; margin: 0 auto 1.5rem;">
-                    Identifica y depura filas repetidas con reglas jerárquicas.
+                <p class="hero-description" style="max-width: 920px; margin-bottom: 0;">
+                    Identifica filas repetidas en bases de datos o planillas según campos clave y aplica 
+                    <strong class="text-glow-white">reglas jerárquicas en cascada</strong> para desempatar: 
+                    conservar la fila con más datos completos, la fecha más reciente, el valor numérico más alto o atributos de negocio.
+                    Obtén el <strong style="color: var(--dupe-emerald-light);">conjunto limpio depurado</strong> más un 
+                    <strong style="color: #F87171;">archivo de auditoría de descartes con motivo explícito</strong>.
                 </p>
-                <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 1.5rem; max-width: 650px; margin: 0 auto; color: var(--text-secondary); font-size: 0.9rem;">
-                    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">Arquitectura Asignada:</strong>
-                    HTML5 + Vanilla JavaScript (100% Local y Offline).<br>
-                    Listo para codificar la interfaz operativa específica de esta micro-app.
+
+                <!-- Barra de Presets / Demostración -->
+                <div class="presets-bar">
+                    <span class="presets-label">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        Cargar Caso de Prueba en 1 Clic:
+                    </span>
+                    <button type="button" class="preset-chip-btn" id="btnPresetCRM" title="Base de contactos CRM con emails duplicados y diferentes grados de completitud">
+                        <span>👥 Clientes CRM & Leads</span>
+                    </button>
+                    <button type="button" class="preset-chip-btn" id="btnPresetInventory" title="Catálogo de productos SKU con registros de tiendas y fechas de actualización">
+                        <span>📦 Catálogo Productos & SKU</span>
+                    </button>
+                    <button type="button" class="preset-chip-btn" id="btnPresetTransactions" title="Historial bancario de transacciones con IDs y montos duplicados">
+                        <span>💳 Movimientos Financieros</span>
+                    </button>
+                    <button type="button" class="btn-help-hero" id="btnOpenHelpHero" title="Ver Guía de Uso Completa">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <span>¿Cómo funciona este módulo?</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 1: CARGA DE ARCHIVO / DATOS
+                 ============================================================= -->
+            <section class="step-section" id="step1Section">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h2 class="step-title">Carga de Datos & Detección de Esquema</h2>
+                            <p class="step-desc">Sube tu planilla Excel (.xlsx, .xls) o archivo delimitado (.csv, .tsv) con registros potenciales a depurar</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep1" title="Ayuda sobre este paso">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Instrucciones Paso 1</span>
+                    </button>
                 </div>
 
-                <div class="workspace-btn-group">
-                    <a href="../../index.html" class="btn-launch-app" style="max-width: 250px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <span>Volver al Dashboard</span>
-                    </a>
+                <div class="dataset-upload-card" id="uploadCard">
+                    <!-- Dropzone -->
+                    <div class="dropzone-box" id="dropzone">
+                        <input type="file" id="fileInput" accept=".csv,.tsv,.xlsx,.xls,.txt" style="display: none;">
+                        <div class="dropzone-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong style="color: #FFFFFF; font-size: 0.95rem;">Arrastra y suelta tu archivo aquí</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">
+                                Soporta Excel (.xlsx, .xls) y Delimitados (.csv, .tsv). Procesamiento 100% local en tu navegador.
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem; flex-wrap: wrap; justify-content: center;">
+                            <button type="button" class="btn-primary-action" id="btnBrowseFile" style="padding: 0.45rem 1.15rem; font-size: 0.82rem;">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                <span>Explorar Archivo</span>
+                            </button>
+                            <button type="button" class="btn-secondary-action" id="btnPasteData" style="padding: 0.45rem 1.15rem; font-size: 0.82rem;">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                                <span>Pegar Datos (Clipboard)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Fila de Resumen de Archivo Cargado -->
+                    <div class="table-summary-strip" id="tableSummaryStrip">
+                        <div class="table-summary-info">
+                            <div class="file-name-tag">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                <span id="fileNameTag">archivo.csv</span>
+                            </div>
+                            <div class="file-meta-counts" id="fileMetaCounts">0 registros • 0 columnas</div>
+                        </div>
+
+                        <!-- Selector de Hoja Excel si aplica -->
+                        <div id="sheetSelectorContainer" style="display: none; align-items: center; gap: 0.75rem; margin-top: 0.25rem;">
+                            <label for="sheetSelect" style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;">Hoja del Libro:</label>
+                            <select id="sheetSelect" class="rule-select" style="min-width: 180px; padding: 0.35rem 0.75rem; font-size: 0.8rem;"></select>
+                        </div>
+
+                        <div style="display: flex; gap: 0.65rem; align-items: center; justify-content: flex-end; margin-top: 0.25rem;">
+                            <button type="button" class="btn-subnav-ghost" id="btnPreviewRaw" style="font-size: 0.78rem; padding: 0.35rem 0.75rem;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <span>Previsualizar Muestra</span>
+                            </button>
+                            <button type="button" class="btn-subnav-ghost" id="btnClearData" style="font-size: 0.78rem; padding: 0.35rem 0.75rem; color: #EF4444;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                <span>Limpiar Archivo</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 2: CAMPOS CLAVE & REGLAS JERÁRQUICAS
+                 ============================================================= -->
+            <section class="step-section" id="step2Section">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h2 class="step-title">Campos Clave & Reglas de Jerarquía</h2>
+                            <p class="step-desc">Indica qué campos definen un duplicado y construye la cascada de desempate para conservar la mejor fila</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep2" title="Ayuda sobre este paso">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Instrucciones Paso 2</span>
+                    </button>
+                </div>
+
+                <!-- Bloque 2.1: Columnas Clave -->
+                <div class="config-card">
+                    <div class="config-card-head">
+                        <div class="config-card-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--dupe-teal-light);"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            <span>1. Campos Clave (Llave Compuesta de Unicidad)</span>
+                        </div>
+                        <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                            <button type="button" class="btn-subnav-ghost" id="btnAutoDetectKeys" style="font-size: 0.75rem; padding: 0.3rem 0.65rem; color: var(--dupe-teal-light); border-color: rgba(20, 184, 166, 0.4);">
+                                🪄 Auto-detectar Claves
+                            </button>
+                            <button type="button" class="btn-subnav-ghost" id="btnSelectAllKeys" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;">
+                                Seleccionar Todas
+                            </button>
+                            <button type="button" class="btn-subnav-ghost" id="btnClearAllKeys" style="font-size: 0.75rem; padding: 0.3rem 0.65rem;">
+                                Deseleccionar Todas
+                            </button>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        Las filas que coincidan <em>exactamente</em> en todos los campos seleccionados se agruparán en un mismo clúster de duplicados.
+                    </p>
+
+                    <!-- Buscador de columnas clave si hay muchas -->
+                    <div style="margin-bottom: 0.75rem;">
+                        <input type="text" id="searchKeyColsInput" class="table-search-input" placeholder="Filtrar nombres de columnas..." style="width: 100%; max-width: 320px; font-size: 0.8rem;">
+                    </div>
+
+                    <!-- Checklist de Columnas Clave -->
+                    <div class="keys-checklist-grid" id="keysChecklistGrid">
+                        <div style="grid-column: 1 / -1; padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+                            Carga un archivo o activa un caso de prueba arriba para ver las columnas disponibles.
+                        </div>
+                    </div>
+
+                    <!-- Acordeón / Opciones de Normalización -->
+                    <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed var(--border-subtle);">
+                        <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.65rem;">
+                            Normalización Inteligente de Valores Clave:
+                        </span>
+                        <div style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
+                            <label style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.8rem; color: var(--text-primary); cursor: pointer;">
+                                <input type="checkbox" id="chkTrim" checked style="accent-color: var(--dupe-teal);">
+                                <span>Recortar espacios en blanco (Trim)</span>
+                            </label>
+                            <label style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.8rem; color: var(--text-primary); cursor: pointer;">
+                                <input type="checkbox" id="chkIgnoreCase" checked style="accent-color: var(--dupe-teal);">
+                                <span>Ignorar mayúsculas / minúsculas</span>
+                            </label>
+                            <label style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.8rem; color: var(--text-primary); cursor: pointer;">
+                                <input type="checkbox" id="chkIgnoreAccents" checked style="accent-color: var(--dupe-teal);">
+                                <span>Ignorar tildes / acentos (á = a)</span>
+                            </label>
+                            <label style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.8rem; color: var(--text-primary); cursor: pointer;">
+                                <input type="checkbox" id="chkCollapseSpaces" checked style="accent-color: var(--dupe-teal);">
+                                <span>Colapsar espacios dobles</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque 2.2: Jerarquía de Reglas de Desempate -->
+                <div class="config-card">
+                    <div class="config-card-head">
+                        <div class="config-card-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--dupe-emerald-light);"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                            <span>2. Reglas Jerárquicas de Desempate (Evaluación en Cascada)</span>
+                        </div>
+                        <span style="font-size: 0.78rem; font-family: var(--font-mono); color: var(--dupe-teal-light);">
+                            Prioridad 1 → Prioridad 2 → ... → Desempate final
+                        </span>
+                    </div>
+
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                        Cuando se detecta un grupo de duplicados, el motor evalúa las reglas en orden estricto de arriba hacia abajo. 
+                        La primera regla que rompe el empate elige la fila ganadora a conservar. Las demás son descartadas con el motivo exacto.
+                    </p>
+
+                    <!-- Lista Dinámica de Reglas -->
+                    <div class="rules-hierarchy-container" id="rulesList">
+                        <!-- Las reglas se renderizan dinámicamente con app.js -->
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; flex-wrap: wrap; gap: 0.75rem;">
+                        <button type="button" class="btn-add-rule" id="btnAddRule">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <span>Agregar Regla de Prioridad</span>
+                        </button>
+
+                        <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                            <span>Desempate por omisión si hay empate total: primera aparición en archivo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón de Ejecución -->
+                <div class="execute-bar">
+                    <button type="button" class="btn-execute-dedupe" id="btnExecuteDedupe">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                        <span>⚡ Identificar & Depurar Duplicados con Jerarquía</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 3: AUDITORÍA DE RESULTADOS & EXPORTACIÓN
+                 ============================================================= -->
+            <section class="step-section results-section" id="resultsSection">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number" style="background: linear-gradient(135deg, #10B981 0%, #00F0FF 100%);">3</div>
+                        <div>
+                            <h2 class="step-title">Auditoría de Duplicados & Conjunto Limpio</h2>
+                            <p class="step-desc">Explora los registros conservados, audita los motivos de cada descarte y exporta en el formato que necesites</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep3" title="Ayuda sobre este paso">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Instrucciones Paso 3</span>
+                    </button>
+                </div>
+
+                <!-- Dashboard de KPIs -->
+                <div class="dupe-kpis-grid">
+                    <div class="dupe-kpi-card" style="--kpi-accent: var(--dupe-teal);">
+                        <span class="kpi-title-tiny">Total Filas Originales</span>
+                        <span class="kpi-num" id="kpiTotalRows">0</span>
+                        <span class="kpi-desc-sub">Universo total ingresado</span>
+                    </div>
+
+                    <div class="dupe-kpi-card" style="--kpi-accent: #00F0FF;">
+                        <span class="kpi-title-tiny">Clústeres Duplicados</span>
+                        <span class="kpi-num" id="kpiDuplicateClusters" style="color: #00F0FF;">0</span>
+                        <span class="kpi-desc-sub">Llaves con 2 o más filas</span>
+                    </div>
+
+                    <div class="dupe-kpi-card" style="--kpi-accent: var(--status-winner);">
+                        <span class="kpi-title-tiny">Únicos Conservados</span>
+                        <span class="kpi-num" id="kpiUniqueRows" style="color: var(--status-winner);">0</span>
+                        <span class="kpi-desc-sub">Conjunto depurado final</span>
+                    </div>
+
+                    <div class="dupe-kpi-card" style="--kpi-accent: var(--status-discard);">
+                        <span class="kpi-title-tiny">Descartados Justificados</span>
+                        <span class="kpi-num" id="kpiDiscardedRows" style="color: #F87171;">0</span>
+                        <span class="kpi-desc-sub">Filas redundantes auditadas</span>
+                    </div>
+
+                    <div class="dupe-kpi-card" style="--kpi-accent: #F59E0B;">
+                        <span class="kpi-title-tiny">Tasa de Redundancia</span>
+                        <span class="kpi-num" id="kpiDupeRate" style="color: #F59E0B;">0%</span>
+                        <span class="kpi-desc-sub">% de ahorro y limpieza</span>
+                    </div>
+                </div>
+
+                <!-- Barra de Filtros y Búsqueda -->
+                <div class="results-toolbar">
+                    <div class="results-filter-pills">
+                        <button type="button" class="res-pill active" data-filter="all" id="pillAll">
+                            Todos los Registros (<span id="countAll">0</span>)
+                        </button>
+                        <button type="button" class="res-pill" data-filter="unique" id="pillUnique">
+                            ✓ Conservados / Ganadores (<span id="countUnique">0</span>)
+                        </button>
+                        <button type="button" class="res-pill" data-filter="discarded" id="pillDiscarded">
+                            ✕ Descartados con Motivo (<span id="countDiscarded">0</span>)
+                        </button>
+                        <button type="button" class="res-pill" data-filter="clusters" id="pillClusters">
+                            🔗 Solo Clústeres Duplicados (<span id="countClusters">0</span>)
+                        </button>
+                    </div>
+
+                    <div class="results-right-actions">
+                        <input type="text" id="tableSearchInput" class="table-search-input" placeholder="🔍 Buscar en resultados...">
+                    </div>
+                </div>
+
+                <!-- Tabla de Resultados -->
+                <div class="data-table-container">
+                    <div class="table-scroll-wrap" id="tableScrollWrap">
+                        <table class="styled-data-table" id="resultsTable">
+                            <thead>
+                                <tr id="resultsTableHeadRow">
+                                    <!-- Encabezados dinámicos -->
+                                </tr>
+                            </thead>
+                            <tbody id="resultsTableBody">
+                                <!-- Filas dinámicas -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Barra de Paginación -->
+                    <div class="table-pagination-bar">
+                        <div id="pageInfo">Mostrando 0 - 0 de 0 filas</div>
+                        <div class="pagination-controls">
+                            <label for="pageSizeSelect" style="font-size: 0.78rem; color: var(--text-secondary); margin-right: 0.5rem;">Por pág:</label>
+                            <select id="pageSizeSelect" class="btn-page-nav" style="padding: 0.25rem 0.5rem;">
+                                <option value="25">25</option>
+                                <option value="50" selected>50</option>
+                                <option value="100">100</option>
+                                <option value="250">250</option>
+                            </select>
+                            <button type="button" class="btn-page-nav" id="btnPagePrev" disabled>&laquo; Anterior</button>
+                            <span id="pageCurrent" style="font-family: var(--font-mono); font-weight: 700; color: #FFFFFF;">1</span>
+                            <span style="color: var(--text-muted);">/</span>
+                            <span id="pageTotal" style="font-family: var(--font-mono); color: var(--text-secondary);">1</span>
+                            <button type="button" class="btn-page-nav" id="btnPageNext" disabled>Siguiente &raquo;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel de Exportación y Descargas -->
+                <div style="margin-top: 2rem;">
+                    <h3 style="font-size: 1.05rem; font-weight: 700; color: #FFFFFF; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--dupe-teal-light);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Exportación Directa & Entrega de Archivos</span>
+                    </h3>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                        Descarga el conjunto de datos limpio para producción o conserva el informe de auditoría para compliance y trazabilidad.
+                    </p>
+
+                    <div class="export-cards-row">
+                        <!-- Excel Maestro con 2 Hojas -->
+                        <div class="export-btn-card" id="btnExportExcelBoth" role="button" tabindex="0">
+                            <div class="export-card-icon" style="background: rgba(16, 185, 129, 0.15); color: #34D399;">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            </div>
+                            <div class="export-card-text">
+                                <span class="export-card-title">Excel Maestro (2 Hojas)</span>
+                                <span class="export-card-sub">Hoja 1: Únicos • Hoja 2: Descartes</span>
+                            </div>
+                        </div>
+
+                        <!-- Excel Solo Limpio -->
+                        <div class="export-btn-card" id="btnExportExcelClean" role="button" tabindex="0">
+                            <div class="export-card-icon" style="background: rgba(20, 184, 166, 0.15); color: #2DD4BF;">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div class="export-card-text">
+                                <span class="export-card-title">Excel Datos Únicos</span>
+                                <span class="export-card-sub">Solo filas ganadoras depuradas</span>
+                            </div>
+                        </div>
+
+                        <!-- Excel Solo Descartes -->
+                        <div class="export-btn-card" id="btnExportExcelDiscards" role="button" tabindex="0">
+                            <div class="export-card-icon" style="background: rgba(239, 68, 68, 0.15); color: #F87171;">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                            </div>
+                            <div class="export-card-text">
+                                <span class="export-card-title">Excel Auditoría Descartes</span>
+                                <span class="export-card-sub">Con motivo y cluster de origen</span>
+                            </div>
+                        </div>
+
+                        <!-- CSV Limpio -->
+                        <div class="export-btn-card" id="btnExportCsvClean" role="button" tabindex="0">
+                            <div class="export-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="export-card-text">
+                                <span class="export-card-title">CSV Datos Únicos</span>
+                                <span class="export-card-sub">Delimitado por comas / UTF-8</span>
+                            </div>
+                        </div>
+
+                        <!-- CSV Descartes con Motivo -->
+                        <div class="export-btn-card" id="btnExportCsvDiscards" role="button" tabindex="0">
+                            <div class="export-card-icon" style="background: rgba(239, 68, 68, 0.12); color: #F87171;">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+                            </div>
+                            <div class="export-card-text">
+                                <span class="export-card-title">CSV Descartes + Motivo</span>
+                                <span class="export-card-sub">Para revisión o reprocesamiento</span>
+                            </div>
+                        </div>
+
+                        <!-- Copiar al Portapapeles (TSV) -->
+                        <div class="export-btn-card" id="btnCopyClipboard" role="button" tabindex="0">
+                            <div class="export-card-icon" style="background: rgba(0, 240, 255, 0.12); color: #00F0FF;">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            </div>
+                            <div class="export-card-text">
+                                <span class="export-card-title">Copiar al Portapapeles</span>
+                                <span class="export-card-sub">Formato TSV (pega directo en Excel)</span>
+                            </div>
+                        </div>
+
+                        <!-- Informe Markdown -->
+                        <div class="export-btn-card" id="btnExportReportMd" role="button" tabindex="0">
+                            <div class="export-card-icon" style="background: rgba(168, 85, 247, 0.12); color: #C084FC;">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            </div>
+                            <div class="export-card-text">
+                                <span class="export-card-title">Informe de Auditoría (.md)</span>
+                                <span class="export-card-sub">Reporte ejecutivo con KPIs y causas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
-        <footer class="site-footer">
+        <!-- =================================================================
+             3. FOOTER
+             ================================================================= -->
+        <footer class="app-footer">
             <div class="footer-inner">
                 <div class="footer-left">
-                    <span><strong>SimpleApps Suite</strong> • Módulo #08</span>
+                    <span class="footer-brand">SimpleApps • Módulo #08</span>
+                    <span class="footer-badge" style="background: rgba(20, 184, 166, 0.15); color: var(--dupe-teal-light); border-color: rgba(20, 184, 166, 0.3);">
+                        Heurística Determinista • Vanilla JS
+                    </span>
                 </div>
-                <div class="footer-right">
-                    <a href="../../index.html" class="footer-link">Ver las 10 Apps</a>
+                <div class="footer-links">
+                    <button type="button" class="footer-link" id="btnFooterHelp" style="background: none; border: none; cursor: pointer;">
+                        📘 Manual de Uso
+                    </button>
+                    <span class="footer-sep">•</span>
+                    <a href="../../index.html" class="footer-link">Catálogo Completo</a>
+                    <span class="footer-sep">•</span>
+                    <a href="https://github.com/diegohernangarcia/SimpleApp" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Repo</a>
                 </div>
             </div>
         </footer>
+
+    </div><!-- /.app-wrapper -->
+
+    <!-- =====================================================================
+         MODAL DE AYUDA Y GUÍA DE USO (5 PESTAÑAS)
+         ===================================================================== -->
+    <div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+        <div class="modal-window help-modal-window">
+            <div class="help-modal-header">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(20, 184, 166, 0.15); display: flex; align-items: center; justify-content: center; color: var(--dupe-teal-light);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="modal-title" id="helpModalTitle">Manual Operativo & Guía de Uso del Módulo</h2>
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Detector de Duplicados con Jerarquía • SimpleApps Suite</span>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span class="help-modal-badge">100% IN-MEMORY HASH</span>
+                    <button type="button" class="btn-remove-rule" id="btnCloseHelpModal" aria-label="Cerrar modal">&times;</button>
+                </div>
+            </div>
+
+            <!-- Navegación de Pestañas de Ayuda -->
+            <div class="help-tabs-nav" role="tablist">
+                <button type="button" class="help-tab-btn active" data-tab="tabHelpOverview" role="tab">
+                    <span>🌟 Visión General & Flujo</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpPresets" role="tab">
+                    <span>⚡ Presets de Prueba</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpStep1" role="tab">
+                    <span>📂 Paso 1: Carga y Detección</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpStep2" role="tab">
+                    <span>⚖️ Paso 2: Reglas de Jerarquía</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpStep3" role="tab">
+                    <span>📊 Paso 3: Auditoría & Descargas</span>
+                </button>
+            </div>
+
+            <!-- Contenido de las Pestañas -->
+            <div class="help-modal-body">
+
+                <!-- TAB 1: VISIÓN GENERAL -->
+                <div class="help-tab-pane active" id="tabHelpOverview" role="tabpanel">
+                    <p class="help-lead-text">
+                        El <strong>Detector de Duplicados con Jerarquía</strong> resuelve el dilema común en empresas donde una herramienta estándar 
+                        (como "Quitar Duplicados" de Excel) simplemente conserva la primera fila arbitraria, perdiendo teléfonos, direcciones, 
+                        fechas recientes o saldos más altos cargados en filas posteriores.
+                    </p>
+
+                    <div class="help-cards-grid">
+                        <div class="help-card">
+                            <div class="help-card-head" style="color: var(--dupe-teal-light);">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                <span>Llaves Compuestas Multicolumna</span>
+                            </div>
+                            <div class="help-card-body">
+                                Define la unicidad usando uno o múltiples campos simultáneos (por ejemplo, <code>Email</code> solo, o la tupla <code>Documento + Sucursal</code>, o <code>SKU + Almacén</code>).
+                            </div>
+                        </div>
+
+                        <div class="help-card">
+                            <div class="help-card-head" style="color: var(--dupe-emerald-light);">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/></svg>
+                                <span>Cascada de Desempate Estricta</span>
+                            </div>
+                            <div class="help-card-body">
+                                Configura múltiples reglas con orden de prioridad. Si la Regla 1 (más completa) empata, se evalúa la Regla 2 (fecha más reciente), y así sucesivamente hasta resolver el ganador.
+                            </div>
+                        </div>
+
+                        <div class="help-card">
+                            <div class="help-card-head" style="color: #F87171;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+                                <span>Auditoría de Descartes con Motivo</span>
+                            </div>
+                            <div class="help-card-body">
+                                Nunca borra registros a ciegas. Cada fila descartada incluye una columna adicional con el motivo exacto por el cual perdió frente a la ganadora de su clúster.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="help-alert-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--dupe-teal-light); flex-shrink: 0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <div>
+                            <strong>Seguridad y Privacidad Absoluta (Zero-Upload):</strong><br>
+                            Todos tus archivos se leen directamente en la memoria RAM de tu navegador web mediante SheetJS y JavaScript nativo. Ningún dato ni cliente se envía a servidores externos ni a la nube.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: PRESETS -->
+                <div class="help-tab-pane" id="tabHelpPresets" role="tabpanel">
+                    <p class="help-lead-text">
+                        Prueba el funcionamiento completo en un solo clic con 3 escenarios de negocio reales prediseñados:
+                    </p>
+
+                    <table class="help-table-guide">
+                        <thead>
+                            <tr>
+                                <th>Preset</th>
+                                <th>Clave de Duplicado</th>
+                                <th>Reglas Jerárquicas Sugeridas</th>
+                                <th>Propósito de la Demostración</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong style="color: var(--dupe-teal-light);">👥 Clientes CRM & Leads</strong></td>
+                                <td><code>email</code></td>
+                                <td>
+                                    1. Más Completa<br>
+                                    2. Fecha más reciente (<code>fecha_contacto</code>)
+                                </td>
+                                <td>Conserva el registro que tiene teléfono y dirección completos; si ambos tienen datos, conserva la actualización más reciente.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: var(--dupe-emerald-light);">📦 Catálogo Productos & SKU</strong></td>
+                                <td><code>sku</code></td>
+                                <td>
+                                    1. Coincidencia específica (<code>estado == "Activo"</code>)<br>
+                                    2. Mayor valor (<code>stock</code>)
+                                </td>
+                                <td>Prioriza el producto con estado activo y con mayor inventario físico disponible en sucursal.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #00F0FF;">💳 Movimientos Financieros</strong></td>
+                                <td><code>id_transaccion</code></td>
+                                <td>
+                                    1. Mayor valor (<code>monto</code>)<br>
+                                    2. Fecha más reciente (<code>fecha_operacion</code>)
+                                </td>
+                                <td>Depura operaciones duplicadas preservando el comprobante de mayor importe o la liquidación más reciente.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- TAB 3: PASO 1 -->
+                <div class="help-tab-pane" id="tabHelpStep1" role="tabpanel">
+                    <h3 style="font-size: 1rem; color: #FFFFFF; margin-bottom: 0.5rem;">Carga de Archivos y Detección Automática</h3>
+                    <p class="help-lead-text">
+                        Puedes arrastrar cualquier archivo <strong>Excel (.xlsx, .xls)</strong> o archivo de texto delimitado 
+                        <strong>(.csv, .tsv, .txt)</strong> al área de carga, o hacer clic en <em>"Pegar Datos"</em> para volcar texto copiado de cualquier planilla.
+                    </p>
+
+                    <div class="help-cards-grid">
+                        <div class="help-card">
+                            <div class="help-card-head" style="color: #FFFFFF;">
+                                <span>Detección Automática de Delimitador</span>
+                            </div>
+                            <div class="help-card-body">
+                                Para archivos CSV y TSV, el motor analiza las primeras líneas y detecta automáticamente si están separados por comas (<code>,</code>), punto y coma (<code>;</code>) o tabulaciones (<code>\t</code>).
+                            </div>
+                        </div>
+
+                        <div class="help-card">
+                            <div class="help-card-head" style="color: #FFFFFF;">
+                                <span>Soporte para Libros con Múltiples Hojas</span>
+                            </div>
+                            <div class="help-card-body">
+                                Al cargar un libro Excel (.xlsx), se habilitará un selector para que elijas exactamente qué hoja de cálculo deseas procesar sin necesidad de modificar el archivo.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: PASO 2 -->
+                <div class="help-tab-pane" id="tabHelpStep2" role="tabpanel">
+                    <h3 style="font-size: 1rem; color: #FFFFFF; margin-bottom: 0.5rem;">Configuración de Claves y Constructor de Jerarquías</h3>
+                    <p class="help-lead-text">
+                        Este paso es el corazón de la heurística. Define qué columnas determinan que dos filas son la misma entidad y cómo resolver cuál de ellas es la mejor.
+                    </p>
+
+                    <table class="help-table-guide">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Regla</th>
+                                <th>Parámetros Requeridos</th>
+                                <th>Comportamiento Heurístico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Más Completa</strong></td>
+                                <td>Ninguno (aplica a toda la fila)</td>
+                                <td>Cuenta cuántos campos tienen valores no nulos, no vacíos y distintos de guiones o 'n/a'. La fila con mayor conteo gana.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fecha Más Reciente</strong></td>
+                                <td>Columna de fecha</td>
+                                <td>Parsea formatos ISO (YYYY-MM-DD), latinos (DD/MM/YYYY) o timestamps numéricos y selecciona la fecha más nueva.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fecha Más Antigua</strong></td>
+                                <td>Columna de fecha</td>
+                                <td>Ideal cuando deseas conservar el primer registro histórico o fecha de creación original.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mayor Valor Numérico</strong></td>
+                                <td>Columna numérica</td>
+                                <td>Convierte cadenas a números flotantes limpios (soporta monedas, comas decimales) y conserva el número más alto.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Menor Valor Numérico</strong></td>
+                                <td>Columna numérica</td>
+                                <td>Conserva el menor valor (ejemplo: menor costo de adquisición, menor código de reclamo).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Coincidencia Específica</strong></td>
+                                <td>Columna y Valor esperado</td>
+                                <td>Prioriza las filas donde la columna coincide exactamente con el valor configurado (ej: <code>Estado == "Activo"</code>).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Primera / Última Aparición</strong></td>
+                                <td>Ninguno</td>
+                                <td>Respeta el orden físico de lectura del archivo de entrada.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="help-alert-box" style="margin-top: 1rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--dupe-emerald-light); flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <div>
+                            <strong>¿Cómo funciona el desempate en cascada?</strong><br>
+                            Si tienes dos filas en un clúster y la Regla 1 es <em>"Más Completa"</em>, ambas tienen 7 campos completos. Como hay empate, el motor pasa a la Regla 2 (ej: <em>"Fecha más reciente"</em>). 
+                            Aquí la fila B tiene fecha 2024-05 y la fila A tiene fecha 2023-01. La fila B resulta ganadora y la fila A es descartada con el motivo: <code>"Regla 2: Fecha más reciente (fecha: 2023-01 < 2024-05)"</code>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: PASO 3 -->
+                <div class="help-tab-pane" id="tabHelpStep3" role="tabpanel">
+                    <h3 style="font-size: 1rem; color: #FFFFFF; margin-bottom: 0.5rem;">Auditoría, Trazabilidad y Formatos de Exportación</h3>
+                    <p class="help-lead-text">
+                        En el paso de resultados puedes verificar visualmente la depuración y descargar tus archivos en una gran variedad de formatos:
+                    </p>
+
+                    <div class="help-cards-grid">
+                        <div class="help-card">
+                            <div class="help-card-head" style="color: #34D399;">
+                                <span>Excel Maestro (2 Hojas)</span>
+                            </div>
+                            <div class="help-card-body">
+                                Entrega un archivo <code>.xlsx</code> profesional con la hoja <strong>"Datos Únicos"</strong> (lista para cargar en producción) y la hoja <strong>"Auditoría Descartes"</strong> (con columnas <code>_GRUPO_ID</code> y <code>_MOTIVO_DESCARTE</code> para respaldo).
+                            </div>
+                        </div>
+
+                        <div class="help-card">
+                            <div class="help-card-head" style="color: #2DD4BF;">
+                                <span>Archivos CSV UTF-8</span>
+                            </div>
+                            <div class="help-card-body">
+                                Descargas ligeras compatibles con bases de datos relacionales (PostgreSQL, MySQL), pipelines ETL o Python / Pandas.
+                            </div>
+                        </div>
+
+                        <div class="help-card">
+                            <div class="help-card-head" style="color: #00F0FF;">
+                                <span>Copiar TSV al Portapapeles</span>
+                            </div>
+                            <div class="help-card-body">
+                                Copia los datos formateados con tabuladores para pegarlos con <code>Ctrl + V</code> directamente en cualquier celda de Microsoft Excel o Google Sheets.
+                            </div>
+                        </div>
+
+                        <div class="help-card">
+                            <div class="help-card-head" style="color: #C084FC;">
+                                <span>Informe Markdown (.md)</span>
+                            </div>
+                            <div class="help-card-body">
+                                Genera un reporte ejecutivo con métricas de redundancia, detalle de reglas aplicadas y estadísticas de descarte ideal para adjuntar en tickets o documentación de auditoría.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /.help-modal-body -->
+
+            <div class="modal-footer">
+                <button type="button" class="btn-primary-action" id="btnCloseHelpModalFooter" style="padding: 0.5rem 1.5rem; font-size: 0.85rem;">
+                    Entendido, ¡Comenzar!
+                </button>
+            </div>
+        </div>
     </div>
+
+    <!-- =====================================================================
+         MODAL PARA PEGAR DATOS (CLIPBOARD)
+         ===================================================================== -->
+    <div class="modal-overlay" id="pasteModal" role="dialog" aria-modal="true" aria-labelledby="pasteModalTitle">
+        <div class="modal-window">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 0.6rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--dupe-teal-light);"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                    <h3 class="modal-title" id="pasteModalTitle">Pegar Datos desde el Portapapeles</h3>
+                </div>
+                <button type="button" class="btn-remove-rule" id="btnClosePasteModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+                    Pega registros copiados desde Excel, Google Sheets, un archivo CSV o texto tabulado. La primera fila se interpretará como nombres de columnas.
+                </p>
+                <textarea id="pasteTextarea" class="modal-textarea" placeholder="email,nombre,telefono,fecha&#10;juan@test.com,Juan Perez,+54911223344,2024-01-15&#10;juan@test.com,Juan P.,,2023-11-01"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-subnav-ghost" id="btnCancelPaste">Cancelar</button>
+                <button type="button" class="btn-primary-action" id="btnConfirmPaste" style="font-size: 0.82rem; padding: 0.5rem 1.25rem;">
+                    Procesar y Cargar Tabla
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         MODAL PARA PREVISUALIZAR MUESTRA DE DATOS
+         ===================================================================== -->
+    <div class="modal-overlay" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle">
+        <div class="modal-window" style="max-width: 950px;">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 0.6rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--dupe-teal-light);"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <h3 class="modal-title" id="previewModalTitle">Previsualización de Muestra (Primeras 50 Filas)</h3>
+                </div>
+                <button type="button" class="btn-remove-rule" id="btnClosePreviewModal">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 1rem;">
+                <div class="data-table-container" style="margin-bottom: 0;">
+                    <div class="table-scroll-wrap" style="max-height: 480px;">
+                        <table class="styled-data-table" id="previewTable">
+                            <thead>
+                                <tr id="previewTableHeadRow"></tr>
+                            </thead>
+                            <tbody id="previewTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-primary-action" id="btnClosePreviewModalFooter" style="font-size: 0.82rem; padding: 0.5rem 1.25rem;">
+                    Cerrar Vista Previa
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor de Notificaciones Toast -->
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <!-- Scripts de Librerías y Lógica -->
+    <script src="libs/xlsx.full.min.js"></script>
+    <script src="duplicate-engine.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

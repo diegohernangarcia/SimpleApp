@@ -3,69 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
     <title>Generador SQL INSERT / UPDATE desde Excel • SimpleApps</title>
+    <meta name="description" content="Transforma tablas de Excel (.xlsx, .xls, .ods, .csv) o datos pegados en sentencias SQL masivas (INSERT INTO, UPSERT, REPLACE, UPDATE) con escape seguro y tipado automático. 100% en memoria local.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        .app-workspace-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-medium);
-            border-radius: var(--radius-xl);
-            padding: 3rem 2.5rem;
-            max-width: 900px;
-            margin: 2rem auto;
-            text-align: center;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--shadow-card);
-        }
-        .module-tag {
-            display: inline-block;
-            background: rgba(168, 85, 247, 0.15);
-            color: var(--accent-violet-light);
-            padding: 0.35rem 0.85rem;
-            border-radius: 100px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-        .workspace-btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-    </style>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=1.0">
 </head>
 <body>
+
+    <!-- Fondos de Iluminación Ambiental -->
     <div class="ambient-glow" aria-hidden="true">
-        <div class="ambient-orb ambient-orb-1"></div>
-        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-1" style="background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, transparent 70%);"></div>
+        <div class="ambient-orb ambient-orb-2" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, transparent 70%);"></div>
     </div>
     <div class="bg-grid-pattern" aria-hidden="true"></div>
 
     <div class="app-wrapper">
+
+        <!-- =================================================================
+             1. HEADER HORIZONTAL
+             ================================================================= -->
         <header class="top-header">
             <div class="header-inner">
-                <a href="../../index.html" class="brand-area" title="Volver al Inicio">
-                    <div class="brand-icon-box">
+                <a href="../../index.html" class="brand-area" title="Volver al Catálogo">
+                    <div class="brand-icon-box" style="border-color: rgba(99, 102, 241, 0.4); background: rgba(99, 102, 241, 0.15); color: var(--sql-indigo-light);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
+                            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                            <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>
                         </svg>
                     </div>
                     <div class="brand-text-box">
-                        <span class="brand-name">Simple<span class="brand-highlight">Apps</span></span>
-                        <span class="brand-tagline">Micro-Tools Suite</span>
+                        <span class="brand-name">SQL <span class="brand-highlight" style="color: var(--sql-indigo-light);">Builder</span></span>
+                        <span class="brand-tagline">Excel to SQL Statements</span>
                     </div>
                 </a>
+
                 <div class="header-actions">
-                    <a href="../../index.html" class="btn-subnav-ghost">
+                    <button type="button" class="btn-help-guide" id="btnOpenHelpModal" title="Manual Operativo y Guía de Uso del Módulo">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <span>📘 Ayuda & Guía de Uso</span>
+                    </button>
+
+                    <div class="server-status-pill" title="Procesamiento en memoria local sin subida a servidores">
+                        <span class="status-dot" style="background: #6366F1; box-shadow: 0 0 8px #6366F1;"></span>
+                        <span class="server-meta-tag">100% Local</span>
+                        <span class="server-php-tag" style="background: rgba(99, 102, 241, 0.2); color: #818CF8;">Zero-Upload Safe</span>
+                    </div>
+
+                    <a href="../../index.html" class="btn-subnav-ghost" title="Volver al Catálogo">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
                         <span>Volver al Catálogo</span>
                     </a>
@@ -73,48 +75,632 @@
             </div>
         </header>
 
+        <!-- =================================================================
+             2. CONTENIDO PRINCIPAL
+             ================================================================= -->
         <main class="main-container">
+
+            <!-- Breadcrumbs -->
             <div class="breadcrumb-row">
                 <a href="../../index.html" class="footer-link">Inicio</a>
                 <span class="breadcrumb-separator">/</span>
                 <a href="../../index.html" class="footer-link">Micro-Apps</a>
                 <span class="breadcrumb-separator">/</span>
-                <span class="breadcrumb-item active">Generador SQL INSERT / UPDATE desde Excel</span>
+                <span class="breadcrumb-item active" style="color: var(--sql-indigo-light);">Generador SQL INSERT / UPDATE</span>
             </div>
 
-            <div class="app-workspace-card">
-                <span class="module-tag">MÓDULO #09 EN PREPARACIÓN</span>
-                <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 1rem;">
-                    Generador SQL INSERT / UPDATE desde Excel
+            <!-- Hero Banner -->
+            <section class="sql-hero">
+                <div class="sql-tag">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                    MÓDULO #09 • ARCHIVOS & EXCEL • SQL BUILDER
+                </div>
+                <h1 class="hero-title" style="margin-bottom: 0.75rem;">
+                    Generador SQL <span class="glow-text-indigo">INSERT / UPDATE</span> desde Excel
                 </h1>
-                <p class="hero-description" style="max-width: 600px; margin: 0 auto 1.5rem;">
-                    Transforma tablas de datos en sentencias SQL estándar (INSERT / UPDATE).
+                <p class="hero-description" style="max-width: 900px; margin: 0 auto 1.25rem;">
+                    Transforma planillas de Excel (<strong class="text-glow-white">.xlsx, .xls, .ods, .csv</strong>) o datos copiados del portapapeles 
+                    en sentencias SQL masivas listas para importar en <strong style="color: var(--sql-indigo-light);">MySQL, PostgreSQL, SQLite, MS SQL Server u Oracle</strong>. 
+                    Incluye <strong style="color: var(--sql-violet-light);">tipado heurístico automático</strong>, escape seguro de comillas y cláusulas 
+                    <strong style="color: #34D399;">ON DUPLICATE KEY UPDATE</strong> o <strong style="color: #FBBF24;">UPDATE por lotes</strong>.
                 </p>
-                <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 1.5rem; max-width: 650px; margin: 0 auto; color: var(--text-secondary); font-size: 0.9rem;">
-                    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">Arquitectura Asignada:</strong>
-                    HTML5 + Vanilla JavaScript (100% Local y Offline).<br>
-                    Listo para codificar la interfaz operativa específica de esta micro-app.
+
+                <!-- Barra de Presets Rápidos y Botón de Ayuda Hero -->
+                <div class="presets-bar">
+                    <span class="presets-label">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        Cargar Caso de Prueba en 1 Clic:
+                    </span>
+                    <button type="button" class="preset-chip-btn" id="btnPresetProducts" title="Catálogo de productos con precios, stock y categorías">
+                        <span>📦 Productos & E-commerce</span>
+                    </button>
+                    <button type="button" class="preset-chip-btn" id="btnPresetUsers" title="Lista de usuarios con credenciales, roles y saldos">
+                        <span>👥 Usuarios & Roles</span>
+                    </button>
+                    <button type="button" class="preset-chip-btn" id="btnPresetLedger" title="Transacciones contables y conciliaciones bancarias">
+                        <span>📑 Libro Diario Contable</span>
+                    </button>
+                    <button type="button" class="btn-help-hero" id="btnOpenHelpHero" title="Ver Guía de Uso Completa">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>📘 ¿Cómo funciona? Guía & Ayuda</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 1: ENTRADA DE DATOS (EXCEL, CSV, ODS O PORTAPAPELES)
+                 ============================================================= -->
+            <section class="step-section" id="step1Section">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h2 class="step-title">Carga de Datos (Excel, CSV o Pegado)</h2>
+                            <p class="step-desc">Sube tu archivo de cálculo o pega directamente las filas copiadas desde Excel o Google Sheets</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep1" title="Ayuda sobre este paso">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Instrucciones Paso 1</span>
+                    </button>
                 </div>
 
-                <div class="workspace-btn-group">
-                    <a href="../../index.html" class="btn-launch-app" style="max-width: 250px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <span>Volver al Dashboard</span>
-                    </a>
+                <!-- Zona de Carga Drag & Drop -->
+                <div class="dropzone-container" id="dropZone">
+                    <div class="dropzone-icon-circle">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    </div>
+                    <div class="dropzone-title">Arrastra y suelta tu archivo de cálculo aquí</div>
+                    <div class="dropzone-subtitle">Procesamiento seguro en tu navegador. Tus datos jamás abandonan tu equipo.</div>
+
+                    <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
+                        <button type="button" class="btn-primary-sql" id="btnBrowseFile" style="padding: 0.5rem 1.25rem; font-size: 0.82rem;">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            <span>Explorar Archivo</span>
+                        </button>
+                        <button type="button" class="btn-secondary-sql" id="btnPasteData" style="padding: 0.5rem 1.25rem; font-size: 0.82rem;">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                            <span>Pegar Datos (Clipboard)</span>
+                        </button>
+                    </div>
+
+                    <div class="format-badges-row">
+                        <span class="format-badge">.XLSX</span>
+                        <span class="format-badge">.XLS</span>
+                        <span class="format-badge">.ODS</span>
+                        <span class="format-badge">.CSV</span>
+                        <span class="format-badge">.TSV</span>
+                        <span class="format-badge">.TXT</span>
+                    </div>
+
+                    <input type="file" id="fileInput" accept=".xlsx,.xls,.ods,.csv,.tsv,.txt" style="display: none;">
                 </div>
-            </div>
+
+                <!-- Resumen de Archivo Cargado -->
+                <div class="table-summary-strip" id="tableSummaryStrip">
+                    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                        <div class="file-name-tag">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--sql-indigo-light);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            <span id="fileNameTag">catalogo_productos.xlsx</span>
+                        </div>
+                        <div class="file-meta-counts" id="fileMetaCounts">5 registros • 8 columnas detectadas</div>
+                    </div>
+
+                    <!-- Selector de Hoja si el libro es multi-hoja -->
+                    <div id="sheetSelectorContainer" style="display: none; align-items: center; gap: 0.5rem;">
+                        <label for="sheetSelect" style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;">Hoja del Libro:</label>
+                        <select id="sheetSelect" class="opt-select" style="min-width: 170px; padding: 0.35rem 0.65rem; font-size: 0.8rem;"></select>
+                    </div>
+
+                    <button type="button" class="btn-subnav-ghost" id="btnClearData" style="font-size: 0.78rem; padding: 0.35rem 0.75rem; color: #EF4444;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                        <span>Limpiar Archivo</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 2: MAPEO DE COLUMNAS, TIPADO & CLAVES PRIMARIAS
+                 ============================================================= -->
+            <section class="step-section" id="step2Section">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h2 class="step-title">Mapeo de Columnas, Tipado & Claves (PK)</h2>
+                            <p class="step-desc">Selecciona qué columnas exportar, personaliza sus nombres SQL, revisa el tipo inferido y define claves primarias</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep2" title="Ayuda sobre este paso">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Instrucciones Paso 2</span>
+                    </button>
+                </div>
+
+                <div class="columns-mapping-container">
+                    <div class="columns-toolbar">
+                        <div class="toolbar-group">
+                            <button type="button" class="btn-subnav-ghost" id="btnSelectAllCols" style="font-size: 0.78rem; padding: 0.35rem 0.75rem;">
+                                Seleccionar Todas
+                            </button>
+                            <button type="button" class="btn-subnav-ghost" id="btnDeselectAllCols" style="font-size: 0.78rem; padding: 0.35rem 0.75rem;">
+                                Deseleccionar Todas
+                            </button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button type="button" class="btn-subnav-ghost" id="btnAutoSnakeCase" style="font-size: 0.78rem; padding: 0.35rem 0.75rem; color: var(--sql-indigo-light); border-color: rgba(99, 102, 241, 0.4);">
+                                🪄 Sanitizar a snake_case
+                            </button>
+                            <button type="button" class="btn-subnav-ghost" id="btnResetTypes" style="font-size: 0.78rem; padding: 0.35rem 0.75rem;">
+                                🔄 Re-analizar Tipos
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive-wrapper">
+                        <table class="mapping-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 48px; text-align: center;">Inc.</th>
+                                    <th>Columna Original</th>
+                                    <th>Nombre en SQL</th>
+                                    <th>Tipo de Dato SQL</th>
+                                    <th style="text-align: center; width: 90px;">Clave (PK)</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mappingTableBody">
+                                <!-- Filas dinámicas generadas por app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 3: CONFIGURACIÓN DEL SCRIPT & DIALECTO SQL
+                 ============================================================= -->
+            <section class="step-section" id="step3Section">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h2 class="step-title">Configuración del Dialecto & Parámetros SQL</h2>
+                            <p class="step-desc">Elige el motor de base de datos de destino, el tipo de sentencia y la segmentación en bloques de inserción</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep3" title="Ayuda sobre este paso">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Instrucciones Paso 3</span>
+                    </button>
+                </div>
+
+                <div class="sql-options-grid">
+
+                    <!-- Columna 1: Motor y Tabla -->
+                    <div class="opt-card">
+                        <div class="opt-card-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--sql-indigo-light);"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                            <span>1. Base de Datos & Tabla Destino</span>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label for="inputTableName" style="font-size: 0.78rem; color: var(--text-secondary); display: block; margin-bottom: 0.35rem; font-weight: 600;">Nombre de la Tabla:</label>
+                            <input type="text" id="inputTableName" class="opt-input" value="productos_tech" placeholder="nombre_de_tabla">
+                        </div>
+                        <div>
+                            <label for="selectDialect" style="font-size: 0.78rem; color: var(--text-secondary); display: block; margin-bottom: 0.35rem; font-weight: 600;">Dialecto SQL del Motor:</label>
+                            <select id="selectDialect" class="opt-select">
+                                <option value="mysql" selected>MySQL / MariaDB (`backticks`)</option>
+                                <option value="postgres">PostgreSQL ("double quotes")</option>
+                                <option value="sqlite">SQLite (Estándar local)</option>
+                                <option value="mssql">Microsoft SQL Server ([brackets])</option>
+                                <option value="oracle">Oracle Database ("quotes")</option>
+                                <option value="ansi">Estándar ANSI SQL</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Columna 2: Operación SQL -->
+                    <div class="opt-card">
+                        <div class="opt-card-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--sql-violet-light);"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                            <span>2. Tipo de Sentencia (Operación)</span>
+                        </div>
+                        <div class="radio-pills-group">
+                            <label class="radio-pill-label">
+                                <input type="radio" name="sqlOperation" value="insert" checked>
+                                <div class="pill-content">
+                                    <strong>INSERT INTO</strong>
+                                    <span>Inserción estándar por lotes masivos</span>
+                                </div>
+                            </label>
+                            <label class="radio-pill-label">
+                                <input type="radio" name="sqlOperation" value="insert_ignore">
+                                <div class="pill-content">
+                                    <strong>INSERT IGNORE / ON CONFLICT DO NOTHING</strong>
+                                    <span>Ignora filas duplicadas sin interrumpir ejecución</span>
+                                </div>
+                            </label>
+                            <label class="radio-pill-label">
+                                <input type="radio" name="sqlOperation" value="upsert">
+                                <div class="pill-content">
+                                    <strong>UPSERT (ON DUPLICATE KEY UPDATE)</strong>
+                                    <span>Inserta nuevo o actualiza si la PK ya existe</span>
+                                </div>
+                            </label>
+                            <label class="radio-pill-label">
+                                <input type="radio" name="sqlOperation" value="replace">
+                                <div class="pill-content">
+                                    <strong>REPLACE INTO</strong>
+                                    <span>Elimina fila existente e inserta la nueva (MySQL/SQLite)</span>
+                                </div>
+                            </label>
+                            <label class="radio-pill-label">
+                                <input type="radio" name="sqlOperation" value="update">
+                                <div class="pill-content">
+                                    <strong>UPDATE por lotes (WHERE pk = ...)</strong>
+                                    <span>Actualiza registros existentes según su Clave Primaria</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Columna 3: Lotes & Opciones de Salida -->
+                    <div class="opt-card">
+                        <div class="opt-card-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #34D399;"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            <span>3. Tamaño de Lote & Envoltorios</span>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label for="selectBatchSize" style="font-size: 0.78rem; color: var(--text-secondary); display: block; margin-bottom: 0.35rem; font-weight: 600;">Filas por Sentencia (Lote):</label>
+                            <select id="selectBatchSize" class="opt-select">
+                                <option value="100">100 filas por sentencia</option>
+                                <option value="500" selected>500 filas por sentencia (Recomendado)</option>
+                                <option value="1000">1.000 filas por sentencia</option>
+                                <option value="2000">2.000 filas por sentencia</option>
+                                <option value="0">Todo en una sola sentencia masiva</option>
+                                <option value="1">1 fila por sentencia (Atómica)</option>
+                            </select>
+                        </div>
+
+                        <div class="switches-list">
+                            <label class="switch-label">
+                                <span>Envolver en Transacción (BEGIN / COMMIT)</span>
+                                <div class="switch-toggle">
+                                    <input type="checkbox" id="chkTransaction" checked>
+                                    <span class="slider-round"></span>
+                                </div>
+                            </label>
+                            <label class="switch-label">
+                                <span>Incluir DDL CREATE TABLE</span>
+                                <div class="switch-toggle">
+                                    <input type="checkbox" id="chkCreateTable">
+                                    <span class="slider-round"></span>
+                                </div>
+                            </label>
+                            <label class="switch-label">
+                                <span>Incluir DROP TABLE IF EXISTS</span>
+                                <div class="switch-toggle">
+                                    <input type="checkbox" id="chkDropTable">
+                                    <span class="slider-round"></span>
+                                </div>
+                            </label>
+                            <label class="switch-label">
+                                <span>Comentarios informativos de cabecera</span>
+                                <div class="switch-toggle">
+                                    <input type="checkbox" id="chkComments" checked>
+                                    <span class="slider-round"></span>
+                                </div>
+                            </label>
+                            <label class="switch-label">
+                                <span>Celdas vacías como NULL (vs '')</span>
+                                <div class="switch-toggle">
+                                    <input type="checkbox" id="chkEmptyAsNull" checked>
+                                    <span class="slider-round"></span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 4: VISOR DE SCRIPT SQL & ACCIONES
+                 ============================================================= -->
+            <section class="step-section" id="step4Section">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h2 class="step-title">Script SQL Generado & Visor de Salida</h2>
+                            <p class="step-desc">Inspecciona el código generado, previsualiza los datos, copia al portapapeles o descarga el archivo .sql</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep4" title="Ayuda sobre este paso">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Instrucciones Paso 4</span>
+                    </button>
+                </div>
+
+                <div class="output-tabs-header">
+                    <div class="output-nav-tabs">
+                        <button type="button" class="output-tab-btn active" id="tabSqlBtn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            <span>Script SQL Generado</span>
+                        </button>
+                        <button type="button" class="output-tab-btn" id="tabDataBtn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
+                            <span>Vista Previa de Datos</span>
+                        </button>
+                        <button type="button" class="output-tab-btn" id="tabDdlBtn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            <span>Definición DDL (CREATE TABLE)</span>
+                        </button>
+                    </div>
+
+                    <!-- Métricas en vivo -->
+                    <div class="metrics-strip">
+                        <div class="metric-pill">Filas: <strong id="metricRows">0</strong></div>
+                        <div class="metric-pill">Sentencias: <strong id="metricStmts">0</strong></div>
+                        <div class="metric-pill">Columnas: <strong id="metricCols">0</strong></div>
+                        <div class="metric-pill">Tamaño: <strong id="metricSize">0 B</strong></div>
+                        <div class="metric-pill">Motor: <strong id="metricDialect" style="color: var(--sql-indigo-light);">MySQL</strong></div>
+                    </div>
+                </div>
+
+                <!-- Panel 1: Visor de Script SQL -->
+                <div id="sqlViewerPane" class="code-viewer-box">
+                    <textarea id="sqlCodeOutput" class="code-textarea" readonly spellcheck="false" placeholder="El código SQL generado aparecerá aquí..."></textarea>
+                </div>
+
+                <!-- Panel 2: Vista Previa de Datos Crudos -->
+                <div id="dataViewerPane" class="columns-mapping-container" style="display: none;">
+                    <div id="previewTableContainer"></div>
+                </div>
+
+                <!-- Panel 3: Definición DDL (CREATE TABLE) -->
+                <div id="ddlViewerPane" class="code-viewer-box" style="display: none;">
+                    <textarea id="ddlCodeOutput" class="code-textarea" readonly spellcheck="false" placeholder="Definición DDL CREATE TABLE..."></textarea>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="action-buttons-bar">
+                    <button type="button" class="btn-secondary-sql" id="btnRegenerateSql">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                        <span>Regenerar Script</span>
+                    </button>
+                    <button type="button" class="btn-secondary-sql" id="btnCopySql">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        <span>Copiar al Portapapeles</span>
+                    </button>
+                    <button type="button" class="btn-primary-sql" id="btnDownloadSql">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Descargar Archivo .sql</span>
+                    </button>
+                </div>
+            </section>
         </main>
 
-        <footer class="site-footer">
+        <!-- =================================================================
+             3. FOOTER
+             ================================================================= -->
+        <footer class="app-footer">
             <div class="footer-inner">
                 <div class="footer-left">
-                    <span><strong>SimpleApps Suite</strong> • Módulo #09</span>
+                    <span class="footer-brand">SimpleApps • Módulo #09</span>
+                    <span class="footer-badge" style="background: rgba(99, 102, 241, 0.15); color: var(--sql-indigo-light); border-color: rgba(99, 102, 241, 0.3);">
+                        SQL Builder In-Memory • Vanilla JS
+                    </span>
                 </div>
-                <div class="footer-right">
-                    <a href="../../index.html" class="footer-link">Ver las 10 Apps</a>
+                <div class="footer-links">
+                    <button type="button" class="footer-link" id="btnFooterHelp" style="background: none; border: none; cursor: pointer;">
+                        📘 Manual de Uso
+                    </button>
+                    <span class="footer-sep">•</span>
+                    <a href="../../index.html" class="footer-link">Catálogo Completo</a>
+                    <span class="footer-sep">•</span>
+                    <a href="https://github.com/diegohernangarcia/SimpleApp" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Repo</a>
                 </div>
             </div>
         </footer>
+
+    </div><!-- /.app-wrapper -->
+
+    <!-- =====================================================================
+         MODAL DE AYUDA Y GUÍA DE USO (SINCRONIZADO CON PASOS)
+         ===================================================================== -->
+    <div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+        <div class="modal-window">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(99, 102, 241, 0.15); display: flex; align-items: center; justify-content: center; color: var(--sql-indigo-light);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="modal-title" id="helpModalTitle">Manual Operativo & Guía de Uso del Módulo</h2>
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Generador SQL INSERT / UPDATE • SimpleApps Suite</span>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnCloseHelpModal" aria-label="Cerrar modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Navegación de Pestañas de Ayuda -->
+                <div class="help-tabs-nav" role="tablist">
+                    <button type="button" class="help-tab-btn active" data-tab="tabHelpOverview">
+                        <span>🌟 Visión General</span>
+                    </button>
+                    <button type="button" class="help-tab-btn" data-tab="tabHelpStep1">
+                        <span>📂 Paso 1: Carga</span>
+                    </button>
+                    <button type="button" class="help-tab-btn" data-tab="tabHelpStep2">
+                        <span>🏷️ Paso 2: Mapeo & PK</span>
+                    </button>
+                    <button type="button" class="help-tab-btn" data-tab="tabHelpStep3">
+                        <span>⚙️ Paso 3: Dialectos & Lotes</span>
+                    </button>
+                    <button type="button" class="help-tab-btn" data-tab="tabHelpStep4">
+                        <span>📜 Paso 4: Exportación</span>
+                    </button>
+                    <button type="button" class="help-tab-btn" data-tab="tabHelpTips">
+                        <span>🛡️ Seguridad & Rendimiento</span>
+                    </button>
+                </div>
+
+                <!-- Contenido Pestaña 1: Visión General -->
+                <div class="help-tab-content" id="tabHelpOverview">
+                    <div class="help-card-section">
+                        <h4>🎯 ¿Qué es el Generador SQL desde Excel?</h4>
+                        <p>
+                            Es una herramienta de alta velocidad diseñada para desarrolladores, analistas y administradores de bases de datos que necesitan <strong>migrar, importar o sincronizar planillas de cálculo (Excel, CSV, ODS)</strong> hacia bases de datos relacionales sin requerir conectores pesados ni subir datos a servidores de terceros.
+                        </p>
+                    </div>
+                    <div class="help-card-section">
+                        <h4>🔄 Flujo de Trabajo en 4 Pasos</h4>
+                        <ul>
+                            <li><strong>Paso 1 (Carga):</strong> Arrastra tu archivo (.xlsx, .xls, .ods, .csv, .tsv) o pega texto tabulado desde el portapapeles.</li>
+                            <li><strong>Paso 2 (Mapeo y Tipado):</strong> Activa/desactiva columnas, renombra identificadores a snake_case, verifica los tipos de datos inferidos y define la Clave Primaria (PK).</li>
+                            <li><strong>Paso 3 (Configuración SQL):</strong> Selecciona el motor de destino (MySQL, Postgres, SQLite, etc.), el tipo de sentencia (INSERT, UPSERT, REPLACE, UPDATE) y el tamaño del lote.</li>
+                            <li><strong>Paso 4 (Generación y Exportación):</strong> Visualiza el código SQL resultante, cópialo con un clic o descárgalo como archivo <code>.sql</code> listo para ejecutar en tu cliente de base de datos favorito (DBeaver, phpMyAdmin, DataGrip, HeidiSQL).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contenido Paso 1: Carga y Portapapeles -->
+                <div class="help-tab-content" id="tabHelpStep1" style="display: none;">
+                    <div class="help-card-section">
+                        <h4>📂 Métodos de Entrada de Datos</h4>
+                        <p>El módulo ofrece tres canales ultrarrápidos para importar registros:</p>
+                        <ul>
+                            <li><strong>Arrastrar y Soltar (Drag & Drop):</strong> Soporta archivos de Excel moderno (<code>.xlsx</code>), binario antiguo (<code>.xls</code>), LibreOffice Calc (<code>.ods</code>), y valores separados por coma o tabulación (<code>.csv</code>, <code>.tsv</code>, <code>.txt</code>).</li>
+                            <li><strong>Pegado Directo (Clipboard):</strong> Presiona el botón <em>Pegar Datos (Clipboard)</em> o copia una tabla en Excel / Google Sheets y pégala aquí. El sistema detecta automáticamente los delimitadores tabulados.</li>
+                            <li><strong>Presets de 1 Clic:</strong> Carga al instante conjuntos de demostración prediseñados (Productos E-commerce, Usuarios CRM, Libro Diario Contable).</li>
+                        </ul>
+                    </div>
+                    <div class="help-card-section">
+                        <h4>📑 Soporte para Libros Multi-Hoja</h4>
+                        <p>Si tu archivo Excel contiene más de una pestaña, aparecerá un menú desplegable permitiéndote elegir exactamente qué hoja procesar.</p>
+                    </div>
+                </div>
+
+                <!-- Contenido Paso 2: Mapeo, Tipado & PK -->
+                <div class="help-tab-content" id="tabHelpStep2" style="display: none;">
+                    <div class="help-card-section">
+                        <h4>🏷️ Configuración de Esquema por Columna</h4>
+                        <ul>
+                            <li><strong>Casilla Inc. (Incluir):</strong> Desmarca cualquier columna que no desees exportar al script SQL.</li>
+                            <li><strong>Nombre en SQL:</strong> Personaliza el identificador de cada campo. Usa el botón <code>🪄 Sanitizar a snake_case</code> para quitar acentos, espacios y símbolos de una sola vez.</li>
+                            <li><strong>Tipo de Dato:</strong> El motor infiere automáticamente entre <code>INTEGER</code>, <code>DECIMAL(12,2)</code>, <code>VARCHAR(255)</code>, <code>TEXT</code>, <code>BOOLEAN</code>, <code>DATE</code> y <code>DATETIME</code>. Puedes forzar cualquier tipo manualmente.</li>
+                            <li><strong>Clave Primaria (🔑 PK):</strong> Haz clic en la insignia para designar las columnas que identifican unívocamente a cada registro. Es <strong>obligatorio</strong> para operaciones <code>UPDATE</code> y <code>UPSERT</code>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contenido Paso 3: Dialectos & Lotes -->
+                <div class="help-tab-content" id="tabHelpStep3" style="display: none;">
+                    <div class="help-card-section">
+                        <h4>🗄️ Dialectos Soportados</h4>
+                        <ul>
+                            <li><strong>MySQL / MariaDB:</strong> Delimitadores con comillas invertidas (<code>`tabla`</code>), escape seguro <code>\'</code>, <code>INSERT IGNORE</code> y <code>ON DUPLICATE KEY UPDATE</code>.</li>
+                            <li><strong>PostgreSQL:</strong> Delimitadores con comillas dobles (<code>"tabla"</code>), booleanos <code>TRUE/FALSE</code> y cláusula <code>ON CONFLICT (...) DO UPDATE</code>.</li>
+                            <li><strong>SQLite:</strong> Ideal para bases de datos locales o embebidas; soporta <code>REPLACE INTO</code> e <code>INSERT OR IGNORE</code>.</li>
+                            <li><strong>MS SQL Server & Oracle:</strong> Sintaxis T-SQL (<code>[tabla]</code>) y PL/SQL con transacciones compatibles.</li>
+                        </ul>
+                    </div>
+                    <div class="help-card-section">
+                        <h4>⚡ Tipos de Operación SQL</h4>
+                        <ul>
+                            <li><strong>INSERT INTO:</strong> Inserción masiva estándar de nuevas filas.</li>
+                            <li><strong>INSERT IGNORE:</strong> Omite duplicados sin lanzar errores ni abortar el script.</li>
+                            <li><strong>UPSERT:</strong> Inserta si es nuevo, o actualiza los datos si la Clave Primaria ya existe.</li>
+                            <li><strong>REPLACE INTO:</strong> Elimina el registro antiguo e inserta el nuevo (MySQL/SQLite).</li>
+                            <li><strong>UPDATE por lotes:</strong> Sentencias individuales con cláusula <code>WHERE pk = valPK</code>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contenido Paso 4: Exportación SQL & DDL -->
+                <div class="help-tab-content" id="tabHelpStep4" style="display: none;">
+                    <div class="help-card-section">
+                        <h4>📜 Pestañas de Visualización</h4>
+                        <ul>
+                            <li><strong>Script SQL Generado:</strong> El código SQL completo listo para ejecución, formateado y segmentado en lotes.</li>
+                            <li><strong>Vista Previa de Datos:</strong> Tabla interactiva mostrando los primeros 50 registros de la planilla con sus nombres SQL y tipos.</li>
+                            <li><strong>Definición DDL (CREATE TABLE):</strong> Script complementario <code>CREATE TABLE IF NOT EXISTS</code> generado automáticamente con las columnas y claves primarias definidas.</li>
+                        </ul>
+                    </div>
+                    <div class="help-card-section">
+                        <h4>💾 Opciones de Exportación</h4>
+                        <p>Presiona <strong>Copiar al Portapapeles</strong> para pegar directamente en DBeaver, phpMyAdmin, HeidiSQL o DataGrip, o pulsa <strong>Descargar Archivo .sql</strong> para guardarlo en tu disco local.</p>
+                    </div>
+                </div>
+
+                <!-- Contenido Pestaña 6: Seguridad & Rendimiento -->
+                <div class="help-tab-content" id="tabHelpTips" style="display: none;">
+                    <div class="help-card-section">
+                        <h4>🚀 ¿Por qué segmentar en lotes de 500 o 1.000 filas?</h4>
+                        <p>
+                            Ejecutar sentencias <code>INSERT</code> individuales por cada registro genera miles de viajes de red redundantes. Al agrupar las filas en bloques de 500 filas en una sola sentencia <code>VALUES (...), (...)</code>, la velocidad de importación aumenta en más del <strong>95%</strong> respetando los límites de memoria del paquete (como <code>max_allowed_packet</code> en MySQL).
+                        </p>
+                    </div>
+                    <div class="help-card-section">
+                        <h4>🛡️ Escape Seguro y Transacciones</h4>
+                        <p>
+                            Todas las cadenas de texto son escapadas contra inyecciones SQL (comillas, barras invertidas, saltos de línea). La casilla <strong>Envolver en Transacción</strong> agrega <code>START TRANSACTION / COMMIT</code> para garantizar atomicidad y prevenir registros a medio cargar si se interrumpe la conexión.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
+
+    <!-- =====================================================================
+         MODAL DE PEGAR DATOS (CLIPBOARD / TSV)
+         ===================================================================== -->
+    <div class="modal-overlay" id="pasteModal" role="dialog" aria-modal="true" aria-labelledby="pasteModalTitle">
+        <div class="modal-window" style="max-width: 650px;">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(99, 102, 241, 0.15); display: flex; align-items: center; justify-content: center; color: var(--sql-indigo-light);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="modal-title" id="pasteModalTitle">Pegar Tabla desde el Portapapeles</h2>
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Copia celdas en Excel o Sheets y presiona Ctrl + V</span>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnClosePasteModal" aria-label="Cerrar modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <p style="font-size: 0.83rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+                    Pega aquí los datos copiados. La primera fila se interpretará como los nombres de columna.
+                </p>
+                <textarea id="pasteTextarea" class="paste-textarea" placeholder="id&#9;producto&#9;precio&#10;1&#9;Monitor 24&#9;150.00&#10;2&#9;Teclado&#9;45.50"></textarea>
+
+                <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+                    <button type="button" class="btn-subnav-ghost" onclick="document.getElementById('pasteModal').classList.remove('active')">
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn-primary-sql" id="btnProcessPaste">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Cargar y Procesar Tabla</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="sqlToast" class="sql-toast">
+        Notificación
+    </div>
+
+    <!-- Dependencias Offline -->
+    <script src="libs/xlsx.full.min.js"></script>
+    <script src="sql-builder.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

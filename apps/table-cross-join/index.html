@@ -3,69 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
     <title>Cruzador y Conciliador de Tablas (JOIN Express) • SimpleApps</title>
+    <meta name="description" content="Cruza dos archivos Excel o CSV mediante columnas clave con VLOOKUP o SQL JOIN (Inner, Left, Right, Full Outer). Concilia saldos contables y detecta discrepancias al instante. 100% Local.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        .app-workspace-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-medium);
-            border-radius: var(--radius-xl);
-            padding: 3rem 2.5rem;
-            max-width: 900px;
-            margin: 2rem auto;
-            text-align: center;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--shadow-card);
-        }
-        .module-tag {
-            display: inline-block;
-            background: rgba(168, 85, 247, 0.15);
-            color: var(--accent-violet-light);
-            padding: 0.35rem 0.85rem;
-            border-radius: 100px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-        .workspace-btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-    </style>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=1.0">
 </head>
 <body>
+
+    <!-- Fondos de Iluminación Ambiental Aithm -->
     <div class="ambient-glow" aria-hidden="true">
-        <div class="ambient-orb ambient-orb-1"></div>
-        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-1" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, transparent 70%);"></div>
+        <div class="ambient-orb ambient-orb-2" style="background: radial-gradient(circle, rgba(0, 240, 255, 0.16) 0%, transparent 70%);"></div>
     </div>
     <div class="bg-grid-pattern" aria-hidden="true"></div>
 
     <div class="app-wrapper">
+
+        <!-- =================================================================
+             1. HEADER HORIZONTAL
+             ================================================================= -->
         <header class="top-header">
             <div class="header-inner">
-                <a href="../../index.html" class="brand-area" title="Volver al Inicio">
-                    <div class="brand-icon-box">
+                <a href="../../index.html" class="brand-area" title="Volver al Catálogo">
+                    <div class="brand-icon-box" style="border-color: rgba(168, 85, 247, 0.4); background: rgba(168, 85, 247, 0.15); color: var(--join-purple-light);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
+                            <rect width="18" height="18" x="3" y="3" rx="2"/>
+                            <path d="M3 9h18"/>
+                            <path d="M3 15h18"/>
+                            <path d="M9 3v18"/>
+                            <path d="M15 3v18"/>
                         </svg>
                     </div>
                     <div class="brand-text-box">
-                        <span class="brand-name">Simple<span class="brand-highlight">Apps</span></span>
-                        <span class="brand-tagline">Micro-Tools Suite</span>
+                        <span class="brand-name">JOIN <span class="brand-highlight" style="color: var(--join-purple-light);">Express</span></span>
+                        <span class="brand-tagline">Cruzador & Conciliador Relacional</span>
                     </div>
                 </a>
+
                 <div class="header-actions">
-                    <a href="../../index.html" class="btn-subnav-ghost">
+                    <button type="button" class="btn-help-guide" id="btnOpenHelpModal" title="Manual Operativo y Guía de Uso del Módulo">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <span>📘 Ayuda & Guía de Uso</span>
+                    </button>
+
+                    <div class="server-status-pill" title="Procesamiento en memoria local de alta velocidad">
+                        <span class="status-dot" style="background: #A855F7; box-shadow: 0 0 8px #A855F7;"></span>
+                        <span class="server-meta-tag">100% Local</span>
+                        <span class="server-php-tag" style="background: rgba(168, 85, 247, 0.2); color: #C084FC;">Hash O(N+M)</span>
+                    </div>
+
+                    <a href="../../index.html" class="btn-subnav-ghost" title="Volver al Catálogo">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
                         <span>Volver al Catálogo</span>
                     </a>
@@ -73,48 +77,1032 @@
             </div>
         </header>
 
+        <!-- =================================================================
+             2. CONTENIDO PRINCIPAL
+             ================================================================= -->
         <main class="main-container">
+
+            <!-- Breadcrumbs -->
             <div class="breadcrumb-row">
                 <a href="../../index.html" class="footer-link">Inicio</a>
                 <span class="breadcrumb-separator">/</span>
                 <a href="../../index.html" class="footer-link">Micro-Apps</a>
                 <span class="breadcrumb-separator">/</span>
-                <span class="breadcrumb-item active">Cruzador y Conciliador de Tablas (JOIN Express)</span>
+                <span class="breadcrumb-item active" style="color: var(--join-purple-light);">Cruzador y Conciliador de Tablas (JOIN Express)</span>
             </div>
 
-            <div class="app-workspace-card">
-                <span class="module-tag">MÓDULO #07 EN PREPARACIÓN</span>
-                <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 1rem;">
-                    Cruzador y Conciliador de Tablas (JOIN Express)
+            <!-- Hero Banner -->
+            <section class="join-hero">
+                <div class="join-tag">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                    MÓDULO #07 • DATOS & CONCILIACIÓN • MOTOR RELACIONAL JS
+                </div>
+                <h1 class="hero-title" style="margin-bottom: 0.75rem;">
+                    Cruzador y Conciliador de Tablas <span class="glow-text-purple">(JOIN Express)</span>
                 </h1>
-                <p class="hero-description" style="max-width: 600px; margin: 0 auto 1.5rem;">
-                    Cruza dos conjuntos de datos mediante VLOOKUP / SQL JOIN.
+                <p class="hero-description" style="max-width: 900px; margin-bottom: 0;">
+                    Cruza dos conjuntos de datos mediante columnas clave (<strong class="text-glow-white">VLOOKUP / BUSCAV / SQL JOIN</strong>: Inner, Left, Right, Full Outer y Exclusivos). 
+                    Concilia saldos contables, cruza inventarios físicos contra sistemas ERP y detecta discrepancias de valores al instante con <strong style="color: var(--join-cyan);">indexación hash en memoria</strong>.
                 </p>
-                <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 1.5rem; max-width: 650px; margin: 0 auto; color: var(--text-secondary); font-size: 0.9rem;">
-                    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">Arquitectura Asignada:</strong>
-                    HTML5 + Vanilla JavaScript (100% Local y Offline).<br>
-                    Listo para codificar la interfaz operativa específica de esta micro-app.
+
+                <!-- Barra de Presets / Demostración -->
+                <div class="presets-bar">
+                    <span class="presets-label">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        Cargar Caso de Prueba en 1 Clic:
+                    </span>
+                    <button type="button" class="preset-chip-btn" id="btnPresetBanking">
+                        <span>💼 Conciliación Bancaria</span>
+                    </button>
+                    <button type="button" class="preset-chip-btn" id="btnPresetInventory">
+                        <span>📦 Auditoría de Inventarios</span>
+                    </button>
+                    <button type="button" class="preset-chip-btn" id="btnPresetCRM">
+                        <span>👥 Cruce Ventas vs CRM</span>
+                    </button>
+                    <button type="button" class="btn-help-hero" id="btnOpenHelpHero" title="Ver Guía de Uso Completa">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <span>¿Cómo funciona? Guía de Uso</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 1: CARGA DE TABLAS (TABLA A Y TABLA B)
+                 ============================================================= -->
+            <section class="step-section">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h2 class="step-title">Cargar Conjuntos de Datos</h2>
+                            <p class="step-desc">Selecciona o arrastra los dos archivos Excel (.xlsx, .xls) o CSV (.csv, .tsv) que deseas cruzar.</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep1" title="Ver guía sobre carga de datos">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Guía Paso 1: Carga</span>
+                    </button>
                 </div>
 
-                <div class="workspace-btn-group">
-                    <a href="../../index.html" class="btn-launch-app" style="max-width: 250px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <span>Volver al Dashboard</span>
-                    </a>
+                <div class="dual-tables-grid">
+                    <!-- TARJETA TABLA A (PRINCIPAL) -->
+                    <div class="table-upload-card" id="cardTableA">
+                        <div class="table-card-head">
+                            <div class="table-badge-label">
+                                <span class="pill-table-a">TABLA A</span>
+                                <span>Tabla Principal / Base</span>
+                            </div>
+                            <span class="status-badge" id="statusBadgeA" style="font-size:0.75rem; color:var(--text-muted);">Pendiente</span>
+                        </div>
+
+                        <!-- Dropzone A -->
+                        <div class="dropzone-box" id="dropzoneA">
+                            <div class="dropzone-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            </div>
+                            <div class="dropzone-text">Arrastra aquí el archivo de Tabla A</div>
+                            <div class="dropzone-sub">Excel (.xlsx, .xls) o CSV (.csv, .tsv)</div>
+                            <div class="dropzone-actions">
+                                <label class="btn-subnav-ghost" style="cursor: pointer; font-size: 0.8rem; padding: 0.4rem 0.8rem;">
+                                    <span>Explorar Archivo</span>
+                                    <input type="file" id="fileInputA" accept=".xlsx,.xls,.csv,.tsv,.txt" style="display: none;">
+                                </label>
+                                <button type="button" class="btn-subnav-ghost" id="btnPasteA" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                                    <span>Pegar Datos</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Strip Resumen Tabla A (cuando está cargada) -->
+                        <div class="table-summary-strip" id="summaryA">
+                            <div class="table-summary-info">
+                                <span class="file-name-tag" id="fileNameA">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                    <span id="nameTextA">-</span>
+                                </span>
+                                <span class="file-meta-counts" id="metaCountsA">0 filas • 0 cols</span>
+                            </div>
+                            <div class="sheet-selector-row" id="sheetRowA" style="display:none;">
+                                <label for="sheetSelectA" style="color:var(--text-secondary);">Hoja:</label>
+                                <select id="sheetSelectA" class="sheet-select"></select>
+                            </div>
+                            <div class="table-mini-actions">
+                                <button type="button" class="btn-subnav-ghost" id="btnPreviewA" style="font-size:0.75rem; padding: 0.25rem 0.6rem;">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    <span>Previsualizar</span>
+                                </button>
+                                <button type="button" class="btn-subnav-ghost" id="btnClearA" style="font-size:0.75rem; padding: 0.25rem 0.6rem; color:#EF4444;">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                    <span>Limpiar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TARJETA TABLA B (COMPARACIÓN / BÚSQUEDA) -->
+                    <div class="table-upload-card" id="cardTableB">
+                        <div class="table-card-head">
+                            <div class="table-badge-label">
+                                <span class="pill-table-b">TABLA B</span>
+                                <span>Tabla Comparación / VLOOKUP</span>
+                            </div>
+                            <span class="status-badge" id="statusBadgeB" style="font-size:0.75rem; color:var(--text-muted);">Pendiente</span>
+                        </div>
+
+                        <!-- Dropzone B -->
+                        <div class="dropzone-box" id="dropzoneB">
+                            <div class="dropzone-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            </div>
+                            <div class="dropzone-text">Arrastra aquí el archivo de Tabla B</div>
+                            <div class="dropzone-sub">Excel (.xlsx, .xls) o CSV (.csv, .tsv)</div>
+                            <div class="dropzone-actions">
+                                <label class="btn-subnav-ghost" style="cursor: pointer; font-size: 0.8rem; padding: 0.4rem 0.8rem;">
+                                    <span>Explorar Archivo</span>
+                                    <input type="file" id="fileInputB" accept=".xlsx,.xls,.csv,.tsv,.txt" style="display: none;">
+                                </label>
+                                <button type="button" class="btn-subnav-ghost" id="btnPasteB" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                                    <span>Pegar Datos</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Strip Resumen Tabla B (cuando está cargada) -->
+                        <div class="table-summary-strip" id="summaryB">
+                            <div class="table-summary-info">
+                                <span class="file-name-tag" id="fileNameB">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                    <span id="nameTextB">-</span>
+                                </span>
+                                <span class="file-meta-counts" id="metaCountsB">0 filas • 0 cols</span>
+                            </div>
+                            <div class="sheet-selector-row" id="sheetRowB" style="display:none;">
+                                <label for="sheetSelectB" style="color:var(--text-secondary);">Hoja:</label>
+                                <select id="sheetSelectB" class="sheet-select"></select>
+                            </div>
+                            <div class="table-mini-actions">
+                                <button type="button" class="btn-subnav-ghost" id="btnPreviewB" style="font-size:0.75rem; padding: 0.25rem 0.6rem;">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    <span>Previsualizar</span>
+                                </button>
+                                <button type="button" class="btn-subnav-ghost" id="btnClearB" style="font-size:0.75rem; padding: 0.25rem 0.6rem; color:#EF4444;">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                    <span>Limpiar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 2: CONFIGURACIÓN DEL JOIN & CLAVES
+                 ============================================================= -->
+            <section class="step-section" id="sectionStep2">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h2 class="step-title">Configurar Cruce Relacional (JOIN)</h2>
+                            <p class="step-desc">Elige la modalidad de cruce de conjuntos y vincula las columnas clave de coincidencia.</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep2" title="Ver guía sobre configuración de JOIN y claves">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Guía Paso 2: Configurar JOIN</span>
+                    </button>
+                </div>
+
+                <!-- Selector de Tipos de JOIN con Diagramas de Venn SVG -->
+                <div class="join-types-grid" id="joinTypesGrid">
+                    <!-- 1. LEFT JOIN (Default / VLOOKUP) -->
+                    <div class="join-type-card active" data-type="left">
+                        <svg class="venn-svg" viewBox="0 0 60 38">
+                            <defs>
+                                <mask id="maskLeft">
+                                    <rect width="60" height="38" fill="white"/>
+                                </mask>
+                            </defs>
+                            <circle cx="23" cy="19" r="16" fill="rgba(168, 85, 247, 0.45)" stroke="#A855F7" stroke-width="2"/>
+                            <circle cx="37" cy="19" r="16" fill="transparent" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                            <path d="M 30,7 A 16,16 0 0,1 30,31 A 16,16 0 0,1 30,7" fill="#00F0FF" opacity="0.8"/>
+                        </svg>
+                        <span class="join-type-name">LEFT JOIN (VLOOKUP)</span>
+                        <span class="join-type-desc">Todo A + match de B</span>
+                    </div>
+
+                    <!-- 2. INNER JOIN -->
+                    <div class="join-type-card" data-type="inner">
+                        <svg class="venn-svg" viewBox="0 0 60 38">
+                            <circle cx="23" cy="19" r="16" fill="transparent" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                            <circle cx="37" cy="19" r="16" fill="transparent" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                            <path d="M 30,7 A 16,16 0 0,1 30,31 A 16,16 0 0,1 30,7" fill="#10B981" stroke="#10B981" stroke-width="1.5"/>
+                        </svg>
+                        <span class="join-type-name">INNER JOIN</span>
+                        <span class="join-type-desc">Solo coincidencias</span>
+                    </div>
+
+                    <!-- 3. FULL OUTER JOIN -->
+                    <div class="join-type-card" data-type="full">
+                        <svg class="venn-svg" viewBox="0 0 60 38">
+                            <circle cx="23" cy="19" r="16" fill="rgba(168, 85, 247, 0.4)" stroke="#A855F7" stroke-width="1.8"/>
+                            <circle cx="37" cy="19" r="16" fill="rgba(0, 240, 255, 0.35)" stroke="#00F0FF" stroke-width="1.8"/>
+                        </svg>
+                        <span class="join-type-name">FULL OUTER</span>
+                        <span class="join-type-desc">Todo A + Todo B</span>
+                    </div>
+
+                    <!-- 4. RIGHT JOIN -->
+                    <div class="join-type-card" data-type="right">
+                        <svg class="venn-svg" viewBox="0 0 60 38">
+                            <circle cx="23" cy="19" r="16" fill="transparent" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                            <circle cx="37" cy="19" r="16" fill="rgba(0, 240, 255, 0.45)" stroke="#00F0FF" stroke-width="2"/>
+                            <path d="M 30,7 A 16,16 0 0,1 30,31 A 16,16 0 0,1 30,7" fill="#A855F7" opacity="0.8"/>
+                        </svg>
+                        <span class="join-type-name">RIGHT JOIN</span>
+                        <span class="join-type-desc">Todo B + match de A</span>
+                    </div>
+
+                    <!-- 5. SOLO EN TABLA A (LEFT EXCLUSIVE) -->
+                    <div class="join-type-card" data-type="left-exclusive">
+                        <svg class="venn-svg" viewBox="0 0 60 38">
+                            <circle cx="23" cy="19" r="16" fill="rgba(245, 158, 11, 0.5)" stroke="#F59E0B" stroke-width="2"/>
+                            <circle cx="37" cy="19" r="16" fill="#080910" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                        </svg>
+                        <span class="join-type-name">SOLO EN TABLA A</span>
+                        <span class="join-type-desc">Faltantes en B (A \ B)</span>
+                    </div>
+
+                    <!-- 6. SOLO EN TABLA B (RIGHT EXCLUSIVE) -->
+                    <div class="join-type-card" data-type="right-exclusive">
+                        <svg class="venn-svg" viewBox="0 0 60 38">
+                            <circle cx="23" cy="19" r="16" fill="#080910" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                            <circle cx="37" cy="19" r="16" fill="rgba(59, 130, 246, 0.5)" stroke="#3B82F6" stroke-width="2"/>
+                        </svg>
+                        <span class="join-type-name">SOLO EN TABLA B</span>
+                        <span class="join-type-desc">Faltantes en A (B \ A)</span>
+                    </div>
+
+                    <!-- 7. DISCREPANCIAS (DIFERENCIA SIMÉTRICA) -->
+                    <div class="join-type-card" data-type="discrepancies">
+                        <svg class="venn-svg" viewBox="0 0 60 38">
+                            <circle cx="23" cy="19" r="16" fill="rgba(239, 68, 68, 0.4)" stroke="#EF4444" stroke-width="2"/>
+                            <circle cx="37" cy="19" r="16" fill="rgba(239, 68, 68, 0.4)" stroke="#EF4444" stroke-width="2"/>
+                            <path d="M 30,7 A 16,16 0 0,1 30,31 A 16,16 0 0,1 30,7" fill="#080910"/>
+                        </svg>
+                        <span class="join-type-name">DISCREPANCIAS</span>
+                        <span class="join-type-desc">Solo huérfanos (A ⊕ B)</span>
+                    </div>
+                </div>
+
+                <!-- Mapeo de Columnas Clave -->
+                <div class="key-mapping-container">
+                    <div class="key-mapping-header">
+                        <div class="key-mapping-title">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><line x1="7" y1="10" x2="7" y2="21"/><line x1="17" y1="3" x2="17" y2="14"/></svg>
+                            <span>Columnas Clave de Coincidencia (VLOOKUP / ON A.key = B.key)</span>
+                        </div>
+                        <button type="button" class="btn-subnav-ghost" id="btnAutoDetectKeys" style="font-size:0.78rem; padding: 0.35rem 0.75rem;">
+                            <span>✨ Autodetectar Claves</span>
+                        </button>
+                    </div>
+
+                    <!-- Contenedor dinámico de pares de claves -->
+                    <div id="keyPairsList">
+                        <!-- Generado dinámicamente por JS -->
+                    </div>
+
+                    <div class="key-mapping-actions">
+                        <button type="button" class="btn-subnav-ghost" id="btnAddKeyPair" style="font-size:0.8rem;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <span>+ Agregar Clave Compuesta</span>
+                        </button>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">
+                            Soporta múltiples claves simultáneas (ej: Sucursal + Fecha + Código)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Módulo de Conciliación de Valores Numéricos (Descuadres / Auditoría) -->
+                <div class="reconciliation-card" id="reconciliationCard">
+                    <div class="reconciliation-head">
+                        <div class="reconciliation-title">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            <span>Auditoría de Saldos y Valores (Cálculo de Descuadres / Diferencia Numérica)</span>
+                        </div>
+                        <label class="custom-checkbox-wrap">
+                            <input type="checkbox" id="chkEnableRecon">
+                            <span class="checkbox-title">Activar Conciliación de Montos</span>
+                        </label>
+                    </div>
+
+                    <div class="reconciliation-body" id="reconciliationBody">
+                        <div class="key-select-wrap">
+                            <label class="key-select-label">Columna Valor en Tabla A (ej: Monto / Saldo)</label>
+                            <select id="reconColA" class="key-select"></select>
+                        </div>
+                        <div class="key-select-wrap">
+                            <label class="key-select-label">Columna Valor en Tabla B (ej: Importe / Debe)</label>
+                            <select id="reconColB" class="key-select"></select>
+                        </div>
+                        <div class="key-select-wrap">
+                            <label class="key-select-label">Tolerancia Máx. (Delta)</label>
+                            <input type="number" id="reconTolerance" class="key-select" value="0.00" step="0.01" min="0" placeholder="0.00">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acordeón de Opciones Avanzadas de Normalización y Salida -->
+                <div class="options-accordion">
+                    <button type="button" class="accordion-trigger" id="btnAccordionToggle">
+                        <span>Opciones Avanzadas (Normalización de Claves, Resolución de Duplicados y Columnas)</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="accordionArrow"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+
+                    <div class="accordion-content" id="accordionContent">
+                        <div class="options-grid">
+                            <!-- Normalización -->
+                            <div>
+                                <h4 style="font-size:0.85rem; color:#fff; margin-bottom:0.75rem;">Normalización de Claves</h4>
+                                <label class="custom-checkbox-wrap" style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="optCaseInsensitive" checked>
+                                    <div class="checkbox-meta">
+                                        <span class="checkbox-title">Ignorar Mayúsculas / Minúsculas</span>
+                                        <span class="checkbox-sub">"ABC" coincide con "abc"</span>
+                                    </div>
+                                </label>
+                                <label class="custom-checkbox-wrap" style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="optTrim" checked>
+                                    <div class="checkbox-meta">
+                                        <span class="checkbox-title">Recortar Espacios (Trim)</span>
+                                        <span class="checkbox-sub">Elimina espacios iniciales y finales</span>
+                                    </div>
+                                </label>
+                                <label class="custom-checkbox-wrap" style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="optIgnoreLeadingZeros">
+                                    <div class="checkbox-meta">
+                                        <span class="checkbox-title">Ignorar Ceros a la Izquierda</span>
+                                        <span class="checkbox-sub">"00123" coincide con "123"</span>
+                                    </div>
+                                </label>
+                                <label class="custom-checkbox-wrap">
+                                    <input type="checkbox" id="optIgnorePunctuation">
+                                    <div class="checkbox-meta">
+                                        <span class="checkbox-title">Ignorar Puntos, Guiones y Barras</span>
+                                        <span class="checkbox-sub">"12.345-6" coincide con "123456"</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- Duplicados en Clave B -->
+                            <div>
+                                <h4 style="font-size:0.85rem; color:#fff; margin-bottom:0.75rem;">Manejo de Coincidencias Múltiples</h4>
+                                <div class="key-select-wrap" style="margin-bottom: 0.75rem;">
+                                    <label class="key-select-label">Si una clave aparece varias veces en B:</label>
+                                    <select id="optMultiMatchMode" class="key-select">
+                                        <option value="all">Todas las filas (SQL Cartesiano)</option>
+                                        <option value="first">Solo primera coincidencia (Modo VLOOKUP)</option>
+                                        <option value="last">Solo última coincidencia</option>
+                                    </select>
+                                </div>
+                                <label class="custom-checkbox-wrap">
+                                    <input type="checkbox" id="optIncludeMatchStatus" checked>
+                                    <div class="checkbox-meta">
+                                        <span class="checkbox-title">Agregar Columna `_ESTADO_CRUCE`</span>
+                                        <span class="checkbox-sub">Etiqueta filas como Coincidencia, Solo A, Solo B</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- Resolución de Nombres de Columnas Duplicadas -->
+                            <div>
+                                <h4 style="font-size:0.85rem; color:#fff; margin-bottom:0.75rem;">Columnas Duplicadas</h4>
+                                <div class="key-select-wrap">
+                                    <label class="key-select-label">Distinguir columnas con igual nombre:</label>
+                                    <select id="optConflictMode" class="key-select">
+                                        <option value="suffix">Sufijos (_A y _B)</option>
+                                        <option value="prefix">Prefijos (A_ y B_)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón Principal Ejecutar JOIN -->
+                <div class="execute-bar">
+                    <button type="button" class="btn-execute-join" id="btnExecuteJoin">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        <span>Cruzar y Conciliar Tablas</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- =============================================================
+                 PASO 3: RESULTADOS, AUDITORÍA & EXPORTACIÓN
+                 ============================================================= -->
+            <section class="step-section results-section" id="sectionResults">
+                <div class="step-header">
+                    <div class="step-title-wrap">
+                        <div class="step-number" style="background: linear-gradient(135deg, var(--join-cyan) 0%, var(--join-purple) 100%);">3</div>
+                        <div>
+                            <h2 class="step-title">Tabla Conciliada & Auditoría de Discrepancias</h2>
+                            <p class="step-desc" id="resultsExecutionBadge">Procesamiento completado con éxito.</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-step-help" data-help-tab="tabHelpStep3" title="Ver guía sobre auditoría de resultados y exportación">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span>Guía Paso 3: Auditoría & Exportación</span>
+                    </button>
+                </div>
+
+                <!-- Widgets KPI del Cruce -->
+                <div class="join-kpis-grid">
+                    <div class="join-kpi-card" style="--kpi-accent: var(--join-purple);">
+                        <span class="kpi-title-tiny">Filas Resultantes</span>
+                        <span class="kpi-num" id="kpiTotalRows">0</span>
+                        <span class="kpi-desc-sub" id="kpiSourceSummary">Tabla A + B</span>
+                    </div>
+                    <div class="join-kpi-card" style="--kpi-accent: var(--status-match);">
+                        <span class="kpi-title-tiny">Coincidencias (A ∩ B)</span>
+                        <span class="kpi-num" id="kpiMatches" style="color: var(--status-match);">0</span>
+                        <span class="kpi-desc-sub">Emparejadas por clave</span>
+                    </div>
+                    <div class="join-kpi-card" style="--kpi-accent: var(--status-only-a);">
+                        <span class="kpi-title-tiny">Solo en Tabla A</span>
+                        <span class="kpi-num" id="kpiOnlyA" style="color: var(--status-only-a);">0</span>
+                        <span class="kpi-desc-sub">Sin match en B</span>
+                    </div>
+                    <div class="join-kpi-card" style="--kpi-accent: var(--status-only-b);">
+                        <span class="kpi-title-tiny">Solo en Tabla B</span>
+                        <span class="kpi-num" id="kpiOnlyB" style="color: var(--status-only-b);">0</span>
+                        <span class="kpi-desc-sub">Sin match en A</span>
+                    </div>
+                    <div class="join-kpi-card" id="kpiReconCard" style="--kpi-accent: var(--status-diff); display:none;">
+                        <span class="kpi-title-tiny">Auditoría Saldos</span>
+                        <div style="display:flex; gap:0.5rem; align-items:baseline;">
+                            <span class="kpi-num" id="kpiSquare" style="color: #34D399; font-size:1.4rem;">0</span>
+                            <span style="font-size:0.8rem; color:var(--text-muted);">/</span>
+                            <span class="kpi-num" id="kpiDiff" style="color: #F87171; font-size:1.4rem;">0</span>
+                        </div>
+                        <span class="kpi-desc-sub">Cuadrados / Descuadrados</span>
+                    </div>
+                </div>
+
+                <!-- Barra de Filtros Rápidos y Búsqueda -->
+                <div class="results-toolbar">
+                    <div class="results-filter-pills" id="resultsFilterPills">
+                        <button type="button" class="res-pill active" data-filter="all">Todos los Registros (<span id="countPillAll">0</span>)</button>
+                        <button type="button" class="res-pill" data-filter="match">Solo Coincidentes (<span id="countPillMatch">0</span>)</button>
+                        <button type="button" class="res-pill" data-filter="only-a">Solo en A (<span id="countPillOnlyA">0</span>)</button>
+                        <button type="button" class="res-pill" data-filter="only-b">Solo en B (<span id="countPillOnlyB">0</span>)</button>
+                        <button type="button" class="res-pill" data-filter="diff" id="pillFilterDiff" style="display:none;">Descuadrados (<span id="countPillDiff">0</span>)</button>
+                    </div>
+
+                    <div class="results-right-actions">
+                        <input type="text" id="tableSearchInput" class="table-search-input" placeholder="Filtrar por texto o valor...">
+                        <select id="pageSizeSelect" class="key-select" style="padding: 0.4rem 0.6rem; font-size:0.8rem;">
+                            <option value="15">15 por pág.</option>
+                            <option value="25" selected>25 por pág.</option>
+                            <option value="50">50 por pág.</option>
+                            <option value="100">100 por pág.</option>
+                            <option value="all">Todas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tabla de Datos Conciliada -->
+                <div class="data-table-container">
+                    <div class="table-scroll-wrap">
+                        <table class="styled-data-table" id="resultsDataTable">
+                            <thead id="resultsTableHead"></thead>
+                            <tbody id="resultsTableBody"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-pagination-bar">
+                        <span id="paginationInfo">Mostrando filas 1-25 de 0</span>
+                        <div class="pagination-controls">
+                            <button type="button" class="btn-page-nav" id="btnPagePrev">Anterior</button>
+                            <span id="pageIndicator" style="font-family:var(--font-mono); font-weight:600; padding:0 0.4rem;">Pág. 1 / 1</span>
+                            <button type="button" class="btn-page-nav" id="btnPageNext">Siguiente</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exportaciones Directas -->
+                <div class="export-cards-row">
+                    <!-- Excel -->
+                    <button type="button" class="export-btn-card" id="btnExportExcel">
+                        <div class="export-card-icon" style="color:#10B981; background:rgba(16, 185, 129, 0.1);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+                        </div>
+                        <div class="export-card-text">
+                            <span class="export-card-title">Descargar Excel (.xlsx)</span>
+                            <span class="export-card-sub">Libro formateado listo para compartir</span>
+                        </div>
+                    </button>
+
+                    <!-- CSV -->
+                    <button type="button" class="export-btn-card" id="btnExportCSV">
+                        <div class="export-card-icon" style="color:#00F0FF; background:rgba(0, 240, 255, 0.1);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h2"/><path d="M8 17h2"/><path d="M14 13h2"/><path d="M14 17h2"/></svg>
+                        </div>
+                        <div class="export-card-text">
+                            <span class="export-card-title">Descargar CSV (.csv)</span>
+                            <span class="export-card-sub">Delimitador configurable (, o ;)</span>
+                        </div>
+                    </button>
+
+                    <!-- Portapapeles TSV -->
+                    <button type="button" class="export-btn-card" id="btnCopyClipboard">
+                        <div class="export-card-icon" style="color:#A855F7; background:rgba(168, 85, 247, 0.1);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        </div>
+                        <div class="export-card-text">
+                            <span class="export-card-title">Copiar al Portapapeles</span>
+                            <span class="export-card-sub">Formato TSV compatible con Excel (Ctrl+V)</span>
+                        </div>
+                    </button>
+
+                    <!-- Reporte Auditoría Markdown -->
+                    <button type="button" class="export-btn-card" id="btnExportReport">
+                        <div class="export-card-icon" style="color:#F59E0B; background:rgba(245, 158, 11, 0.1);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <div class="export-card-text">
+                            <span class="export-card-title">Informe Auditoría (.md)</span>
+                            <span class="export-card-sub">Reporte ejecutivo con métricas de conciliación</span>
+                        </div>
+                    </button>
+                </div>
+            </section>
         </main>
 
+        <!-- =================================================================
+             FOOTER
+             ================================================================= -->
         <footer class="site-footer">
             <div class="footer-inner">
                 <div class="footer-left">
-                    <span><strong>SimpleApps Suite</strong> • Módulo #07</span>
+                    <span><strong>SimpleApps Suite</strong> • Módulo #07: Cruzador y Conciliador de Tablas (JOIN Express)</span>
                 </div>
                 <div class="footer-right">
                     <a href="../../index.html" class="footer-link">Ver las 10 Apps</a>
+                    <span>•</span>
+                    <a href="../../docs/07-table-cross-join.md" class="footer-link">Documentación Técnica</a>
                 </div>
             </div>
         </footer>
     </div>
+
+    <!-- =====================================================================
+         MODAL: CENTRO DE AYUDA & MANUAL OPERATIVO INTERACTIVO
+         ===================================================================== -->
+    <div class="modal-overlay" id="helpModal">
+        <div class="modal-window help-modal-window">
+            <div class="help-modal-header">
+                <div class="help-modal-title-box">
+                    <span class="help-modal-badge">MANUAL INTERACTIVO</span>
+                    <h3 class="modal-title" style="display:flex; align-items:center; gap:0.5rem;">
+                        <span>📘 Centro de Ayuda & Guía Operativa • JOIN Express</span>
+                    </h3>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnCloseHelpModal" style="background:none; border:none; color:var(--text-muted); font-size:1.6rem; cursor:pointer;" aria-label="Cerrar ayuda">&times;</button>
+            </div>
+
+            <!-- Navegación por pestañas del manual -->
+            <div class="help-tabs-nav" id="helpTabsNav">
+                <button type="button" class="help-tab-btn active" data-tab="tabHelpOverview">
+                    <span>🚀 Visión General & Flujo</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpPresets">
+                    <span>💼 Ejemplos & Presets</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpStep1">
+                    <span>📂 Paso 1: Carga de Datos</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpStep2">
+                    <span>⚙️ Paso 2: Configurar JOIN</span>
+                </button>
+                <button type="button" class="help-tab-btn" data-tab="tabHelpStep3">
+                    <span>📊 Paso 3: Auditoría & Exportar</span>
+                </button>
+            </div>
+
+            <div class="help-modal-body">
+                <!-- =========================================================
+                     TAB 1: VISIÓN GENERAL & FLUJO
+                     ========================================================= -->
+                <div class="help-tab-pane active" id="tabHelpOverview">
+                    <p class="help-lead-text">
+                        <strong>Cruzador y Conciliador de Tablas (JOIN Express)</strong> es una herramienta relacional de alto rendimiento diseñada para fusionar, comparar y auditar dos fuentes de datos independientes (archivos Excel o CSV) mediante una o varias columnas comunes.
+                    </p>
+
+                    <div class="help-alert-box purple">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C084FC" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <div>
+                            <strong style="color: #fff; display:block; margin-bottom:0.25rem;">100% Local, Privado y Seguro (Zero-Upload):</strong>
+                            Tus planillas y datos contables nunca se envían a ningún servidor ni nube. Todo el cálculo se realiza dentro de la memoria RAM de tu navegador mediante indexación hash de alta velocidad <code style="color:var(--join-cyan); font-family:var(--font-mono);">O(N + M)</code>.
+                        </div>
+                    </div>
+
+                    <h4 style="color:#fff; margin: 1.5rem 0 0.85rem; font-size:1rem;">El Flujo de Trabajo en 3 Pasos</h4>
+                    <div class="help-cards-grid">
+                        <div class="help-card">
+                            <div class="help-card-head">
+                                <div class="help-card-icon">1</div>
+                                <span>Paso 1: Carga de Datos</span>
+                            </div>
+                            <div class="help-card-body">
+                                Carga tus dos archivos: <strong>Tabla A</strong> (tu archivo base o principal) y <strong>Tabla B</strong> (tu archivo de comparación o secundario). Admite arrastrar y soltar, selector de archivos o pegado directo desde Excel.
+                            </div>
+                        </div>
+
+                        <div class="help-card">
+                            <div class="help-card-head">
+                                <div class="help-card-icon">2</div>
+                                <span>Paso 2: Configurar Cruce (JOIN)</span>
+                            </div>
+                            <div class="help-card-body">
+                                Selecciona el tipo de cruce (Left Join, Inner, Full Outer, etc.), vincula las columnas que identifican a cada fila y, opcionalmente, activa la <strong>auditoría de montos o saldos</strong> con cálculo de descuadres.
+                            </div>
+                        </div>
+
+                        <div class="help-card">
+                            <div class="help-card-head">
+                                <div class="help-card-icon">3</div>
+                                <span>Paso 3: Conciliación & Exportación</span>
+                            </div>
+                            <div class="help-card-body">
+                                Explora los KPIs del cruce, filtra discrepancias en un clic, analiza registros descuadrados y descarga el resultado en <strong>Excel (.xlsx)</strong>, <strong>CSV</strong>, <strong>Portapapeles</strong> o un <strong>Informe Markdown (.md)</strong>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     TAB 2: CASOS DE PRUEBA / PRESETS
+                     ========================================================= -->
+                <div class="help-tab-pane" id="tabHelpPresets">
+                    <p class="help-lead-text">
+                        En la parte superior dispones de <strong>3 botones de casos de prueba precargados</strong> para probar y entender inmediatamente el funcionamiento del módulo sin necesidad de buscar archivos en tu ordenador:
+                    </p>
+
+                    <div class="help-cards-grid">
+                        <div class="help-card" style="border-left: 3px solid #10B981;">
+                            <div class="help-card-head">
+                                <span style="font-size:1.2rem;">💼</span>
+                                <span>1. Conciliación Bancaria</span>
+                            </div>
+                            <div class="help-card-body">
+                                <strong style="color:#fff; display:block; margin-bottom:0.35rem;">Caso financiero clásico:</strong>
+                                <ul>
+                                    <li><strong>Tabla A:</strong> Libro Mayor Contable (<code style="color:var(--join-purple-light);">Ref_Pago</code>, <code style="color:var(--join-purple-light);">Monto_Libro</code>).</li>
+                                    <li><strong>Tabla B:</strong> Extracto Bancario oficial (<code style="color:var(--join-cyan);">Referencia_Doc</code>, <code style="color:var(--join-cyan);">Cargo_Banco</code>).</li>
+                                    <li><strong>Objetivo:</strong> Cruza por la referencia de pago y concilia los importes. Detecta automáticamente pagos registrados no cobrados (Solo en A), comisiones del banco no anotadas (Solo en B) y transacciones con diferencias en los centavos (Descuadres con Delta).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="help-card" style="border-left: 3px solid #00F0FF;">
+                            <div class="help-card-head">
+                                <span style="font-size:1.2rem;">📦</span>
+                                <span>2. Auditoría de Inventarios</span>
+                            </div>
+                            <div class="help-card-body">
+                                <strong style="color:#fff; display:block; margin-bottom:0.35rem;">Caso logístico y de bodega:</strong>
+                                <ul>
+                                    <li><strong>Tabla A:</strong> Conteo físico real tomado en los pasillos de bodega (<code style="color:var(--join-purple-light);">SKU</code>, <code style="color:var(--join-purple-light);">Conteo_Fisico</code>).</li>
+                                    <li><strong>Tabla B:</strong> Maestro teórico del sistema ERP central (<code style="color:var(--join-cyan);">Codigo_SKU</code>, <code style="color:var(--join-cyan);">Stock_Teorico_ERP</code>).</li>
+                                    <li><strong>Objetivo:</strong> Aplica <code style="color:#fff;">FULL OUTER JOIN</code> para comparar cantidades físicas contra teóricas, identificando de inmediato faltantes, sobrantes y mermas de stock.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="help-card" style="border-left: 3px solid #A855F7;">
+                            <div class="help-card-head">
+                                <span style="font-size:1.2rem;">👥</span>
+                                <span>3. Cruce Comercial CRM</span>
+                            </div>
+                            <div class="help-card-body">
+                                <strong style="color:#fff; display:block; margin-bottom:0.35rem;">Caso de enriquecimiento de ventas:</strong>
+                                <ul>
+                                    <li><strong>Tabla A:</strong> Facturas emitidas (<code style="color:var(--join-purple-light);">Nro_Factura</code>, <code style="color:var(--join-purple-light);">Cod_Cliente</code>).</li>
+                                    <li><strong>Tabla B:</strong> Directorio de Clientes del CRM (<code style="color:var(--join-cyan);">ID_Cliente</code>, <code style="color:var(--join-cyan);">Nombre_Empresa</code>, <code style="color:var(--join-cyan);">Ejecutivo_Comercial</code>).</li>
+                                    <li><strong>Objetivo:</strong> Demuestra el funcionamiento de un <code style="color:#fff;">LEFT JOIN (VLOOKUP)</code> clásico para incorporar ejecutivos, segmentos y datos del cliente a cada venta.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     TAB 3: PASO 1: CARGA DE DATOS
+                     ========================================================= -->
+                <div class="help-tab-pane" id="tabHelpStep1">
+                    <p class="help-lead-text">
+                        En el <strong>Paso 1</strong> introduces los dos archivos que deseas cruzar. La herramienta trata las tablas de forma simétrica pero con roles definidos:
+                    </p>
+
+                    <table class="help-table-guide">
+                        <thead>
+                            <tr>
+                                <th>Elemento</th>
+                                <th>Descripción y Función</th>
+                                <th>Consejo Operativo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="help-pill-tag" style="background:rgba(168,85,247,0.2); color:var(--join-purple-light);">TABLA A</span></td>
+                                <td><strong>Tabla Principal o Base de Referencia.</strong> En cruces como LEFT JOIN, todas las filas de esta tabla se conservan obligatoriamente en el resultado.</td>
+                                <td>Coloca aquí tu archivo maestro o la lista principal que deseas enriquecer o auditar.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="help-pill-tag" style="background:rgba(0,240,255,0.2); color:var(--join-cyan);">TABLA B</span></td>
+                                <td><strong>Tabla Secundaria o de Búsqueda.</strong> Es la tabla que aporta las columnas adicionales cuando existe coincidencia (origen del VLOOKUP).</td>
+                                <td>Coloca aquí el extracto bancario, padrón secundario o lista contra la que deseas contrastar.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Formatos Admitidos</strong></td>
+                                <td>Libros Excel (<code style="color:#fff;">.xlsx</code>, <code style="color:#fff;">.xls</code>) y archivos de texto plano (<code style="color:#fff;">.csv</code>, <code style="color:#fff;">.tsv</code>, <code style="color:#fff;">.txt</code>).</td>
+                                <td>Para CSV, el delimitador (coma, punto y coma, tabulador, pipe) se autodetecta automáticamente.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pegar Datos (Clipboard)</strong></td>
+                                <td>Permite pegar directamente datos tabulados copiados con <code style="color:#fff;">Ctrl + C</code> desde una planilla abierta o correo electrónico.</td>
+                                <td>Marca la casilla si la primera fila contiene los títulos de las columnas.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Selector de Hoja Excel</strong></td>
+                                <td>Si tu libro Excel contiene múltiples pestañas u hojas, aparecerá un menú desplegable para alternar entre hojas al instante.</td>
+                                <td>Al cambiar de hoja, se actualizan automáticamente las filas y columnas disponibles.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Previsualizar y Limpiar</strong></td>
+                                <td>Botón para inspeccionar las primeras 25 filas cargadas o descartar los datos para cargar un nuevo archivo.</td>
+                                <td>Útil para verificar que los nombres de las columnas se hayan leído correctamente.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- =========================================================
+                     TAB 4: PASO 2: CONFIGURAR JOIN
+                     ========================================================= -->
+                <div class="help-tab-pane" id="tabHelpStep2">
+                    <p class="help-lead-text">
+                        En el <strong>Paso 2</strong> configuras el motor relacional. Aquí defines la lógica de unión entre ambos conjuntos de datos.
+                    </p>
+
+                    <h4 style="color:#fff; margin: 1.5rem 0 0.85rem; font-size:1rem;">1. Los 7 Tipos de Cruce Relacional (JOIN)</h4>
+                    <table class="help-table-guide">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Cruce</th>
+                                <th>Fórmula / Comportamiento</th>
+                                <th>¿Cuándo debes usarlo?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong style="color:var(--join-purple-light);">LEFT JOIN (VLOOKUP)</strong></td>
+                                <td>Conserva <strong>todas las filas de A</strong> y les adosa las columnas de B si coinciden. Si no coinciden, las columnas de B quedan vacías.</td>
+                                <td>Cuando quieres mantener tu lista base intacta y traer datos complementarios desde otra tabla (igual que la fórmula BUSCAV).</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color:#10B981;">INNER JOIN</strong></td>
+                                <td>Conserva <strong>únicamente</strong> las filas que existen al mismo tiempo en Tabla A y Tabla B (<code style="color:#fff;">A ∩ B</code>).</td>
+                                <td>Cuando solo te interesan las transacciones que tienen confirmación exacta en ambos lados.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color:var(--join-cyan);">FULL OUTER JOIN</strong></td>
+                                <td>Conserva <strong>todas las filas de ambas tablas</strong> (<code style="color:#fff;">A ∪ B</code>). Empareja las que coinciden y mantiene huérfanas las demás.</td>
+                                <td>Cuando necesitas una conciliación total sin omitir ningún registro de ningún archivo.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color:#3B82F6;">RIGHT JOIN</strong></td>
+                                <td>Conserva <strong>todas las filas de B</strong> y añade los datos de A cuando coincidan.</td>
+                                <td>Cuando tu foco principal de análisis es la tabla secundaria B.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color:#F59E0B;">SOLO EN TABLA A (Exclusivo A)</strong></td>
+                                <td>Filtra y muestra únicamente los registros de A que <strong>NO existen en B</strong> (<code style="color:#fff;">A \ B</code>).</td>
+                                <td>Detectar facturas sin cobrar, cheques pendientes de cobro o clientes que no han comprado.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color:#60A5FA;">SOLO EN TABLA B (Exclusivo B)</strong></td>
+                                <td>Filtra y muestra únicamente los registros de B que <strong>NO existen en A</strong> (<code style="color:#fff;">B \ A</code>).</td>
+                                <td>Detectar cargos bancarios desconocidos o cobros no asentados en tu contabilidad.</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color:#EF4444;">DISCREPANCIAS (Diferencia Simétrica)</strong></td>
+                                <td>Muestra <strong>todos los registros huérfanos</strong> de ambos lados (<code style="color:#fff;">(A \ B) ∪ (B \ A)</code>). Excluye los que coincidieron.</td>
+                                <td>Auditoría pura de diferencias e inconsistencias entre dos sistemas.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 style="color:#fff; margin: 1.5rem 0 0.85rem; font-size:1rem;">2. Mapeo de Columnas Clave y Claves Compuestas</h4>
+                    <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5;">
+                        Selecciona qué columna de la Tabla A se corresponde con qué columna de la Tabla B (por ejemplo, <code style="color:#fff;">Ref_Pago</code> ↔ <code style="color:#fff;">Referencia_Doc</code>).
+                    </p>
+                    <ul>
+                        <li style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.35rem;">
+                            <strong>Botón "✨ Autodetectar Claves":</strong> Analiza los encabezados y busca nombres comunes (<code style="color:var(--join-cyan);">id, sku, codigo, rut, dni, ref, email</code>) para emparejarlas automáticamente.
+                        </li>
+                        <li style="font-size:0.85rem; color:var(--text-secondary);">
+                            <strong>Botón "+ Agregar Clave Compuesta":</strong> Si una sola columna no es suficiente para identificar una fila única, puedes agregar 2 o más pares de columnas (ejemplo: <code style="color:var(--join-cyan);">Sucursal + Fecha + Código</code>). El motor genera una clave hash combinada.
+                        </li>
+                    </ul>
+
+                    <h4 style="color:#fff; margin: 1.5rem 0 0.85rem; font-size:1rem;">3. Auditoría de Saldos y Valores (Cálculo de Descuadres)</h4>
+                    <div class="help-card" style="margin-bottom:1rem;">
+                        <div class="help-card-body" style="font-size:0.85rem;">
+                            Al activar la casilla <strong>"Activar Conciliación de Montos"</strong>:
+                            <ol style="margin-top:0.5rem; padding-left:1.25rem;">
+                                <li>Seleccionas la columna numérica de la Tabla A (ej: <code style="color:#fff;">Monto_Libro</code>) y la columna de la Tabla B (ej: <code style="color:#fff;">Cargo_Banco</code>).</li>
+                                <li>Defines la <strong>Tolerancia Máx.</strong> (por ejemplo <code style="color:#fff;">0.00</code> para coincidencia exacta, o <code style="color:#fff;">0.05</code> para admitir diferencias de redondeo).</li>
+                                <li>El motor calcula la diferencia matemática: <code style="color:var(--join-cyan);">Diferencia (Delta) = Valor_A - Valor_B</code>.</li>
+                                <li>Si la diferencia está dentro de la tolerancia, etiqueta la fila como <span class="help-pill-tag" style="background:rgba(16,185,129,0.2); color:#34D399;">✓ CUADRADO</span>. Si la diferencia es mayor, la resalta en rojo como <span class="help-pill-tag" style="background:rgba(239,68,68,0.2); color:#F87171;">⚠ DESCUADRE</span> indicando el valor numérico exacto del delta (<code style="color:#F87171;">+500.00</code> o <code style="color:#F87171;">-20.50</code>).</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <h4 style="color:#fff; margin: 1.5rem 0 0.85rem; font-size:1rem;">4. Opciones Avanzadas de Normalización</h4>
+                    <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5;">
+                        En el acordeón de opciones avanzadas puedes activar reglas inteligentes para resolver problemas típicos de datos:
+                    </p>
+                    <ul style="font-size:0.85rem; color:var(--text-secondary); line-height:1.6;">
+                        <li><strong>Ignorar Mayúsculas/Minúsculas:</strong> Permite que <code style="color:#fff;">"CLI-01"</code> coincida con <code style="color:#fff;">"cli-01"</code>.</li>
+                        <li><strong>Recortar Espacios (Trim):</strong> Elimina espacios accidentales al principio o al final de las celdas.</li>
+                        <li><strong>Ignorar Ceros a la Izquierda:</strong> Hace que <code style="color:#fff;">"000123"</code> coincida con <code style="color:#fff;">"123"</code>.</li>
+                        <li><strong>Ignorar Puntos, Guiones y Barras:</strong> Crucial para comparar identificadores fiscales o RUTs como <code style="color:#fff;">"12.345.678-9"</code> contra <code style="color:#fff;">"123456789"</code>.</li>
+                        <li><strong>Manejo de Coincidencias Múltiples:</strong> Si una clave se repite en B, puedes elegir entre generar todas las combinaciones (SQL Cartesiano), tomar solo la primera (VLOOKUP) o la última.</li>
+                        <li><strong>Columnas Duplicadas:</strong> Agrega automáticamente sufijos (<code style="color:#fff;">_A</code> y <code style="color:#fff;">_B</code>) o prefijos (<code style="color:#fff;">A_</code> y <code style="color:#fff;">B_</code>) para evitar nombres repetidos.</li>
+                    </ul>
+                </div>
+
+                <!-- =========================================================
+                     TAB 5: PASO 3: AUDITORÍA & EXPORTAR
+                     ========================================================= -->
+                <div class="help-tab-pane" id="tabHelpStep3">
+                    <p class="help-lead-text">
+                        En el <strong>Paso 3</strong> examinas la tabla resultante combinada y realizas la auditoría de coincidencias y discrepancias:
+                    </p>
+
+                    <h4 style="color:#fff; margin: 1.5rem 0 0.85rem; font-size:1rem;">1. Tarjetas KPI Superiores</h4>
+                    <div class="help-cards-grid">
+                        <div class="help-card">
+                            <span class="help-card-head" style="color:var(--join-purple-light);">Filas Resultantes</span>
+                            <div class="help-card-body">Total general de registros producidos en la tabla según el tipo de JOIN elegido.</div>
+                        </div>
+                        <div class="help-card">
+                            <span class="help-card-head" style="color:#10B981;">Coincidencias (A ∩ B)</span>
+                            <div class="help-card-body">Número de registros que tuvieron clave coincidente en ambas tablas.</div>
+                        </div>
+                        <div class="help-card">
+                            <span class="help-card-head" style="color:#F59E0B;">Solo en Tabla A</span>
+                            <div class="help-card-body">Registros que solo estaban en la Tabla A y no tuvieron pareja en B.</div>
+                        </div>
+                        <div class="help-card">
+                            <span class="help-card-head" style="color:#3B82F6;">Solo en Tabla B</span>
+                            <div class="help-card-body">Registros que solo estaban en la Tabla B y no tuvieron pareja en A.</div>
+                        </div>
+                        <div class="help-card">
+                            <span class="help-card-head" style="color:#EF4444;">Auditoría de Saldos</span>
+                            <div class="help-card-body">Muestra el desglose de registros <strong style="color:#34D399;">Cuadrados</strong> vs <strong style="color:#F87171;">Descuadrados</strong>.</div>
+                        </div>
+                    </div>
+
+                    <h4 style="color:#fff; margin: 1.5rem 0 0.85rem; font-size:1rem;">2. Filtros Rápidos sobre la Tabla</h4>
+                    <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5;">
+                        Los botones tipo pastilla (pills) situados sobre la tabla permiten filtrar instantáneamente la vista sin recalcular el cruce:
+                    </p>
+                    <ul style="font-size:0.85rem; color:var(--text-secondary); line-height:1.6;">
+                        <li><strong style="color:#fff;">Todos los Registros:</strong> Muestra la tabla completa resultante.</li>
+                        <li><strong style="color:#10B981;">Solo Coincidentes:</strong> Muestra únicamente las filas que emparejaron con éxito en ambas tablas.</li>
+                        <li><strong style="color:#F59E0B;">Solo en A:</strong> Aísla los registros huérfanos de la Tabla A.</li>
+                        <li><strong style="color:#3B82F6;">Solo en B:</strong> Aísla los registros huérfanos de la Tabla B.</li>
+                        <li><strong style="color:#EF4444;">Descuadrados:</strong> Aísla exclusivamente las filas donde los montos o saldos presentan diferencias mayores a la tolerancia permitida.</li>
+                    </ul>
+
+                    <h4 style="color:#fff; margin: 1.5rem 0 0.85rem; font-size:1rem;">3. Búsqueda, Paginación y Ordenación</h4>
+                    <ul style="font-size:0.85rem; color:var(--text-secondary); line-height:1.6;">
+                        <li><strong>Buscador en Vivo:</strong> Escribe cualquier texto o número para filtrar filas al instante.</li>
+                        <li><strong>Selector de Filas por Página:</strong> Elige entre 15, 25, 50, 100 o Todas las filas por pantalla.</li>
+                        <li><strong>Ordenación por Columna:</strong> Haz clic en el encabezado de cualquier columna para ordenar ascendente (▲) o descendente (▼).</li>
+                    </ul>
+
+                    <h4 style="color:#fff; margin: 1.5rem 0 0.85rem; font-size:1rem;">4. Modalidades de Exportación Directa</h4>
+                    <div class="help-cards-grid">
+                        <div class="help-card">
+                            <span class="help-card-head" style="color:#10B981;">📥 Descargar Excel (.xlsx)</span>
+                            <div class="help-card-body">
+                                Genera un libro de Excel nativo. Si detectó descuadres, genera automáticamente una segunda hoja de cálculo llamada <code style="color:#fff;">Solo_Descuadrados</code> para auditoría rápida.
+                            </div>
+                        </div>
+                        <div class="help-card">
+                            <span class="help-card-head" style="color:#00F0FF;">📄 Descargar CSV (.csv)</span>
+                            <div class="help-card-body">
+                                Exporta el conjunto de datos completo en archivo CSV estándar RFC 4180 con entrecomillado seguro.
+                            </div>
+                        </div>
+                        <div class="help-card">
+                            <span class="help-card-head" style="color:#A855F7;">📋 Copiar al Portapapeles (TSV)</span>
+                            <div class="help-card-body">
+                                Copia los datos tabulados en la memoria. Puedes abrir una hoja en blanco de Excel o Google Sheets y presionar <code style="color:#fff;">Ctrl + V</code> para pegar todo con formato de celdas.
+                            </div>
+                        </div>
+                        <div class="help-card">
+                            <span class="help-card-head" style="color:#F59E0B;">📑 Informe Auditoría (.md)</span>
+                            <div class="help-card-body">
+                                Descarga un reporte ejecutivo estructurado en Markdown con estadísticas porcentuales, resumen de cuadratura y detalle técnico para actas de auditoría.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="background:#0a0d18; border-top:1px solid var(--border-subtle);">
+                <button type="button" class="btn-subnav-ghost" id="btnDismissHelp">Entendido, Cerrar Ayuda</button>
+                <button type="button" class="btn-execute-join" id="btnHelpTryPreset" style="padding:0.45rem 1.25rem; font-size:0.85rem;">Probar Caso de Ejemplo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         MODAL: PEGAR DATOS (TSV / CSV)
+         ===================================================================== -->
+    <div class="modal-overlay" id="pasteModal">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h3 class="modal-title" id="pasteModalTitle">Pegar Datos de Tabla</h3>
+                <button type="button" class="modal-close-btn" id="btnClosePasteModal" style="background:none; border:none; color:var(--text-muted); font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.75rem;">
+                    Copia celdas directamente de Excel o un archivo de texto separado por comas / tabulaciones y pégalas aquí:
+                </p>
+                <textarea id="pasteModalTextarea" class="modal-textarea" placeholder="Pega aquí los datos (ej: código, nombre, saldo)..."></textarea>
+                <div style="margin-top:0.75rem;">
+                    <label class="custom-checkbox-wrap">
+                        <input type="checkbox" id="chkPasteHasHeaders" checked>
+                        <span class="checkbox-title">La primera fila contiene los encabezados de columna</span>
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-subnav-ghost" id="btnCancelPaste">Cancelar</button>
+                <button type="button" class="btn-execute-join" id="btnConfirmPaste" style="padding:0.5rem 1.25rem; font-size:0.88rem;">Cargar Datos</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         MODAL: VISTA PREVIA DE TABLA DE ENTRADA (A o B)
+         ===================================================================== -->
+    <div class="modal-overlay" id="previewModal">
+        <div class="modal-window" style="max-width: 900px;">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title" id="previewModalTitle">Vista Previa de Tabla</h3>
+                    <span id="previewModalSubtitle" style="font-size:0.8rem; color:var(--join-cyan); font-family:var(--font-mono);">0 filas • 0 cols</span>
+                </div>
+                <button type="button" class="modal-close-btn" id="btnClosePreviewModal" style="background:none; border:none; color:var(--text-muted); font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div class="table-scroll-wrap" style="max-height: 400px;">
+                    <table class="styled-data-table">
+                        <thead id="previewTableHead"></thead>
+                        <tbody id="previewTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span style="font-size:0.75rem; color:var(--text-muted); margin-right:auto;">Mostrando las primeras 25 filas de inspección.</span>
+                <button type="button" class="btn-subnav-ghost" id="btnDismissPreview">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor Toast -->
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <!-- Librerías Locales Autónomas -->
+    <script src="libs/xlsx.full.min.js"></script>
+    <script src="libs/jszip.min.js"></script>
+
+    <!-- Motor Relacional & Controlador de la App -->
+    <script src="relational-engine.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
