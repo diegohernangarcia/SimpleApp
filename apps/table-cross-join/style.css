@@ -1497,3 +1497,292 @@
     font-weight: 700;
 }
 
+/* ==========================================================================
+   MODO CLARO (LIGHT THEME) - CRUZADOR & CONCILIADOR DE TABLAS (JOIN EXPRESS)
+   ========================================================================== */
+[data-theme="light"] {
+    --status-match-bg: #DCFCE7;
+    --status-match-border: #86EFAC;
+    --status-only-a-bg: #FEF3C7;
+    --status-only-a-border: #FCD34D;
+    --status-only-b-bg: #DBEAFE;
+    --status-only-b-border: #93C5FD;
+    --status-diff-bg: #FEE2E2;
+    --status-diff-border: #FCA5A5;
+}
+
+[data-theme="light"] .presets-bar {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .preset-chip-btn {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+    color: #334155;
+}
+
+[data-theme="light"] .preset-chip-btn:hover {
+    background: rgba(168, 85, 247, 0.12);
+    border-color: var(--join-purple);
+    color: var(--join-purple-dark);
+}
+
+[data-theme="light"] .step-section {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .step-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .table-upload-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .table-upload-card.loaded {
+    background: #FFFFFF;
+    border-color: rgba(168, 85, 247, 0.4);
+}
+
+[data-theme="light"] .table-badge-label {
+    color: #0F172A;
+}
+
+[data-theme="light"] .dropzone-box {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+}
+
+[data-theme="light"] .dropzone-box:hover,
+[data-theme="light"] .dropzone-box.drag-over {
+    background: rgba(168, 85, 247, 0.05);
+    border-color: var(--join-purple);
+}
+
+[data-theme="light"] .dropzone-icon {
+    background: #F1F5F9;
+    color: #64748B;
+}
+
+[data-theme="light"] .dropzone-text {
+    color: #0F172A;
+}
+
+[data-theme="light"] .table-summary-strip {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .file-name-tag {
+    color: #0F172A;
+}
+
+[data-theme="light"] .sheet-select {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+[data-theme="light"] .join-type-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .join-type-card:hover {
+    border-color: rgba(168, 85, 247, 0.5);
+    background: #FAF5FF;
+}
+
+[data-theme="light"] .join-type-card.active {
+    background: rgba(168, 85, 247, 0.08);
+    border-color: var(--join-purple);
+}
+
+[data-theme="light"] .join-type-name {
+    color: #0F172A;
+}
+
+[data-theme="light"] .key-mapping-container {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .key-mapping-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .key-pair-row {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .key-select {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+[data-theme="light"] .options-accordion {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .accordion-trigger {
+    color: #0F172A;
+}
+
+[data-theme="light"] .accordion-trigger:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .accordion-content {
+    background: #FFFFFF;
+    border-top-color: #E2E8F0;
+}
+
+[data-theme="light"] .checkbox-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .reconciliation-card {
+    background: rgba(168, 85, 247, 0.04);
+    border-color: rgba(168, 85, 247, 0.25);
+}
+
+[data-theme="light"] .join-kpi-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .kpi-num {
+    color: #0F172A;
+}
+
+[data-theme="light"] .res-pill {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+    color: #475569;
+}
+
+[data-theme="light"] .res-pill:hover {
+    color: #0F172A;
+    border-color: #94A3B8;
+}
+
+[data-theme="light"] .res-pill.active {
+    background: rgba(168, 85, 247, 0.15);
+    border-color: var(--join-purple);
+    color: #7E22CE;
+}
+
+[data-theme="light"] .table-search-input {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+[data-theme="light"] .data-table-container {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: none;
+}
+
+[data-theme="light"] .styled-data-table thead th {
+    background: #F8FAFC;
+    color: #334155;
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .styled-data-table tbody td {
+    border-bottom-color: #F1F5F9;
+    color: #0F172A;
+}
+
+[data-theme="light"] .styled-data-table tbody tr:hover {
+    background: rgba(168, 85, 247, 0.04) !important;
+}
+
+[data-theme="light"] .export-btn-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .export-btn-card:hover {
+    background: #F0FDFA;
+    border-color: #06B6D4;
+}
+
+[data-theme="light"] .export-card-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .export-card-icon {
+    background: rgba(6, 182, 212, 0.1);
+    color: #0891B2;
+}
+
+[data-theme="light"] .btn-page-nav {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+    color: #334155;
+}
+
+[data-theme="light"] .btn-page-nav:hover:not(:disabled) {
+    background: rgba(168, 85, 247, 0.15);
+    border-color: var(--join-purple);
+    color: #7E22CE;
+}
+
+[data-theme="light"] .help-modal-window {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .help-modal-body {
+    background: #FFFFFF;
+}
+
+[data-theme="light"] .help-lead-text {
+    color: #0F172A;
+}
+
+[data-theme="light"] .help-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .help-card-head {
+    color: #0F172A;
+}
+
+[data-theme="light"] .help-table-guide th {
+    background: #F8FAFC;
+    color: #0F172A;
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .help-table-guide td {
+    border-bottom-color: #F1F5F9;
+    color: #475569;
+}
+
+[data-theme="light"] select {
+    color-scheme: light;
+    background-color: #FFFFFF;
+    color: #0F172A;
+}
+
+[data-theme="light"] select option,
+[data-theme="light"] select optgroup {
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+}
+

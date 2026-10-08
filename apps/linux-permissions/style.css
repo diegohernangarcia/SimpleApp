@@ -1317,3 +1317,357 @@ select option:checked {
 .help-list li {
     margin-bottom: 0.35rem;
 }
+
+/* ==========================================================================
+   MODO CLARO (LIGHT THEME) - CALCULADORA DE PERMISOS LINUX
+   ========================================================================== */
+[data-theme="light"] {
+    --bg-terminal: #0F172A;
+    --border-terminal: #CBD5E1;
+}
+
+[data-theme="light"] .perm-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .perm-card:hover {
+    border-color: var(--perm-amber-dark);
+    box-shadow: 0 12px 30px -8px rgba(217, 119, 6, 0.15);
+}
+
+[data-theme="light"] .card-header-clean {
+    border-bottom-color: #F1F5F9;
+}
+
+[data-theme="light"] .card-title-text {
+    color: #0F172A;
+}
+
+[data-theme="light"] .card-title-icon {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.35);
+    color: #D97706;
+}
+
+[data-theme="light"] .notation-box {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .notation-box:focus-within {
+    border-color: var(--perm-amber);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+[data-theme="light"] .notation-main-input {
+    color: #0F172A;
+}
+
+[data-theme="light"] .octal-large-input {
+    color: #D97706;
+}
+
+[data-theme="light"] .symbolic-large-input {
+    color: #0284C7;
+}
+
+[data-theme="light"] .btn-notation-copy {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #475569;
+}
+
+[data-theme="light"] .btn-notation-copy:hover {
+    background: rgba(245, 158, 11, 0.12);
+    color: #D97706;
+    border-color: #D97706;
+}
+
+[data-theme="light"] .octal-digits-row {
+    border-top-color: #E2E8F0;
+}
+
+[data-theme="light"] .octal-digit-chip {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .octal-digit-chip .digit-num {
+    color: #0F172A;
+}
+
+[data-theme="light"] .binary-strip {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+    color: #475569;
+}
+
+[data-theme="light"] .th-category {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .th-category .cat-name {
+    color: #0F172A;
+}
+
+[data-theme="light"] .td-perm-label {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .perm-label-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .td-perm-cell {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .td-perm-cell:hover {
+    background: rgba(245, 158, 11, 0.08);
+    border-color: rgba(245, 158, 11, 0.35);
+}
+
+[data-theme="light"] .perm-checkbox {
+    border-color: #CBD5E1;
+    background: #F8FAFC;
+}
+
+[data-theme="light"] .perm-checkbox:checked {
+    background: #D97706;
+    border-color: #D97706;
+    box-shadow: 0 0 10px rgba(217, 119, 6, 0.35);
+}
+
+[data-theme="light"] .perm-checkbox:checked + .perm-check-text {
+    color: #B45309;
+}
+
+[data-theme="light"] .btn-col-action {
+    background: #F1F5F9;
+    border-color: #E2E8F0;
+    color: #475569;
+}
+
+[data-theme="light"] .btn-col-action:hover {
+    background: rgba(245, 158, 11, 0.15);
+    color: #D97706;
+    border-color: #D97706;
+}
+
+[data-theme="light"] .special-bits-panel {
+    background: rgba(245, 158, 11, 0.05);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+[data-theme="light"] .special-box {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .special-bit-code {
+    color: #0F172A;
+}
+
+[data-theme="light"] .cli-options-bar {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .cli-text-input {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+[data-theme="light"] .cli-text-input:focus {
+    border-color: #D97706;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+[data-theme="light"] .audit-content-box h4 {
+    color: #0F172A;
+}
+
+[data-theme="light"] .human-role-row {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+    color: #475569;
+}
+
+[data-theme="light"] .human-role-row strong {
+    color: #0F172A;
+}
+
+[data-theme="light"] .umask-field {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #D97706;
+}
+
+[data-theme="light"] .umask-result-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .umask-octal-show {
+    color: #0F172A;
+}
+
+[data-theme="light"] .btn-preset-tab {
+    background: #F1F5F9;
+    border-color: #E2E8F0;
+    color: #475569;
+}
+
+[data-theme="light"] .btn-preset-tab.active,
+[data-theme="light"] .btn-preset-tab:hover {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: #D97706;
+    color: #B45309;
+}
+
+[data-theme="light"] .preset-chip-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .preset-chip-card:hover {
+    border-color: #D97706;
+    background: rgba(245, 158, 11, 0.04);
+    box-shadow: 0 8px 20px -6px rgba(217, 119, 6, 0.15);
+}
+
+[data-theme="light"] .preset-octal-badge {
+    color: #D97706;
+}
+
+[data-theme="light"] .preset-category-tag {
+    background: #F1F5F9;
+    color: #64748B;
+}
+
+[data-theme="light"] .preset-name {
+    color: #0F172A;
+}
+
+[data-theme="light"] .preset-desc {
+    color: #475569;
+}
+
+[data-theme="light"] .preset-sym-footer {
+    background: #F1F5F9;
+    color: #0284C7;
+}
+
+[data-theme="light"] .toast {
+    background: #FFFFFF;
+    color: #0F172A;
+    border-color: #E2E8F0;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .toast.toast-success {
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15);
+}
+
+[data-theme="light"] .toast.toast-error {
+    border-color: rgba(239, 68, 68, 0.4);
+    box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.15);
+}
+
+[data-theme="light"] .help-modal-window {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .modal-header {
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .modal-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .help-tabs-nav {
+    background: #F8FAFC;
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .help-tab-btn:hover {
+    color: #0F172A;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .help-tab-btn.active {
+    background: rgba(245, 158, 11, 0.15);
+    color: #B45309;
+    border-color: rgba(245, 158, 11, 0.35);
+}
+
+[data-theme="light"] .help-section-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .help-section-card h3 {
+    color: #0F172A;
+}
+
+[data-theme="light"] .help-section-card p {
+    color: #475569;
+}
+
+[data-theme="light"] .help-item-box {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .help-item-box > strong {
+    color: #D97706;
+}
+
+[data-theme="light"] .help-item-box p strong {
+    color: #0F172A;
+}
+
+[data-theme="light"] .help-table th {
+    background: rgba(245, 158, 11, 0.1);
+    color: #B45309;
+}
+
+[data-theme="light"] .help-table th,
+[data-theme="light"] .help-table td {
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .btn-help-guide {
+    background: rgba(245, 158, 11, 0.12);
+    color: #B45309;
+    border-color: rgba(245, 158, 11, 0.35);
+}
+
+[data-theme="light"] .btn-help-guide:hover {
+    background: rgba(245, 158, 11, 0.2);
+    color: #92400E;
+    border-color: #D97706;
+}
+
+[data-theme="light"] select {
+    color-scheme: light;
+    background-color: #FFFFFF;
+    color: #0F172A;
+}
+
+[data-theme="light"] select option,
+[data-theme="light"] select optgroup {
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+}

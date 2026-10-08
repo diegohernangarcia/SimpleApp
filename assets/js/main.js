@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
         modalFeatures: document.getElementById('modalFeatures'),
         modalLaunchBtn: document.getElementById('modalLaunchBtn'),
         headerClock: document.getElementById('headerClock'),
+        themeToggleBtn: document.getElementById('themeToggleBtn'),
+        themeToggleLabel: document.getElementById('themeToggleLabel'),
         serverStatusPill: document.getElementById('serverStatusPill'),
         toastContainer: document.getElementById('toastContainer')
     };
@@ -62,6 +64,45 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         update();
         setInterval(update, 1000);
+    }
+
+    // Manejo de Tema (Delegado al motor central theme.js)
+    function applyTheme(theme, showFeedback = false) {
+        if (window.SimpleAppsTheme) {
+            window.SimpleAppsTheme.set(theme, showFeedback);
+            return;
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('simpleapps_theme', theme);
+
+        if (dom.themeToggleLabel) {
+            dom.themeToggleLabel.textContent = theme === 'light' ? 'Modo Oscuro' : 'Modo Claro';
+        }
+        if (dom.themeToggleBtn) {
+            dom.themeToggleBtn.setAttribute('title', theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro');
+            dom.themeToggleBtn.setAttribute('aria-label', theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro');
+        }
+
+        if (showFeedback) {
+            showToast(theme === 'light' ? '☀️ Modo Claro activado' : '🌙 Modo Oscuro activado', 'info');
+        }
+    }
+
+    function initTheme() {
+        if (window.SimpleAppsTheme) {
+            // El motor central theme.js ya inicializa el tema, actualiza los botones y gestiona los eventos
+            return;
+        }
+        const savedTheme = localStorage.getItem('simpleapps_theme') || 'dark';
+        applyTheme(savedTheme, false);
+
+        if (dom.themeToggleBtn) {
+            dom.themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(newTheme, true);
+            });
+        }
     }
 
     // Mostrar Notificación Toast
@@ -340,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.modalSpecsExecution.textContent = app.specs.execution;
 
         dom.modalFeatures.innerHTML = app.features.map(f => `
-            <span class="feature-pill" style="border-color: rgba(168, 85, 247, 0.3); color: #fff; background: rgba(168, 85, 247, 0.1);">
+            <span class="feature-pill modal-feature-pill">
                 ✓ ${f}
             </span>
         `).join('');
@@ -503,6 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Iniciar
+    initTheme();
     startClock();
     setViewMode(state.viewMode);
     updateCategoryCounts();

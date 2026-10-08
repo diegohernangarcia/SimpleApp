@@ -1131,3 +1131,92 @@ select option:checked {
 .help-list li {
     margin-bottom: 0.35rem;
 }
+
+/* ==========================================================================
+   Modo Claro (CSV to Excel)
+   ========================================================================== */
+[data-theme="light"] {
+    --bg-surface: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #FFFFFF;
+    --bg-input: #FFFFFF;
+    --border-subtle: #E2E8F0;
+    --border-medium: #CBD5E1;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+}
+
+[data-theme="light"] .mode-selection-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+}
+
+[data-theme="light"] .mode-selection-card:hover {
+    border-color: #CBD5E1;
+    background: #FFFFFF;
+}
+
+[data-theme="light"] .mode-selection-card.active {
+    background: rgba(16, 185, 129, 0.08);
+    border-color: #10B981;
+}
+
+[data-theme="light"] .mode-card-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .dropzone-container {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .dropzone-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .file-item-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .file-name-text {
+    color: #0F172A;
+}
+
+[data-theme="light"] .settings-panel-box {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .settings-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .setting-input,
+[data-theme="light"] .setting-select {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+[data-theme="light"] .preview-table-container {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .preview-table th {
+    background: #F8FAFC;
+    color: #0F172A;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .preview-table td {
+    color: #475569;
+    border-color: #E2E8F0;
+}
+

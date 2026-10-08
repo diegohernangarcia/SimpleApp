@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="dark light">
     <title>SimpleApps • Suite de Herramientas y Micro-Apps</title>
     <meta name="description" content="Plataforma y catálogo de micro-herramientas locales de alto rendimiento: Excel, CSV, Diff Viewer, Permisos Linux, Markdown y SQL.">
+    
+    <!-- Inicialización Inmediata de Tema (Anti-FOUC) & API Global de Tema -->
+    <script src="assets/js/theme.js?v=2.2"></script>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
@@ -18,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Estilos Principales -->
-    <link rel="stylesheet" href="assets/css/style.css?v=2.0">
+    <link rel="stylesheet" href="assets/css/style.css?v=2.1">
 </head>
 <body>
 
@@ -73,6 +76,27 @@
 
                 <!-- Acciones del Header -->
                 <div class="header-actions">
+                    <!-- Selector de Modo Claro / Modo Oscuro -->
+                    <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Cambiar a modo claro" title="Alternar entre modo claro y modo oscuro">
+                        <span class="theme-toggle-icon-wrap">
+                            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </span>
+                        <span class="theme-toggle-label" id="themeToggleLabel">Modo Claro</span>
+                    </button>
+
                     <!-- Reloj Local -->
                     <div class="header-clock" id="headerClock" title="Hora del sistema">
                         <span>--:--:--</span>
@@ -408,6 +432,6 @@
 
     <!-- Scripts -->
     <script src="assets/js/apps-data.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=2.2"></script>
 </body>
 </html>

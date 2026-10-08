@@ -954,3 +954,308 @@ input:checked + .slider-round:before {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* =============================================================================
+   MODO CLARO (LIGHT THEME) - GENERADOR SQL
+   ============================================================================= */
+[data-theme="light"] {
+    --sql-card-bg: #FFFFFF;
+    --sql-card-border: #E2E8F0;
+    --sql-card-border-hover: #A5B4FC;
+    --sql-code-bg: #F8FAFC;
+}
+
+[data-theme="light"] .text-glow-white {
+    color: #0F172A;
+    text-shadow: none;
+}
+
+[data-theme="light"] .presets-bar {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .preset-chip-btn {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+    color: #334155;
+}
+
+[data-theme="light"] .preset-chip-btn:hover {
+    background: rgba(99, 102, 241, 0.12);
+    border-color: var(--sql-indigo);
+    color: var(--sql-indigo-dark);
+}
+
+[data-theme="light"] .step-section {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .step-header {
+    border-bottom-color: #F1F5F9;
+}
+
+[data-theme="light"] .step-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .dropzone-container {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+[data-theme="light"] .dropzone-container:hover,
+[data-theme="light"] .dropzone-container.dragover {
+    background: rgba(99, 102, 241, 0.05);
+    border-color: var(--sql-indigo);
+}
+
+[data-theme="light"] .dropzone-icon-circle {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--sql-indigo);
+    border-color: rgba(99, 102, 241, 0.25);
+}
+
+[data-theme="light"] .dropzone-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .format-badge {
+    background: #F1F5F9;
+    border-color: #E2E8F0;
+    color: #64748B;
+}
+
+[data-theme="light"] .table-summary-strip {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .file-name-tag {
+    color: #0F172A;
+}
+
+[data-theme="light"] .columns-mapping-container {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .columns-toolbar {
+    background: #F8FAFC;
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .mapping-table th {
+    background: #F1F5F9;
+    color: #475569;
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .mapping-table td {
+    border-bottom-color: #F1F5F9;
+    color: #0F172A;
+}
+
+[data-theme="light"] .mapping-table tr:hover td {
+    background: rgba(99, 102, 241, 0.04);
+}
+
+[data-theme="light"] .mapping-input-col {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+[data-theme="light"] .mapping-input-col:focus {
+    border-color: var(--sql-indigo);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+[data-theme="light"] .mapping-select-type {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: var(--sql-indigo-dark);
+}
+
+[data-theme="light"] .pk-badge-toggle {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+    color: #64748B;
+}
+
+[data-theme="light"] .pk-badge-toggle.is-pk {
+    background: #FEF3C7;
+    border-color: #F59E0B;
+    color: #B45309;
+}
+
+[data-theme="light"] .opt-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .opt-card-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .opt-select,
+[data-theme="light"] .opt-input {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+[data-theme="light"] .opt-select:focus,
+[data-theme="light"] .opt-input:focus {
+    border-color: var(--sql-indigo);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+[data-theme="light"] .radio-pill-label {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .radio-pill-label:hover {
+    background: rgba(99, 102, 241, 0.05);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+[data-theme="light"] .radio-pill-label input[type="radio"]:checked + .pill-content strong {
+    color: var(--sql-indigo-dark);
+}
+
+[data-theme="light"] .pill-content strong {
+    color: #0F172A;
+}
+
+[data-theme="light"] .slider-round {
+    background-color: #CBD5E1;
+}
+
+[data-theme="light"] .output-tabs-header {
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .output-tab-btn {
+    color: #64748B;
+}
+
+[data-theme="light"] .output-tab-btn:hover {
+    color: #0F172A;
+}
+
+[data-theme="light"] .output-tab-btn.active {
+    color: var(--sql-indigo-dark);
+    border-bottom-color: var(--sql-indigo);
+}
+
+[data-theme="light"] .metric-pill {
+    background: #F1F5F9;
+    border-color: #E2E8F0;
+    color: #475569;
+}
+
+[data-theme="light"] .metric-pill strong {
+    color: #0F172A;
+}
+
+[data-theme="light"] .code-viewer-box {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .code-textarea {
+    background: #F8FAFC;
+    color: #0F172A;
+}
+
+[data-theme="light"] .btn-secondary-sql {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+    color: #334155;
+}
+
+[data-theme="light"] .btn-secondary-sql:hover {
+    background: rgba(99, 102, 241, 0.12);
+    border-color: var(--sql-indigo);
+    color: var(--sql-indigo-dark);
+}
+
+[data-theme="light"] .modal-window {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .modal-header {
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .modal-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .help-tabs-nav {
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .help-tab-btn {
+    color: #64748B;
+}
+
+[data-theme="light"] .help-tab-btn:hover {
+    color: #0F172A;
+}
+
+[data-theme="light"] .help-tab-btn.active {
+    color: var(--sql-indigo-dark);
+    border-bottom-color: var(--sql-indigo);
+}
+
+[data-theme="light"] .help-card-section {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .help-card-section h4 {
+    color: #0F172A;
+}
+
+[data-theme="light"] .help-card-section p,
+[data-theme="light"] .help-card-section ul {
+    color: #475569;
+}
+
+[data-theme="light"] .help-code-snippet {
+    background: #F1F5F9;
+    border-color: #E2E8F0;
+    color: #312E81;
+}
+
+[data-theme="light"] .paste-textarea {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+[data-theme="light"] .sql-toast {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    color: #0F172A;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] select {
+    color-scheme: light;
+    background-color: #FFFFFF;
+    color: #0F172A;
+}
+
+[data-theme="light"] select option,
+[data-theme="light"] select optgroup {
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+}

@@ -1240,3 +1240,126 @@
 .help-list li {
     margin-bottom: 0.35rem;
 }
+
+/* ==========================================================================
+   Modo Claro (Diff Viewer)
+   ========================================================================== */
+[data-theme="light"] .diff-toolbar {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .btn-diff-action {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    color: #475569;
+}
+
+[data-theme="light"] .btn-diff-action:hover {
+    background: #F8FAFC;
+    color: #0F172A;
+}
+
+[data-theme="light"] .stat-pill-box {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .stat-pill-box:hover {
+    border-color: #CBD5E1;
+}
+
+[data-theme="light"] .diff-box-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05);
+}
+
+[data-theme="light"] .diff-box-header {
+    background: #F8FAFC;
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .diff-box-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .diff-textarea {
+    color: #0F172A;
+    background: #FFFFFF;
+}
+
+[data-theme="light"] .diff-textarea::placeholder {
+    color: #94A3B8;
+}
+
+[data-theme="light"] .diff-box-footer {
+    background: #F8FAFC;
+    border-top-color: #E2E8F0;
+}
+
+[data-theme="light"] .dropzone-overlay {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="light"] .diff-inspector-panel {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05);
+}
+
+[data-theme="light"] .spotlight-body {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+}
+
+[data-theme="light"] .spotlight-code-view {
+    color: #0F172A;
+}
+
+[data-theme="light"] .viewer-header-bar {
+    background: #F8FAFC;
+    border-bottom-color: #E2E8F0;
+}
+
+[data-theme="light"] .viewer-header-title {
+    color: #0F172A;
+}
+
+[data-theme="light"] .viewer-pane {
+    background: #FFFFFF;
+}
+
+[data-theme="light"] .viewer-pane:first-child {
+    border-right-color: #E2E8F0;
+}
+
+[data-theme="light"] .pane-label-header {
+    background: #F1F5F9;
+    border-bottom-color: #E2E8F0;
+    color: #475569;
+}
+
+[data-theme="light"] .line-num-cell {
+    color: #94A3B8;
+    border-right-color: #F1F5F9;
+}
+
+[data-theme="light"] .line-content-cell {
+    color: #0F172A;
+}
+
+[data-theme="light"] .code-diff-row.diff-row-add {
+    background: rgba(16, 185, 129, 0.12);
+}
+
+[data-theme="light"] .code-diff-row.diff-row-del {
+    background: rgba(239, 68, 68, 0.12);
+}
+
+[data-theme="light"] .code-diff-row.diff-row-mod {
+    background: rgba(245, 158, 11, 0.12);
+}
+

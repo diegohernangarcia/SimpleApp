@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="dark light">
     <title>De CSV a Excel (.xlsx) • SimpleApps</title>
     <meta name="description" content="Convierte uno o múltiples archivos CSV a Excel (.xlsx). Opción para generar un solo libro consolidado con múltiples hojas o archivos Excel separados. 100% local y seguro.">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+
+    <!-- Motor de Tema (Claro / Oscuro) -->
+    <script src="../../assets/js/theme.js"></script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
@@ -21,8 +24,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Hojas de Estilo -->
-    <link rel="stylesheet" href="../../assets/css/style.css?v=2.0">
-    <link rel="stylesheet" href="style.css?v=1.0">
+    <link rel="stylesheet" href="../../assets/css/style.css?v=2.1">
+    <link rel="stylesheet" href="style.css?v=2.1">
 </head>
 <body>
 
@@ -60,6 +63,27 @@
 
                 <!-- Acciones del Header -->
                 <div class="header-actions">
+                    <!-- Alternador de Tema -->
+                    <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Cambiar tema" title="Alternar entre modo claro y modo oscuro">
+                        <span class="theme-toggle-icon-wrap">
+                            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </span>
+                        <span class="theme-toggle-label">Modo Claro</span>
+                    </button>
+
                     <button type="button" class="btn-help-guide" id="btnOpenHelpModal" title="Manual Operativo y Guía de Uso del Módulo">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                         <span>📘 Ayuda & Guía de Uso</span>

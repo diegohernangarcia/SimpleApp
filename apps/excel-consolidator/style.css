@@ -1196,3 +1196,44 @@
         align-items: stretch;
     }
 }
+
+/* ==========================================================================
+   Modo Claro (Excel Consolidator)
+   ========================================================================== */
+[data-theme="light"] {
+    --bg-dark-900: #F8FAFC;
+    --bg-dark-800: #FFFFFF;
+    --bg-dark-700: #F1F5F9;
+    --bg-card: #FFFFFF;
+    --border-card: #E2E8F0;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+}
+
+[data-theme="light"] .step-section,
+[data-theme="light"] .option-card,
+[data-theme="light"] .export-bar {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05);
+}
+
+[data-theme="light"] .dropzone-consolidator {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .dropzone-title,
+[data-theme="light"] .step-title,
+[data-theme="light"] .option-title,
+[data-theme="light"] .file-card-name {
+    color: #0F172A;
+}
+
+[data-theme="light"] .file-card-item {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+}
+
